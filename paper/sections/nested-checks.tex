@@ -1,0 +1,298 @@
+\section{Compiler validation instances}\label{sec:nestedchecks}
+\subsection{Parametric presentation input and exact size formulas}
+The general generator accepts a JSON presentation with typed
+\texttt{labels}, a list of \texttt{modular} names, and rational
+\texttt{relations}. Each relation is a finite sum of coefficient/word
+pairs; a token ending in \texttt{*} is an adjoint. It checks the
+modular degree bound, splits all five possible homogeneous degrees,
+adjoints negative degrees, and introduces the derived coefficients
+in Appendix~\ref{nested:sec:nested}. It then emits the literal reduced words,
+proper prefixes, projection variables, rational rows, and row plans.
+The general interface is
+\begin{quote}\small\ttfamily
+python -I generate\_nested.py -{}-presentation INPUT.json\\
+\hspace*{1em}-{}-output-stem INSTANCE
+\end{quote}
+The output stem is restricted to a filename inside the chosen output directory. The two application schemas can also take supplied finite
+cellular-automaton tables. The factored scan programs below avoid
+expanding a static track into a redundant product alphabet.
+
+The word and rational-row schemas are emitted once in
+\texttt{compiler-schemas.json}. Let $s$ count modular symbols; let $c$
+count unitary encodings of transported root labels and derived
+coefficients, with two encodings per contraction; let $r$ count their
+projection labels; let $d$ count derived defining equations; and let
+$p_{\rm app}$ count the final homogeneous application equations.
+Put $a=14$ for the scaffold's bound parameters. Then
+\begin{align}
+ g&=24+6s+3c,\nonumber\\
+ p_{\rm str}&=13+7s+3c+r+d,\qquad p=p_{\rm str}+p_{\rm app},\nonumber\\
+ V&=15w+1-g+19a,\nonumber\\
+ R&=12w-g+p+17a-1.                                         \label{eq:validation-V1}
+\end{align}
+Here $g$ counts unitary generators, $V$ projection variables, $R$
+rational rows, and $w$ words including identity. The exact word count is
+$w=1+2g+\sum_{k\ge2}n_k$, where $n_k$ is the number of distinct
+length-$k$ reduced prefixes of the expanded input words. This prefix
+profile is a presentation size parameter: a count using only the
+number and lengths of relations cannot account for shared prefixes.
+
+To derive \eqref{eq:validation-V1}, there are $9w$ graph rows, one frame row, one reference
+triangle, $2(w-1)$ placement triangles, $w-1-2g$ proper-prefix product
+triangles, $g$ inverse triangles, $17a$ binding rows, and $p$ polynomial
+rows. Graphs use $12w$ projection names, triangles use $3w-2-g$, the
+frame uses three, and parameter binding uses $19a$. The outer
+transported list has $2+c+2s$ encodings, so the inner and outer bridge
+refinement counts per party are $6$ and $8+c+2s$.
+
+\subsection{The concrete programs and both decision branches}
+Use a tiny predicate family, with indices $e=0,1,2$:
+\begin{equation}
+ R(0,n,s)=\mathrm{false},\qquad R(1,n,s)\iff n=0,\qquad
+ R(2,n,s)\iff (n,s)=(0,0).                                  \label{eq:validation-V2}
+\end{equation}
+The first and third are NO instances of $\exists n\,\forall sR$;
+the second has the single integer witness $n=0$. A predicate true at
+only one \emph{pair} does not have a universal-in-$s$ witness. All
+three requested literal lists are supplied, so this distinction is
+tested rather than left implicit.
+
+Each uniform verifier has eleven head states:
+\begin{quote}\small
+none, boot, scan1, scan2, scanbig, move1, move2, movebig,
+accept, reject, wait.
+\end{quote}
+The return marker is a separate immutable track. At the origin, boot
+becomes move1, ignoring the marker at zero. A move state clears its
+cell and sends its corresponding scan state to the right. A scan on
+a nonmarker becomes the next saturated-count move state. At the first
+positive marker, scan2 certifies period $2=F_3$; scan1 and scanbig
+reject. For $e=1$ period two accepts; for $e=0$ it rejects; for $e=2$
+it waits one step and rejects. Acceptance and rejection are absorbing.
+For these particular predicates every decoded $n>0$ already fails
+at $s=0$, so rejecting all other periods is exactly the required
+specialization of the Fibonacci verifier. It is unnecessary to
+compute a larger Fibonacci index only to reject it immediately.
+
+For clarity, the actual update rows are finite factored centralizer
+polynomials. With $P_h$ the current head projection and $L_h$ its
+left-neighbor copy, a moving-head arrival is
+$(I-P_x)L_{\mathrm{move}j}P_{\mathrm{none}}$.
+For example $N_{\mathrm{move2}}=(I-E_{\rm ret})P_{\mathrm{scan1}}$,
+and the positive instance has
+$N_{\rm accept}=P_{\rm accept}+E_{\rm ret}P_{\rm scan2}$.
+The none projection is identity minus all other successors. The code
+lists every successor polynomial. Their classical truth tables are
+deterministic even on head collisions, using center-state priority.
+Head projections have four synchronized neighbor/time families, and
+the same endpoint equations \eqref{eq:nested-A4} and initial boot/none rows.
+This representation is equivalent to a finite automaton with a
+static marker track, and all its rows are in the admissible class.
+
+For the comb choose the two explicit total programs
+\begin{equation}
+                       k_m=1,\qquad k_m=m.                  \label{eq:validation-V3}
+\end{equation}
+The constant program has critical index $0$, and the linear program
+has critical index $1/2$. Both have nonzero $B_0,B_1$, branch vertices
+and leaves. Their six head states are none, boot, scan, move, accept,
+reject. The constant program checks at $x=0$ whether
+${E_{\rm guard}}=\mathbf1_{\{\ell=0\}}$. The linear program scans until the first
+$M$ or $L$ marker (encoding $\Csp$ or $L$): the guard should be one if the $L$ marker occurs
+strictly first, and zero if the markers coincide or the $M$ marker
+occurs first. Correct and flipped-guard decisions are both checked.
+Every head family commutes with $\Csp,L,{E_{\rm guard}},C_x,C_t$.
+
+In the legal linear comb, $0\le\ell\le m$, so the first marker is
+at $x=\ell$; the two possible stop cases are $\ell<m$ and $\ell=m$.
+Before that cell both marker bits are zero, giving a move followed by
+a scan one cell to the right. This proves termination and acceptance
+for every legal fiber by induction, with no bound on $m,\ell$.
+Flipping the guard reverses the stop decision. As a substantive
+negative control, the constant-depth comb can be fed to the linear
+checker: its fibers $m\ge2,\ell=1$ then reject. All other application
+identities still hold.
+
+\begin{center}\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule Instance & $g$ & $w$ & $p$ & $V$ & $R$\\\midrule
+Uniform, never true & 201 & 6995 & 426 & 104991 & 84402\\
+Uniform, witness $n=0$ & 201 & 6995 & 426 & 104991 & 84402\\
+Uniform, one true pair & 201 & 6995 & 426 & 104991 & 84402\\
+Comb, $k_m=1$ & 171 & 8414 & 412 & 126306 & 101446\\
+Comb, $k_m=m$ & 171 & 8583 & 412 & 128841 & 103474\\\bottomrule
+\end{tabular}
+\end{center}
+These literal lists are validation instances. The general theorem
+rests on the parametric lemma, as in the compiler construction of Section~\ref{sec:compiler}; the
+full reduction game for an arbitrary verifier program was not compiled.
+
+\subsection{Exact symbolic checks of the infinite models}
+The independent checker reads exported JSON and does not import the
+producer. It substitutes graph, complement, tilted-graph, triangle,
+and binding formulas in the exact rational free group ring, treating
+parameter reflections as involutions. Every noninput rational row
+becomes exactly zero. Every polynomial row becomes exactly its
+claimed pair of off-diagonal blocks, and every graph and triangle is
+separately checked to be a projection. Semantic expression trees are
+independently re-expanded into the literal input polynomials, closing
+the link between operator checks and exported rows.
+
+Every structural polynomial is also checked directly on all $25$
+scaffold corners, at generic basis coordinates and each boundary.
+The $a_i$ and $t$ unitary encodings are explicit monomial completions
+over Gaussian rationals: on a source/range pair they are the swap
+with phases $1,\pm i$, and on unmatched coordinates the phase is
+$\pm i$. Root encodings are free diagonal phases keyed by basis coordinate;
+projection encodings are involutions. This proves every support,
+axis, whole-activity block, reflection, and $t$ row, including actual
+unitarity of all encodings. Positive and general diagonal contraction
+encodings can then be specialized by \eqref{eq:nested-N10}. No density inverse enters.
+The same structural identities are checked again on rebuilt finite
+cutoff encodings.
+
+Application checks use explicit decoded basis actions. $S,T$
+increment $x,t$, with adjoints vanishing at zero. On comb basis
+$(m,w)$, ${V_{\rm sp}}$ increments $m$ on the empty-word spine and vanishes off
+it, while $B_i$ prepends $i$ exactly when $|w|<k_m$; their adjoints
+remove the matching prefix or vanish at the boundary. All counters,
+markers, guards and readers are the explicit scalar formulas above.
+For the period-two uniform models, $Z=-I$, $J$ swaps two Weyl basis
+vectors, $K=\operatorname{diag}(1,-1)$, $W=(-1)^x$, and the reader is
+$-2^{-x}/4$ on odd $x$ and zero otherwise.
+
+The checker evaluates the generic symbolic basis index and every
+lower boundary separately. Short tree words, both prefix bits, generic
+opaque tails, spine boundaries, branch vertices, and leaves are all
+included. Head fields are arbitrary symbolic functions for endpoint
+checks; their one-hot initialization and exhaustive local successor
+truth tables check the local update rule; the unbounded
+honest-history recurrence is justified by the prose induction above. The uniform
+programs have $5324$ exact local update checks each and the comb
+programs $3456$ each. The explicit period-two histories are also
+checked through the absorbing state. For the comb the two symbolic
+stop-order cases above give zero rejecting projection on every legal
+fiber. This is a prose induction, not a machine-checked induction
+certificate. The program \texttt{check\_far\_history.py}, implemented independently of the row producer, evaluates all head-dependent
+exported application rows with \texttt{cut=None}. For the linear
+comb it checks $m,\ell\le30$, $t\le65$ (successor reads through
+$66$), over $8.2$ million row actions. This finite far-index engine
+check supports the explicit history formula without replacing the
+unbounded induction.
+
+\paragraph{Nontrivial Fibonacci clock models.}
+A sparse complex checker also evaluates the $187$ exported application rows of
+\texttt{uniform-no} at ${d_{\rm clk}}=F_4,F_5,F_6=3,5,8$, with
+$a=2,3,5$ respectively and $z=\exp(2\pi ia/{d_{\rm clk}})$.
+It uses $J|j\rangle=|j+1\bmod {d_{\rm clk}}\rangle$,
+$K|j\rangle=z^{-j}|j\rangle$, $W(x)=z^x$, and the actual
+complex reader in \eqref{eq:nested-A3}, conjugating diagonal values for adjoints.
+A separate evolution of the local rule checks the explicit head
+history. The first positive marker is reached at time $2{d_{\rm clk}}$;
+only the reject row is nonzero, on $x={d_{\rm clk}},t\ge2{d_{\rm clk}}+1$.
+Its exact infinite root probability is $2^{-(3{d_{\rm clk}}+2)}$.
+All application rows are evaluated on both output corners, all
+Weyl coordinates and all $0\le x\le2{d_{\rm clk}}+1$, $0\le t\le2{d_{\rm clk}}+3$.
+The rebuilt finite shifts have only the two source-isometry
+boundary defects and this expected reject defect. These complex
+checks use tolerance $2\cdot10^{-12}$, not exact rational
+arithmetic. They allocate sparse basis actions, stay below $1.5$ GB,
+and do not materialize a Boolean game. Value one as ${d_{\rm clk}}\to\infty$
+is still a proof-only conclusion, supported by these three finite
+models and the uniform analytic reader bound. The script is
+\texttt{check\_\allowbreak fibonacci\_\allowbreak models.py}.
+
+A negative uniform instance has no perfect completeness model.
+The certification checks that only the expected rejecting row is nonzero. In the generic symbolic pass,
+\texttt{reject\_*} rows are skipped: for positive programs the formal
+reject field is assigned $0$, so that pass does not independently
+prove absence of rejection. The concrete far-index and finite
+truncation runs do evaluate the reject rows, including the expected
+nonzero negative controls. With period two, the rejecting projection
+is $x=2,t\ge5$ for $e=0$, and $x=2,t\ge6$ for $e=2$. Their exact
+root probabilities are $1/256$ and $1/512$. The wrong-guard comb
+control has root reject probability $1/256$: the bad comb-fiber mass
+is $1/4$, checker spatial mass $1/4$, and time tail $1/16$.
+These exact values are the expected outcomes of the negative controls.
+
+A binary-tree shift is locally finite in the word basis, but need not
+be banded under an arbitrary enumeration of vertices by one integer.
+Polar completions are likewise specified by density blocks rather
+than an assumed universal bandwidth. Explicit basis actions and exact
+block formulas specify the checks. Finite shifts are tested with their boundary defects.
+
+\subsection{Finite defects, the worst rows, and the loss bound}
+For a normalized geometric register on $0,\ldots,N$, put
+$t_N=(2^{N+1}-1)^{-1}$. Covariance stays exact, while
+$S_N^*S_N-I=-|N\rangle\langle N|$ has weighted squared defect $t_N$.
+Its source lift has defect $t_N/81$ and its qutrit row $2t_N/243$.
+The isometry-row plans in these exports have $L=8,d=64$. Consequently
+the total one-oriented boundary loss before $Q^{-2}$ is
+\begin{equation}
+ \frac{t_{N_x}+t_{N_t}}{124416}\quad\hbox{(uniform)},\qquad
+ \frac{t_{N_x}+t_{N_t}+2^{-N_m}/Z_{N_m}}{124416}
+                                      \quad\hbox{(comb)}.    \label{eq:validation-V4}
+\end{equation}
+Here every complete bush with $m\le N_m$ is retained, and
+\[
+ Z_N=2(1-2^{-N})\quad(k_m=1),\qquad
+ Z_N=3-(N+3)2^{-N}\quad(k_m=m).
+\]
+Only the two checker/register source-isometry rows and the top spine
+source-isometry row can contribute boundary loss. All bush rows and
+all scaffold rows remain exact. The worst boundary row is explicitly
+reported for each cutoff: in a balanced large linear comb it is a
+checker isometry, whereas for the constant comb it is the spine row.
+All these defects are $O(2^{-N})$ for balanced cutoffs.
+
+The forbidden-reject row has $L=2,d=16$, so a root rejecting probability
+$p$ adds $p/31104$ before $Q^{-2}$. Thus a fixed-period negative
+instance has a nonzero limiting reject defect. Its \emph{boundary}
+defects still tend to zero. The value-one construction separately
+sends the chosen Fibonacci period to infinity, making the reject
+loss at most $C_{\rm nest}2^{-{d_{\rm clk}}}$ as already proved. A fixed negative model retains its nonzero rejecting defect in the limit.
+
+The rectangular cutoffs $(0,0),(1,1),(2,3),(3,2),(7,3),
+(15,3),(31,7)$ and balanced cutoffs through $255$ are evaluated by
+exact normalized boundary formulas. Small cutoffs are additionally
+evaluated exhaustively for every application polynomial, with complete
+finite bushes. For a general $k_m\le m^2$, keeping complete bushes
+still gives spine defect $2^{-N}/Z_N$, and the omitted comb mass is
+at most $2^{-N}(N^2+4N+7)$. Larger cutoffs are certified by these exact
+formulas; exponentially large matrices are never allocated.
+
+\subsection{Random algebra checks and the general regression}
+The random-algebra script runs $200$ instance-independent random
+models of the displayed nested transport and quadratic identities. Its grouping into five batches of
+forty does not use any instance rows or verifier program. Each model
+uses four full $32$-dimensional corner spaces and unitary transports
+between them; \eqref{eq:nested-N3} holds by construction. Five nilpotent modular
+contractions, complex corner gauges, and density-eigenspace gauges
+exercise the algebra. There are $145$ checks per model, $29000$ in
+total, with maximum Frobenius residual below $7.1\cdot10^{-15}$
+against tolerance $5\cdot10^{-12}$. Tiny density weights occur, but
+full-space corners and unitary transports make any claimed test of
+dense-range support cancellation vacuous. This is an algebra check,
+not a game-to-operators soundness test. No Boolean question/predicate
+table is materialized for any instance; the exports contain the
+word lists, rational rows and row plans for the constructive game.
+
+A further synthetic input exercises all five modular degrees and all
+interior-coefficient translation routes, with three derived coefficients.
+Its general compiler export has $43197$ words and $518601$ rational
+rows. The independent audit checks the row links and projections,
+and exact rational $4$-dimensional modular root matrices verify that
+each compiled residual is exactly the claimed transported homogeneous
+residual, including the adjointed negative degrees. No claim is made
+that this arbitrary regression presentation is satisfiable.
+This check tests the translator rather than silently assuming the
+input equations vanish.
+
+The merged runner copies the generator and checking scripts to a new result
+directory, regenerates the large literal lists there, checks their byte
+hashes and counts against the shipped records, and runs each audit from scratch. The large core JSON files are not shipped.
+The five reference byte hashes are retained in
+\texttt{nested/expected-core-records.json}; no Boolean predicate table is
+materialized for any validation instance. Generated lists are finite
+certificates of their stated algebra, not a game-to-operators soundness
+verification.

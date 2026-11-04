@@ -1,0 +1,102 @@
+{
+  "words": 6041553,
+  "long_words": 6041293,
+  "triangles": 18124515,
+  "projection_variables": 90623633,
+  "projection_rows": 72499152,
+  "application_rows": 230,
+  "old_questions": 90623718,
+  "questions_per_party": 6191638087,
+  "max_answers": 67108864,
+  "scalar_qubits": 26,
+  "row_dimensions": {
+    "16": 72499068,
+    "64": 69,
+    "256": 6,
+    "1024": 2,
+    "1048576": 1,
+    "4194304": 1,
+    "16777216": 4,
+    "67108864": 1
+  },
+  "question_kinds": {
+    "old": 90623718,
+    "scalar_cells_and_contexts": 195,
+    "cross_axes": 1248,
+    "commute_old": 4712428916,
+    "globals": 2,
+    "scalar_pairs": 89130312,
+    "columns_and_joints": 1299453696
+  },
+  "answer_entries_per_party": 4803794040109533,
+  "uint64_answer_payload_bytes_two_parties": 76860704641752528,
+  "automaton_simulations": [
+    {
+      "q": 1,
+      "mark": [
+        1,
+        2
+      ],
+      "halt_time": 4
+    },
+    {
+      "q": 2,
+      "mark": [
+        2,
+        3
+      ],
+      "halt_time": null
+    },
+    {
+      "q": 3,
+      "mark": [
+        3,
+        4
+      ],
+      "halt_time": 6
+    },
+    {
+      "q": 4,
+      "mark": [
+        4,
+        5
+      ],
+      "halt_time": 7
+    },
+    {
+      "q": 5,
+      "mark": [
+        5,
+        6
+      ],
+      "halt_time": 8
+    },
+    {
+      "q": 6,
+      "mark": [
+        6,
+        7
+      ],
+      "halt_time": 9
+    },
+    {
+      "q": 7,
+      "mark": [
+        7,
+        8
+      ],
+      "halt_time": 10
+    },
+    {
+      "q": 8,
+      "mark": [
+        8,
+        9
+      ],
+      "halt_time": 11
+    }
+  ],
+  "elapsed_seconds": 79.88082930003293,
+  "peak_working_set_bytes": 1598873600,
+  "all_shared_counts_match": true
+}

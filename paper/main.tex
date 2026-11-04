@@ -1,0 +1,118 @@
+\newcommand{\DoNotLoadEpstopdf}{}
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{booktabs,array,enumitem,microtype,xcolor,needspace}
+\usepackage[hypcap=false]{caption}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\setlength{\emergencystretch}{2em}
+\setlist{nosep}
+\setcounter{tocdepth}{2}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{theoremA}{Theorem A (spatial perfection)}
+\newtheorem*{theoremB}{Theorem B (perfect play by von Neumann type)}
+\newtheorem*{theoremD}{Theorem D (the entanglement spectrum)}
+\newtheorem*{theoremC}{Theorem C (zero-error communication)}
+\newtheorem*{backgroundlemma}{Background lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Cat}{Cat}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Rea}{Re}
+\newcommand{\HH}{\mathcal H}
+\newcommand{\KK}{\mathcal K}
+\newcommand{\WW}{\mathcal W}
+\newcommand{\id}{I}
+\newcommand{\perf}{\mathrm{PERF}}
+\newcommand{\qs}{\mathrm{qs}}
+\newcommand{\qc}{\mathrm{qc}}
+\newcommand{\finS}{\mathrm{finS}}
+\newcommand{\sfhost}{\mathrm{sf}}
+\newcommand{\finhost}{\mathrm{fin}}
+\newcommand{\co}{\mathrm{co}}
+\newcommand{\ZE}{\mathrm{ZE}}
+\newcommand{\II}{\mathrm{II}}
+\newcommand{\III}{\mathrm{III}}
+\newcommand{\vN}{\bar\otimes}
+\newcommand{\Mat}{\mathrm{Mat}}
+\newcommand{\Rdec}{\mathcal R_{\rm dec}}
+\newcommand{\Adec}{\mathcal A_{\rm dec}}
+\newcommand{\Gclk}{G^{\rm clk}}
+\newcommand{\Gsel}{G^{\rm sel}}
+\newcommand{\Gsh}{G_{\rm sh}}
+\newcommand{\Glin}{G_{\rm lin}}
+\newcommand{\Gthree}{G_{\III}}
+\newcommand{\Gsep}{G_{\rm sep}}
+\newcommand{\hcat}{h_{\mathrm{Cat}}}
+\newcommand{\kcat}{k_{\mathrm{Cat}}}
+\newcommand{\Ccat}{C_{\mathrm{Cat}}}
+\newcommand{\Lq}{\mathbf q}
+\newcommand{\LE}{\mathbf E}
+\newcommand{\LI}{\mathbf I}
+\newcommand{\LJ}{\mathbf J}
+\newcommand{\LU}{\mathbf U}
+\newcommand{\LC}{\mathbf C}
+\newcommand{\Fin}{\mathrm{Fin}}
+\newcommand{\btrans}{\mathsf U}
+\newcommand{\Csp}{C_{\rm sp}}
+\newcommand{\Zcomb}{Z_{\rm comb}}
+\newcommand{\rhoreg}{\rho_{\rm reg}}
+\newcommand{\rhocomb}{\rho_{\rm comb}}
+\newcommand{\tailbd}{t^{\rm bd}}
+\newcommand{\Pact}{E^{\rm act}}
+\newcommand{\codearchive}{\url{https://github.com/Apsiape/perfect-play-arithmetical-hierarchy}}
+\newcommand{\precursordisclosure}{Earlier versions of Theorems A, B and C, of Theorems 3.1 and 8.1, of the trace-class correspondence, of the summability threshold, of the commuting row and of the I-only and infinite-entropy-only classifications appeared in our preprints \cite{SpatialPrecursor,TypePrecursor,CommunicationPrecursor}, which this paper consolidates and supersedes. Apart from those preprints we know of no prior statement of these results; Theorem D and the completion of the semifinite-but-not-spatial cells are new here. The $\Pi^0_1$-completeness of commuting perfection is known \cite{Slofstra,MNY}; what is new in Theorem B is that every fixed type-III subtype has exactly that language.}
+\hypersetup{pdftitle={A trace costs one quantifier: the exact complexity of perfect play in nonlocal games},pdfauthor={Seth Douglas and Nidhal Mghirbi}}
+\title{A trace costs one quantifier:\\ the exact complexity of perfect play in nonlocal games}
+\author{Seth Douglas \and Nidhal Mghirbi}
+\date{November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Given a finite nonlocal game, can the players win with certainty? We find the exact level of the arithmetical hierarchy at which this is decided, for each standard model of quantum strategy. With normal states on tensor products of Hilbert spaces, perfect play is $\Sigma^0_2$-complete, also when the strategy must have finite entanglement entropy, so it cannot be decided even with an oracle for the halting problem. This completes a table in which finite-dimensional perfection is $\Sigma^0_1$-complete, commuting perfection is $\Pi^0_1$-complete and value one is $\Pi^0_2$-complete. Inside the commuting model the answer depends on the von Neumann type of the players' algebra: perfect play in a type $\II_1$ algebra, or in any semifinite algebra, is $\Sigma^0_2$-complete, while in a type $\III_\lambda$ factor, for each fixed $\lambda\in[0,1]$, it is equivalent to commuting perfection. In this sense a trace costs one existential quantifier. Commuting perfect play without semifinite perfect play is $\Pi^0_2$-complete; the remaining semifinite-without-spatial differences are $D_2(\Sigma^0_2)$-complete. In the hardness proofs the existential witness is a finite object that every perfect strategy must choose: the order of a clock phase in the spatial model, or the depth of a critical binary tree in semifinite algebras. The same level governs communication: deciding whether a finite classical channel can send a given number of messages in one use with zero error, helped by normal entanglement, is $\Sigma^0_2$-complete, and some channel's zero-error codes all need infinite entanglement entropy. Positive computable moment orders below one form a strict $\Sigma^0_2$-complete resource ladder; the infimal critical indices of spatially perfect games (attained by the realizing games) are exactly the right-c.e.-in-$0'$ reals in $[0,1]$.
+\end{abstract}
+\begin{center}\small AI systems assisted with this work. The authors take responsibility for its claims; see ``How this work was done.'' This preprint has not been peer reviewed.\end{center}
+\begin{center}\small Programs and finite checks: \codearchive. This paper consolidates and supersedes the authors' preprints doi:10.5281/zenodo.23910986, doi:10.5281/zenodo.23925091 and doi:10.5281/zenodo.23924868 \cite{SpatialPrecursor,TypePrecursor,CommunicationPrecursor}.\end{center}
+\clearpage
+{\small\tableofcontents}
+\clearpage
+\input{sections/intro}
+\input{sections/preliminaries}
+\input{sections/upper}
+\input{sections/compiler}
+\input{sections/tree}
+\input{sections/clock}
+\input{sections/reduction}
+\input{sections/bell}
+\input{sections/renyi}
+\input{sections/programmable}
+\input{sections/selector}
+\input{sections/typeIII}
+\input{sections/ii-only}
+\input{sections/separations}
+\input{sections/codes}
+\input{sections/communication}
+\input{sections/commuting}
+\input{sections/capacity}
+\input{sections/catalan}
+\input{sections/discussion}
+\input{sections/methods}
+\appendix
+\input{sections/nested-compiler}
+\input{sections/reproducibility}
+\input{sections/nested-checks}
+\input{sections/attribution}
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,57 @@
+======================================================================
+Mermin-Peres magic square
+dim 4 |U|,|V| = 3 3  Schmidt amplitudes [0.5 0.5 0.5 0.5]
+perfect strategy: max losing sandwich/prob = 0
+Gamma: 24 vertices, 108 edges, k = 6
+classical independence number alpha(Gamma) = 5 (classical one-shot zero-error number)
+forward code: max|sum_x R_ix - rho| = 5.551115123125783e-17  max|R_ix R_jx'| over i!=j, x~x' = 3.851859888774472e-34
+Tr D = 2.0  code marginal rho eigenvalues [0.25 0.25 0.25 0.25]
+  reverse: sum_Tr_B = 6.000000000000001
+  reverse: max|B - rho P| = 5.551115123125783e-17
+  reverse: max|[P,rho]| = 0.0
+  reverse: rows sum-to-I err = 0.0
+  reverse: cols sum-to-I err = 0.0
+  reverse: row orth err = 0.0
+  reverse: col orth err = 0.0
+  reverse: reconstructed losing max = 3.0814879110195774e-33
+  reverse: Tr D_G = 2.0
+  reconstructed marginal D_G^2 vs original D^2: max diff 0.0
+scrambled code (noncommutative magic unitary on ancilla): sum err 2.7755575615628914e-17  orth err 3.956248235527173e-19
+  reverse(scrambled): sum_Tr_B = 6.000000000000001
+  reverse(scrambled): max|B - rho P| = 2.7755575615628914e-17
+  reverse(scrambled): max|[P,rho]| = 0.0
+  reverse(scrambled): rows sum-to-I err = 0.0
+  reverse(scrambled): cols sum-to-I err = 0.0
+  reverse(scrambled): row orth err = 3.4267114292384066e-17
+  reverse(scrambled): col orth err = 3.4267114292384066e-17
+  reverse(scrambled): reconstructed losing max = 0
+  reverse(scrambled): Tr D_G = 2.82842712474619
+======================================================================
+Flagged magic square (Mancinska FMS, unconditional instance)
+dim 5 |U|,|V| = 5 5  Schmidt amplitudes [0.333333 0.471405 0.471405 0.471405 0.471405]
+perfect strategy: max losing sandwich/prob = 2.6961891630179252e-17
+Gamma: 50 vertices, 324 edges, k = 10
+classical independence number alpha(Gamma) = 9 (classical one-shot zero-error number)
+forward code: max|sum_x R_ix - rho| = 1.6653345369377348e-16  max|R_ix R_jx'| over i!=j, x~x' = 2.5794397657529627e-18
+Tr D = 2.21895141649746  code marginal rho eigenvalues [0.150221 0.212445 0.212445 0.212445 0.212445]
+  reverse: sum_Tr_B = 10.0
+  reverse: max|B - rho P| = 1.6653345369377348e-16
+  reverse: max|[P,rho]| = 0.0
+  reverse: rows sum-to-I err = 0.0
+  reverse: cols sum-to-I err = 0.0
+  reverse: row orth err = 0.0
+  reverse: col orth err = 0.0
+  reverse: reconstructed losing max = 5.319818659662208e-17
+  reverse: Tr D_G = 2.21895141649746
+  reconstructed marginal D_G^2 vs original D^2: max diff 5.551115123125783e-17
+scrambled code (noncommutative magic unitary on ancilla): sum err 8.326672684688674e-17  orth err 6.448599414382407e-19
+  reverse(scrambled): sum_Tr_B = 10.0
+  reverse(scrambled): max|B - rho P| = 8.326672684688674e-17
+  reverse(scrambled): max|[P,rho]| = 0.0
+  reverse(scrambled): rows sum-to-I err = 2.220446049250313e-16
+  reverse(scrambled): cols sum-to-I err = 2.220446049250313e-16
+  reverse(scrambled): row orth err = 5.627650769074524e-17
+  reverse(scrambled): col orth err = 5.627650769074524e-17
+  reverse(scrambled): reconstructed losing max = 2.7755575615628914e-17
+  reverse(scrambled): Tr D_G = 3.1380711874576988
+PASS: both graph counts, forward maps, reverse maps and scrambled maps

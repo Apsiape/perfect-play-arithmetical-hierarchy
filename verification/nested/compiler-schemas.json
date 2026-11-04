@@ -1,0 +1,49 @@
+{
+  "format": "nested-compiler-schemas-v1",
+  "parameters": {
+    "s": "number of modular generators",
+    "c": "number of unitary encodings of transported root labels and derived coefficients",
+    "r": "number of transported projection labels",
+    "d": "number of derived coefficient definitions",
+    "p_app": "number of translated application equations",
+    "a": "number of frame-bound parameter projections, 14 here",
+    "w": "cardinality of the reduced-word prefix closure, including identity and all signed generator tokens"
+  },
+  "formulas": {
+    "g": "24+6*s+3*c",
+    "p_structural": "13+7*s+3*c+r+d",
+    "p": "p_structural+p_app",
+    "rational_rows": "12*w-g+p+17*a-1",
+    "projection_variables": "15*w+1-g+19*a",
+    "word_count": "1+2*g+sum_{k>=2} number_of_distinct_reduced_prefixes_of_length_k",
+    "outer_transported_encodings": "2+c+2*s",
+    "inner_refinements_per_party": "6",
+    "outer_refinements_per_party": "8+c+2*s"
+  },
+  "word_schema": [
+    "expand each typed polynomial in the formal unitary encodings",
+    "cancel adjacent inverse tokens",
+    "include every proper prefix, identity, and signed singleton token"
+  ],
+  "row_schemas": {
+    "frame": "F1+F2+F3=I",
+    "graph_complement": "G_ij(w)+KG_ij(w)=Fi+Fj",
+    "tilted_complement": "H_ij(w)+KH_ij(w)=Fi+Fj",
+    "graph_tilt": "5H_ij(w)+Fi+Fj=3Fi+4G_ij(w)",
+    "triangle": "3D(u,v,w)=2(G12(u)+G23(v)+G13(w))-I, w=uv",
+    "placement": "(w,1,w) and (1,w,w)",
+    "prefix_product": "(prefix,last_token,word)",
+    "inverse": "(u,u_inverse,1)",
+    "parameter_binding": "17 rows per parameter; see Rows.bind and equations in note",
+    "polynomial": "2 sum q_w G12(w) - (sum q_w)(F1+F2)=0",
+    "outer_block": "B_k=A U_k+sum R_ab E V_k R_ab*",
+    "source_support": "(U-I)(I-scope)=0",
+    "lift_support": "a_i=e a_i f",
+    "corner_unitary": [
+      "t=f_prime t e",
+      "t* t=e",
+      "t t*=f_prime"
+    ]
+  },
+  "scope": "Templates are emitted once. Full verifier families are parametric; concrete lists below are validation instances."
+}

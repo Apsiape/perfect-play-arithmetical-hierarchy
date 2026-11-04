@@ -1,0 +1,24 @@
+--- Fock tree, n calibrated ratio-2 bridges, modular ratio lam = 2^-n ---
+n=4: lam=1/16, Tr(hP_o)=3/4, amplitude growth 4*sqrt(lam)=1, Tr sqrt(h_F)=oo ~ inf; Omega_n=121; sum sqrt(mu)=3.8155057
+n=5: lam=1/32, Tr(hP_o)=7/8, amplitude growth 4*sqrt(lam)=sqrt(2)/2, Tr sqrt(h_F)=sqrt(7)/2 + sqrt(14)/2 ~ 3.1937043; Omega_n=249; sum sqrt(mu)=4.0937306
+     YES-witness amplitude sum Tr D = 22.645119 * sqrt(q_clk * d_row)
+     code marginal Fock factor has ratio sqrt(lam) = 1/4*sqrt(2) per letter; its depth masses (4 sqrt lam)^m = (sqrt(2)/2)^m
+n=6: lam=1/64, Tr(hP_o)=15/16, amplitude growth 4*sqrt(lam)=1/2, Tr sqrt(h_F)=sqrt(15)/2 ~ 1.9364917; Omega_n=505; sum sqrt(mu)=4.2985537
+     YES-witness amplitude sum Tr D = 14.417787 * sqrt(q_clk * d_row)
+     code marginal Fock factor has ratio sqrt(lam) = 1/8 per letter; its depth masses (4 sqrt lam)^m = (1/2)^m
+n=8: lam=1/256, Tr(hP_o)=63/64, amplitude growth 4*sqrt(lam)=1/4, Tr sqrt(h_F)=sqrt(7)/2 ~ 1.3228757; Omega_n=2041; sum sqrt(mu)=4.5565412
+     YES-witness amplitude sum Tr D = 10.440348 * sqrt(q_clk * d_row)
+     code marginal Fock factor has ratio sqrt(lam) = 1/16 per letter; its depth masses (4 sqrt lam)^m = (1/4)^m
+--- truncated check: partial sums of Tr sqrt(h_F) at ratio 1/16 (diverges linearly) ---
+10 9.5262794
+100 87.468566
+1000 866.89143
+--- Catalan, squared ratio: hA = Ah/4 -> kA = Ak/16 ---
+sum Cat_n 4^-n = 2 ; sum Cat_n 16^-n = 8 - 4*sqrt(3) = 8 - 4*sqrt(3) 0
+Tr h_Cat^2 = 2 - sqrt(3)  (claim 2 - sqrt3): True
+k_w = 16^-n * sqrt(3)/4 + 1/2  = 16^-n/(8-4sqrt3)? True
+Tr sqrt(k) = sum_n Cat_n 4^-n sqrt(kcoef) = sqrt(sqrt(3) + 2) ~ 1.931851653  (sqrt6+sqrt2)/2 = 1.931851653
+code marginal coefficient (should be 1/2, i.e. h_Cat): 1/2
+N=100: partial S(h_Cat) = 10.32604428   partial S(k) = 0.409432449805511
+N=1000: partial S(h_Cat) = 34.6958613   partial S(k) = 0.409432449805511
+N=4000: partial S(h_Cat) = 70.37165487   partial S(k) = 0.409432449805511

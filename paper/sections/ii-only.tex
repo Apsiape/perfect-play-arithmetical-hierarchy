@@ -1,0 +1,199 @@
+\section{One selector for spatial and semifinite perfection}\label{sec:iionly}
+The critical selector can choose the same witness in spatial and semifinite
+models. The construction uses two edge families on one scaffold: the
+selector is critical, while the four-letter computation tree is subcritical.
+The key point is that a nonzero selected terminal sector has positive
+intersection with the computation root. This supplies a finite witness
+without using a density eigenvector in a diffuse host.
+
+\begin{lemma}[Several edge families on a common chain]\label{lem:multifamily}
+Fix $n\ge1$ and finitely many edge families $X_i^{(r)}$. Each family has
+its own Gram equations, initial defect and range equation, and its own
+within-family endpoint equations with typed centralizer coefficients.
+There are no prescribed cross-family Gram equations. If all edges have
+modular ratio $2^{-n}$, one finite rational Boolean game compiles these
+systems on a common nonzero source corner. It extracts them from every
+perfect normal commuting strategy, and every faithful normal realization
+extends simultaneously, preserving host type under finite amplification
+and finite entropy for spatial realizations.
+\end{lemma}
+\begin{proof}
+Use the corners, activities, bound axes, and common chain
+$v=\btrans_n\cdots\btrans_1$ of Lemma~\ref{lem:chain}. Its source mass is
+$\mathfrak c_n^{-1}$. For each edge, independently introduce a supported
+centralizer contraction $a_i^{(r)}=e_na_i^{(r)}e_0$. A family with initial
+defect $D_r$ and range $R_r$ is submitted as
+\[
+ a_i^{(r)*}a_j^{(r)}=\delta_{ij}(e_0-(D_r)_0),\qquad
+ \sum_i a_i^{(r)}a_i^{(r)*}=(R_r)_n.
+\]
+Only that family's own equations are submitted. Transport the union of
+all labels appearing at left endpoints or in range equations, with one
+separate graph refinement per encoding and bridge. The common original
+signs force $L_nv=vL_0$ for every label in this union. Decode
+$X_i^{(r)}=v^*a_i^{(r)}$. Multiplication by $v,v^*$ proves the Gram, range
+and endpoint translations in both directions; for example
+$L_na_i^{(r)}=a_j^{(r)}B_0$ becomes
+$L_0X_i^{(r)}=X_j^{(r)}B_0$. The centralizer condition and the modular
+eigenvalue of $v$ give ratio $2^{-n}$ for every extracted edge.
+All equations concern the same faithful corner and state.
+
+Conversely use $\operatorname{diag}(\mu_n)\otimes\varphi_0$ and
+$a_i^{(r)}=|e_n\rangle\langle e_0|\otimes X_i^{(r)}$ for every family.
+Every lifted contraction lies in the finite centralizer and has its
+own two-unitary encoding. Choose the root encodings once and copy them
+through the identity corner maps. The resulting block labels commute
+with their bridge's canonical signs. Actual joint products give all
+separate refinements, followed by the common qutrit and row extensions.
+There is one state and one assignment for all families. The construction
+adds only finite factors and imposes no mixed orthogonality.
+\end{proof}
+
+\subsection{The coupled root presentation}
+Use four edges $A_{ab}$ satisfying \eqref{eq:fockrelations} at modular
+ratio $1/16$, with root $P_\circ$, and sixteen different edges $S_i$ with
+\[
+ S_i^*S_j=\delta_{ij}(I-P),\quad \sum_{i=1}^{16}S_iS_i^*=I-Q,
+ \quad \sigma_t^\varphi(S_i)=16^{-it}S_i.
+\]
+For a positive centralizer contraction $C_{\rm sel}$ impose
+\[
+ C_{\rm sel}Q=Q,\quad C_{\rm sel}S_i=\tfrac12S_iC_{\rm sel},
+ \quad[C_{\rm sel},P]=0,\quad[P,A_{ab}]=[C_{\rm sel},A_{ab}]=0.
+\]
+Lemma~\ref{lem:selector} above uses modular ratio $1/16$ and
+depth ratio $1/2$. Retain the coordinate and boundary equations
+\eqref{eq:U_x}--\eqref{eq:P_y} and the counter equations
+\eqref{eq:C}, with $[C_{\rm ctr},C_{\rm sel}]=0$. Replace the clock by
+\begin{equation}\label{eq:equalityreader}
+ (2C_{\rm ctr}-C_{\rm sel})P_{\rm ret}=0,\qquad
+ T_{\rm inv}(2C_{\rm ctr}-C_{\rm sel})=
+ \tfrac18C_{\rm ctr}C_{\rm sel}(I-P_{\rm ret}).
+\end{equation}
+Here $T_{\rm inv}$ is a general contraction. The tableau has the same
+initial and update equations, but its halt prohibition is
+$P_{\mathtt H}P=0$. Its machine reads the first positive pulse ${d_{\rm clk}}$, sets
+$n={d_{\rm clk}}-1$, and tests $\Rdec(e,n,0),\Rdec(e,n,1),\ldots$, halting at the
+first false answer. No prime test is used.
+
+Lemma~\ref{lem:multifamily} with $n=4$ compiles the two separate Gram
+systems. The transported typed list is exactly
+\[
+ P_\circ,U_x,U_y,P_x,P_y,C_{\rm ctr},P,C_{\rm sel},Q.
+\]
+The return projection, its inverse and the tableau projections are
+source-only. In particular no relation $A_{ab}^*S_i=0$ is imposed.
+Denote this finite game by $F_e$.
+
+\subsection{The terminal sector meets the root}
+\begin{lemma}\label{lem:terminalroot}
+Let orthogonal isometries $A_1,\ldots,A_r$ have modular ratio
+$\nu$ on a faithful normal support. If a centralizer projection $p$
+commutes with them and $r\nu<1$, then
+\[
+ \varphi\left(p\left(I-\sum_i A_iA_i^*\right)\right)
+ =(1-r\nu)\varphi(p).
+\]
+\end{lemma}
+\begin{proof}
+Commutation with a self-adjoint projection also gives commutation with
+the adjoints. KMS gives
+$\varphi(A_ipA_i^*)=\nu\varphi(pA_i^*A_i)=\nu\varphi(p)$.
+Subtract the sum of these $r$ terms from $\varphi(p)$.
+\end{proof}
+
+In a semifinite realization, Lemma~\ref{lem:selector} with $d=16$ gives
+some nonzero $p_n=P1_{\{2^{-n}\}}(C_{\rm sel})$. It commutes with all
+$A_{ab}$ and their adjoints. Hence
+\begin{equation}\label{eq:terminalroot}
+ \varphi(p_nP_\circ)=\tfrac34\varphi(p_n)>0.
+\end{equation}
+Choose $0\ne\xi\in p_nP_\circ\HH$. Its word descendants remain in
+$p_n\HH$, are nonzero, and are orthogonal at every fixed word length.
+The coordinate inductions identify every finite square on these vectors.
+
+For self-adjoint $X,Y$, with $Y$ injective, the two equations
+$(2X-Y)R=0$ and $T(2X-Y)=\kappa XY(I-R)$, $\kappa\ne0$, force
+$R=1_{\{0\}}(2X-Y)$. Indeed $R\le K=1_{\{0\}}(2X-Y)$.
+For $\zeta\in K\HH$ put $\eta=(I-R)\zeta\in K\HH$. The second equation
+gives $XY\eta=0$, and $Y\eta=2X\eta$ gives $2X^2\eta=0$.
+Self-adjointness gives $X\eta=0$, then $Y\eta=0$, then $\eta=0$.
+Apply this to \eqref{eq:equalityreader}, using injectivity of
+$C_{\rm sel}$ from the selector lemma. On the chosen descendants,
+$C_{\rm ctr}=2^{-y}$ and $C_{\rm sel}=2^{-n}$. Thus the pulse is
+exactly $y=n+1$, including no time-zero pulse.
+
+\begin{lemma}[Definite computation on a terminal sector]\label{lem:terminaltableau}
+Suppose $0\ne\xi\in P_\circ\HH$, every $A_w\xi$ belongs to $P\HH$,
+and $P_{\rm ret}$ has the specified classical scalar on each $A_w\xi$.
+With the coordinate, initial and update equations above, every symbol
+projection acts on these descendants as the genuine classical symbol.
+If the presentation imposes $P_{\mathtt H}P=0$, that classical
+computation cannot halt.
+\end{lemma}
+\begin{proof}
+At each fixed depth, the coordinate recursions give cyclic shifts and
+boundary masks on the word descendants. Row zero follows from
+\eqref{eq:initial} without its global halt equation. Induct on time at
+all spatial coordinates simultaneously. Each factor in the displayed
+ordered update product acts as its classical zero or one on the
+induction vector: left and right factors refer to the preceding row,
+and the pulse is scalar by hypothesis. Exactly the prescribed successor
+survives. Multiplication by $U_y$ gives the next-row assertion. The
+last-row mask removes wraparound; radius one and blank quiescence make
+the right ghost blank throughout the required prefix. This proves the
+half-line computation on every sufficiently large square. If a halt
+occurred, one nonzero descendant $\eta\in P\HH$ would satisfy
+$P_{\mathtt H}\eta=\eta$, contradicting
+$P_{\mathtt H}\eta=P_{\mathtt H}P\eta=0$.
+The conclusion uses the restricted prohibition, not a claim that
+$P_{\mathtt H}=0$ on the entire space.
+\end{proof}
+
+\begin{theorem}[A shared family]\label{thm:sharedfamily}
+The family $F_e$ satisfies
+\[
+ F_e\in\LE\iff F_e\in\LI\iff F_e\in\LU
+ \iff\exists n\,\forall t\,\Rdec(e,n,t),\qquad F_e\notin\LJ.
+\]
+\end{theorem}
+\begin{proof}
+Semifinite soundness follows from the selected sector, the exact pulse
+and Lemma~\ref{lem:terminaltableau}. A false check at that selected $n$
+would halt, so $n$ is a witness.
+
+For completeness let $n$ be a witness. On the finite sixteen-letter
+tree of words $v$ of length at most $n$, use prefix maps $S_i$, zero
+on leaves, with $P$ the leaves, $Q$ the root and
+\[
+ h_{\rm sel}|v\rangle=(n+1)^{-1}16^{-|v|}|v\rangle,
+ \qquad C_{\rm sel}|v\rangle=2^{-|v|}|v\rangle.
+\]
+Tensor it with the four-letter Fock density $h_F$ of
+\eqref{eq:fockdensity}. At selector depth $\ell$, put
+$P_{\rm ret}=1_{\{y=\ell+1\}}$ and
+\[
+ T_{\rm inv}(y,\ell)=
+ \begin{cases}[8(2^{\ell+1}-2^y)]^{-1},&y\ne\ell+1,\\
+ 0,&y=\ell+1.\end{cases}
+\]
+The nonzero denominator before the factor eight is an integer. The norm
+is exactly $1/8$, attained at $\ell=0,y=0$. Negative values occur.
+Use the genuine classical tableau for input $\ell$ on each such fibre;
+all symbol projections are its diagonal indicator projections. Coordinate
+permutations preserve Fock depth, and every other centralizer label is
+diagonal. Both edge families have ratio $1/16$. Computations at depths
+$\ell<n$ may halt; the terminal equation excludes only depth $n$.
+This gives every label and equation simultaneously, also at $n=0$,
+where $S_i=0$, $P=Q=C_{\rm sel}=I$.
+
+The selector entropy is $\log_2(n+1)+2n$, so the root product entropy is
+\[
+ \log_2(n+1)+2n+\log_2(4/3)+4/3<\infty.
+\]
+The compiler adds finite entropy. The inclusions
+$\LE\subseteq\LI\subseteq\LU$ finish the equivalence. In a finite
+host the four extracted isometries would have orthogonal range traces
+summing to four under a normalized faithful trace, but their sum is at
+most the identity. Thus every instance is outside $\LJ$.
+\end{proof}

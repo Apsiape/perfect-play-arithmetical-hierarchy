@@ -1,0 +1,28 @@
+{
+  "original_local_library_comparison": {
+    "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+    "source_files_compared": 8624,
+    "differences_from_restored_thermal_stock": [],
+    "seconds": 19.924943100000064,
+    "known_stock": {
+      "Jordan": "498fbbe317d536b67feefddc702d31d5192c55ef81194dea4556e385129392bb",
+      "Lebesgue": "c8ea713339cc57005822aeacea086887a460be0a5093c1d81dc59499ee3a73cc"
+    },
+    "comparison_reference": "read-only restored stock Thermal lane, with the same pinned Mathlib commit"
+  },
+  "independent_official_archive_comparison": {
+    "url": "https://codeload.github.com/leanprover-community/mathlib4/tar.gz/56a005855ea17e0b0958f73ec801ae140b0a1679",
+    "archive_sha256": "0b7e30024f363b0a29af119780d720430aa625bad56897faff91a9fcb9e0bdec",
+    "compared_files": 9222,
+    "differences": [
+      {
+        "file": "Cache/Requests.lean",
+        "reason": "bytes differ",
+        "official": "e10ab3332fbe21f8295fe7bec8dded3ab3aba7cced1cea41d60e16c2c3162381",
+        "local": "a610a4c0230ac5599210031fce51de76ec42d39149672775588066b0bceba9eb"
+      }
+    ],
+    "extra_lean_files": []
+  },
+  "qualification": "Mathlib's 8,624 mathematical library Lean sources match official commit `56a005855ea17e0b0958f73ec801ae140b0a1679` byte for byte. The supplied vendor tree has three local changes in `Cache/Requests.lean` that disable repository detection, automatic Git-head cache scoping, and a manifest-mismatch check. That cache-tool module is outside the proof source import closure. This verification reuses dependency oleans and does not rebuild Mathlib from zero."
+}

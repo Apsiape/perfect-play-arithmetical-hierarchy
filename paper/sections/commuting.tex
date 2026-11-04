@@ -1,0 +1,69 @@
+\section{The commuting row}\label{sec:commuting}
+With commuting resources one-shot zero-error feasibility drops to the commuting level. The code game \eqref{eq:codegame} identifies $\ZE_{\qc}$ with perfect commuting play for a particular finite game. Commuting correlations form a compact set, and the NPA hierarchy converges from above to their value \cite{NPA}. Its rational moment relaxations can be decided by real quantifier elimination. A NO instance eventually has an infeasible perfect-value relaxation; conversely a feasible relaxation at every order gives a commuting strategy by compactness of the full moment system. Hence $\ZE_{\qc}\in\Pi^0_1$.
+
+We prove the reduction for the lower bound, including codes with arbitrary commuting resources. Slofstra proved $\Pi^0_1$-hardness for linear system games \cite{Slofstra}; with the NPA bound this is $\Pi^0_1$-completeness, which Mousavi, Nezhadi and Yuen reprove for synchronous games \cite[Theorem~6.4]{MNY}. The source is perfect commuting feasibility for finite synchronous games with positive diagonal question probabilities; see \cite[Theorem~6.4 and Section~1.3]{MNY}. Their synchronous framework and tracial representation are stated in \cite[Theorem~1.6]{MNY}. Such a game has the same question and answer sets on both sides, and distinct answers on an equal-question pair are losing.
+
+\subsection{Normal functionals from a commuting code}
+Represent a code on a Hilbert space with vector $\xi$, encoding effects $E_{i,x}$ in an algebra commuting with Bob's von Neumann algebra $\mathcal N$, and decoder effects in $\mathcal N$. Define normal positive functionals
+\[
+ \phi(T)=\langle\xi,T\xi\rangle,\qquad
+ \phi_{i,x}(T)=\langle\xi,E_{i,x}T\xi\rangle\quad(T\in\mathcal N).
+\]
+The two operators commute, so these functionals are positive and $\sum_x\phi_{i,x}=\phi$. Compress $\mathcal N$ to the support of $\phi$. This makes $\phi$ faithful. It preserves all the functionals, their sums, and decoder tests, since each $\phi_{i,x}\leq\phi$ is supported on the same support. The compressed encoders still commute with the compressed Bob algebra.
+
+When $i\ne j$ and $x\sim x'$, the functionals $\phi_{i,x},\phi_{j,x'}$ have orthogonal supports in $\mathcal N$. To see this, for any common output $y$ their positively weighted functionals are summands of the two distinct-message output functionals. Perfect decoding makes the support of one lie in the eigenvalue-one space of a decoder effect, and that of the other in its kernel. These spectral spaces are orthogonal. Support inclusion for positive summands proves the assertion.
+
+\begin{lemma}[Functional saturation]\label{lem:functionalsaturation}
+Suppose the input graph is partitioned into $k$ cliques $\mathcal C_c$ and a commuting code sends $k$ messages. For
+\[
+ \psi_{i,c}=\sum_{x\in \mathcal C_c}\phi_{i,x},\qquad s_{i,c}=\supp\psi_{i,c},
+\]
+the $s_{i,c}$ lie in the centralizer
+$\mathcal N_\phi=\{s:\phi(sT)=\phi(Ts)\text{ for all }T\in\mathcal N\}$ and satisfy
+\[
+ \psi_{i,c}(T)=\phi(s_{i,c}T)=\phi(Ts_{i,c}).
+\]
+Their rows and columns are orthogonal projection partitions.
+\end{lemma}
+\begin{proof}
+For each $c$ the supports are orthogonal in $i$. Domination by $\phi$ gives
+\[
+ \sum_i\psi_{i,c}(1)\leq\sum_i\phi(s_{i,c})\leq1.
+\]
+The sum over $c$ is $k$, so every inequality is an equality. Faithfulness gives $\sum_i s_{i,c}=1$. For each $i,c$, $\eta=\phi-\psi_{i,c}$ is positive and $\eta(s_{i,c})=0$. Cauchy--Schwarz for a positive functional gives $\eta(s_{i,c}T)=\eta(Ts_{i,c})=0$. The support property of $\psi_{i,c}$ gives $\psi_{i,c}(s_{i,c}T)=\psi_{i,c}(Ts_{i,c})=\psi_{i,c}(T)$. Combining them proves the formula and centralizer membership.
+
+Summing over $c$ for fixed $i$ gives $\phi((\sum_c s_{i,c}-1)T)=0$ for every $T$. Take $T=(\sum_c s_{i,c}-1)^*$ and use faithfulness to obtain the row sum. A finite sum of projections equal to identity is orthogonal, as in Lemma~\ref{lem:saturation}.
+\end{proof}
+
+\subsection{Synchrony makes the fine supports tracial}
+Apply the lemma to $\Gamma(G)$, with $k=2|\mathcal Q_A|$, for a synchronous game $G$. Aggregate the fine functionals
+\[
+ \psi_{c,a}=\sum_i\phi_{i,(c,a)}.
+\]
+They sum to $\phi$ for each tagged question $c$. Across a cross losing edge their supports are orthogonal: unequal message indices use the code condition, and equal message indices use distinct clique supports in one row of $(s_{i,c})$. Orthogonality passes to finite sums.
+
+Fix an original question $u$. Write $\alpha_a=\psi_{(L,u),a}$, $\beta_a=\psi_{(R,u),a}$, and $p_a=\supp\alpha_a$. For $a\ne b$, synchrony gives $p_a\supp\beta_b=0$. Hence
+\[
+ \alpha_a(1)\leq\phi(p_a)=\beta_a(p_a)\leq\beta_a(1).
+\]
+Both outside families sum to one, so these inequalities are equalities for every $a$. The same Cauchy--Schwarz argument used in Lemma~\ref{lem:functionalsaturation}, now for $\phi-\alpha_a$ and $\phi-\beta_a$, gives
+\[
+ \alpha_a(T)=\beta_a(T)=\phi(p_aT)=\phi(Tp_a).
+\]
+Faithfulness implies that their supports are the same $p_a$, and that $\sum_a p_a=1$. Thus the fine outcomes are projections in $\mathcal N_\phi$.
+
+The restriction $\tau=\phi|_{\mathcal N_\phi}$ is a faithful normal tracial state. For any original losing tuple $(u,a,v,b)$ the preceding support orthogonality gives $p_{u,a}p_{v,b}=0$. The left/right multiplication construction on $L^2(\mathcal N_\phi,\tau)$ therefore gives a perfect commuting strategy for $G$. This argument starts from an arbitrary saturating code; it assumes neither projective encoders nor a tracial original resource.
+
+Conversely a perfect commuting strategy for synchronous $G$ has its usual tracial projection representation \cite[Theorem~5.5]{PSS}; see also \cite{KPS,MNY}. For each tagged question use its projection partition to encode its designated message in the left algebra of the tracial GNS space; use the right algebra to decode. The conditional functionals are $T\mapsto\tau(p_{c,a}T)$. For distinct designated messages and confusable vertices, their supports are orthogonal by the losing relation. Each output's distinct-message supports therefore give a decoding measurement. This is a commuting $k$-message code for $N_{\Gamma(G)}$.
+
+\begin{theorem}\label{thm:qc}
+The one-shot feasibility problem $\ZE_{\qc}$ for finite rational classical channels is $\Pi^0_1$-complete.
+\end{theorem}
+\begin{proof}
+For each finite synchronous game $G$ with positive diagonal question probabilities, the two constructions give the effective equivalence
+\[
+ G\text{ is commuting-perfect}
+ \ \Longleftrightarrow\ \ZE_{\qc}(N_{\Gamma(G)},2|\mathcal Q_A|).
+\]
+The source problem is $\Pi^0_1$-complete, so this proves hardness. The NPA upper predicate gives membership.
+\end{proof}

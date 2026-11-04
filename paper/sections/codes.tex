@@ -1,0 +1,129 @@
+\section{Zero-error codes and perfect play}\label{sec:normal}
+A sender uses a finite noisy classical channel once. Beforehand, sender and receiver share an entangled state. The sender encodes one of $m$ messages into the channel input, and the receiver must identify that message with certainty. We ask whether such a code exists. The channel and the message count remain finite; only the shared resource is unrestricted. Zero-error communication depends on exact zeros, rather than on how closely a protocol approaches perfect transmission. This makes attainment decisive, and the question becomes a question about perfect play.
+
+For a finite rational stochastic matrix $N$ and an integer $m\geq1$, write $\ZE_t(N,m)$ for this feasibility problem. The model $q$ uses finite-dimensional tensor products. The model $\qs$ uses a normal density operator on a spatial tensor product, with bounded finite-outcome POVMs. The model $\qc$ uses commuting local operator algebras and a state. The entropy restriction $\finS$ means that both resource marginals have finite von Neumann entropy. We use countably infinite Schmidt decompositions.
+
+\subsection{Channels and trace-class assemblages}
+For channel inputs $x,x'$, write $x\sim x'$ when some output $y$ has $N(y\mid x)N(y\mid x')>0$. This is a reflexive relation: it includes $x=x'$. Its restriction to distinct inputs is the confusability graph. Every finite graph $\mathsf X$ has a rational realizing channel $N_{\mathsf X}$: a nonisolated vertex outputs a uniformly random incident edge, and an isolated vertex outputs its own private symbol.
+
+We first extend the finite-dimensional assemblage characterization of \cite{CLMW}. All supports below are closed range supports.
+
+\begin{lemma}[Normal assemblages]\label{lem:assemblage}
+An $m$-message normal zero-error code exists if and only if there are positive trace-class operators $R_{i,x}$ and a density $\rho$ such that
+\begin{equation}\label{eq:assemblage}
+ \sum_xR_{i,x}=\rho\quad(1\leq i\leq m),\qquad
+ R_{i,x}R_{j,x'}=0\quad(i\ne j,\ x\sim x').
+\end{equation}
+The assemblage is realizable with the pure resource $|\sqrt\rho\rangle\!\rangle$. The equivalence includes mixed resources.
+\end{lemma}
+\begin{proof}
+Given a mixed resource $\omega$ and Alice's encoding effect $E_{i,x}$, define
+\[
+ R_{i,x}=\Tr_A[(E_{i,x}^{1/2}\otimes I)\omega(E_{i,x}^{1/2}\otimes I)].
+\]
+The sum is Bob's marginal, independently of $i$. For output $y$, Bob must distinguish the positive operators $T_i^y=\sum_xN(y\mid x)R_{i,x}$ perfectly. If $F_i^y$ is a decoding POVM, perfect decoding gives $F_i^y=I$ on $\supp T_i^y$ and $F_j^y=0$ there for $j\ne i$. Thus these supports are orthogonal. Positivity of the sum puts $\supp R_{i,x}$ in $\supp T_i^y$ whenever $N(y\mid x)>0$. This proves the product condition, including equal inputs.
+
+Conversely restrict to $\supp\rho$, so $\rho$ is faithful. Each $0\leq R\leq\rho$ has a unique bounded effect $K$ with
+\begin{equation}\label{eq:douglas}
+ R=\rho^{1/2}K\rho^{1/2},\qquad 0\leq K\leq I.
+\end{equation}
+Indeed Douglas' factorization lemma \cite{Douglas} applied to $R\leq\rho$ gives $R^{1/2}=\rho^{1/2}V_0$ for a contraction $V_0$, and $K=V_0V_0^*$. Uniqueness follows from the dense range of $\rho^{1/2}$. The sum identities imply $\sum_xK_{i,x}=I$, by the same dense-range argument. No unbounded inverse of $\rho$ is used.
+
+In a spectral basis for $\rho$, let Alice measure $K_{i,x}^{\mathsf T}$ on the purification $|\sqrt\rho\rangle\!\rangle$. Bob's conditional operator is $R_{i,x}$. Equation~\eqref{eq:assemblage} makes the $T_i^y$ have orthogonal supports, so their support projections, with any unused subspace assigned to one message, form a decoding POVM. This constructs a normal pure code.
+
+Alternatively, any normal mixed perfect code decomposes spectrally into pure perfect codes with the same measurements: every forbidden probability is nonnegative, so it vanishes on every positive-weight component. This observation will also be used for entropy.
+\end{proof}
+
+\subsection{Saturation of a clique partition}
+Beigi's Lov\'asz-theta bound implies the finite-dimensional clique-cover bound \cite{Beigi}. The following trace-class saturation statement extends \cite[Lemma~5]{Mancinska}.
+\begin{lemma}\label{lem:saturation}
+If $\mathsf X$ is partitioned into $k$ cliques $\mathcal C_c$, every normal code has at most $k$ messages. If it has exactly $k$, put
+\[
+ B_{i,c}=\sum_{x\in \mathcal C_c}R_{i,x},\qquad P_{i,c}=\supp B_{i,c}.
+\]
+On $\supp\rho$ one has
+\begin{equation}\label{eq:saturation}
+ B_{i,c}=\rho P_{i,c}=P_{i,c}\rho,\qquad
+ \sum_iP_{i,c}=I,\qquad \sum_cP_{i,c}=I.
+\end{equation}
+Each row and column of $(P_{i,c})$ is an orthogonal projection partition.
+\end{lemma}
+\begin{proof}
+For fixed $c$, distinct $i$ give orthogonal $B_{i,c}$, because every pair of inputs in $\mathcal C_c$ is confusable, including identical inputs. Since $B_{i,c}\leq\rho$,
+\[
+ \sum_i\Tr B_{i,c}\leq\sum_i\Tr(P_{i,c}\rho)\leq1.
+\]
+Summing over $c$ gives $m\leq k$. If $m=k$, all inequalities are equalities. Faithfulness of $\rho$ gives $\sum_iP_{i,c}=I$. For each $i,c$, positivity and $\Tr[P_{i,c}(\rho-B_{i,c})]=0$ imply $(\rho-B_{i,c})^{1/2}P_{i,c}=0$. Hence $\rho P_{i,c}=B_{i,c}=P_{i,c}\rho$. Summing over $c$ yields $\rho\sum_cP_{i,c}=\rho$; injectivity gives the row sum. A finite family of projections summing to identity is pairwise orthogonal: compress the sum by one member and use positivity of all other compressed members. All traces used here are finite traces of positive trace-class operators.
+\end{proof}
+
+A code is \emph{saturating} for this partition if its message count equals the clique bound, $m=k$.
+
+\subsection{The normal correspondence}
+Let $G$ have question sets $\mathcal Q_A,\mathcal Q_B$, finite nonempty answer sets, and a Boolean losing predicate on the question pairs of positive sampling probability. Its graph $\Gamma(G)$ has vertices $(\mathrm L,u,a)$ and $(\mathrm R,v,b)$. Distinct answers to the same tagged question form a clique; cross edges are precisely losing tuples. There are no other edges. Set $k=|\mathcal Q_A|+|\mathcal Q_B|$, the number of tagged local questions; Man\v{c}inska's question count $q_{\rm M}$ is our $k$.
+
+For a pure strategy, use Schmidt form $|D\rangle\!\rangle$ with $D\geq0$ and $\Tr D^2=1$. For bounded positive effects, zero probability is equivalent to $EDF^{\mathsf T}=0$, as in Section~\ref{sec:upper}: zero probability is the vanishing of the Hilbert--Schmidt norm of $\sqrt E D\sqrt{F^{\mathsf T}}$; multiplication by the square roots gives one implication, and equality of the closures of the ranges of an effect and its square root gives the other.
+
+\begin{theorem}[Trace-class correspondence]\label{thm:correspondence}
+For every finite game $G$,
+\[
+ \ZE_{\qs}(N_{\Gamma(G)},k)
+ \ \Longleftrightarrow\
+ G\text{ has a perfect pure spatial strategy with }\Tr D<\infty.
+\]
+For a specified code marginal $\rho$, the reverse strategy has $D=\rho/\|\rho\|_2$. For a specified game strategy $D$ with finite trace, the forward pure code has marginal $\rho=D/\Tr D$. No synchrony hypothesis is required.
+\end{theorem}
+\begin{proof}
+In the forward construction, store Bob's effects in transposed form, and denote all local effects by $E_{c,a}$ for tagged questions $c$. Put $\rho=D/\Tr D$ and
+\[
+ R_{c,(c,a)}=\rho^{1/2}E_{c,a}\rho^{1/2},
+\]
+with zero operators off the designated clique. Each message family sums to $\rho$. For cross losing edges, the perfect-game sandwich $E_{c,a}DE_{c',b}=0$ gives the required zero product. The remaining products between distinct messages vanish by their clique assignments. Lemma~\ref{lem:assemblage} realizes the code. The trace condition is exactly what normalizes its marginal.
+
+For the converse, as in \cite[Theorem~6]{Mancinska}, apply Lemma~\ref{lem:saturation} to an arbitrary saturating code, not only a code in the displayed form. Aggregate
+\[
+ T_{c,a}=\sum_iR_{i,(c,a)}.
+\]
+Each family sums to $\rho$. If $(c,a),(c',b)$ is a cross losing edge, every product $R_{i,(c,a)}R_{j,(c',b)}$ is zero. For $i\ne j$ this is a code condition. For $i=j$ its two factors are supported on the orthogonal row projections $P_{i,c},P_{i,c'}$. Thus $T_{c,a}T_{c',b}=0$.
+
+Use \eqref{eq:douglas} to write $T_{c,a}=\rho^{1/2}E_{c,a}\rho^{1/2}$ with bounded POVMs. The product equality becomes
+\[
+ \rho^{1/2}E_{c,a}\rho E_{c',b}\rho^{1/2}=0.
+\]
+The injectivity and dense range of $\rho^{1/2}$ cancel its two outside factors, giving $E_{c,a}\rho E_{c',b}=0$. Use the left-tagged effects on Alice and the transposes of the right-tagged effects on Bob. With $D=\rho/\|\rho\|_2$ these are a perfect spatial strategy. Since $\Tr\rho=1$, $\Tr D=1/\|\rho\|_2<\infty$.
+
+Only the coarse clique projections must commute with $\rho$. The fine outcomes need not do so; this is why the argument retains nonsynchronous games. Restricting every step to finite dimension recovers \cite[Theorem~6]{Mancinska}.
+\end{proof}
+
+\begin{remark}
+For the game marginal $h=D^2$, the condition $\Tr D<\infty$ is finite R\'enyi entropy of order $1/2$, namely $2\log_2\Tr\sqrt h$. It is stronger than finite von Neumann entropy. Replacing the forward marginal by $D^2$ generally destroys zero-error orthogonality; Appendix~\ref{sec:repro} includes an explicit check on the flagged magic square.
+\end{remark}
+
+\subsection{The resource correspondence at every order}\label{sec:codeorders}
+Write $h=D^2$ for the game marginal, $Z=\Tr\sqrt h$, and
+$\rho_{\rm code}=\sqrt h/Z$ for the code marginal. A normal code first requires
+$Z<\infty$. Whenever it exists,
+\[
+ \Tr\rho_{\rm code}^\beta=Z^{-\beta}\Tr h^{\beta/2},\qquad
+ S(\rho_{\rm code})=\log_2Z+(2Z)^{-1}\Tr[\sqrt h\log_2(1/h)].
+\]
+The resulting correspondence is
+\begin{center}\small
+\begin{tabular}{@{}ll@{}}\toprule
+Code resource & Required game spectrum\\\midrule
+Finite rank & finite rank\\
+Finite R\'enyi entropy, $0<\beta<1$ & $\Tr h^{\beta/2}<\infty$\\
+Finite von Neumann entropy & $\Tr[\sqrt h\log_2(1/h)]<\infty$\\
+Finite R\'enyi entropy, $1<\beta\le\infty$ & $\Tr\sqrt h<\infty$\\
+Arbitrary normal resource & $\Tr\sqrt h<\infty$\\\bottomrule
+\end{tabular}
+\end{center}
+The logarithmic condition implies summability of the square roots:
+only finitely many eigenvalues exceed any fixed positive threshold,
+and below such a threshold the logarithm is bounded below.
+It cannot be replaced by the half-moment alone. The squared-Catalan
+channel of Section~\ref{sec:catalan} has a summable half-moment and
+requires infinite code entropy. For $\beta>1$, the four-bridge tree
+has finite $\beta/2$-moment but no normal saturating code. At the
+spectrum level $p_j\asymp j^{-2}(\log j)^{-4}$ has summable square
+roots and a divergent logarithmic half-moment. These examples explain
+both endpoints of the table.

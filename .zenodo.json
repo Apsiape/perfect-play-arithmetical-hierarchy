@@ -1,0 +1,55 @@
+{
+  "title": "A trace costs one quantifier: the exact complexity of perfect play in nonlocal games",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "version": "1.0.0",
+  "publication_date": "2026-11-04",
+  "creators": [
+    {
+      "name": "Douglas, Seth",
+      "orcid": "0009-0007-4708-3252"
+    },
+    {
+      "name": "Mghirbi, Nidhal",
+      "orcid": "0009-0005-6534-1118"
+    }
+  ],
+  "description": "Given a finite nonlocal game, can the players win with certainty? We find the exact level of the arithmetical hierarchy at which this is decided, for each standard model of quantum strategy. With normal states on tensor products of Hilbert spaces, perfect play is Σ⁰₂-complete, also when the strategy must have finite entanglement entropy, so it cannot be decided even with an oracle for the halting problem. This completes a table in which finite-dimensional perfection is Σ⁰₁-complete, commuting perfection is Π⁰₁-complete and value one is Π⁰₂-complete. Inside the commuting model the answer depends on the von Neumann type of the players' algebra: perfect play in a type II₁ algebra, or in any semifinite algebra, is Σ⁰₂-complete, while in a type III_λ factor, for each fixed λ ∈ [0,1], it is equivalent to commuting perfection. In this sense a trace costs one existential quantifier. Commuting perfect play without semifinite perfect play is Π⁰₂-complete; the remaining semifinite-without-spatial differences are D₂(Σ⁰₂)-complete. In the hardness proofs the existential witness is a finite object that every perfect strategy must choose: the order of a clock phase in the spatial model, or the depth of a critical binary tree in semifinite algebras. The same level governs communication: deciding whether a finite classical channel can send a given number of messages in one use with zero error, helped by normal entanglement, is Σ⁰₂-complete, and some channel's zero-error codes all need infinite entanglement entropy. Positive computable moment orders below one form a strict Σ⁰₂-complete resource ladder; the infimal critical indices of spatially perfect games (attained by the realizing games) are exactly the right-c.e.-in-0′ reals in [0,1].",
+  "keywords": [
+    "nonlocal games",
+    "arithmetical hierarchy",
+    "computability",
+    "von Neumann algebras",
+    "type III factors",
+    "zero-error communication",
+    "entanglement entropy",
+    "busy beaver",
+    "quantum information"
+  ],
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "language": "eng",
+  "notes": "Preprint. It has not been peer reviewed. Version 1.0.0. This paper consolidates and supersedes our preprints 10.5281/zenodo.23910986 (perfect spatial play is Sigma^0_2-complete), 10.5281/zenodo.23925091 (the type ladder) and 10.5281/zenodo.23924868 (one-shot zero-error communication). Text: CC BY 4.0. Scripts and Lean sources: MIT or Apache 2.0.",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.23910986",
+      "scheme": "doi",
+      "relation": "references"
+    },
+    {
+      "identifier": "10.5281/zenodo.23925091",
+      "scheme": "doi",
+      "relation": "references"
+    },
+    {
+      "identifier": "10.5281/zenodo.23924868",
+      "scheme": "doi",
+      "relation": "references"
+    },
+    {
+      "identifier": "10.5281/zenodo.23902655",
+      "scheme": "doi",
+      "relation": "references"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+\section{A channel whose codes require infinite entropy}\label{sec:catalan}
+This section proves the second part of Theorem~C. The channel comes from a four-bridge version of the Catalan assembly of \cite{Entropy}. Its game has finite-entropy perfect strategies, but the normalized square-root map of Theorem~\ref{thm:correspondence} turns every one of them into a code with infinite entropy.
+
+\subsection{The squared Catalan density}
+Let $\WW_{\rm Cat}$ consist of the empty word and the legal chronological words in an up-step $A$ and a down-step $B$. An up-step is always allowed; a down-step is allowed only at height at least two. Let $u(w)$ count up-steps. The number of words with $j$ up-steps is the Catalan number $\Cat_j$. On $\ell^2(\WW_{\rm Cat})$ let $A,B$ append the corresponding legal letter, with $B$ zero when forbidden. Let $\Ccat$ have eigenvalue $2^{-\mathrm{ht}(w)}$, let $P$ project onto the empty word, and let $Q$ project onto height one.
+
+We require the local relations of \cite[Section~3]{Entropy}:
+\begin{align}
+ A^*A&=I,& AA^*+BB^*+P&=I,& B^*B&=I-P-Q,\label{eq:Catlocal}\\
+ \Ccat P&=P,& \Ccat Q&=Q/2,&0&\leq \Ccat\leq I,\label{eq:Catboundary}\\
+ \Ccat A&=A\Ccat/2,& \Ccat B&=2B\Ccat.&&\label{eq:Catcounter}
+\end{align}
+Here the modular ratio is squared:
+\begin{equation}\label{eq:Catsquared}
+ h_0 A=Ah_0/16,\qquad[h_0,B]=[h_0,\Ccat]=[h_0,P]=[h_0,Q]=0.
+\end{equation}
+Here $h_0$ is a faithful normal density. In this section $A,B,P,Q$ denote the Catalan labels just defined. The counter relation $\Ccat A=A\Ccat/2$ is unchanged.
+
+\begin{lemma}[Normal classification at ratio $1/16$]\label{lem:Catclassification}
+Every normal realization of \eqref{eq:Catlocal}--\eqref{eq:Catsquared} is, up to a unitary,
+\[
+ \HH=\ell^2(\WW_{\rm Cat})\otimes\KK_{\rm Cat},\qquad
+ h_0=\kcat\otimes\rho_{\rm spec},\qquad
+ \kcat=\frac1{8-4\sqrt3}\sum_w16^{-u(w)}|w\rangle\langle w|,
+\]
+where $\rho_{\rm spec}$ is a faithful normal density. All five local operators act canonically on the first factor and as identity on the second.
+\end{lemma}
+\begin{proof}
+We give the normality argument to check the ratio change in \cite[Lemma~3.1]{Entropy}. The boundary equations put $P,Q$ in the counter eigenspaces one and one half and give $PQ=0$. The range projections $AA^*,BB^*,P$ are orthogonal and sum to identity; $B$ is a partial isometry with initial projection $I-P-Q$. All these projections commute with $\Ccat$.
+
+There is no spectrum of $\Ccat$ in $(1/2,1)$, since there $B$ is isometric and $\Ccat B=2B\Ccat$ would transport it above one. The same reasoning at eigenvalue one gives $1_{\{1\}}(\Ccat)=P$. At eigenvalue one half, $B$ would transport the complement of $Q$ into $P$, orthogonally to its own range, so $1_{\{1/2\}}(\Ccat)=Q$. Iterating $B$ excludes every interval $(2^{-j-1},2^{-j})$. Functional calculus for the bounded intertwining relation justifies these spectral transports.
+
+The zero-counter space reduces the operators and $h_0$. On it $P=Q=0$, so $A,B$ are isometries with orthogonal ranges summing to identity. If its $h_0$-mass is $t$, cyclicity and \eqref{eq:Catsquared} make the two range masses $t/16$ and $t$. Their sum is $t$, forcing $t=0$. Faithfulness removes this space.
+
+Apply legal words to $P\HH$. Their sectors are orthogonal: different last letters have orthogonal ranges; equal last letters cancel with $A^*A=I$ or with $B^*B=I-P-Q$ on a legal predecessor; and a nonempty sector is orthogonal to $P$. Denote the word isometry by $V_w^{\rm Cat}$. Covariance gives
+\[
+ h_0 V_w^{\rm Cat}=16^{-u(w)}V_w^{\rm Cat}h_0.
+\]
+The word-sector projections commute with $h_0$, and their closed span reduces all the operators. If its orthogonal complement were nonzero, the compact faithful density there would have a largest positive eigenvalue, with nonzero finite-dimensional eigenspace $L$. The adjoint covariance gives $A^*L=0$. Since $P=0$ on this complement, $BB^*=I$ on $L$. Commutation with $h_0$ makes $L$ reduce $B$, so $B|_L$ is unitary. It also reduces $\Ccat$. Tracing $\Ccat B=2B\Ccat$ on $L$ forces $\Tr_L \Ccat=0$, hence $\Ccat|_L=0$, contrary to the absence of zero-counter mass. Thus the word sectors exhaust the support.
+
+Their density blocks are $16^{-u(w)}V_w^{\rm Cat}(Ph_0P)(V_w^{\rm Cat})^*$. The word count is $\Cat_j$: for $j\geq1$, words with $j$ up-steps and $b$ down-steps, $0\leq b\leq j-1$, number
+\[
+ \binom{j+b-1}{b}-\binom{j+b-1}{b-1};
+\]
+reflection of the first bad prefix gives this formula, and summing over $b$ gives $\Cat_j$. The empty word supplies $\Cat_0=1$. The generating function
+\[
+ F(z)=\sum_{j\geq0}\Cat_jz^j=\frac{1-\sqrt{1-4z}}{2z}
+\]
+gives $F(1/16)=8-4\sqrt3$. Normalization then gives the asserted tensor product. The same sector identifications fix the local operators.
+\end{proof}
+
+Define the critical Catalan density of \cite{Entropy} by
+\[
+ \hcat=\frac12\sum_w4^{-u(w)}|w\rangle\langle w|.
+\]
+The generating function yields the exact identities
+\begin{equation}\label{eq:Catnumbers}
+ \Tr\hcat^2=2-\sqrt3,\qquad
+ \kcat=\frac{\hcat^2}{2-\sqrt3},\qquad
+ \Tr\sqrt{\kcat}=\frac{\sqrt6+\sqrt2}{2},\qquad
+ \frac{\sqrt{\kcat}}{\Tr\sqrt{\kcat}}=\hcat.
+\end{equation}
+Moreover
+\begin{equation}\label{eq:Catentropy}
+ S(\hcat)=\sum_{j\geq0}\frac{\Cat_j}{2\,4^j}(1+2j)=\infty,
+\end{equation}
+since $\Cat_j4^{-j}\sim(\sqrt\pi j^{3/2})^{-1}$. By contrast the squared Catalan factor has
+\[
+ S(\kcat)=\log_2(8-4\sqrt3)+\frac4{\sqrt3}-2
+ \approx0.4094\ \text{bits}.
+\]
+Indeed, with $F$ as above and $z=1/16$, its mean up-step count is $zF'(z)/F(z)=1/\sqrt3-1/2$; averaging $\log_2 F(z)+4u(w)$ gives the formula. Its multiplicity-weighted probabilities decay geometrically. The canonical perfect strategy of the game $G^{(4)}_{\Cat}$ below therefore has finite entropy: $S(\kcat)$ is its infinite Catalan factor's contribution, and all its other canonical factors are finite dimensional. The channel of $G^{(4)}_{\Cat}$ instead forces the factor $\hcat$ and hence infinite entropy. The communication task itself creates the entropy demand through the square-root map.
+
+\subsection{A four-bridge Catalan assembly}
+The Catalan relations are not the four-creation syntax of Definition~\ref{def:admissible}. We therefore specify their own assembly, extending \cite[Section~6]{Entropy} from two bridges to four. Use the seventeen corners, twenty-five frame-bound parameters, cover $\mathfrak c_4=121$, axis equations, support-copy equations and block-unitary transport equations of Lemma~\ref{lem:four}. The transported unitary encodings are those of $B,\Ccat,P,Q$: two unitaries $b_+,b_-$ for $B$, one for the positive contraction $\Ccat$, and the reflections for $P,Q$. Thus $|\Lambda|=5$. For each bridge use the six frame refinements and these five graph-label refinements, on both parties, retaining the original opposite FMS questions.
+
+For $r=0,\ldots,4$, denote the decoded corner copies by $b_r,c_r,p_r,q_r$. Impose the root reflection equations for $p_0,q_0$. Introduce one centralizer contraction $a=(a_++a_-)/2$. The remaining equations are
+\begin{align}
+ a&=e_4ae_0,&a^*a&=e_0,&aa^*+b_4b_4^*+p_4&=e_4,\label{eq:Catasm1}\\
+ b_0^*b_0&=e_0-p_0-q_0,&p_0q_0&=0,&c_0p_0&=p_0,\label{eq:Catasm2}\\
+ c_0q_0&=q_0/2,&c_4a&=ac_0/2,&c_0b_0&=2b_0c_0.\label{eq:Catasm3}
+\end{align}
+In particular the range equation is at the far corner. It is not $aa^*+b_0b_0^*+p_0=e_0$.
+
+Let $v=w_4w_3w_2w_1$. Extraction on the source gives
+\[
+ A=v^*a,\qquad B=b_0,\qquad \Ccat=c_0,\qquad P=p_0,\qquad Q=q_0.
+\]
+Conjugate the far range equation by $v$, using the actual transported copies. This gives $AA^*+BB^*+P=e_0$. The other local equations follow directly; for example
+\[
+ \Ccat A=c_0v^*a=v^*c_4a=v^*ac_0/2=A\Ccat/2.
+\]
+Since $a$ is a centralizer contraction and $hv=16vh$, its source density has $h_0A=Ah_0/16$. The other decoded labels commute with it. After removal of the finite scalar factors, use exactly the finite-amplification cancellation proof of Lemma~\ref{lem:spectrum}, now for these five transported unitary labels. It gives a realization of \eqref{eq:Catlocal}--\eqref{eq:Catsquared} and the same spectrum identity with $\mu_4$.
+
+Conversely use the canonical Catalan operators and density $\kcat$ in $\operatorname{diag}(\mu_4)\otimes\kcat$, put $a=|e_4\rangle\langle e_0|\otimes A$, and use identity transports. The ratio makes $a$ commute with the scaffold density. The blockwise polar encodings, actual graphs, label refinements and finite Boolean-row extension used in Lemma~\ref{lem:four} realize all the displayed equations simultaneously. Thus they compute a finite rational game $G^{(4)}_{\Cat}$ with a perfect normal strategy.
+
+\subsection{Every normal code has infinite entropy}
+Set $N=N_{\Gamma(G^{(4)}_{\Cat})}$ and let $m$ be the number of tagged local questions of $G^{(4)}_{\Cat}$. The canonical strategy just constructed has finite amplitude sum, by \eqref{eq:Catnumbers} and its finite scaffold and scalar factors. Theorem~\ref{thm:correspondence} therefore gives a normal $m$-message code.
+
+Consider any normal code, including a mixed resource, and let $\rho_B$ be its Bob marginal. The assemblage converse and Theorem~\ref{thm:correspondence} construct a pure perfect game strategy with
+\[
+ h_{\rm game}=\frac{\rho_B^2}{\Tr\rho_B^2},\qquad
+ \rho_B=\frac{\sqrt{h_{\rm game}}}{\Tr\sqrt{h_{\rm game}}}.
+\]
+The assembly spectrum identity and Lemma~\ref{lem:Catclassification} give
+\[
+ h_{\rm game}\simeq
+ \operatorname{diag}(\mu_4)\otimes\kcat\otimes\rho_{\rm spec}
+ \otimes I_3/3\otimes I_{d_{\max}}/d_{\max}.
+\]
+Here $\simeq$ means unitary equivalence of positive operators. Trace summability forces $\Tr\sqrt{\rho_{\rm spec}}<\infty$. Taking the normalized square root gives
+\begin{equation}\label{eq:codemarginal}
+\begin{gathered}
+ \rho_B\simeq\operatorname{diag}(\hat\mu_4)\otimes\hcat\otimes\rho_{\rm spec,code}
+                 \otimes I_3/3\otimes I_{d_{\max}}/d_{\max},\\
+ \hat\mu_{4,i}=\frac{\sqrt{\mu_{4,i}}}{\sum_j\sqrt{\mu_{4,j}}},\quad
+ \rho_{\rm spec,code}=\frac{\sqrt{\rho_{\rm spec}}}{\Tr\sqrt{\rho_{\rm spec}}}.
+\end{gathered}
+\end{equation}
+The Catalan factor is exactly $\hcat$; the full marginal also includes the finite factors and the possible spectator $\rho_{\rm spec,code}$. Equation~\eqref{eq:Catentropy} gives $S(\rho_B)=\infty$ for every code.
+
+For a pure resource its two marginal spectra coincide, so Alice's entropy is infinite as well. For a mixed resource $\omega=\sum_jt_j|\psi_j\rangle\langle\psi_j|$, each positive-weight component is a perfect code under the same encoding and decoding measurements. This follows by applying positivity to each forbidden error expectation. Each such pure component has infinite entropy on both marginals. Extended entropy concavity gives
+\[
+ S(\omega_A)\geq t_j S((\psi_j)_A)=\infty,
+\]
+and similarly for Bob. This proves the second part of Theorem~C for all normal codes, rather than only canonical ones.

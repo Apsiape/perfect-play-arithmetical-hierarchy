@@ -1,0 +1,184 @@
+\section{The entanglement spectrum and its decision problems}\label{sec:renyi}
+A finite entropy bound controls the tail of the Schmidt distribution.
+A positive moment gives stronger control, and varying the moment order
+reveals a strict ladder of existence languages. We first prove compactness
+and the upper predicates, then give the spectral separators. The common
+hardness family and the realization of all possible critical indices
+follow in Section~\ref{sec:programmable}, using the nested compiler proved
+in Appendix~\ref{nested:sec:nested}.
+
+For $0<\alpha<1$ let $\mathcal P_\alpha$ require a perfect pure spatial
+strategy with $\Tr h^\alpha<\infty$. Put $\mathcal P_0=\Lq$,
+$\mathcal P_1=\LE$, and $\mathcal P_{\rm normal}=\LI$.
+For $\alpha>1$, finiteness of R\'enyi entropy imposes no restriction:
+$0<\Tr h^\alpha\le1$ for every density, and its largest eigenvalue is
+positive, so the order-infinity entropy is finite too. Thus all those
+languages equal $\mathcal P_{\rm normal}$. The notation
+$\mathcal P_{\rm normal}$ is a language label, not a moment of infinite
+order. Mixed witnesses can be purified on Bob's side preserving Alice's
+marginal. Pure witnesses therefore suffice for these existence languages.
+
+\subsection{Moment budgets are compact and effective}\label{sec:momentupper}
+For sorted probabilities with $\sum_i p_i^\alpha\le K$, one has
+\begin{equation}\label{eq:momenttail}
+ t_D:=\sum_{i>D}p_i\le
+ K^{1/\alpha}(D+1)^{-(1-\alpha)/\alpha}.
+\end{equation}
+Indeed $p_{D+1}^\alpha\le K/(D+1)$ and
+$t_D\le p_{D+1}^{1-\alpha}\sum_{i>D}p_i^\alpha$.
+This gives uniform tails. Coordinate limits preserve total mass and
+converge in $\ell^1$, while Fatou preserves the moment bound. The Schmidt
+vectors converge in norm, since
+$\|\sqrt p-\sqrt q\|_2^2\le\|p-q\|_1$. Bounded POVMs have a common
+weakly convergent subsequence on fixed copies of $\ell^2$. Their tensor
+products converge weakly on finite simple tensors and then on all vectors
+by uniform boundedness. Thus all game probabilities converge. The
+maximum winning probability $v_G^\alpha(K)$ under the supplied budget
+is attained. The same proof uses \eqref{eq:entropytail} at $\alpha=1$.
+Trace one alone supplies no uniform tail, as $I_N/N$ demonstrates.
+
+Write $v_{G,D}^\alpha(K)$ for the maximum winning probability with local dimension at most $D$ and moment budget $K$. Normalize the first $D$ probabilities by their retained mass. This
+truncation majorizes the full probability vector, so does not increase
+the concave moment sum or entropy. Compression of the POVMs therefore
+gives
+\[
+ 0\le v_G^\alpha(K)-v_{G,D}^\alpha(K)\le\sqrt{t_D}.
+\]
+For rational $\alpha$, the finite-dimensional budget constraints are
+semialgebraic using nonnegative root variables. For a fixed computable
+irrational order, approximate $x^\alpha$ uniformly on $[0,1]$ by rational
+polynomials. Compact outer approximations give upper semicomputability.
+For lower approximation, move a nonpure boundary spectrum slightly
+towards $(1,0,\ldots,0)$: the resource strictly decreases and probabilities
+change continuously. Rational spectra and feasible POVMs with strict
+slack are dense. At moment budget $K=1$, only a pure marginal is possible
+and the value is the finite classical value. The analogous entropy
+exception is budget zero. These arguments give computable budget values
+for computable orders, and in particular the upper semicomputability
+needed here. Equivalently, compact rational outer feasibility tests,
+with vanishing rejection slack and uniform constraint error, give
+\[
+ G\in\mathcal P_\alpha\iff\exists K\ge1\,\forall D\ge1\ R_\alpha(G,K,D)
+\]
+with $R_\alpha$ decidable. Explicitly, compute rational polynomials $q_D$ with
+$\sup_{x\in[0,1]}|q_D(x)-x^\alpha|\le D^{-2}$.
+Choose rational bounds $u_D\ge K^{1/\alpha}(D+1)^{-(1-\alpha)/\alpha}$ tending to zero
+and rational $\epsilon_D\ge4\sqrt{u_D}$ tending to zero. If $u_D\ge1$, let the stage be true.
+Otherwise require ordered $p_i=s_i^2$, $s_i\ge0$, two $D$-dimensional POVM assignments, and
+\[
+ 1-u_D\le\sum_{i=1}^D p_i\le1,\qquad
+ \sum_{i=1}^D q_D(p_i)\le K+D^{-1},\qquad
+ \operatorname{loss}_G(s,E,F)\le\epsilon_D.
+\]
+These are rational semialgebraic constraints. A perfect budget-$K$ witness supplies every stage by compression.
+Conversely, the true moment of each stage is at most $K+2/D$; the same uniform-tail compactness argument
+and Fatou give a normalized perfect limit with moment at most $K$.
+The rational-order version is written explicitly in
+Section~\ref{sec:programmable}. No unrelativized effectiveness claim
+is made for arbitrary noncomputable orders.
+
+\subsection{Tree spectra separate the rungs}
+For $b$ orthogonal isometries of common ratio $\nu$ and faithful normal
+density $h$, the word-sector argument of Section~\ref{sec:tree} and its $b$-ary version in Appendix~\ref{nested:sec:variants} gives
+\[
+ h=\tau_{b,\nu}\otimes\rho_{\rm spec},\qquad
+ \tau_{b,\nu}=(1-b\nu)\sum_w\nu^{|w|}|w\rangle\langle w|,
+ \quad b\nu<1.
+\]
+One can also see exhaustion by pulling a positive density eigenvector
+back through adjoint edges: every pullback multiplies its eigenvalue
+by $\nu^{-1}$, so it must terminate before exceeding $\|h\|$.
+Consequently
+\begin{equation}\label{eq:momenttree}
+ \Tr h^\alpha=
+ \frac{(1-b\nu)^\alpha}{1-b\nu^\alpha}\Tr\rho_{\rm spec}^\alpha
+\end{equation}
+when $b\nu^\alpha<1$, and the moment diverges otherwise. The bare-tree
+critical index is $\log_2b/n$ at $\nu=2^{-n}$. Its finite compiler is
+the $n$-bridge construction with a finite list of $b$ edge labels, as
+specified in Appendix~\ref{nested:sec:variants}. For four branches the
+normality requirement is $n>2$; for $0<\alpha\le1$,
+$n=\lfloor2/\alpha\rfloor+1$ ensures both normality and moment
+summability. For larger orders the requirement $n>2$ remains.
+
+For any $0<a<b<1$, choose integers $n,j$ with
+$a<\log_2j/n<b$. Such choices exist by taking $n$ large and an integer
+between the corresponding exponential bounds. The bare $j$-ary tree
+has finite $b$-moment, infinite $a$-moment in every realization, and
+finite entropy in its canonical realization. A comb with critical
+index one and finite entropy, constructed next, separates every order
+below one from entropy. The Catalan game of Section~\ref{sec:sep}
+separates entropy from arbitrary normal play. The uniform family of
+Section~\ref{sec:programmable} separates finite rank from every
+positive rung. Thus
+\begin{equation}\label{eq:strictladder}
+ \mathcal P_0\subsetneq\mathcal P_a\subsetneq\mathcal P_b
+ \subsetneq\mathcal P_1\subsetneq\mathcal P_{\rm normal}
+ \quad(0<a<b<1).
+\end{equation}
+Compression to the positive source corner preserves finite moments;
+finite compiler factors preserve them in completeness. These separators
+therefore concern every perfect strategy, not just a displayed model.
+
+\subsection{Complexity, differences, and critical indices}
+The construction in Section~\ref{sec:programmable} gives one computable
+family $H_e$ such that
+\[
+ e\in\Adec\iff H_e\in\LI
+ \iff H_e\text{ has one perfect state with every positive moment finite}.
+\]
+Every instance has $\omega_q=1$ and no finite-dimensional perfection.
+Together with the upper predicates this proves $\Sigma^0_2$-completeness
+for every fixed positive computable rung, including entropy and normal
+play. The finite-rank rung is $\Sigma^0_1$-complete.
+
+Exact conjunction and disjunction preserve these resources. For
+conjunction tensor the witnesses; moment sums multiply. For disjunction,
+the globally matched branch projections reduce the marginal and give
+$h=\bigoplus_j p_jh_j$. Hence
+$\Tr h^\alpha=\sum_jp_j^\alpha\Tr h_j^\alpha$ and
+$S(h)=H(p)+\sum_jp_jS(h_j)$; each positive branch inherits the resource.
+Use the full-support branch agreement proved in Section~\ref{sec:sep}.
+If $\mathcal P\subsetneq\mathcal Q$ are distinct positive rungs, fix
+$G_{\rm sep}\in\mathcal Q\setminus\mathcal P$. Then
+\[
+ H_e\wedge(G_{\rm sep}\vee H_f)\in\mathcal Q\setminus\mathcal P
+ \iff e\in\Adec\text{ and }f\notin\Adec.
+\]
+All nonempty such differences are $D_2(\Sigma^0_2)$-complete; a positive
+rung minus finite rank is $\Sigma^0_2$-complete. Reverse differences and
+differences between collapsed orders above one are empty. The assertion
+that NO instances have no normal perfect strategy belongs to $H_e$,
+not to every NO instance of the difference family. Both hardness
+promises persist under these operations.
+
+For a density put $\alpha_c(h)=\inf\{\alpha>0:\Tr h^\alpha<\infty\}$,
+and for a spatially perfect game put
+\[
+ c(G)=\inf_{\psi\ {\rm perfect}}\alpha_c(h_A^\psi).
+\]
+Unused entanglement can increase an individual strategy's index; the
+invariant is this infimum. Section~\ref{sec:programmable} proves that
+its possible values are exactly the right-c.e.-in-$0'$ reals in $[0,1]$.
+Every such value has a realizing game with a finite-entropy witness
+attaining the minimum. The computability characterization uses
+\emph{limsup} of computable rational sequences, following Becher, Bugeaud
+and Slaman~\cite[Lemma~4]{BBS}.
+
+\subsection{Approximate play: a dimension upper bound}
+Let $D_G(\varepsilon)$ be the least local dimension of a strategy with loss at most $\varepsilon$. For a fixed perfect witness, let $D_{\rm trunc}(\varepsilon)$ be the least Schmidt cutoff whose discarded probability mass is at most $\varepsilon$.
+If a perfect witness has $K=\Tr h^\alpha<\infty$, $0<\alpha<1$,
+its loss effect satisfies $0\le L_G\le I-|\psi\rangle\langle\psi|$.
+Its normalized Schmidt truncation therefore loses at most the discarded
+mass $t_D$, rather than just its square root. Equation~\eqref{eq:momenttail}
+gives
+\[
+ D_G(\varepsilon)\le
+ \left\lceil K^{1/(1-\alpha)}
+                 \varepsilon^{-\alpha/(1-\alpha)}\right\rceil.
+\]
+For a bare tree with critical index $r<1$, sorting by depth gives
+$D_{\rm trunc}(\varepsilon)\asymp\varepsilon^{-r/(1-r)}$.
+This is a sharp spectral truncation law. A lower bound for every
+near-perfect strategy of the finite game remains open; exact factor
+forcing alone does not prove it.

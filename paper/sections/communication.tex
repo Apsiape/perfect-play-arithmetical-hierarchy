@@ -1,0 +1,136 @@
+\section{Five bridges and the normal row}\label{sec:communication}
+We apply the trace-class correspondence to the compiler. The four-bridge games of Section~\ref{sec:reduction} lie exactly at the summability threshold: none of their channels admits a saturating normal code, even on YES inputs. Adding a fifth bridge changes the modular ratio and restores summability. The same five-bridge YES codes have finite marginal entropy. The threshold is visible in the four-letter tree density $h_{F,\nu}=(1-4\nu)\sum_w\nu^{|w|}|w\rangle\langle w|$ of Section~\ref{sec:generaltree}:
+\[
+ \Tr\sqrt{h_{F,\nu}}
+ =\sqrt{1-4\nu}\sum_{\ell=0}^{\infty}(4\sqrt\nu)^\ell,
+ \qquad \nu=2^{-n}.
+\]
+There are four branches per level, so summability requires $n\geq5$.
+
+\subsection{An exact spectrum identity}
+One must be careful when removing the row factor in soundness: the FMS signs were not synchronized, so their transports need not commute with $\Mat_{d_{\max}}$. The following elementary cancellation supplies the needed reduction without a partial trace over an infinite space.
+
+\paragraph{Finite-amplification cancellation.}
+If two finite-dimensional tuples of unitaries become unitarily equivalent after $d_{\max}$ identical copies, the original tuples are unitarily equivalent. Indeed they are finite-dimensional representations of the universal $*$-algebra on the tuple. The image in their direct sum is a finite-dimensional $C^*$-algebra. Decompose its two representations into irreducibles; amplification multiplies every multiplicity by $d_{\max}$, so equality of amplified multiplicities cancels $d_{\max}$.
+
+\begin{lemma}[Exact spectrum identity]\label{lem:spectrum}
+For every pure perfect strategy of $G^{(n)}$, with full marginal $h$ and Schmidt operator $D=\sqrt h$, there is a normal realization with density $h_0$ such that, including multiplicities,
+\begin{equation}\label{eq:specidentity}
+ \spec(h)=\spec\left(\operatorname{diag}(\mu_n)\otimes h_0
+                    \otimes I_3/3\otimes I_{d_{\max}}/d_{\max}\right).
+\end{equation}
+Here $h_0$ is the reduced normalized source density after removing the qutrit and row factors; it differs from the source density on the full amplified Hilbert space in Lemma~\ref{lem:four}. Conversely every realization has a perfect strategy with this spectrum. In particular, in the extended nonnegative reals,
+\begin{equation}\label{eq:traceidentity}
+ \Tr D=c^{\rm amp}_n\Tr\sqrt{h_0},\qquad
+ c^{\rm amp}_n=\sqrt{3d_{\max}}\,\frac{1+4\sum_{g=1}^n2^{g/2}}{\sqrt{\mathfrak c_n}}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Restrict to the original marginal support. Synchronization makes the certified scalar matrix algebras commute with the density. The named old projections commute with $\Mat_{d_{\max}}$; the bound parameters and graph units also provide the scalar $\Mat_3$ frame. These two scalar algebras commute, so their exact matrix-unit decompositions give a density $I_3/3\otimes I_{d_{\max}}/d_{\max}\otimes h_{\rm base}$ and factorizations of every named old synchronized projection. This is a finite matrix-unit decomposition, not an uncontrolled partial trace.
+
+The magic matrix units identify all four density blocks at each bridge. The $\btrans_g$ identify consecutive normalized selected density blocks, with ratio two. The cover therefore implies that the full density has the spectrum in \eqref{eq:specidentity}, where $h_0$ is its normalized source block after removal of both scalar factors. It remains to verify that this $h_0$ is the density of a realization; simply compressing $v^*a_\alpha$ across $\Mat_{d_{\max}}$ would not prove that assertion.
+
+The frame refinements make $v$ act trivially on $\Mat_3$. After removing that frame it is a unitary between the $d_{\max}$-amplifications of the source and far spaces, intertwining their normalized densities and every transported unitary label. In each positive density eigenspace these spaces are finite dimensional. Apply finite-amplification cancellation to their transported unitary tuples. This gives an unamplified unitary for each positive eigenvalue. Their Hilbert direct sum $\widetilde v$ intertwines $h_0$ with the normalized far density, and intertwines all transported labels simultaneously. The densities are faithful, so these eigenspaces exhaust both spaces.
+
+All centralizer contractions $a_\alpha$ are polynomials in old labels and factor across both scalar algebras; write their reduced forms $\widetilde a_\alpha$. Define $\widetilde A_\alpha=\widetilde v^*\widetilde a_\alpha$. The reduced translated equations in Lemma~\ref{lem:four} give every application identity. Intertwining of the normalized densities, together with the source/far weight $2^n$, gives $h_0\widetilde A_\alpha=2^{-n}\widetilde A_\alpha h_0$. This proves the realization assertion. The new creations need not be restrictions of the original creations.
+
+Completeness uses \eqref{eq:scaffold}, followed by the two normalized maximally mixed factors, so has exactly the same spectrum. Taking the square root and the trace of this finite tensor product proves \eqref{eq:traceidentity}; nonnegative spectral sums justify it even when the answer is infinity.
+\end{proof}
+
+\subsection{The tree at a general ratio}\label{sec:generaltree}
+The tree part of Section~\ref{sec:tree} works for every $0<\nu<1/4$. For clarity we give the density calculation. For a word $w$ in four letters, write $A_w$ for the product of its creations and
+\[
+ Q_\ell=\sum_{|w|=\ell}A_wA_w^*.
+\]
+The isometry relations and covariance $h_0A_\alpha=\nu A_\alpha h_0$ imply
+\[
+ \Tr(h_0Q_\ell)=(4\nu)^\ell,\qquad
+ \Tr(h_0P_\circ)=1-4\nu.
+\]
+The decreasing $Q_\ell$ have a strong limit of zero $h_0$-weight, hence zero by faithfulness. Their successive differences are $\sum_{|w|=\ell}A_wP_\circ A_w^*$. Thus, with $\KK=P_\circ\HH\ne0$,
+\begin{equation}\label{eq:treefactor}
+ \HH\simeq\ell^2(\WW)\otimes\KK,\quad
+ h_0=h_{F,\nu}\otimes\rho_{\rm spec},\quad
+ h_{F,\nu}=(1-4\nu)\sum_w\nu^{|w|}|w\rangle\langle w|,
+\end{equation}
+where $\rho_{\rm spec}$ is a faithful density. The covariance makes every word-sector projection commute with $h_0$, so transporting the root block proves the equality, not only its diagonal entries. Depth $\ell$ has probability $(1-4\nu)(4\nu)^\ell$; $(4\nu)^\ell$ is the mass at depth at least $\ell$. At $\nu=1/16$ this is \eqref{eq:fockdensity}.
+
+The coordinate, Weyl-clock, bounded period-reader and deterministic tableau equations of Sections~\ref{sec:tree}--\ref{sec:reduction} contain no Fock density ratio. Their proofs use only faithful normality, positive finite-dimensional density eigenspaces, the exact tree decomposition, and a positive weight at every finite depth. All hold in \eqref{eq:treefactor}. Consequently their soundness and canonical completeness hold unchanged for every $\nu=2^{-n}<1/4$. In particular the Weyl determinant still forces a root phase of finite order: on a positive density eigenspace of dimension $d$ on which $Z_{\rm clk}=\zeta$, the relation $J_{\rm W}K_{\rm W}=\zeta K_{\rm W}J_{\rm W}$ gives $\zeta^{d}=1$. No clock relation is squared or otherwise changed.
+
+\subsection{Summability and its critical point}
+Equation~\eqref{eq:treefactor} gives
+\begin{equation}\label{eq:trsqrtF}
+ \Tr\sqrt{h_{F,\nu}}
+ =\sqrt{1-4\nu}\sum_{\ell=0}^\infty(4\sqrt\nu)^\ell
+ =\frac{\sqrt{1-4\nu}}{1-4\sqrt\nu}
+\end{equation}
+when $\nu<1/16$, and infinity when $1/16\leq\nu<1/4$. For the canonical YES realization $\rho_{\rm spec}=I_{{d_{\rm clk}}}/{d_{\rm clk}}$ with clock order ${d_{\rm clk}}$, Lemma~\ref{lem:spectrum} therefore gives
+\begin{equation}\label{eq:YESsum}
+ \Tr D=\sqrt{3{d_{\rm clk}}d_{\max}}\,
+ \frac{1+4\sum_{g=1}^n2^{g/2}}{\sqrt{\mathfrak c_n}}
+ \frac{\sqrt{1-2^{2-n}}}{1-2^{2-n/2}}\quad(n>4).
+\end{equation}
+For five bridges and the optional eight-bridge construction, the exact coefficients are
+\begin{align}
+ n=5:&\quad \Tr D=\frac{(81+53\sqrt2)\sqrt7}{2\sqrt{83}}\sqrt{{d_{\rm clk}}d_{\max}},\label{eq:fiveconstant}\\
+ n=8:&\quad \Tr D=\frac{(121+60\sqrt2)\sqrt{21}}{2\sqrt{2041}}\sqrt{{d_{\rm clk}}d_{\max}}.\label{eq:eightconstant}
+\end{align}
+They are approximately $22.65\sqrt{{d_{\rm clk}}d_{\max}}$ and $10.44\sqrt{{d_{\rm clk}}d_{\max}}$.
+
+\begin{remark}[Four bridges are critical]\label{rem:critical}
+At $n=4$, every realization has $\Tr\sqrt{h_0}=\infty$, regardless of $\rho_{\rm spec}$, because the per-depth amplitude sum in \eqref{eq:trsqrtF} is constant and nonzero. Lemma~\ref{lem:spectrum} then makes every perfect pure game strategy have infinite amplitude sum. Theorem~\ref{thm:correspondence} implies that the channel of every game $\Gclk_e$ of Theorem~\ref{thm:reduction} has no $k$-message normal code, for every input index. Applying those games directly would therefore give an empty YES set, rather than the desired hardness reduction.
+\end{remark}
+
+\subsection{Upper membership}\label{sec:codeupper}
+Convert a channel instance $(N,m)$ to a finite game $\mathcal G_{\rm code}(N,m)$. Alice receives $i\in[m]$ and answers a channel input $x$; Bob receives a channel output $y$ and answers $j\in[m]$. All question pairs have positive rational probability. A tuple loses exactly when $N(y\mid x)>0$ and $j\ne i$. With the same resource and measurements,
+\begin{equation}\label{eq:codegame}
+ \ZE_t(N,m)\ \Longleftrightarrow\
+ \mathcal G_{\rm code}(N,m)\text{ has a perfect }t\text{-strategy}.
+\end{equation}
+Indeed the error probability of the code is the finite sum of these nonnegative expectations weighted by $N(y\mid x)$. It vanishes exactly when every forbidden expectation vanishes. The equivalence preserves marginal entropy as well.
+
+The compact-stratum predicate of Section~\ref{sec:upper} gives $\perf_\qs=\bigcup_\kappa\perf_\qs(\kappa)$ with each stratum $\Pi^0_1$, and mixed strategies reduce to pure perfect components, as in Lemma~\ref{lem:assemblage}. Equation~\eqref{eq:codegame} therefore proves $\ZE_{\qs}\in\Sigma^0_2$. The entropy-budget strata of Section~\ref{sec:finS} prove $\ZE_{\finS}\in\Sigma^0_2$ in the same way. If a mixed perfect resource has finite entropy on one marginal, entropy concavity gives a positive-weight pure perfect component of finite entropy, and for a pure bipartite component the two marginal entropies agree. Hence using one or both finite marginal entropies leads to the same feasibility set.
+
+\subsection{Five bridges for normal hardness}
+Let $\Adec=\{e:\exists j\ \forall t\ \Rdec(e,j,t)\}$ for any decidable predicate $\Rdec$. Use the clock presentation of Sections~\ref{sec:tree}--\ref{sec:reduction}, with its computation program hardwiring $e$, and change only its bridge count to five. Denote the resulting game by $G^{(5)}_e$. Its clock and computation mechanism is unchanged. At depth $r$ the four-letter tree carries a $2^r$-by-$2^r$ coordinate square. A root Weyl pair commuting with the root density has a nonzero finite-order phase sector; its determinant on a positive density eigenspace forces this. On a phase of order ${d_{\rm clk}}$ the reader equations \eqref{eq:reader} force $P_{\rm ret}$ to be exactly the kernel projection of $W-I$, so the first positive return is precisely time ${d_{\rm clk}}$. The tableau freezes a waiting front at that time, halts if ${d_{\rm clk}}$ is one or composite, and otherwise checks $\Rdec(e,j,0),\Rdec(e,j,1),\ldots$ for ${d_{\rm clk}}=p_{j+1}$, halting at the first failure. A halt is forbidden by an operator equation, and every depth has positive normal weight. These are exact identities, not assertions about high-probability truncations.
+
+If the game is perfect, Lemma~\ref{lem:four} extracts this mechanism and therefore a witness $j$. Conversely a witness $j$ uses the canonical tree, a ${d_{\rm clk}}$-dimensional Weyl pair for ${d_{\rm clk}}=p_{j+1}$, the good primitive phase and bounded reader of Section~\ref{sec:clock}, and its nonhalting classical tableau. The reader norm estimate depends on the phase and the counter, not on $\nu$. Its density is $h_{F,1/32}\otimes I_{{d_{\rm clk}}}/{d_{\rm clk}}$. This is the simultaneous canonical realization, so Lemma~\ref{lem:four} supplies a perfect game strategy. Formula~\eqref{eq:fiveconstant} makes its Schmidt amplitudes summable.
+
+Now put
+\[
+ N_e=N_{\Gamma(G_e^{(5)})},\qquad
+ k_e=|\mathcal Q_{A,e}|+|\mathcal Q_{B,e}|,
+\]
+where $\mathcal Q_{A,e},\mathcal Q_{B,e}$ are the question sets of $G^{(5)}_e$. These data are finite and rational and are computed from $e$ without knowing its witness. Theorem~\ref{thm:correspondence} and the preceding two implications give
+\[
+ \ZE_{\qs}(N_e,k_e)\ \Longleftrightarrow\ e\in \Adec.
+\]
+This proves $\Sigma^0_2$-hardness and the first part of Theorem~C. No channel in this reduction has a finite-dimensional saturating code: otherwise the finite converse would extract four orthogonal isometries on a nonzero finite-dimensional root space, an impossibility. We make no claim here that a value-one promise is inherited from the source construction.
+
+\subsection{Finite entropy already at five bridges}\label{sec:finiteentropy}
+Use exactly the same five-bridge reduction. The forward code marginal is the normalized square root of the canonical game marginal. Its tree factor is
+\[
+ \widehat h_5=\frac{\sqrt{h_{F,1/32}}}{\Tr\sqrt{h_{F,1/32}}}
+ =(1-2^{-1/2})\sum_w2^{-5|w|/2}|w\rangle\langle w|.
+\]
+At depth $\ell$ there are $4^\ell$ words, so the depth distribution is geometric with ratio $2^{-1/2}$. Its mean is $2^{-1/2}/(1-2^{-1/2})=1+\sqrt2$. Each eigenvalue at depth $\ell$ has negative base-two logarithm $-\log_2(1-2^{-1/2})+(5/2)\ell$. Taking its expectation proves
+\begin{equation}\label{eq:fiveentropy}
+ S(\widehat h_5)=-\log_2(1-2^{-1/2})+\frac52(1+\sqrt2)
+ \approx 7.807\ \text{bits}.
+\end{equation}
+The full canonical code marginal is
+\[
+ \operatorname{diag}(\hat\mu_5)\otimes\widehat h_5
+ \otimes I_{{d_{\rm clk}}}/{d_{\rm clk}}\otimes I_3/3\otimes I_{d_{\max}}/d_{\max},
+ \qquad \hat\mu_{5,i}=\frac{\sqrt{\mu_{5,i}}}{\sum_{i'}\sqrt{\mu_{5,i'}}}.
+\]
+Thus its entropy is $H(\hat\mu_5)+S(\widehat h_5)+\log_2(3{d_{\rm clk}}d_{\max})$, which is finite. The pure code has the same entropy on both sides. A NO input has no normal code at all, hence no finite-entropy code. The same map therefore proves the finite-entropy half of the first part of Theorem~C.
+
+\begin{remark}[Eight bridges]
+With $n=8$, the normalized square root of $h_{F,1/256}$ is exactly $h_{F,1/16}$, with entropy $\log_2(4/3)+4/3$. Its amplitude sum is \eqref{eq:eightconstant}. This is another finite-entropy construction; five bridges already suffice for hardness.
+\end{remark}
+
+\subsection{The finite-dimensional row, as an attributed corollary}\label{sec:fdrow}
+For each fixed dimension, the channel code game in \eqref{eq:codegame} has a rational semialgebraic perfect-strategy predicate: split matrix entries into real and imaginary parts, impose positivity, POVM sums, normalization and zero losing probabilities. Quantifier elimination decides it. Enumerating dimensions gives $\ZE_{\mathrm{q}}\in\Sigma^0_1$.
+
+For hardness, the perfect-completeness reduction of $\mathsf{MIP}^*=\mathsf{RE}$ gives, from a halting instance, a finite game with a perfect finite-dimensional strategy, and from a nonhalting instance a game of entangled value at most $1/2$ \cite[Theorem~12.6]{MIPRE}. Man\v{c}inska's Corollary~7 maps perfect finite-dimensional game feasibility to the saturating one-shot channel threshold \cite{Mancinska}. Thus $\ZE_{\mathrm{q}}$ is $\Sigma^0_1$-complete. This conclusion uses her finite theorem, not the new normal converse. Bhattacharyya, Mehta and Zhao leave undecidability of $C^{(1)}_{0,E}$ open in \cite[Section~1.4]{BMZ}. This corollary settles its one-shot threshold problem: it is undecidable and $\Sigma^0_1$-complete already for classical channels. Here $E$ denotes unrestricted finite-dimensional entanglement. The unrestricted asymptotic capacity question remains open.

@@ -1,0 +1,4 @@
+n= 5 Omega_n= 249 Tr sqrt(F)= sqrt(7)/2 + sqrt(14)/2 TrD/sqrt(q_clk d_row)= sqrt(581)*(53*sqrt(2) + 81)/166 ~ 22.645118594565
+n= 8 Omega_n= 2041 Tr sqrt(F)= sqrt(7)/2 TrD/sqrt(q_clk d_row)= sqrt(42861)*(60*sqrt(2) + 121)/4082 ~ 10.440347568644
+PASS: n-bridge constants n=1..20; exact tensor spectra; criticality; five/eight sums; Catalan identities
+PASS: five-bridge code tree entropy = 7.807087209096350 bits; squared Catalan entropy = 0.4094324498055114 bits

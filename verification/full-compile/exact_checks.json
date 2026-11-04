@@ -1,0 +1,170 @@
+{
+  "expanded": {
+    "uniform_pair_probability": "1/38336382200389019569",
+    "distribution_sum": "1",
+    "row_loss_constant_denominator": 445315415639718851313504,
+    "truncations": [
+      {
+        "m": 0,
+        "tree_dimension": 1,
+        "top_mass": "1",
+        "failed_rows": [
+          "fock_00_00",
+          "fock_01_01",
+          "fock_10_10",
+          "fock_11_11"
+        ],
+        "exact_game_loss": "1/445315415639718851313504"
+      },
+      {
+        "m": 1,
+        "tree_dimension": 5,
+        "top_mass": "1/5",
+        "failed_rows": [
+          "fock_00_00",
+          "fock_01_01",
+          "fock_10_10",
+          "fock_11_11"
+        ],
+        "exact_game_loss": "1/2226577078198594256567520"
+      },
+      {
+        "m": 2,
+        "tree_dimension": 21,
+        "top_mass": "1/21",
+        "failed_rows": [
+          "fock_00_00",
+          "fock_01_01",
+          "fock_10_10",
+          "fock_11_11"
+        ],
+        "exact_game_loss": "1/9351623728434095877583584"
+      },
+      {
+        "m": 3,
+        "tree_dimension": 85,
+        "top_mass": "1/85",
+        "failed_rows": [
+          "fock_00_00",
+          "fock_01_01",
+          "fock_10_10",
+          "fock_11_11"
+        ],
+        "exact_game_loss": "1/37851810329376102361647840"
+      },
+      {
+        "m": 4,
+        "tree_dimension": 341,
+        "top_mass": "1/341",
+        "failed_rows": [
+          "fock_00_00",
+          "fock_01_01",
+          "fock_10_10",
+          "fock_11_11"
+        ],
+        "exact_game_loss": "1/151852556733144128297904864"
+      }
+    ],
+    "bindings": 16593421262,
+    "synchrony": 6191638002,
+    "joint_graph_tests": 1226954544,
+    "layout_bytes": {
+      "question_records_64bytes_both_sides": 792529675136,
+      "answer_payload_uint64_both_sides": 76860704641752528,
+      "binding_records_4_uint64": 530989480384,
+      "synchrony_uint64": 49533104016,
+      "orthogonality_4_uint64": 41582518272,
+      "row_slots_2_uint64": 20791259136,
+      "row_headers_4_uint64": 2319972864,
+      "reserved_sparse_core_and_work_buffers": 1073741824
+    },
+    "layout_total_bytes": 76862143461504160,
+    "schema_wellformedness": "By indexed range construction, not by enumeration of game pairs. No full-game predicate was serialized or audited.",
+    "scalar_pair_rule_parity": "kernel bit basis pivot construction has n-1 independent vectors perpendicular to j; all masks select valid outcome bits."
+  },
+  "factored": {
+    "uniform_pair_probability": "1/72532134896400",
+    "distribution_sum": "1",
+    "row_loss_constant_denominator": 842533278956582400,
+    "truncations": [
+      {
+        "m": 0,
+        "tree_dimension": 1,
+        "top_mass": "1",
+        "failed_rows": [
+          "fock_00_00",
+          "fock_01_01",
+          "fock_10_10",
+          "fock_11_11"
+        ],
+        "exact_game_loss": "1/842533278956582400"
+      },
+      {
+        "m": 1,
+        "tree_dimension": 5,
+        "top_mass": "1/5",
+        "failed_rows": [
+          "fock_00_00",
+          "fock_01_01",
+          "fock_10_10",
+          "fock_11_11"
+        ],
+        "exact_game_loss": "1/4212666394782912000"
+      },
+      {
+        "m": 2,
+        "tree_dimension": 21,
+        "top_mass": "1/21",
+        "failed_rows": [
+          "fock_00_00",
+          "fock_01_01",
+          "fock_10_10",
+          "fock_11_11"
+        ],
+        "exact_game_loss": "1/17693198858088230400"
+      },
+      {
+        "m": 3,
+        "tree_dimension": 85,
+        "top_mass": "1/85",
+        "failed_rows": [
+          "fock_00_00",
+          "fock_01_01",
+          "fock_10_10",
+          "fock_11_11"
+        ],
+        "exact_game_loss": "1/71615328711309504000"
+      },
+      {
+        "m": 4,
+        "tree_dimension": 341,
+        "top_mass": "1/341",
+        "failed_rows": [
+          "fock_00_00",
+          "fock_01_01",
+          "fock_10_10",
+          "fock_11_11"
+        ],
+        "exact_game_loss": "1/287303848124194598400"
+      }
+    ],
+    "bindings": 22228954,
+    "synchrony": 8516495,
+    "joint_graph_tests": 3046134,
+    "layout_bytes": {
+      "question_records_64bytes_both_sides": 1090122240,
+      "answer_payload_uint64_both_sides": 691364784,
+      "binding_records_4_uint64": 711326528,
+      "synchrony_uint64": 68131960,
+      "orthogonality_4_uint64": 103951360,
+      "row_slots_2_uint64": 51975680,
+      "row_headers_4_uint64": 6475072,
+      "reserved_sparse_core_and_work_buffers": 1073741824
+    },
+    "layout_total_bytes": 3797089448,
+    "schema_wellformedness": "By indexed range construction, not by enumeration of game pairs. No full-game predicate was serialized or audited.",
+    "scalar_pair_rule_parity": "kernel bit basis pivot construction has n-1 independent vectors perpendicular to j; all masks select valid outcome bits."
+  },
+  "elapsed_seconds": 0.023394000018015504,
+  "peak_working_set_bytes": 23126016
+}

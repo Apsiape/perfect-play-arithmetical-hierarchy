@@ -1,0 +1,194 @@
+\section{Comparing the type languages}\label{sec:sep}
+Equal arithmetical complexity does not mean equal languages. This section shows that the type-I and type-$\II_1$ languages are incomparable and classifies the differences ``perfect in $X$ but not in $Y$'' among six models.
+
+\subsection{A fixed one-bridge separator}\label{sec:shiftseparator}
+Apply the complete one-bridge assembly of Section~\ref{sec:onebridge} to the fixed root presentation
+\begin{equation}\label{eq:shiftroot}
+ A^*A=I,\qquad AA^*=I-P_\circ,\qquad
+ \sigma_t^\varphi(A)=2^{-it}A,
+\end{equation}
+where $P_\circ$ is a centralizer projection. Call the resulting finite rational Boolean game $\Gsh$. Here the transported label list contains just $P_\circ$. Encode its copies by reflections, introduce a centralizer contraction $a=e_1ae_0$, and impose exactly
+\[
+ a^*a=e_0,\qquad aa^*=e_1-(P_\circ)_1.
+\]
+Use the six frame refinements and the graph-label refinement for $P_\circ$ from Section~\ref{sec:onebridge}; apply the same graphs, triangles and rational rows. Extraction is $A=v^*a$, and $P=(P_\circ)_0$. Thus $A^*A=e_0$, $AA^*=e_0-P$, and the modular ratio is $1/2$. Conversely every root model of \eqref{eq:shiftroot} extends by that assembly, with $a=|e_1\rangle\langle e_0|\otimes A$. This specifies the game without a chained-bridge hypothesis.
+
+For its type-I model take $\ell^2(\mathbb N_0)$, $A|m\rangle=|m+1\rangle$, $P_\circ=|0\rangle\langle0|$, and
+\[
+ h|m\rangle=2^{-m-1}|m\rangle,\qquad
+ S(h)=\sum_{m\geq0}(m+1)2^{-m-1}=2\text{ bits}.
+\]
+The relation $hA=Ah/2$ verifies modular covariance. The scaffold and the finite maximally entangled compiler factors add finite entropy, so $\Gsh$ is perfect spatially with finite entropy.
+
+In any perfect finite-host strategy, extraction takes place in the nonzero finite corner $e_0Me_0$. Its isometry $A$ must be unitary: a faithful finite trace gives $\tau(e_0-AA^*)=0$. Consequently $AA^*=e_0$ forces $P=0$. On the other hand KMS for the original faithful state gives
+\[
+ \varphi(AA^*)=\tfrac12\varphi(A^*A)=\tfrac12\varphi(e_0),
+ \qquad \varphi(P)=\tfrac12\varphi(e_0)>0,
+\]
+a contradiction. Therefore $\Gsh$ has no finite host and witnesses $\perf(\mathrm I)\not\subseteq\perf(\II_1)$. In particular it has no finite-dimensional perfect strategy.
+
+\subsection{What happens to the Weyl-clock family}\label{sec:weylsemifinite}
+The spatial reduction of Sections~\ref{sec:tree}--\ref{sec:reduction} uses the four Fock isometries $A_{ab}$ of \eqref{eq:fockrelations}, with $h_F$ of \eqref{eq:fockdensity}, the coordinate unitaries and boundary projections of \eqref{eq:U_x}--\eqref{eq:P_y}, the Weyl relation \eqref{eq:weyl}, the clock and counter values \eqref{eq:coordinateclock}, and the reader equations \eqref{eq:reader}. Spatial soundness uses finite positive density eigenspaces and a determinant to force a finite-order phase. This determinant is unavailable in a diffuse finite factor.
+
+Here is a normal $\II_\infty$ model of \emph{every} input of that family. Put $\vartheta=(\sqrt5-1)/2$, $\zeta=e^{2\pi i\vartheta}$. In the finite rotation factor $L^\infty(\mathbb T)\rtimes_\vartheta\mathbb Z$, take unitaries $J_{\rm W},K_{\rm W}$ with commutator $\zeta I$ and put $Z_{\rm clk}=\zeta I$. The invariant integral and Fourier coefficient at zero give a faithful finite trace. Irrational rotation is free and ergodic, so a central Fourier coefficient vanishes except at zero and its zero coefficient is constant; the algebra is a factor. It is infinite-dimensional and hence $\II_1$. It is the hyperfinite factor $R_{\rm hyp}$ by amenability of this crossed product and injective-factor classification \cite{Connes76}. The construction itself only needs that it is finite.
+
+Use the tensor density $h_F\otimes1$ on $B(\ell^2(\WW))\vN R_{\rm hyp}$. Set $W=\zeta^y$, $C_{\rm ctr}=2^{-y}$, $P_{\rm ret}=1_{\{y=0\}}$, and
+\[
+ T_{\rm inv}|_{(x,y)}=
+ \begin{cases}0,&y=0,\\
+ 2^{-y-1}(\zeta^y-1)^{-1},&y>0.
+ \end{cases}
+\]
+The norm bound follows from the quadratic irrationality estimate. For an integer $p$ nearest to $y\vartheta$, the nonzero integer $p^2+py-y^2$ factors as $(p-y\vartheta)(p-y\vartheta')$, $\vartheta'=-(1+\sqrt5)/2$. Since $|p-y\vartheta|\leq1/2$,
+\[
+ \|y\vartheta\|\geq\frac1{\sqrt5\,y+1/2},\qquad
+ |\zeta^y-1|=2\sin(\pi\|y\vartheta\|)
+ \geq\frac4{\sqrt5\,y+1/2}>2^{-y-1}.
+\]
+The sine inequality uses concavity, $\sin(\pi t)\geq2t$ for $0\leq t\leq1/2$. In particular it supplies the explicit all-integer bound $|\sin(\pi y\vartheta)|\geq8/(11y)$, since $\sqrt5<9/4$ and $y\geq1$. For the last inequality it suffices to replace $\sqrt5$ by $9/4$: $2^{y+3}>9y/4+1/2$ for $y=1$, and doubling proves it inductively. Thus $T_{\rm inv}$ is a contraction and \eqref{eq:reader} holds. The binary coordinate recurrences $y\mapsto2y+b$ verify the clock and counter endpoint equations.
+
+In the tableau of Sections~\ref{sec:tree} and \ref{sec:reduction} a waiting front advances one cell per time step, at $x=y$ at time $y$. The first positive-time return pulse $P_{\rm ret}$ freezes it, and the frozen coordinate becomes the unary input of the check of the hardwired predicate; the time-zero pulse is ignored. Here $P_{\rm ret}$ selects $y=0$ only, so no positive-time pulse occurs. The front never freezes, and the decoder never starts a checking computation, irrespective of the hardwired input. Its finite deterministic tableau relations are satisfied by that classical nonhalting tableau in every finite square. The coordinate, boundary and tableau projections are diagonal on word sectors and commute with $h_F\otimes1$. All endpoint labels have the required centralizer type. Lemma~\ref{lem:chain} with $n=4$ applies to exactly the conditional copies and transported labels of Lemma~\ref{lem:four} and to the endpoint rows of Sections~\ref{sec:tree}--\ref{sec:reduction}. Its left-endpoint labels are $P_\circ,U_x,U_y,P_x,P_y,W,C_{\rm ctr},Z_{\rm clk},J_{\rm W},K_{\rm W}$; source-only labels are $P_{\rm ret},T_{\rm inv}$ and the tableau projections. The activity corners and separate refinements coincide with that compiler. Its root mass is $1/121$. The resulting ambient host is $\II_\infty$ for every input. The supplementary exact margin certificate is in Appendix~\ref{app:rotationcertificate}.
+
+Lemma~\ref{lem:chain}, with $n=4$, also extracts the four isometries of every Weyl-clock game in any normal commuting host. Two isometries with orthogonal ranges cannot lie in a nonzero finite corner. Hence every Weyl-clock game has no finite host. This additional fact is independent of the separator $\Gsh$ above.
+
+\subsection{A tracial game with no spatial perfection}
+For the other direction use a linear-system game with a perfect commuting strategy and no perfect finite-dimensional strategy, provided by \cite{SlofstraNonclosed}. The solution-group criterion \cite[Theorems 4--5]{CLS} says its distinguished central involution $j$ is nontrivial. The central corner $(1-\lambda(j))L(\Gamma_{\rm sol})/2$ of the solution group $\Gamma_{\rm sol}$ has normalized trace and a perfect left/right regular strategy: equation observables commute in each constraint, square to $I$, and their product is the specified sign because $j=-I$ in the corner. Use their joint spectral projections on the left and the commutant mirrors of variable observables on the right. Consistency and each equation are then exact. A factor fibre is a finite factor host; tensoring with $R_{\rm hyp}$ gives $\II_1$. This is the tracial mechanism in \cite[Proposition 7.4]{ReadType}. Call this game $\Glin$.
+
+Cleve--Mittal \cite{CM} and \cite[Theorem~5]{CLS} characterize the finite-dimensional case. Spatial perfect play also implies finite-dimensional perfect play for linear-system games; Slofstra \cite{SlofstraNonclosed} uses this implication in the nonclosure construction. Here is the normal spatial argument. Each variable appearing in a constraint has an Alice involution with a self-adjoint Bob mirror on the state vector, by perfect consistency. Equality of those vectors makes Alice's trace-class marginal commute with every such involution. The within-constraint products and parity equations hold on the marginal support, by the zero-loss equations and support separation. A positive density eigenvalue has a nonzero finite-dimensional eigenspace reducing all variable involutions. Restriction to it preserves the products and all constraint equations. Its maximally entangled vector with transposed Bob variables is a finite-dimensional perfect strategy, a contradiction. For a mixed spatial state first purify; the same Alice eigenprojection argument applies. Type-I hosting decomposes into spatial factor fibres, so it is also excluded. Thus $\perf(\II_1)\not\subseteq\perf(\mathrm I)$.
+
+Every type-I factor host tensored with $R_{\rm hyp}$ has type $\II_1$ in finite dimension and type $\II_\infty$ in infinite dimension; a further $B(\ell^2)$ amplification handles the former case. Every $\II_1$ host similarly amplifies to $\II_\infty$. The two witnesses just constructed prove
+\[
+ \perf(\mathrm I)\ \text{and}\ \perf(\II_1)
+ \text{ are incomparable},\qquad
+ \perf(\mathrm I),\,\perf(\II_1)
+ \subsetneq\perf(\II_\infty).
+\]
+Equal arithmetical completeness does not imply equal languages.
+
+\subsection{Exact conjunction and disjunction}
+We now compare the six languages $\Lq,\LE,\LI,\LJ,\LU,\LC$ of Section~\ref{sec:prelim}. Equation~\eqref{eq:languageequal} identifies $\LU$ with both $\perf(\II)$ and $\perf(\II_\infty)$; Theorem~\ref{thm:III} identifies $\LC$ with each fixed type-III language.
+\begin{backgroundlemma}[Exact game operations]
+Uniform effective operations $G\wedge G'$ and $G\vee G'$ satisfy, for every $\mathbf X\in\{\Lq,\LE,\LI,\LJ,\LU,\LC\}$,
+\[
+ G\wedge G'\in\mathbf X\iff G,G'\in\mathbf X,\qquad
+ G\vee G'\in\mathbf X\iff G\in\mathbf X\text{ or }G'\in\mathbf X.
+\]
+The same statements hold for each of the type languages in this paper.
+\end{backgroundlemma}
+\begin{proof}
+First pad question and answer alphabets to common finite alphabets. For an original zero-weight question pair accept everything; preserve its original predicate on positive-weight pairs. Give every padded question pair positive rational weight, accept all pairs involving fresh questions, and reject a padded answer on an original question. This changes no perfect-play language. It permits fixed common question alphabets with full support; no implication below relies on an untested pair.
+
+For conjunction, send both players the same tag and questions for that tagged game, and test its predicate. A perfect strategy restricts to either tag in the same ambient algebra and state. Conversely, tensor two perfect strategies and on a tagged question measure the appropriate factor. Type I is closed under tensor products, as are finite factors, type $\II_\infty$ factors, and semifinite algebras. Amplification gives the stated $\II$ existence languages when needed. For $\LE$ use pure spatial witnesses: marginal entropies add, so their sum is finite. Finite-dimensional witnesses stay finite. Commuting strategies tensor as well. For $\III_\lambda$ use its language equality with $\LC$ from Theorem~\ref{thm:III}; no closure of that subtype under direct tensoring is asserted.
+
+For disjunction, ask the common questions and require each answer to name a branch $s\in\{G,G'\}$ as well as an answer in that branch. Reject mismatched branches and otherwise test the named predicate. A strategy for either game wins by always naming that branch. For soundness let $A_{s,a}^x,B_{s,b}^y$ be the effects and put $P_s^x=\sum_aA_{s,a}^x$, $Q_s^y=\sum_bB_{s,b}^y$. Work first on the faithful standard-form support. The matching argument of Section~\ref{sec:support} makes each branch marginal a projection, with $P_s^x\xi=Q_s^y\xi$ for every $x,y$. Fixing $y$ and using separation makes $P_s^x=P_s$ independent of $x$; likewise $Q_s^y=Q_s$. These are opposite mirrors, $P_s\xi=Q_s\xi=:\xi_s$. At least one $\xi_s$ is nonzero. Since $0\leq A_{s,a}^x\leq P_s$, we have $A_{s,a}^xP_s=P_sA_{s,a}^x=A_{s,a}^x$, and the same holds on Bob's side. Complete each branch POVM to the identity by adding $I-P_s$ to one Alice answer and $I-Q_s$ to one Bob answer. These added effects annihilate $\xi_s$. A losing branch product annihilates $\xi$ and, by the displayed support identities, also $\xi_s$. Normalizing $\xi_s$ therefore wins branch $s$. All effects and the vector remain on the same Hilbert space, in the same ambient $M,M'$; the selected vector need not be faithful. Thus its host type is preserved. This also handles mixed strategies by purification and standardization.
+
+For finite entropy one can work in the original spatial purification. Orthogonality of Bob's branch projections gives $\rho_A=\sum_s p_s\rho_{A,s}$, $p_s=\|\xi_s\|^2$. Entropy concavity, valid also by finite-rank truncation for infinite entropy, gives $\sum_s p_sS(\rho_{A,s})\leq S(\rho_A)<\infty$. Every positive-weight branch has finite entropy. This proves the last model-specific assertion and completes both directions.
+\end{proof}
+
+\subsection{Four fixed separators and two uniform families}
+Choose both reductions $\Gclk_e$ and $\Gsel_e$ for the same predicate, $e\in\mathrm{FIN}$, and write $\Fin(e)$ for its truth value. Theorems~\ref{thm:reduction} and \ref{thm:selreduction}, including Lemma~\ref{lem:hnn}, give
+\begin{align}
+ \Gclk_e\in\LE&\iff \Gclk_e\in\LI\iff \Fin(e),
+ &&\label{eq:sharedE}\\
+ \Gsel_e\in\LJ&\iff \Gsel_e\in\LU\iff \Fin(e),
+ &\Gsel_e&\in\LC.\label{eq:sharedJ}
+\end{align}
+Every $\Gclk_e$ has no finite-dimensional perfect strategy; every $\Gsel_e$ is commuting perfect with $\omega_q=1$. The chained lemma additionally excludes $\Gclk_e$ from $\LJ$ and places it in $\LU$ (Section~\ref{sec:weylsemifinite}). The reductions below use its displayed spatial coordinates and use $\Gsh$ for finite-host exclusion.
+
+Take the fixed one-bridge game $\Gsh$ of Section~\ref{sec:shiftseparator}. Its shift model has root entropy $2$ bits and its finite compiler factors preserve finite entropy. The finite-corner KMS contradiction there proves that it has no finite host. Thus its complete profile uses only the one-bridge assembly.
+
+The tracial solution-group game $\Glin$ is in $\LJ\setminus\LI$; spatial perfection would imply finite perfection. Let $G^{(2)}_{\Cat}$ be the compiled Catalan game of \cite[Theorem C and Sections 3 and 6]{Entropy}. Its perfect spatial strategies have infinite marginal entropy, so it is in $\LI\setminus\LE$. Lemma~\ref{lem:chain} with $n=2$ applies to its nine-corner assembly: activity $e_{g-1}+m_g$, root mass $1/25$, transported encodings $b_+,b_-,p,q,c$ (names of \cite[Section 6]{Entropy}), and the source-only polynomials of \cite[Section 6]{Entropy}. Thus its extracted isometry $A$ has modular ratio $1/4$ also on a commuting normal host. In a finite root corner $A$ would be unitary, and KMS would give $1=1/4$; hence it is outside $\LJ$ as well. Finally choose a fixed NO instance of $\Gsel$ and call it $\Gthree$. Theorem~\ref{thm:selreduction} gives $\Gthree\in\LC\setminus\LU$ and $\omega_q(\Gthree)=1$. Their complete profiles are
+\begin{center}\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule & $\Lq$ & $\LE$ & $\LI$ & $\LJ$ & $\LU$ & $\LC$\\\midrule
+$\Gsh$ &0&1&1&0&1&1\\
+$\Glin$ &0&0&0&1&1&1\\
+$G^{(2)}_{\Cat}$ &0&0&1&0&1&1\\
+$\Gthree$ &0&0&0&0&0&1\\\bottomrule
+\end{tabular}
+\end{center}
+In particular $\Gsh\wedge \Glin$ is in $\LU$ but in neither $\LI$ nor $\LJ$, so even $\LI\cup\LJ\subsetneq\LU$. The remaining inclusions asserted above are strict: $\Gsh$ separates $\Lq$ from $\LE$, $G^{(2)}_{\Cat}$ separates $\LE$ from $\LI$, $\Glin$ separates $\LI$ from $\LU$, and $\Gthree$ separates $\LU$ from $\LC$. Both $\LE$ and $\LI$ are incomparable with $\LJ$.
+
+\Needspace{5\baselineskip}
+\subsection{The table, with reductions for every nonempty entry}
+\begin{theorem}[Directional differences]\label{thm:differences}
+The following table gives row minus column. Each suffix c means computable many-one completeness for the displayed pointclass. Here $D_2$ abbreviates $D_2(\Sigma^0_2)$. Every nonempty cell is complete for its displayed class.
+\begin{center}\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule & $\Lq$&$\LE$&$\LI$&$\LJ$&$\LU$&$\LC$\\\midrule
+$\Lq$&$\varnothing$&$\varnothing$&$\varnothing$&$\varnothing$&$\varnothing$&$\varnothing$\\
+$\LE$&$\Sigma^0_2$-c&$\varnothing$&$\varnothing$&$D_2$-c&$\varnothing$&$\varnothing$\\
+$\LI$&$\Sigma^0_2$-c&$D_2$-c&$\varnothing$&$D_2$-c&$\varnothing$&$\varnothing$\\
+$\LJ$&$\Sigma^0_2$-c&$D_2$-c&$D_2$-c&$\varnothing$&$\varnothing$&$\varnothing$\\
+$\LU$&$\Sigma^0_2$-c&$D_2$-c&$D_2$-c&$D_2$-c&$\varnothing$&$\varnothing$\\
+$\LC$&$\Pi^0_1$-c&$\Pi^0_2$-c&$\Pi^0_2$-c&$\Pi^0_2$-c&$\Pi^0_2$-c&$\varnothing$\\\bottomrule
+\end{tabular}
+\end{center}
+\end{theorem}
+\begin{proof}
+All empty entries follow from the stated inclusions. For upper bounds, $\Lq\in\Sigma^0_1$, $\LE,\LI,\LJ,\LU\in\Sigma^0_2$, and $\LC\in\Pi^0_1$. A difference between two middle languages is therefore in $D_2$. For a middle $\mathbf X$, $\mathbf X\setminus\Lq\in\Sigma^0_2$: write its predicate as $\exists k\forall m$ for $\mathbf X$ and conjoin the $\Pi^0_1$ predicate for nonmembership in $\Lq$. Also $\LC\setminus\Lq\in\Pi^0_1$ and $\LC\setminus\mathbf X\in\Pi^0_2$. It remains to prove the matching lower bounds.
+
+For the four incomparable entries use $\Gclk_e\wedge \Gsh$ as the $\LE$- or $\LI$-side family, and $\Gsel_f\wedge \Glin$ as the $\LJ$-side family. Their disjunction has $\LE$ and $\LI$ coordinates exactly $\Fin(e)$ and $\LJ$ coordinate exactly $\Fin(f)$. Thus its membership in either $\LE\setminus\LJ$ or $\LI\setminus\LJ$ is $\Fin(e)\wedge\neg \Fin(f)$. Swap $e,f$ between the two branches for the reverse differences. The canonical $D_2$ problem reduces in all four cases. This settles I-ONLY, defined here as $\LI\setminus\LJ$. It cannot mean absence of every type-II host, since $\LI\subset\LU$.
+
+For the $\Lq$ column, use $\Gclk_e$ for $\LE$ and $\LI$; use $\Gsel_e\wedge \Glin$ for $\LJ$ and $\LU$. Their larger coordinate is $\Fin(e)$ and their finite-dimensional coordinate is identically zero. Each such entry is therefore $\Sigma^0_2$-hard.
+
+For the four rightward entries of the $\LC$ row, use $\Gclk_e\vee \Gthree$ when $\mathbf X=\LE,\LI$, and $\Gsel_e\vee \Gthree$ when $\mathbf X=\LJ,\LU$. The commuting coordinate is always one and the $\mathbf X$ coordinate is exactly $\Fin(e)$, giving $\Pi^0_2$-hardness. These instances all have $\omega_q=1$, since choosing branch $\Gthree$ approximates perfection in finite dimension. For $\LC\setminus\Lq$, take a $\Sigma^0_1$-complete finite-perfection reduction $G^{\rm MIP}_e$ with $G^{\rm MIP}_e\in\Lq\iff e$ halts, available by perfect completeness in \cite[Theorem 12.6]{MIPRE} and finite-dimensional feasibility. Then $G^{\rm MIP}_e\vee G^{(2)}_{\Cat}$ is always commuting perfect, has $\omega_q=1$ because $G^{(2)}_{\Cat}$ is spatial perfect, and is in $\Lq$ exactly when $e$ halts. Nonhalting reduces to the difference, proving $\Pi^0_1$-hardness even under the promise.
+
+For the two remaining complete nested differences use a shared family. In general suppose $\mathbf Y\subset\mathbf X$ and a computable family $\mathcal F_e$ has both coordinates equal to $\Fin(e)$. Fix $\Gsep\in\mathbf X\setminus\mathbf Y$. For
+\begin{equation}\label{eq:sharedcriterion}
+ \mathcal D(e,f)=\mathcal F_e\wedge(\Gsep\vee \mathcal F_f)
+\end{equation}
+the $\mathbf X$ coordinate is $\Fin(e)$ and the $\mathbf Y$ coordinate is $\Fin(e)\wedge \Fin(f)$. The difference coordinate is therefore $\Fin(e)\wedge\neg \Fin(f)$, proving $D_2$-hardness. Apply this first with $(\mathbf X,\mathbf Y)=(\LI,\LE)$, $\mathcal F_e=\Gclk_e$ and $\Gsep=G^{(2)}_{\Cat}$, using \eqref{eq:sharedE}. Apply it again with $(\mathbf X,\mathbf Y)=(\LU,\LJ)$, $\mathcal F_e=\Gsel_e$ and $\Gsep=\Gsh$, using \eqref{eq:sharedJ}. Thus INF-ENTROPY-ONLY, defined as $\LI\setminus\LE$, and $\LU\setminus\LJ$ are $D_2(\Sigma^0_2)$-complete. The required YES witness has finite entropy by Theorem~\ref{thm:reduction}.
+
+For $\LU\setminus\LI$, $\LU\setminus\LE$, and the stronger language
+$\LU\setminus(\LI\cup\LJ)$, take the shared family $F_e$ of
+Theorem~\ref{thm:sharedfamily} for FIN and fix $H=\Glin\in\LJ\setminus\LI$.
+Set $\Lambda(e,f)=F_e\wedge(H\vee F_f)$. Its coordinates are
+\[
+ \LU(\Lambda)=\Fin(e),\quad
+ \LI(\Lambda)=\LE(\Lambda)=\Fin(e)\wedge\Fin(f),\quad
+ \LJ(\Lambda)=0.
+\]
+Each difference therefore has predicate $\Fin(e)\wedge\neg\Fin(f)$.
+All three are in $D_2(\Sigma^0_2)$, completing the table and proving
+the additional simultaneous exclusion. Replace each $F_e$ by
+$F_e\vee\Gthree$ to obtain commuting perfection and $\omega_q=1$
+on every input, with the same four lower coordinates. The two
+conjuncts then both have value one.
+\end{proof}
+
+\begin{corollary}\label{cor:entropyonly}
+The language of games with perfect spatial play but no finite-entropy perfect spatial strategy is $D_2(\Sigma^0_2)$-complete. In particular it belongs to neither $\Sigma^0_2$ nor $\Pi^0_2$.
+\end{corollary}
+\begin{proof}
+The identification is $\LI\setminus\LE$ in the theorem. A $D_2$-complete language is hard for both $\Sigma^0_2$ and $\Pi^0_2$ by fixing one of the canonical FIN indices to a YES or NO index. Membership in either pointclass would collapse these two pointclasses, contradicting strictness of the arithmetical hierarchy.
+\end{proof}
+The corollary concerns exact attainment; it asserts no rate at which entropy must diverge for near-optimal strategies.
+
+For differences between middle models, value-one padding can be made explicit. Replacing $G$ by $G\vee \Gthree$ preserves all lower coordinates and sets the commuting coordinate to one, while forcing $\omega_q=1$. To remove finite-dimensional perfect play as well, use $G\wedge(\Gsh\vee \Glin)$; the second factor has all five infinite-model coordinates equal to one and its $\Lq$ coordinate zero. In particular \eqref{eq:sharedcriterion} for INF-ENTROPY-ONLY already has no finite-dimensional perfect instance; adding $\Gthree$ also makes every instance value one. The $\LC$-row hardness families above already have value one, including the separate $\LC\setminus\Lq$ construction.
+
+
+\begin{corollary}[A natural uniqueness problem]\label{cor:onecomponent}
+Deciding whether a graph on $\mathbb N$ with primitive recursive
+adjacency has exactly one finite connected component is
+$D_2(\Sigma^0_2)$-complete, and hence computably many-one equivalent
+to II-ONLY, $\LU\setminus\LI$.
+\end{corollary}
+\begin{proof}
+For fixed $j$, at least $j$ finite components is $\Sigma^0_2$:
+existentially specify $j$ disjoint nonempty finite connected sets and
+universally prohibit an edge leaving any one. Exactly one is at least
+one minus at least two.
+
+For hardness, from c.e. sets $W_a,W_b$ construct three stars with centres
+$0,1,2$. At stage $s$ add vertices $3s+3,3s+4,3s+5$. Attach the first
+to centre zero if $W_a$ gains a new distinct element, otherwise to two.
+Attach the second to centre one if either set gains a new element,
+otherwise to two. Always attach the third to two. Bounded enumeration
+simulation makes adjacency primitive recursive. The three components
+are finite precisely under the respective conditions
+$W_a$ finite, both $W_a,W_b$ finite, and never. Thus exactly one is
+finite precisely when $a\in\mathrm{FIN}$ and $b\notin\mathrm{FIN}$.
+The natural statement still has a difference in its logical form.
+\end{proof}

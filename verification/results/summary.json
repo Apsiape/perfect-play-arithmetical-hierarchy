@@ -1,0 +1,109 @@
+{
+  "passed": true,
+  "python": "3.13.12",
+  "platform": "Windows",
+  "checks": [
+    {
+      "check": "spatial-good-root",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 5.7
+    },
+    {
+      "check": "spatial-tree-clock",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 58.7
+    },
+    {
+      "check": "spatial-exact-audit",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 6.1
+    },
+    {
+      "check": "spatial-minimal-compile",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 3.1
+    },
+    {
+      "check": "spatial-minimal-structural",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 1.3
+    },
+    {
+      "check": "spatial-compare-exact_results.json",
+      "passed": true,
+      "detail": "fresh result equals the shipped result, ignoring telemetry"
+    },
+    {
+      "check": "spatial-compare-minimal_results.json",
+      "passed": true,
+      "detail": "fresh result equals the shipped result, ignoring telemetry"
+    },
+    {
+      "check": "spatial-compare-minimal_structural_results.json",
+      "passed": true,
+      "detail": "fresh result equals the shipped result, ignoring telemetry"
+    },
+    {
+      "check": "spatial-toy-table",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.4
+    },
+    {
+      "check": "spatial-toy-table-matches-paper",
+      "passed": true,
+      "detail": "generated tableau equals paper table apart from the column specification"
+    },
+    {
+      "check": "types-check-type-ladder",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 1.6
+    },
+    {
+      "check": "zero-error-run-all",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 6.1
+    }
+  ],
+  "suite_files_sha256": {
+    "spatial/compiler/adapted_build_game.py": "5ba3760249cee72738d957d3508e26af7ab557d167f25bf06cadb5c9ccae2df3",
+    "spatial/compiler/adapted_check_game.py": "c82733818ad5430f0a7528140b93decfeccdb20cc390973995c842c0588efc4d",
+    "spatial/compiler/exact_audit.py": "5e427a182935c96a0f9b0d937e8ba111160b9e7b543fa80d68f82b0471cc388b",
+    "spatial/compiler/exact_results.json": "8c4dc6486e97c8aa1287bf8d231c18746c6c60445a693a4989cfac27f92ff5ba",
+    "spatial/compiler/minimal_compile.py": "73e4d438e6a069d7b8129c45a63e27e1f63b83a600d7771e08abe2390abca379",
+    "spatial/compiler/minimal_game.zip": "24d60afd70824b0869baa5e2d561eaf4844a9d287278a63e472486cf571636e0",
+    "spatial/compiler/minimal_input.zip": "e90fee1850cdfbb7076a537de34ca87fa3e341703b88afdf27407e9ed32d8e34",
+    "spatial/compiler/minimal_results.json": "d9a33e4db249fced1fc464c90fc98a65ad2fa704f71586bb5cd8c45365775120",
+    "spatial/compiler/minimal_structural.py": "7fa351969942249b561c40581f9142f90d082d4042f4e63b5abfb556c45128e3",
+    "spatial/compiler/minimal_structural_results.json": "71f05fc9b93c96e480486fda2e553e10f816e2c105c707a62e3da5f24491a3eb",
+    "spatial/compiler/toolkit/build_game.py": "4b857b07ffe8a9c3af5aee73b7d5615ac94a30646b69c9c6dc39d9845702adb4",
+    "spatial/compiler/toolkit/check_game.py": "4d4abecfe78a5dcd17d8934de4db37543b2add7fec0ca16ac27da95a809b7db8",
+    "spatial/review/check_good_root.py": "088fe47ceb10625c42d1baefefc6df679f0424fa1be2cdbe5dd544b2b4014148",
+    "spatial/review/check_tree_clock.py": "01616866de52337aa1e0bb04659f506e70698e0f2cb7986ece6f497e80829bc0",
+    "spatial/review/generate_toy.py": "9753fbe6ae8271217cc41a05375bba20dcb699400eae69bc8b645171b2e658a0",
+    "types/certify_rotation.py": "d957205196dcab88a3e39d6492016779881217a93270b99b812741f9b1b2602b",
+    "types/check_type_ladder.py": "5f8f063cf240dea418f3823ca8e1c2e491ae23e36d4197ab7dbe22eaa1dd4619",
+    "types/difference_profiles.py": "2f739f37b72ba5e2df1067bf09677869836ec003b80ccdb4235d30ca7fabfd94",
+    "types/verify_margin_failure.py": "98fa268587446f343d8b5aeaf273cfc662cbc9d972109fc856ffe3d269f9a6ef",
+    "zero-error/exact_constants.py": "2eea885cb23899d125d313ce9044016f263e96d2fa4fd232b194523cc3a939dc",
+    "zero-error/fock_catalan_numbers.py": "09873b8c7d3ec6a30125b261b37b300615e679107d5201650e65db6362e41fd8",
+    "zero-error/l2_pitfall.py": "2e307a77d67cd1ccd92531caf906c1a324db728a9b827c2af2ebefc6283ed86d",
+    "zero-error/requirements.txt": "3dfd5059350f337919079d994f5338e7977eaff025d1681edb28179f1f96fdfa",
+    "zero-error/run_all.py": "a4ff3c6e9372e6deed8ea500e77388a1e0edde0b9de9f2d89d9189ba34310f8f",
+    "zero-error/thm1_fms.py": "56e27aeeb58ad43554b89b3fc9790883e150a2bdf8600562536d0ac774a65ef8",
+    "spatial/run_structural_checks.py": "75ae4cd81820ba042fe7af29bc0271f3565fa732e00f33efd957c7d3ae9b4f4a"
+  },
+  "dependencies": {
+    "numpy": "2.4.3",
+    "networkx": "3.6.1",
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0"
+  }
+}

@@ -1,0 +1,309 @@
+\section{A uniform family and programmable critical indices}\label{sec:programmable}
+The construction separates the spectrum from the computation that verifies it. Two commuting one-sided shifts first force quarter-plane coordinates and a geometric density. A finite clock and a deterministic tableau then read an integer witness. For programmable critical indices, a comb supplies the desired spectral threshold while an independent quarter-plane register verifies its branching rule. The nested compiler translates the quadratic shift relations into finite game tests.
+
+\subsection{The quarter-plane register and its finite presentation}
+Use two modular contractions $S,T$ and impose
+\begin{equation}
+ S^*S=T^*T=I,\quad ST=TS,\quad S^*T=TS^*.
+                                                               \label{eq:nested-A1}
+\end{equation}
+Name projections $P_x,P_t$ with $SS^*=I-P_x$, $TT^*=I-P_t$.
+Name positive contraction counters $C_x,C_t$ and impose their
+commutation, $C_xP_x=P_x$, $C_tP_t=P_t$, and
+\begin{equation}
+ C_xS=\tfrac12SC_x,\ C_xT=TC_x,\quad
+ C_tS=SC_t,\ C_tT=\tfrac12TC_t.                               \label{eq:nested-A2}
+\end{equation}
+All clock and computation labels commute with both counters.
+For the clock use centralizer unitaries $Z,J,K,W$ with
+\[
+ JK=ZKJ,\ [Z,J]=[Z,K]=0,
+\]
+$Z,J,K$ constant along both shifts, and
+\[
+ WS=SZW,\ WT=TW,\ WP_x=P_x.
+\]
+For a projection $E_{\rm ret}$ and a contraction $R_{\rm ret}$ use
+\begin{equation}
+ (W-I)E_{\rm ret}=0,\qquad
+ R_{\rm ret}(W-I)=\tfrac12C_x(I-E_{\rm ret}).                 \label{eq:nested-A3}
+\end{equation}
+Every row is either centralizer polynomial, degree-one endpoint, or one of the quadratic rows of the translation table in Appendix~\ref{nested:sec:nested}. In particular the mixed row $S^*T=TS^*$ of \eqref{eq:nested-A1} is submitted as $a_S'^*a_T'=ta_Ta_S^*t^*$, in the notation of that appendix; no modular transport is synchronized.
+
+To specify a verifier, supply a finite radius-one deterministic
+one-sided cellular automaton, with alphabet $\mathcal A$, interior
+rule $F:\mathcal A^3\to\mathcal A$, and left-boundary rule
+$G:\mathcal A^2\to\mathcal A$. For every $d$ name four projection
+families $P_d,L_d,R_d,N_d$, each summing to identity and commuting
+with $C_x,C_t$. Their shift equations are
+\begin{equation}
+ L_dS=SP_d,\qquad P_dS=SR_d,\qquad P_dT=TN_d.                 \label{eq:nested-A4}
+\end{equation}
+Thus $L_d(x,t)=P_d(x-1,t)$ for $x>0$, $R_d(x,t)=P_d(x+1,t)$,
+and $N_d(x,t)=P_d(x,t+1)$. The unused $L_d(0,t)$ is arbitrary.
+Submit the exact finite update polynomials
+\begin{equation}
+ N_d=(I-P_x)\sum_{F(a,b,c)=d}L_aP_bR_c
+              +P_x\sum_{G(b,c)=d}P_bR_c.                   \label{eq:nested-A5}
+\end{equation}
+Specify every initial track on $P_t$: the return marker from
+$E_{\rm ret}$, the head from $P_x$, and the blank work tracks. If
+$\iota$ maps these finitely many input bits to an alphabet symbol,
+the initial row for $d$ is $P_tP_d=P_t\sum_{\iota(b)=d}\prod_jQ_j^{b_j}$,
+where $Q_j^1=Q_j$, $Q_j^0=I-Q_j$. The input projections commute:
+they are scalar coordinate markers in the normal representation
+proved next. Equivalently one may add their finite commutator rows.
+For each rejecting symbol impose $P_d=0$.
+Equations \eqref{eq:nested-A4} have modular degree one; \eqref{eq:nested-A5} has modular degree zero,
+regardless of its centralizer polynomial degree. This is the precise
+admissibility distinction needed for the tableau.
+
+Use the Fibonacci convention $F_1=F_2=1$, $F_{k+2}=F_{k+1}+F_k$. For a total computable predicate $R(e,n,s)$, a finite machine first
+scans for the first positive return marker, verifies that its period
+is $F_{n+3}$, decodes $n$, and searches for $s$ with $\neg R(e,n,s)$.
+Its ordinary finite transition table gives such a cellular automaton:
+a symbol records a tape letter and optionally a head with its control
+state. A head writes its new letter, and its indicated neighbor receives
+the new head at the next step; a boundary rule handles the missing
+left neighbor. Invalid head collisions can be assigned a rejecting
+symbol. Multiple tapes can be interleaved with finitely many tracks
+and finite control, with extra time steps as needed. Only the unique
+initialized one-head computation is used by the soundness induction.
+This construction is effective in a supplied program for $R$ and in $e$.
+Concrete word and row counts depend on that table. Appendix~\ref{sec:nestedchecks} supplies explicit validation programs; the reduction family is parametric.
+
+\subsection{Normal classification, the clock, and all positive moments}
+Cyclicity gives $\Tr(h_0S^kS^{*k})=2^{-k}$ and the same for $T$.
+Hence normality removes both unitary Wold parts. Double commutation
+makes the two wandering decompositions compatible and gives
+\begin{equation}
+ \HH_0=\ell^2(\mathbb N^2)\otimes\KK,\quad
+ h_0=\rhoreg\otimes\rhoreg\otimes\rho_{\rm spec},\quad
+ \rhoreg=\sum_{x\ge0}2^{-x-1}|x\rangle\langle x|.                \label{eq:nested-A6}
+\end{equation}
+Indeed the mutually orthogonal spaces $S^xT^tP_xP_t\HH_0$ exhaust the
+support; their density blocks are $2^{-x-t}$ times the joint root block.
+Normalization makes that block $\rho_{\rm spec}/4$. Equation \eqref{eq:nested-A2} then forces
+$C_x=2^{-x}$ and $C_t=2^{-t}$, by induction from each boundary.
+Commutation with these counters prevents labels from mixing coordinates
+of equal total density weight.
+
+The constant $Z,J,K$ act on $\KK$ and commute with the compact
+$\rho_{\rm spec}$. Pick a positive finite-dimensional $\rho_{\rm spec}$ eigenspace and
+then a nonzero $Z=zI$ subspace. It is invariant under $J,K$, and
+determinants in $JK=zKJ$ give $z^d=1$. Let its finite order be ${d_{\rm clk}}$.
+The equations for $W$ force $W(x,t)=Z^x$. Equation \eqref{eq:nested-A3} forces
+$E_{\rm ret}(x,t)=I$ exactly when ${d_{\rm clk}}$ divides $x$ on this sector:
+its range lies in $\ker(W-I)$; on that kernel the second equation
+and $C_x>0$ force it to be identity. On each chosen clock sector the initialized tableau labels
+are scalars. Equations \eqref{eq:nested-A4}--\eqref{eq:nested-A5} force each next row to be the unique
+classical successor; the induction also proves invariance of the
+sector for those projections. Thus rejecting symbols cannot be absent
+unless $\forall s\,R(e,n,s)$ for the decoded integer.
+
+Conversely a true witness uses ${d_{\rm clk}}=F_{n+3}$, $a=F_{n+2}$,
+$z=\exp(2\pi ia/{d_{\rm clk}})$, $Z=zI_{d_{\rm clk}}$, and Weyl matrices on $\mathbb C^{d_{\rm clk}}$.
+With $\rho_{\rm spec}=I_{d_{\rm clk}}/{d_{\rm clk}}$ the honest initialized tableau is diagonal and
+all the relations hold. Before the finite compiler factors,
+\begin{equation}
+ \Tr(h_0^\alpha)=4^{-\alpha}{d_{\rm clk}}^{1-\alpha}(1-2^{-\alpha})^{-2}
+ \quad(\alpha>0),\qquad S(h_0)=4+\log_2{d_{\rm clk}}.                    \label{eq:nested-A7}
+\end{equation}
+This is one common witness for all positive moments.
+
+\paragraph{A bounded reader at every nonreturn.}
+Put $\theta=(\sqrt5-1)/2$. If $a$ is a nearest integer to $x\theta$,
+then $\delta=x\theta-a$ has nonzero integer norm
+$\delta(x\theta'-a)$, where $\theta'=-(1+\sqrt5)/2$.
+The second factor has magnitude at most $\sqrt5x+1/2<3x$, giving
+$\|x\theta\|>1/(3x)$. Also
+$F_k\theta-F_{k-1}=(-1)^{k-1}\theta^k$ and $F_k\theta^k<1$,
+so the Fibonacci approximation error is less than $F_k^{-2}$.
+These elementary bounds
+give, when
+$x\le {d_{\rm clk}}/3$,
+\[
+ \|xa/{d_{\rm clk}}\|>1/(3x)-x/{d_{\rm clk}}^2\ge2/(9x).
+\]
+For every nonreturn $x\ge2{d_{\rm clk}}/9$, the coprime residue bound gives
+$\|xa/{d_{\rm clk}}\|\ge1/{d_{\rm clk}}\ge2/(9x)$. These ranges overlap and cover every
+positive nonreturn, including $x>{d_{\rm clk}}$. Concavity of sine on
+$[0,\pi/2]$ gives $|z^x-1|\ge4\|xa/{d_{\rm clk}}\|\ge8/(9x)$.
+Consequently the canonical reader
+\[
+ R_{\rm ret}(x)=\begin{cases}2^{-x-1}/(z^x-1),&{d_{\rm clk}}\nmid x,\\0,&{d_{\rm clk}}\mid x\end{cases}
+\]
+has norm at most $\sup_{x\ge1}9x/2^{x+4}=9/32$. Returns, including
+$x=0$, are checked separately and give zero on both sides of \eqref{eq:nested-A3}.
+
+\paragraph{Value one.}
+For any $e$, take arbitrarily large Fibonacci periods and the genuine
+computation even if it eventually rejects. All equations except the
+forbidden-reject row remain exact. The first scan prevents rejection
+before time ${d_{\rm clk}}$. Its root probability is at most
+$\sum_{t\ge {d_{\rm clk}}}2^{-t-1}=2^{-{d_{\rm clk}}}$, so \eqref{eq:nested-N11} gives
+\emph{loss at most $C_{\rm nest}2^{-{d_{\rm clk}}}$}; the constant contains the compilation factors of the row tests. Since $C_{\mathrm{q}}$ and $C_{\mathrm{qs}}$ have the same closure (Section~\ref{sec:prelim}), the finite-dimensional value is one. Finite-dimensional perfection is impossible: $S^*S=I$
+would make $S$ unitary, whereas $h_0S=S h_0/2$ and trace cyclicity
+would give $1=1/2$.
+
+\subsection{The comb and the independent checker}
+The spectral threshold will come from the number of branches attached
+at each spine position. A separate geometric register verifies the
+branching guard. Keeping its computation time in that separate factor
+allows arbitrarily slow total programs without changing the programmed
+critical index. First normality establishes coordinates; only then does
+the deterministic verifier force the guard on each coordinate fibre.
+
+Let $Q,P,{E_{\rm guard}}$ be centralizer projections, $P\le Q$, and let $\Csp,L$ be
+commuting positive contractions, commuting with $Q,P$. Use modular
+contractions ${V_{\rm sp}},B_0,B_1$ with
+\begin{align*}
+ {V_{\rm sp}}^*{V_{\rm sp}}&=Q,& {V_{\rm sp}}{V_{\rm sp}}^*&=Q-P,\\
+ B_i^*B_j&=\delta_{ij}{E_{\rm guard}},& B_0B_0^*+B_1B_1^*&=I-Q,\\
+ \Csp P&=P/2,& \Csp{V_{\rm sp}}&={V_{\rm sp}}\Csp/2,\\
+ \Csp B_i&=B_i\Csp,& LQ&=Q,\qquad LB_i=B_iL/2.
+\end{align*}
+All modular symbols have ratio $1/2$. These are inner-product, range,
+and endpoint rows of the translation table. In particular a range sum
+is compiled as a sum $ta_ia_i^*t^*$, together with the transported
+range projection. No $XX^*$ is submitted as a root centralizer label
+without its defining translated row.
+
+Add an independent quarter-plane pair $S,T$ satisfying \eqref{eq:nested-A1}--\eqref{eq:nested-A2}.
+For every comb modular symbol $X\in\{{V_{\rm sp}},B_0,B_1\}$ impose both
+$XS=SX$, $X^*S=SX^*$ and the corresponding equations with $T$.
+For $Q,P,\Csp,L$ impose shift commutation by endpoint rows. These
+relations give the tensor decomposition \eqref{eq:nested-A6} with the entire comb
+algebra acting on its multiplicity space. The checker has its own
+$C_x,C_t,P_x,P_t$ and a separate computation time.
+
+\paragraph{The guard preserves the coordinate fibres.}
+Since ${E_{\rm guard}}=B_0^*B_0$, the counter relations and their adjoints give
+\begin{equation}
+ {E_{\rm guard}}\Csp=B_0^*\Csp B_0=\Csp{E_{\rm guard}},\qquad
+ {E_{\rm guard}}L=2B_0^*LB_0=L{E_{\rm guard}}.                                           \label{eq:nested-A8}
+\end{equation}
+Ordinary and double commutation with checker shifts similarly give
+commutation of ${E_{\rm guard}}$ with those shifts and adjoints. Adding these
+redundant commutator rows is harmless and is done in the generated
+validation instance.
+
+The four orthogonal projections $P,{V_{\rm sp}}{V_{\rm sp}}^*,B_0B_0^*,B_1B_1^*$ sum to
+identity. Starting from an $h$ eigenvector of eigenvalue $p>0$, each
+nonzero pullback through ${V_{\rm sp}}^*,B_i^*$ doubles its eigenvalue. After
+finitely many steps it would exceed $\|h\|$ and must vanish.
+Thus descendants of root vectors span the support. Since ${V_{\rm sp}}B_i=0$,
+surviving words have form $B_w{V_{\rm sp}}^{m-1}P$, with $m\ge1$.
+The counter relations force $\Csp=2^{-m}$ and $L=2^{-|w|}$ on their
+ranges. Their span is dense, so the joint dyadic eigenspaces
+$\HH_{m,\ell}$ exhaust the support.
+Equation \eqref{eq:nested-A8} shows ${E_{\rm guard}}$ preserves each such eigenspace.
+
+Name equality projections $E_{\Csp},E_L$ and contraction readers $F_{\Csp},F_L$.
+Impose
+\begin{equation}
+ (\Csp-C_x)E_{\Csp}=0,\quad
+ F_{\Csp}(\Csp-C_x)=\tfrac12\Csp C_x(I-E_{\Csp}),                              \label{eq:nested-A9}
+\end{equation}
+and the analogous rows for $L$. For two unequal dyadic values
+$u,v\in(0,1]$, $|uv/[2(u-v)]|\le1$: the larger is at least twice
+the smaller. On equal fibers the second equation forces the equality
+projection to be identity; on unequal fibers the first forces it to
+be zero. The canonical reader is $uv/[2(u-v)]$, with value zero at
+equality. Thus the initial checker tracks mark exactly $x=m$ and
+$x=\ell$, and receive the bit ${E_{\rm guard}}$. Require every checker label to
+commute with $\Csp,L,{E_{\rm guard}},C_x,C_t$, and initialize all tracks and the head.
+Its total program computes $k_m$ and rejects exactly when the bit
+is different from $\mathbf1_{\{\ell<k_m\}}$. Apply the same finite
+\eqref{eq:nested-A4}--\eqref{eq:nested-A5} presentation and forbid rejection.
+
+On a joint $(m,\ell,{E_{\rm guard}})$ fiber the initial symbols are scalars. The
+deterministic tableau induction therefore forces the actual finite
+computation of this total program. A wrong guard fiber would produce
+a nonzero rejecting projection, contradicting faithfulness and the
+forbidden row. Hence
+\begin{equation}
+             {E_{\rm guard}}|_{\HH_{m,\ell}}=\mathbf1_{\{\ell<k_m\}}I.       \label{eq:nested-A10}
+\end{equation}
+Now, and only now, legal word maps are isometries on the root with
+mutually orthogonal ranges. They exhaust the support by the previous
+pullback argument, and yield
+\begin{equation}
+ \begin{gathered}h_{\rm comb}\cong\rhocomb\otimes\rho_{\rm spec},\\
+ \rhocomb=\Zcomb^{-1}\sum_{m\ge1,\ |w|\le k_m}
+       2^{-(m+|w|)}|m,w\rangle\langle m,w|,\\
+ \Zcomb=\sum_{m\ge1}(k_m+1)2^{-m}.\end{gathered}                                \label{eq:nested-A11}
+\end{equation}
+The complete checker adds $\rhoreg\otimes\rhoreg$, independently of how
+long the program takes to verify a particular fiber.
+
+\subsection{Programming and classifying the minimum index}
+For a computable rational sequence $a_m$ with $\limsup a_m=r\in[0,1]$,
+put
+\[
+ u_m=\min\!\left(\max(a_m,0),\frac{m}{m+1}\right),\qquad
+ k_m=\left\lfloor\frac{mu_m}{1-u_m}\right\rfloor.
+\]
+Then $0\le k_m\le m^2$,
+and rounding changes $k_m/(m+k_m)$ from $u_m$ by less than $1/m$.
+Thus its limsup is $r$, and $1\le \Zcomb\le7$.
+For $0<\alpha<1$ the moment of \eqref{eq:nested-A11} converges precisely when
+\[
+              \sum_m2^{(1-\alpha)k_m-\alpha m}<\infty.
+\]
+The exponent equals $(k_m/(m+k_m)-\alpha)(m+k_m)$.
+If $\alpha>r$ the tail decays geometrically; if $\alpha<r$ a
+subsequence of terms grows. Therefore $\alpha_c(\rhocomb)=r$,
+without a claim about convergence at the endpoint $\alpha=r$.
+The entropy is bounded by
+\[
+ \log_2 7+\sum_{m\ge1}2^{-m}
+ \left[(m^2+1)m+\frac{m^2(m^2+1)}2\right]
+                         =106+\log_2 7.
+\]
+Every realization contains the comb factor, so extra multiplicity
+cannot lower its critical index. Root multiplicity one gives the
+canonical witness attaining minimum index $r$, with finite entropy.
+
+For necessity, restrict the moment order to rational $0<{\beta}<1$.
+For sorted Schmidt probabilities with $\sum_i p_i^{\beta}\le K$, use the tail bound \eqref{eq:momenttail} with $\alpha=\beta$ and $D=d_{\rm cut}$.
+Choose computable rational upper bounds $\tailbd_{d_{\rm cut}}$ for this tail,
+tending to zero, and rational $\epsilon_{d_{\rm cut}}\ge4\sqrt{\tailbd_{d_{\rm cut}}}$,
+also tending to zero. For fixed $G,{\beta},K,{d_{\rm cut}}$ let
+$\mathcal R(G,{\beta},K,{d_{\rm cut}})$ say there exist two local ${d_{\rm cut}}$-dimensional
+POVM assignments and a subnormalized Schmidt vector with ordered
+probabilities $p_1,\ldots,p_{d_{\rm cut}}$ such that
+\[
+ 1-\tailbd_{d_{\rm cut}}\le\sum_{i\le {d_{\rm cut}}}p_i\le1,\qquad
+ \sum_{i\le {d_{\rm cut}}}p_i^{\beta}\le K,
+ \qquad \Pr(\mathrm{reject})\le\epsilon_{d_{\rm cut}}.
+\]
+When $\tailbd_{d_{\rm cut}}\ge1$ take this stage to be true. At the other stages
+this is a decidable semialgebraic feasibility predicate: rational
+powers are encoded by nonnegative root variables, and POVM
+positivity by principal minors. A perfect witness compresses to
+these assignments; its truncated vector differs in norm by at most
+$\sqrt{\tailbd_{d_{\rm cut}}}$, giving the displayed slack. Conversely the uniform
+tail bound makes these ordered vectors compact in $\ell^2$.
+A diagonal subsequence of the bounded POVM matrix entries gives
+positive limiting POVMs with the same finite outcome sums. Finite
+coordinate tests followed by the uniform vector tail pass their
+tensor probabilities to the limit. The limiting vector has norm
+one, zero rejection and ${\beta}$-moment at most $K$ by Fatou's lemma.
+Consequently the quantifiers are explicitly
+\[
+ G\in\mathcal P_\beta
+ \quad\Longleftrightarrow\quad
+ \exists K\in\mathbb N_{\ge1}\ \forall {d_{\rm cut}}\in\mathbb N_{\ge1}\
+                         \mathcal R(G,{\beta},K,{d_{\rm cut}}).
+\]
+For rational $0<a\le1$, $c(G)<a$ is equivalent to this condition for
+some rational $0<{\beta}<a$, when $c(G)$ denotes the infimum of
+critical indices of perfect witnesses and is finite in $[0,1]$.
+Cuts above $1$ are automatic on this domain.
+The rational order and integer budget can be paired in one
+existential integer, leaving the same $\exists K\,\forall {d_{\rm cut}}$ form.
+Consequently the strict upper cut is c.e. in $0'$. Together with the
+characterization of Becher, Bugeaud and Slaman \cite[Lemma~4]{BBS} by limsups of computable rationals, this gives exactly the right-c.e.-in-$0'$ indices in
+$[0,1]$. The input program computes $k_m$, and contains no oracle.
+

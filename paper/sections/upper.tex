@@ -1,0 +1,453 @@
+\section{Upper bounds: one existential quantifier}\label{sec:upper}
+Each tracial language in this paper is a union over one integer of $\Pi^0_1$ sets. For spatial play the integer bounds the inverse of the largest Schmidt probability; for semifinite play it bounds the inverse overlap of the state with a finite tracial corner. We first treat the spatial case and prove the following theorem.
+
+\Needspace{5\baselineskip}
+\begin{theorem}[Schmidt strata]\label{thm:strata}
+Uniformly for integers $\kappa\geq1$, the existence of a perfect pure spatial strategy with largest Schmidt probability at least $1/\kappa$ is a $\Pi^0_1$ property. Their union is $\perf_{\qs}\in\Sigma^0_2$. No total computable function $\kappa(G)$ bounds a sufficient stratum for every spatially perfect game. If $\omega_q(G)=1$ and no perfect spatial strategy exists, the largest Schmidt probability tends to zero along every sequence of pure spatial strategies whose winning probabilities tend to one.
+\end{theorem}
+
+\subsection{Normalize one Schmidt coefficient}
+For a pure strategy write $\psi=\sum_i s_i|i,i\rangle$ with $s_1\geq s_2\geq\cdots$ and $\sum_i s_i^2=1$. Set $d_i=s_i/s_1$ and $D_{\rm Sch}=\operatorname{diag}(d_i)$. For some integer $\kappa$,
+\begin{equation}\label{eq:DK}
+ d_1=1,\qquad d_i\downarrow0,\qquad \Tr D_{\rm Sch}^2\leq \kappa.
+\end{equation}
+For positive effects $E,F$, vectorization gives
+\[
+ p(E,F)=\frac{\|\sqrt E\,D_{\rm Sch}\sqrt{F^{\mathsf T}}\|_{\rm HS}^2}{\Tr D_{\rm Sch}^2},
+ \qquad p(E,F)=0\ \Longleftrightarrow\ ED_{\rm Sch}F^{\mathsf T}=0.
+\]
+To prove the reverse implication, $ED_{\rm Sch}F^{\mathsf T}=0$ sends $D_{\rm Sch}\ran F^{\mathsf T}$ into $\ker E$. The closures of the ranges of $F^{\mathsf T}$ and $\sqrt{F^{\mathsf T}}$ agree, and $\ker E=\ker\sqrt E$. Continuity gives the square-root sandwich identity. The forward implication follows by multiplying the zero square-root sandwich by the square roots.
+
+Let $P_{d_{\rm cut}}$ be the first ${d_{\rm cut}}$ coordinate projection. Monotonicity in \eqref{eq:DK} gives
+\begin{equation}\label{eq:tail}
+ \|D_{\rm Sch}-P_{d_{\rm cut}}D_{\rm Sch}P_{d_{\rm cut}}\|=d_{{d_{\rm cut}}+1}\leq\sqrt{\kappa/({d_{\rm cut}}+1)}.
+\end{equation}
+Consequently the family in \eqref{eq:DK} is compact in operator norm: take coordinatewise limits and use this common tail estimate; Fatou preserves the squared-sum bound. Finite families of POVMs on $\ell^2$ are compact in the weak operator topology. Positivity and the finite sum-to-identity relations survive these limits.
+
+\begin{lemma}[Compact sandwiches]\label{lem:sandwich}
+If $D_{{\rm Sch},j}\to D_{\rm Sch}$ in norm with compact $D_{\rm Sch}$, and uniformly bounded $E_j,F_j$ converge weakly to $E,F$, then $E_jD_{{\rm Sch},j}F_j$ converges weakly to $ED_{\rm Sch}F$.
+\end{lemma}
+\begin{proof}
+For fixed $v$, compactness makes $D_{\rm Sch}F_jv\to D_{\rm Sch}Fv$ in norm. Pair this with the weakly convergent vectors $E_j^*u$. The replacement of $D_{\rm Sch}$ by $D_{{\rm Sch},j}$ has norm error tending to zero.
+\end{proof}
+
+\subsection{An effective finite predicate}
+Let $\mathcal L_G$ be the losing tuples with $\pi(x,y)>0$. Define $F_\qs(G,\kappa,{d_{\rm cut}})$ by the existence of ${d_{\rm cut}}$-dimensional POVMs and real numbers $1=d_1\geq\cdots\geq d_{d_{\rm cut}}\geq0$, $\sum_i d_i^2\leq \kappa$, such that
+\begin{equation}\label{eq:stage}
+ |(E_{a|x}D_{{\rm Sch},{d_{\rm cut}}}F_{b|y}^{\mathsf T})_{ij}|^2\leq \kappa/({d_{\rm cut}}+1)
+ \quad((x,y,a,b)\in\mathcal L_G;\ i,j\leq {d_{\rm cut}}).
+\end{equation}
+This is semialgebraic over the rationals. Splitting complex entries into real and imaginary parts and using principal minors for positivity makes real quantifier elimination a decision procedure \cite{BPR}.
+
+A perfect strategy with $s_1^2\geq1/\kappa$ supplies all these witnesses. Compress its POVMs. Since $P_{d_{\rm cut}}$ commutes with $D_{\rm Sch}$ and $ED_{\rm Sch}F^{\mathsf T}=0$, the finite sandwich is $-P_{d_{\rm cut}}E(D_{\rm Sch}-D_{{\rm Sch},{d_{\rm cut}}})F^{\mathsf T}P_{d_{\rm cut}}$, with norm bounded by \eqref{eq:tail}.
+
+Conversely choose a witness for every ${d_{\rm cut}}$. Extend $D_{{\rm Sch},{d_{\rm cut}}}$ by zero and each POVM by a fixed deterministic POVM on the complement. Pass to a subsequence with $D_{{\rm Sch},{d_{\rm cut}}}\to D_{\rm Sch}$ in norm and all effects weakly convergent. For every fixed matrix entry, \eqref{eq:stage} and Lemma~\ref{lem:sandwich} give $ED_{\rm Sch}F^{\mathsf T}=0$. We retain
+\[
+ 1\leq\Tr D_{\rm Sch}^2\leq \kappa,\qquad d_1=1.
+\]
+The normalized vectorization of $D_{\rm Sch}$ is a perfect normal strategy with largest Schmidt probability $1/\Tr D_{\rm Sch}^2\geq1/\kappa$. Therefore
+\begin{equation}\label{eq:hierarchy}
+ G\in\perf_{\qs}(\kappa)\ \Longleftrightarrow\ \forall {d_{\rm cut}}\ F_\qs(G,\kappa,{d_{\rm cut}}),
+ \qquad \perf_{\qs}=\bigcup_{\kappa\geq1}\perf_{\qs}(\kappa).
+\end{equation}
+This proves the upper membership in Theorems~A and \ref{thm:strata}.
+
+\subsection{No effective choice of stratum; vanishing largest weight}
+If a total computable $\kappa(G)$ were sufficient for every YES game, \eqref{eq:hierarchy} would put spatial perfection in $\Pi^0_1$. Perfect completeness of \cite[Theorem 12.6]{MIPRE} already makes it $\Sigma^0_1$-hard. NO instances of that map have spatial value at most $1/2$, because the finite-dimensional and spatial suprema agree. Thus the same map reduces the halting set to spatial perfection. The halting set cannot be $\Pi^0_1$, so such a function does not exist.
+
+Now suppose pure spatial strategies approach perfect play while $p_{\max}\geq1/\kappa$ on a subsequence. Normalize their largest Schmidt amplitudes. For a losing event,
+\[
+ \|ED_{\rm Sch}F^{\mathsf T}\|_{\rm HS}
+ \leq\|\sqrt E D_{\rm Sch}\sqrt{F^{\mathsf T}}\|_{\rm HS}
+ =\sqrt{\Tr D_{\rm Sch}^2\,p(E,F)}.
+\]
+Positive question weights force every such probability to zero. The same compact limit gives a perfect spatial strategy. Contraposition proves the final assertion of Theorem~\ref{thm:strata}, including sequences of finite-dimensional pure strategies. Equivalently their Schmidt min-entropy tends to infinity.
+
+\subsection{Entropy budgets}\label{sec:finS}\label{sec:entropybudgets}
+Fix a finite Bell scenario and let $K_H$ be its correlations realized by
+normal spatial strategies with $S(\rho_A)\le H$, for $0\le H<\infty$.
+Purify onto Bob, the unconstrained party: Alice's marginal and every
+correlation are preserved. Thus pure strategies suffice, with the same
+budget, for entire correlation tables as well as winning probabilities.
+
+\begin{proposition}[Entropy-budget compactness]\label{prop:entropycompact}
+The set $K_H$ is compact. It is an effectively closed ($\Pi^0_1$) subset of $[0,1]^t$ uniformly in the scenario
+and $H$: for rational budgets this is an ordinary effective presentation;
+for real budgets it is uniform relative to a name of $H$.
+\end{proposition}
+\begin{proof}
+For sorted Schmidt probabilities $p_i$, $p_i\le1/i$, so
+\begin{equation}\label{eq:entropytail}
+ \delta_n=\sum_{i>n}p_i\le H/\log_2(n+1).
+\end{equation}
+This gives tightness in $\ell^1$, and finite partial entropy sums give
+lower semicontinuity. Hence the sorted distributions of entropy at most
+$H$ are compact in $\ell^1$. Their Schmidt vectors are compact in $\ell^2$,
+since $\|\sqrt p-\sqrt q\|_2^2\le\|p-q\|_1$.
+Compress the POVMs to the Schmidt supports and absorb the basis changes
+into them, obtaining common copies of $\ell^2$ (if the Schmidt rank is finite, extend each POVM by a fixed deterministic answer on the complement in $\ell^2$). Finite POVM tuples are
+weak-operator sequentially compact there. Tensor products of convergent
+effects converge weakly, first on simple tensors and then by boundedness
+on all vectors. The norm-convergent Schmidt vectors therefore give
+convergence of every correlation entry. This is compactness of
+\emph{correlations}; the original states on fixed local spaces need not
+form a compact set. This argument is the bounded-entropy compactness
+of \cite[Section~9.1, ``Divergence at bounded entropy'']{Entropy}.
+
+Here are explicit outer approximations. Fix an integer $\bar H\ge1$ and work
+with $0\le H\le\bar H$. Choose positive rational
+$\eta_{\bar H,n}>\sqrt{\bar H/\log_2(n+1)}$ tending to zero. Compute rational
+polynomials $h_n$ with
+\[
+ \sup_{p\in\mathsf S_n}|h_n(p)-S(p)|\le1/n,
+ \qquad \mathsf S_n=\{p_i\ge0:\textstyle\sum_i p_i=1\}.
+\]
+For example, Bernstein approximation to $-t\log_2t$ on $[0,1]$, with
+rationally rounded coefficients and error at most $n^{-2}$ per summand,
+gives these polynomials. Let $A^{\bar H}_{H,n}$ consist of tables $c\in[0,1]^t$
+($t$ is the number of entries) for which there are sorted $p\in\mathsf S_n$,
+nonnegative $s_i$ with $s_i^2=p_i$, and $n$-dimensional POVMs (extended by a fixed deterministic answer on the complement in $\ell^2$) satisfying
+\begin{equation}\label{eq:entropyouter}
+ h_n(p)\le H+1/n,\qquad
+ |c_{ab|xy}-\langle\psi_s,E_{a|x}\otimes F_{b|y}\psi_s\rangle|
+ \le\eta_{\bar H,n},\quad \psi_s=\sum_i s_i|i,i\rangle.
+\end{equation}
+Split complex entries into real and imaginary parts, impose positivity
+by principal minors, and impose the POVM sums exactly. These are compact
+semialgebraic outer sets, uniformly decidable by real quantifier
+elimination \cite[Chapter~14]{BPR} for rational input data. The joint sets in $(H,c)$
+are semialgebraic over the rationals as well.
+
+The normalized first-$n$ truncation majorizes $p$, so its entropy does not
+increase. Its pure-state trace distance from the original state is
+$\sqrt{\delta_n}$; compressing the POVMs thus changes each entry by at most
+this amount. Consequently $K_H\subseteq A^{\bar H}_{H,n}$ for every $n$.
+Conversely witnesses in \eqref{eq:entropyouter} have entropy at most
+$H+2/n$. Along any sequence $n\to\infty$, the preceding tail and POVM
+argument gives a subsequential limit with entropy at most $H$, and the
+entrywise slack vanishes. Hence
+\[
+ K_H=\bigcap_{n\ge1}A^{\bar H}_{H,n}.
+\]
+Compact semialgebraic sets with rational data are effectively closed;
+the displayed intersection proves the uniform $\Pi^0_1$ presentation.
+It also gives a joint effectively closed set on $[0,\bar H]\times[0,1]^t$,
+which explains the assertion for real $H$.
+\end{proof}
+
+\begin{corollary}[Exact tables and the vanishing-loss entropy limit]\label{cor:entropybudget}
+Membership of a prescribed rational correlation table in the class
+realizable with some finite marginal entropy is in $\Sigma^0_2$,
+uniformly over finite scenarios. The same holds for real-algebraic tables.
+For a finite rational game $G$, set
+\[
+ E_G(\varepsilon)=\inf\{S(\rho_A):\omega(G,\mathcal S)\ge1-\varepsilon\},
+ \qquad H_{\rm ex}(G)=\inf\{S(\rho_A):\omega(G,\mathcal S)=1\},
+\]
+where the infima range over normal spatial strategies and
+$\inf\varnothing=\infty$. In particular $E_G(\varepsilon)=\infty$ when
+$\varepsilon<1-\omega_q(G)$. Then
+\[
+ \lim_{\varepsilon\downarrow0}E_G(\varepsilon)=H_{\rm ex}(G),\qquad
+ G\in\perf_{\finS}\ \Longleftrightarrow\
+ \sup_{\varepsilon>0}E_G(\varepsilon)<\infty.
+\]
+If $H_{\rm ex}(G)$ is finite, a perfect strategy attains it.
+\end{corollary}
+\begin{proof}
+Exact membership in $K_m$ is uniformly $\Pi^0_1$ for integer $m\ge0$;
+take the union over $m$. The perfect-value constraint is closed too,
+so the games $\perf_{\finS}(m)$ with perfect play of entropy at most $m$
+form a uniform $\Pi^0_1$ stratum, and $\perf_{\finS}\in\Sigma^0_2$.
+Purification preserves the supplied marginal
+entropy, and a pure state's two marginal entropies agree.
+
+The increasing limit $L=\lim_{\varepsilon\downarrow0}E_G(\varepsilon)$
+is at most $H_{\rm ex}(G)$. If $L<\infty$, choose strategies of loss at most
+$1/j$ and entropy at most $L+1/j$. Proposition~\ref{prop:entropycompact},
+with its lower-semicontinuity argument, gives a perfect limit of entropy
+at most $L$. Thus $H_{\rm ex}(G)\le L$, and equality follows, also in the
+extended reals. A sequence of perfect strategies whose entropies decrease
+to a finite $H_{\rm ex}(G)$ gives attainment by the same argument.
+\end{proof}
+
+\begin{lemma}[Entropy of clock witnesses]\label{lem:clockentropy}
+Suppose $e\in\Adec$, and let $j_*$ be the least witness to $\forall t\,\Rdec(e,j,t)$; if $e\notin\Adec$, Theorem~\ref{thm:reduction} gives no perfect strategy.
+Every perfect normal spatial strategy for $\Gclk_e$ has full
+Alice-marginal entropy at least $\log_2 p_{j_*+1}$.
+\end{lemma}
+\begin{proof}
+This lemma and the next corollary use the hardness construction of
+Sections~\ref{sec:compiler}--\ref{sec:reduction}, which does not use them.
+Purify onto Bob as in (N1) of Section~\ref{sec:compiler}; this preserves
+Alice's full marginal $h$ and all correlations. Work on its support.
+Lemma~\ref{lem:four} extracts a faithful normalized source density
+$h_0=121e_0he_0$. By \eqref{eq:fockdensity},
+$h_0=h_F\otimes\rho_{\rm spec}$. Every positive eigenspace of
+$\rho_{\rm spec}$ splits into $Z_{\rm clk}$ phase sectors. The soundness
+proof of Theorem~\ref{thm:reduction} applies to each nonzero sector:
+its word descendants persist at every depth, so an invalid order or a
+false check would contradict $P_{\mathtt H}=0$. Thus each phase order
+is $p_{j+1}$ for a valid witness $j\ge j_*$. Equation~\eqref{eq:det}
+makes the dimension of that sector divisible by its order. Consequently
+every positive eigenvalue of $\rho_{\rm spec}$ has multiplicity at least
+$p_{j_*+1}$, and hence is at most $1/p_{j_*+1}$. Therefore
+$S(\rho_{\rm spec})\ge\log_2p_{j_*+1}$.
+
+To pass to the full marginal, use the entire synchronized scaffold
+cover, rather than an entropy inequality for a compression. Set
+$v_0=e_0$ and $v_g={\btrans}_g\cdots {\btrans}_1$ for $1\le g\le4$.
+Let $t_{g,ab}=\mathfrak x_g^a\mathfrak z_g^b e_g$ be the synchronized
+magic matrix units, and put $T_{g,ab}=t_{g,ab}v_g$. These partial
+isometries all have initial projection $e_0$ and final projections
+$m_{g,ab}$, respectively. Together with $e_0$, their final projections
+are orthogonal and sum to the identity on the full support. Moreover
+$ht_{g,ab}=t_{g,ab}h$ and $hv_g=2^gv_gh$, so
+\[
+ T_{g,ab}^*hT_{g,ab}=2^g e_0he_0.
+\]
+Write $T_0=e_0$. Since each corner commutes with $h$ and the corners
+are orthogonal, $T_k^*hT_l=0$ for distinct members $k\ne l$ of the
+seventeen-element list $(T_0;T_{g,ab})$. Hence
+$U(\delta_k\otimes\xi)=T_k\xi$ is a unitary from
+$\mathbb C^{17}\otimes e_0P_A\HH_A$ onto $P_A\HH_A$, and by \eqref{eq:121}
+\[
+ h\simeq\operatorname{diag}(\mu_4)\otimes h_0,
+ \qquad \mu_4=121^{-1}(1;2^{\oplus4};4^{\oplus4};8^{\oplus4};16^{\oplus4}).
+\]
+Here $h_0$ is the density of the extracted realization on the whole source
+corner $e_0P_A\HH_A$; by \eqref{eq:fockdecomp} any further tensor factor
+present there lies in $\KK$ and is counted in $\rho_{\rm spec}$. Nonnegative spectral sums now give,
+also when an entropy is infinite,
+\[
+ S(h)=S(\operatorname{diag}(\mu_4))+S(h_F)+S(\rho_{\rm spec})
+ \ge\log_2p_{j_*+1}.
+\]
+No monotonicity under compression is used.
+\end{proof}
+
+\begin{corollary}[The entropy busy beaver]\label{cor:entropybeaver}
+Fix a binary encoding of finite rational games, with decidable validity,
+and write $|G|$ for its bit length. Put
+\[
+ \begin{gathered}
+ m_*(G)=\min\{m\in\mathbb N:G\in\perf_{\finS}(m)\},\\
+ B(n)=\max\bigl(\{m_*(G):|G|\le n,\ m_*(G)<\infty\}\cup\{0\}\bigr),
+ \end{gathered}
+\]
+where $\mathbb N$ includes zero and an empty minimum is infinity.
+For finite $m_*(G)$, attainment gives $m_*(G)=\lceil H_{\rm ex}(G)\rceil$.
+There is no total $0'$-computable upper bound on $B$, and
+\[
+ B\equiv_T0'',\qquad B\oplus0'\equiv_T0''.
+\]
+Moreover $B$ eventually strictly dominates every total $0'$-computable function,
+and hence exceeds each such function infinitely often. This is the profile of Rad\'o's busy beaver function \cite{Rado} relativized to $0'$, the ``super Busy Beaver'' $\mathrm{BB}_1$ of \cite[Section~3]{AaronsonBB}, with Beeping Busy Beavers giving an earlier natural example of this growth \cite[Section~5.10]{AaronsonBB}; the content of the corollary is that a resource of perfect play realizes it.
+\end{corollary}
+\begin{proof}
+The fixed-budget test is uniformly $\Pi^0_1$, hence decidable in $0'$;
+at budget zero it reduces to the decidable product-state test.
+If a total $0'$-computable $b(n)$ bounded $B(n)$, testing the single budget
+$b(|G|)$ would decide $\perf_{\finS}$ in $0'$, contradicting its
+$\Sigma^0_2$-completeness in Theorem~A.
+Using $0''$, decide which of the finitely many games of size at most $n$
+lie in $\perf_{\finS}$, then search their budgets using $0'$ to compute
+$B(n)$. Conversely $B\oplus0'$ decides $\perf_{\finS}$ by testing budget
+$B(|G|)$, so computes $0''$. Finally, an eventual upper bound could be
+patched at finitely many inputs to a total $0'$-computable upper bound,
+which has just been excluded.
+
+For the reverse reduction $0'\le_T B$, use the clock games for the
+decidable predicate ``the $e$th machine on input $e$ halts within $j$
+steps.'' If it halts at time $T_e$, the valid witnesses are exactly $j\ge T_e$, and Lemma~\ref{lem:clockentropy} gives
+\[
+ T_e<p_{T_e+1}\le2^{m_*(\Gclk_e)}\le2^{B(|\Gclk_e|)}.
+\]
+Thus simulating $2^{B(|\Gclk_e|)}$ steps decides the halting set from $B$: a computation that has not halted by then never halts.
+Combining this with $B\oplus0'\equiv_T0''$ proves $B\equiv_T0''$.
+
+For eventual domination, fix a computable array $g(a,n,s)$ obtained by
+finite-stage simulations of oracle machines with the standard finite
+approximations to $0'$. Every total $0'$-computable function occurs as
+$n\mapsto\lim_s g(a,n,s)$ for some $a$. Compile the decidable predicates
+\[
+ \Rdec(a,n,\langle s_0,v\rangle,t)
+ \ \Longleftrightarrow\
+ \forall s\in[s_0,t]\ g(a,n,s)=v
+\]
+into clock games $G_{a,n}$, with hardwired input $e=\langle a,n\rangle$, using a computable pairing with
+$\langle s_0,v\rangle\ge v$. Pad by harmless always-accepted questions
+so that $|G_{a,n}|\ge n+1$. A perfect strategy for a padded game restricts
+to one for the unpadded game with the same state, and conversely extends
+by arbitrary answers; padding therefore changes neither $h$ nor the
+bound of Lemma~\ref{lem:clockentropy}. Define the computable, nondecreasing,
+unbounded size envelope
+\[
+ q(n)=\max_{a,k\le n}|G_{a,k}|.
+\]
+For a given total $0'$-computable $F:\mathbb N\to\mathbb N$, the limit
+lemma \cite{Shoenfield} supplies an index $a_0$ with
+\[
+ \lim_s g(a_0,n,s)=f(n),\qquad
+ f(n)=2^{1+\max_{m\le q(n+1)}F(m)}.
+\]
+The envelope was defined using all indices before selecting $a_0$,
+so there is no circular size definition. Each $G_{a_0,n}$ is a YES
+instance, and every witness index is at least $f(n)$. For $n\ge a_0$
+and $q(n)\le m<q(n+1)$, Lemma~\ref{lem:clockentropy} therefore gives
+\[
+ B(m)\ge m_*(G_{a_0,n})\ge\log_2p_{f(n)+1}
+ >\log_2f(n)>F(m).
+\]
+The intervals cover every sufficiently large integer since $q$ is
+nondecreasing and unbounded. This proves eventual strict domination.
+\end{proof}
+
+\begin{remark}[Finite strata and jump bounds]
+Let $n\ge2$ and suppose a $\Sigma^0_n$-complete attainment language has
+$e\in L\iff\exists m\,R(e,m)$ with $R$ uniformly $\Pi^0_{n-1}$.
+No total $0^{(n-2)}$-computable function bounds a sufficient stratum index
+on all YES inputs; in fact no total $0^{(n-1)}$-computable function does.
+Indeed the latter oracle decides each stratum test, so a bounded finite
+search would put $L$ in $\Delta^0_n$, contradicting completeness.
+The entropy busy beaver is the case $n=2$. The Schmidt resource has the full profile as well.
+\end{remark}
+
+
+\begin{corollary}[The Schmidt busy beaver]\label{cor:schmidtbeaver}
+For the same encoding, put
+\[
+ \begin{gathered}
+ \kappa_{\min}(G)=\min\{\kappa\ge1:G\in\perf_{\qs}(\kappa)\},\\
+ K(n)=\max\bigl(\{\kappa_{\min}(G):|G|\le n,\ G\in\perf_{\qs}\}\cup\{0\}\bigr).
+ \end{gathered}
+\]
+An empty minimum is infinity. For each YES clock game,
+\[
+ \kappa_{\min}(\Gclk_e)\ge\frac{121}{12}p_{j_*+1}.
+\]
+Moreover $K\equiv_T0''$, and $K$ eventually strictly dominates every
+total $0'$-computable function.
+\end{corollary}
+\begin{proof}
+For every perfect pure strategy, the full-marginal equivalence in
+Lemma~\ref{lem:clockentropy} and its spectral-multiplicity argument give
+\[
+ \|h\|\le\|\operatorname{diag}(\mu_4)\|\,\|h_F\|\,
+ \|\rho_{\rm spec}\|\le\frac{16}{121}\frac34\frac1{p_{j_*+1}}
+ =\frac{12}{121p_{j_*+1}}.
+\]
+The largest Schmidt probability is $\|h\|$. A strategy in stratum
+$\kappa$ therefore requires $\kappa\ge(121/12)p_{j_*+1}$, proving the bound.
+Every spatially perfect game lies in some finite stratum by
+Theorem~\ref{thm:strata}. Using $0''$, decide which of the finitely many
+valid games of length at most $n$ are spatially perfect, then use $0'$
+to test their uniform $\Pi^0_1$ strata and search for each least one.
+This computes $K$. Conversely $K\oplus0'$ decides spatial perfection
+by testing the single stratum $K(|G|)$ (or stratum one if that value is
+zero), and hence computes $0''$ by Theorem~A.
+
+To remove the extra $0'$ oracle, use the halting clock games from the
+proof of Corollary~\ref{cor:entropybeaver}. If machine $e$ halts at time
+$T_e$, its least valid witness is $T_e$, so
+\[
+ T_e<p_{T_e+1}\le\frac{12}{121}\kappa_{\min}(\Gclk_e)
+ \le\frac{12}{121}K(|\Gclk_e|)\le K(|\Gclk_e|).
+\]
+Simulating $K(|\Gclk_e|)$ steps therefore decides whether it halts:
+if it has not halted by then, it never halts. Thus $0'\le_T K$, and
+the preceding reductions give $K\equiv_T0''$.
+
+Finally use the same computable array, padded games and nondecreasing
+unbounded envelope $q$ as in Corollary~\ref{cor:entropybeaver}; padding
+preserves the state and hence the Schmidt probabilities. Given total
+$0'$-computable $F$, the limit lemma supplies $a_0$ for
+$f(n)=2^{1+\max_{r\le q(n+1)}F(r)}$. Every witness for $G_{a_0,n}$
+is at least $f(n)$. For $n\ge a_0$ and $q(n)\le m<q(n+1)$,
+\[
+ K(m)\ge\kappa_{\min}(G_{a_0,n})
+ \ge\frac{121}{12}p_{f(n)+1}>f(n)>F(m).
+\]
+The intervals cover all sufficiently large integers, proving eventual
+strict domination.
+\end{proof}
+
+\begin{remark}[Least entropy and the least witness]
+For a YES clock game, let $d_{\max}(e)$ be the computable maximum row
+ancilla dimension in its compiler. Then
+\[
+ H_{\rm ex}(\Gclk_e)=\log_2p_{j_*+1}+H(\mu_4)+S(h_F)+\delta_e,
+ \qquad 0\le\delta_e\le\log_2(3d_{\max}(e)).
+\]
+Indeed the full-marginal identity and multiplicity bound in
+Lemma~\ref{lem:clockentropy} give the lower bound
+$S(h)\ge H(\mu_4)+S(h_F)+\log_2p_{j_*+1}$ for every perfect
+normal strategy, including mixed strategies by purification onto Bob.
+For the upper bound choose the least witness in the explicit pure
+strategy of Theorem~\ref{thm:reduction}: its marginal is the tensor
+product of $\operatorname{diag}(\mu_4)$, $h_F$,
+$I_{p_{j_*+1}}/p_{j_*+1}$, $I_3/3$ and
+$I_{d_{\max}(e)}/d_{\max}(e)$. Entropy additivity gives exactly the
+same lower-bound expression plus $\log_2(3d_{\max}(e))$.
+Taking the infimum proves the display. In particular the least entropy
+determines $\log_2p_{j_*+1}$ up to a computable additive error.
+\end{remark}
+
+\subsection{A finite tracial corner}\label{sec:cornerupper}
+The same quantifier pattern governs every semifinite host. Here the existential integer bounds the overlap of the state with a finite tracial corner.
+
+\begin{lemma}[Finite-corner overlap]\label{lem:overlap}
+Let $\mathcal A,\mathcal B$ be commuting unital $C^*$-algebras containing a game's effects. Suppose unit vectors $\psi,\eta$ and $e=e^2=e^*\in\mathcal A$ satisfy: $\psi$ is perfect, $e\eta=\eta$, $\langle\eta,\psi\rangle\ne0$, and the vector state of $\eta$ is tracial on $e\mathcal A e$. Then the game has a perfect normal semifinite strategy. If $e=1$, it has a finite-algebra strategy.
+\end{lemma}
+\begin{proof}
+Let $\mathcal H_\eta=\overline{\operatorname{span}\mathcal A\mathcal B\eta}$. It reduces both algebras because they are self-adjoint and commute. Put $M=(\mathcal A|_{\mathcal H_\eta})''$ and $p=e|_{\mathcal H_\eta}$. The vector functional of $\eta$ is normal on $M$ and tracial on $pMp$: Kaplansky density approximates each corner element by a bounded net from $p\mathcal A p$, and separate ultraweak continuity extends $\tau_\eta(xy)=\tau_\eta(yx)$ one variable at a time. Moreover
+\begin{equation}\label{eq:cornercyclic}
+ p\mathcal H_\eta=\overline{\operatorname{span}\mathcal B(pMp)\eta}.
+\end{equation}
+Indeed $pab\eta=bpap\eta$, and bounded strong approximation supplies the reverse closure. If $x\geq0$ in $pMp$ has $\tau_\eta(x)=0$, then, for $a\in pMp$,
+\[
+ \|x^{1/2}a\eta\|^2=\tau_\eta(a^*xa)
+ =\tau_\eta(x^{1/2}aa^*x^{1/2})\leq\|a\|^2\tau_\eta(x)=0.
+\]
+Since $x$ commutes with $\mathcal B$, \eqref{eq:cornercyclic} gives $x=0$. Thus $pMp$ has a faithful normal finite trace. If a central projection $z$ of $M$ annihilates $p$, it annihilates $\eta$, and hence $\mathcal A\mathcal B\eta$ and $\mathcal H_\eta$; so $z=0$. Thus $p$ has full central support. A type-III summand has no nonzero finite projection, so its intersection with $p$ is zero and fullness excludes that summand. Consequently $M$ is semifinite.
+
+The orthogonal projection onto $\mathcal H_\eta$ commutes with both parties. $\zeta=P_{\mathcal H_\eta}\psi$ is nonzero by its overlap with $\eta$. Each losing positive product annihilates $\psi$ and hence $\zeta$. Normalize $\zeta$. Its state is normal on $M$ and Bob's compressed effects commute with $M$. If $e=1$, the faithful finite trace is on $M$.
+\end{proof}
+
+Conversely standardize a normal semifinite strategy and write $\psi=h^{1/2}\in L^2(M,\tau)$, with $\tau(h)=1$. Some band $e=1_{[a,b]}(h)$, $0<a<b<\infty$, is nonzero. It has $0<\tau(e)\leq1/a$. For $\eta=e/\sqrt{\tau(e)}$,
+\begin{equation}\label{eq:overlap}
+ \langle\eta,\psi\rangle
+ =\frac{\tau(eh^{1/2}e)}{\sqrt{\tau(e)}}
+ \geq\sqrt a\sqrt{\tau(e)}>0.
+\end{equation}
+Its corner state is tracial. In a finite algebra take a faithful normalized trace and $e=1$; then $\tau(h^{1/2})>0$. Adjoin $e$ to Alice's algebra if necessary.
+
+\begin{theorem}\label{thm:upper}
+$\perf_{\finhost}$ and $\perf_{\sfhost}$ belong to $\Sigma^0_2$.
+\end{theorem}
+\begin{proof}
+For $k\geq1$ seek moments $m_{ij}(w)=\langle\xi_i,w\xi_j\rangle$, where $\xi_0=\psi,\xi_1=\eta$. Letters are the self-adjoint effects and Alice's extra projection $e$. Impose positivity for all polynomial vector lists, localizing positivity for each effect and its complement, POVM normalization, Alice--Bob commutation \emph{including $e$}, $e^2=e$, $e\eta=\eta$, unit norms, zero losing expectations on $\psi$, and
+\[
+ \Rea\langle\eta,\psi\rangle\geq1/k,\qquad
+ \langle\eta,eue\,eve\,\eta\rangle
+ =\langle\eta,eve\,eue\,\eta\rangle
+\]
+for all Alice words $u,v$, including $e$. A vector equality means vanishing squared norm. These form a recursive list of closed rational polynomial constraints. Impose $|m_{ij}(w)|\leq1$ directly. All genuine contraction moments obey this bound, and the ambient product of closed disks is compact. Localizing positivity gives bounded GNS effects $0\leq E\leq1$. One can also use the certificate $E-E^2=(I-E)E(I-E)+E(I-E)E$.
+
+At stage $m$ take the first $m$ constraints and their coordinates. Feasibility $F_{\sfhost}(G,k,m)$ is a non-strict rational semialgebraic question, decidable by real quantifier elimination \cite{BPR}. Its solution set is a closed cylinder in the compact product of all moment disks. The cylinders are nested because stages retain previous constraints. If every stage is feasible, their intersection is nonempty: otherwise their open complements have a finite subcover, already making one stage empty. A point of the intersection gives a positive matrix-valued functional. Quotient polynomial pairs by its null space and complete. Left multiplication yields the bounded GNS effects and the two vectors. Relations hold on the polynomial dense space and extend by boundedness. Corner traciality holds on the linear span of $eue$ and then in norm on $e\mathcal A e$. Apply Lemma~\ref{lem:overlap}. Conversely \eqref{eq:overlap} supplies some $k$ for every semifinite strategy. Thus
+\begin{equation}\label{eq:sigma2sf}
+ G\in\perf_{\sfhost}\iff\exists k\,\forall m\,F_{\sfhost}(G,k,m).
+\end{equation}
+Set $e=1$ for the finite-algebra version.
+\end{proof}
+
+Tensoring a finite factor host with $R_{\rm hyp}$ gives a $\II_1$ host. Tensoring a semifinite factor host with $R_{\rm hyp}\vN B(\ell^2)$ gives a $\II_\infty$ host. Product-state expectations, or standard-form tensoring, preserve the probabilities. Factor decomposition as in Section~\ref{sec:prelim} therefore gives
+\begin{equation}\label{eq:languageequal}
+ \perf_{\finhost}=\perf(\II_1),\qquad
+ \perf_{\sfhost}=\perf(\II)=\perf(\II_\infty).
+\end{equation}
+These are equalities of existence languages.
+
+\begin{remark}[One parameter for both corners]
+In a type I factor $B(\HH)$ with its trace, the state vector is $\psi=h^{1/2}$. If $e$ is a rank-one subprojection of the spectral projection of $h$ for its largest eigenvalue, then $\langle e,\psi\rangle=\Tr(eh^{1/2})=s_1$ is the largest Schmidt amplitude. This rank-one choice recovers the largest Schmidt amplitude from the corner overlap. General finite-corner overlaps need not equal it, and the parameters $\kappa$ and $k$ need not agree. Both upper bounds put one existential quantifier on that amount and one universal quantifier on finite stages. Without a trace there is no such corner. Commuting perfection is in $\Pi^0_1$ by the convergent hierarchy of Navascu\'es, Pironio and Ac\'in \cite{NPA}: a NO instance eventually has an infeasible perfect-value relaxation, and feasibility at every order gives a commuting strategy by compactness. Section~\ref{sec:typeIII} shows that every type-III subtype has exactly this commuting language.
+\end{remark}

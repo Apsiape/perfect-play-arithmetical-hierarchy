@@ -1,0 +1,95 @@
+\section{Introduction}\label{sec:intro}
+In a nonlocal game a referee sends each of two separated players a question from a finite list. Each player answers from a finite list, and a fixed rule decides whether they win. Shared entanglement can raise the winning probability. When can the players win with certainty?
+
+For a fixed game this is a yes-or-no question. It has a precise answer only once one says what a quantum strategy is, and only once one separates approaching certainty from attaining it. The supremum of the winning probability can be one while no strategy reaches it. The standard models also differ: finite-dimensional tensor products, normal states on infinite-dimensional tensor products (the spatial model), and commuting operator algebras on one Hilbert space. Inside the commuting model one can further ask which von Neumann algebra hosts the players. This paper finds, for each of these models, the exact level of the arithmetical hierarchy at which perfect play is decided. Table~\ref{tab:landscape} collects the answers.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}p{.58\linewidth}lp{.17\linewidth}@{}}
+\toprule
+Decision problem & Complete class & Source\\
+\midrule
+Perfect finite-dimensional strategy & $\Sigma^0_1$ & \cite{MIPRE}\\
+Perfect commuting strategy & $\Pi^0_1$ & \cite{Slofstra,MNY}\\
+Finite-dimensional value equals one & $\Pi^0_2$ & \cite{MNY}\\
+\addlinespace
+Perfect spatial strategy; also with finite entropy & $\Sigma^0_2$ & Theorem~A\\
+Perfect strategy with finite $\alpha$-moment, fixed computable $0<\alpha<1$ & $\Sigma^0_2$ & Theorem~D\\
+Perfect play in type $\II_1$, $\II_\infty$ or any semifinite algebra & $\Sigma^0_2$ & Theorem~B\\
+Perfect play in a type $\III_\lambda$ factor, any fixed $\lambda\in[0,1]$ & $\Pi^0_1$ & Theorem~B\\
+Commuting perfect play but no semifinite perfect play & $\Pi^0_2$ & Theorem~B\\
+Semifinite perfect play without spatial (or finite-entropy) perfection & $D_2(\Sigma^0_2)$ & Theorem~B\\
+\addlinespace
+One-shot zero-error code, normal entanglement; also finite entropy & $\Sigma^0_2$ & Theorem~C\\
+One-shot zero-error code, commuting operators & $\Pi^0_1$ & Theorem~\ref{thm:qc}\\
+\bottomrule
+\end{tabular}
+\caption{Finite rational Boolean games and channels; computable many-one reductions. A value is a supremum. A perfect strategy attains one. The first three rows are known; the others are proved here.}\label{tab:landscape}
+\end{table}
+
+Four results fill the table and its resource refinements. The first completes the standard row of models: spatial perfection sits one level above finite-dimensional perfection.
+
+\Needspace{5\baselineskip}
+\begin{theoremA}\label{thm:A}
+Deciding whether a finite rational $0/1$ game has a perfect normal spatial strategy is $\Sigma^0_2$-complete. The same holds when a perfect strategy with finite marginal entropy is required. Hardness holds under the promise $\omega_q(G)=1$, for a family in which no instance has a perfect finite-dimensional strategy.
+\end{theoremA}
+
+The second sorts the commuting model by the type of the players' algebra. Here $\perf(X)$ is the set of games with a perfect strategy whose state is normal on an ambient von Neumann algebra of class $X$ (Section~\ref{sec:prelim}).
+
+\Needspace{5\baselineskip}
+\begin{theoremB}\label{thm:B}
+Perfect normal play in a finite algebra, a type $\II_1$ algebra, or a semifinite algebra is $\Sigma^0_2$-complete. The same holds for the type $\II_\infty$ and type $\II$ existence languages. For every fixed $\lambda\in[0,1]$, the type $\III_\lambda$ language equals commuting perfection and is $\Pi^0_1$-complete. Commuting perfection without semifinite perfection is $\Pi^0_2$-complete, with hardness on a family of commuting-perfect games all having $\omega_q=1$. The two languages \emph{semifinite but not spatial} and \emph{semifinite but not finite-entropy spatial} are $D_2(\Sigma^0_2)$-complete, also with no finite-host perfection. Every nonempty directional difference among the six models in Theorem~\ref{thm:differences} is complete for its displayed class.
+\end{theoremB}
+
+The communication result shows that the same level governs a communication task. A sender uses a finite classical channel once and must convey one of $m$ messages with zero error, helped by shared entanglement. Write $\ZE_t(N,m)$ for the existence of such a code for the channel $N$ in model $t$ (Section~\ref{sec:normal}).
+
+\Needspace{5\baselineskip}
+\begin{theoremC}\label{thm:C}
+For finite rational classical channels, $\ZE_{\qs}$ and $\ZE_{\finS}$ are $\Sigma^0_2$-complete. Moreover, there are a finite rational classical channel $N$ and an integer $m$ for which $\ZE_{\qs}(N,m)$ holds, and every normal spatial $m$-message zero-error resource has infinite marginal entropy on both sides.
+\end{theoremC}
+
+
+\begin{theoremD}\label{thm:D}
+For every fixed computable $0<\alpha<1$, perfect play with
+$\Tr h^\alpha<\infty$, denoted $\mathcal P_\alpha$, is $\Sigma^0_2$-complete. With $\mathcal P_0$ denoting finite rank, $\mathcal P_1$ finite entropy and $\mathcal P_{\rm normal}$ normal perfection, they form the strict ladder $\mathcal P_0\subsetneq\mathcal P_a\subsetneq\mathcal P_b\subsetneq\mathcal P_1\subsetneq\mathcal P_{\rm normal}$ for $0<a<b<1$; all R\'enyi orders above one
+collapse to normal perfection. One computable hardness family has a
+single perfect witness with all positive moments finite on every YES
+input, value one on every input, and no finite-dimensional perfect
+instance. Every nonempty difference between distinct positive computable rungs is
+$D_2(\Sigma^0_2)$-complete; a positive rung minus finite rank is
+$\Sigma^0_2$-complete. For a perfect witness with marginal $h$, its critical index is $\alpha_c(h)=\inf\{\alpha>0:\Tr h^\alpha<\infty\}$. Put $c(G)=\inf\{\alpha_c(h):h\text{ is the marginal of a perfect spatial witness for }G\}$. The possible values of $c(G)$ (an infimum, attained by the realizing games) are exactly the right-c.e.-in-$0'$ reals in
+$[0,1]$, already among games with finite-entropy perfect strategies.
+\end{theoremD}
+
+\paragraph{A running example.}
+Consider the rooted tree of finite words $w$ over four letters; $|w|$ is the word length and appending a letter selects one of four branches. Give the basis vector $|w\rangle$ density weight $(3/4)16^{-|w|}$. A density ratio $1/16$ means that each child has one sixteenth of its parent\textquotesingle{}s weight. The weights sum to one and define a normal state of finite entropy. Its half-moment, the sum of the square roots of all weights, diverges: the four child square roots sum to the parent square root at each level. A bridge is a finite game gadget that doubles a density weight between two selected subspaces; four bridges give the factor $16$. A fifth changes the ratio to $1/32$ and makes the half-moment converge, because $4/\sqrt{32}=1/\sqrt2$. This example will explain the compiler, the strict resource ladder and the zero-error threshold. A clock of order three means a phase whose third power first equals one. Table~\ref{tab:toy} shows the depth-3 square for a clock of order three.
+
+\subsection{Why a trace costs a quantifier}\label{sec:picture}
+Commuting perfection is $\Pi^0_1$ because the commuting state space is compact. Perfection then equals commuting value one, which a convergent hierarchy of relaxations refutes in finitely many steps whenever it fails. Spatial play has no such compactness: Schmidt mass can escape to infinitely many small coefficients. Our upper bound keeps one Schmidt coefficient from disappearing. After that coefficient is scaled to one, the amplitude operator lies in a norm-compact family, and losing probabilities become homogeneous zero equations that survive limits. Each lower bound on the largest Schmidt probability therefore gives a $\Pi^0_1$ condition, and their union over an integer is $\Sigma^0_2$.
+
+The same integer appears for every semifinite host. A trace gives a finite corner whose overlap with the state can be bounded below. The overlap plays the role of the largest Schmidt amplitude; in type I a rank-one corner recovers it (Section~\ref{sec:cornerupper}). A type-III factor has no finite corner, and Theorem~B shows that its perfect-play language collapses to the commuting one. In this sense a trace costs exactly one existential quantifier.
+
+The hardness proofs show that the quantifier is needed. In both cases the existential witness is a finite object that a perfect strategy is forced to choose. In the spatial model it is the order of a clock phase: a Weyl relation commutes with a trace-class density, each positive density eigenspace is finite-dimensional, and a determinant forces a root of unity. In a diffuse semifinite algebra no such determinant exists, but a trace forces a critical binary tree to end at a finite depth. A finite game then checks an infinite sequence of decidable conditions about the chosen object, through a deterministic computation or a group word. No computable function of the game bounds a sufficient clock order (Section~\ref{sec:reduction}) or a sufficient Schmidt stratum (Theorem~\ref{thm:strata}).
+
+Theorem~C comes from a correspondence between games and channels due to Man\v{c}inska \cite{Mancinska}, which we extend from finite dimension to trace-class operators. A perfect strategy gives a code exactly when its Schmidt amplitudes are summable. The compiled games of Theorem~A sit exactly at this threshold: with four bridges, the amplitude sum diverges for every perfect strategy. Five bridges restore summability. A Catalan version of the construction gives a channel whose game has finite-entropy perfect strategies, while every code of the required size has infinite entropy.
+
+\subsection{Further results}
+The body also proves several refinements of Theorems~A--D. Theorem~\ref{thm:strata} and Section~\ref{sec:entropybudgets} show that the largest-Schmidt strata are $\Pi^0_1$ and that no total $0'$-computable function bounds a sufficient stratum. Section~\ref{sec:entropybudgets} proves compactness for full correlation tables under a supplied entropy budget; the entropy busy beaver has Turing degree $0''$ and eventually dominates every total $0'$-computable function. Theorem~\ref{thm:bell} shows that exact attainment of a rational Bell bound, of an unspecified supremum, or of a specified value is $\Sigma^0_2$-complete. In Section~\ref{sec:sep}, the type-I and type-$\II_1$ languages are incomparable, and both are proper subsets of the type-$\II_\infty$ language. Theorem~\ref{thm:differences} classifies every difference ``perfect in $X$ but not in $Y$'' among six models. Perfect play in type I but not in type $\II_1$, and perfect spatial play attainable only with infinite entropy, are $D_2(\Sigma^0_2)$-complete; the two semifinite-but-not-spatial cells are complete for the same difference class by the shared-family construction of Section~\ref{sec:iionly}. Section~\ref{sec:fdrow} records that one-shot zero-error feasibility with finite-dimensional entanglement is $\Sigma^0_1$-complete, a corollary of \cite{Mancinska} and \cite{MIPRE}.
+
+\subsection{Prior work and attribution}
+The finite-dimensional row of Table~\ref{tab:landscape} uses perfect completeness in Theorem~12.6 of Ji, Natarajan, Vidick, Wright and Yuen \cite{MIPRE}, not just a gap statement about a supremum. Upper membership follows by a dimension search and real quantifier elimination. Slofstra's embedding theorem \cite{Slofstra} and the account of Mousavi, Nezhadi and Yuen \cite[Theorem~6.4]{MNY} give the commuting row. Their value-one theorem \cite[Theorem~6.9]{MNY} gives the third row. The commuting upper bound uses the convergent moment hierarchy of Navascu\'es, Pironio and Ac\'in \cite{NPA}. The operator-solution framework for binary constraint system games originates with Cleve and Mittal \cite{CM}; Cleve, Liu and Slofstra gave the commuting-operator extension \cite{CLS}. Slofstra also established nonclosure of finite-dimensional quantum correlations \cite{SlofstraNonclosed}. Lin's $\mathsf{MIP}^{co}=\mathsf{coRE}$ theorem concerns gap approximation in the commuting model \cite{Lin}; it does not classify spatial attainment.
+
+Infinite-dimensional spatial correlations were constructed by Coladangelo and Stark \cite{CS}. Kim, Paulsen and Schafhauser prove that perfect spatial play collapses to perfect finite-dimensional play for synchronous games \cite[Corollary 3.11]{KPS}. Lupini and coauthors establish the corresponding equivalence for imitation games \cite[Corollary~5.4]{Imitation}. Our games retain nonsynchronous bridge questions. No YES instance of the spatial reduction is synchronous or an imitation game, since either condition would imply finite-dimensional perfect play.
+
+Man\v{c}inska's flagged magic-square construction supplies the bridge geometry \cite{Mancinska}; the magic square itself is due to Mermin and Peres \cite{Mermin,Peres}. The normal bridge, shared-label refinement, graph products and Boolean rational-row tests were developed in our entropy-game paper \cite[Lemmas~4.1 and 4.2, Theorem~B, Eq.~(32)]{Entropy}; its Catalan game \cite[Theorem~C]{Entropy} is used here as a separator, and a four-bridge version of its Catalan assembly gives the infinite-entropy channel. The versions needed here are restated and proved in Section~\ref{sec:compiler}, which extends them to $n$ bridges, arbitrary finite lists of endpoint labels and normal commuting hosts. The standard-form reduction, the commuting bridge and expected-inclusion transfer come from our earlier paper \cite[Lemmas~1.6, 2.2 and 3.1]{ReadType}; the type rows of Table~\ref{tab:landscape} complete the question left open in \cite[Theorem~7.6]{ReadType}. The separation $\perf(\II_1)\not\subseteq\perf(\mathrm I)$ uses the tracial mechanism of \cite[Proposition~7.4]{ReadType} and Slofstra's nonclosure construction; the other direction uses a new one-bridge separator.
+
+Group embeddings originate with Higman \cite{Higman}; the effective form follows Chiodo \cite[Theorem 2.2]{Chiodo}, with Craig's conversion \cite{Craig} and the HNN normal form \cite{HNN}. Subtype transfer uses Connes--Takesaki flow-of-weights theory \cite{ConnesTakesaki}, Takesaki's expectation theorem \cite{Takesaki}, Connes's invariants \cite{Connes}, and the argument inside Haagerup--Musat \cite[Lemma 3.8]{HM}. The nearest operational work on host type is the commuting self-test for exact embezzlement of Paddock and Schmidt \cite{PS}, and Harris's Cuntz-algebra self-testing and factor classification \cite{HarrisEmbezzlement}. These concern exact embezzlement rather than the arithmetical classification of host-existence languages.
+
+For communication, Cubitt, Leung, Matthews and Winter established the operator characterization of entanglement-assisted zero-error codes and the pseudo-telepathy construction \cite{CLMW}. Man\v{c}inska proved finite-dimensional clique saturation in Lemma~5, the converse and square-root state map in Theorem~6, and the entanglement-assisted independence-number characterization in Corollary~7 of \cite{Mancinska}. Her tracial game value admits infinite-dimensional tracial strategies, but her zero-error results assume a finite-dimensional shared state. Her Corollary~8 gives the fifty-input flagged-magic-square channel with ten entangled messages and at most nine messages from finite-dimensional maximally entangled resources; our finite numerical checks reproduce that example as a regression check. Man\v{c}inska, Roberson and Varvitsiotis studied perfect strategies and independent-set game reductions \cite{MRV}; Man\v{c}inska and Roberson developed quantum graph homomorphisms \cite{MR}. Harris proved universality results for synchronous graph homomorphism games \cite{HarrisGraph}. Those game parameters should be distinguished from codes with arbitrary resources. Bhattacharyya, Mehta and Zhao proved undecidability for a restricted entanglement-assisted one-shot parameter of classical-to-quantum channels \cite{BMZ}; their formal one-shot parameter uses maximal entanglement and projective measurements \cite[Definition~2.3]{BMZ}. The finite-dimensional row here removes these restrictions for classical channels and for a one-shot threshold. It does not resolve the unrestricted asymptotic capacity question.
+
+Fu, Miller and Slofstra study fixed-scenario correlation membership \cite{FMS}. In the discussion after their Theorem~1.1 they state that fixed-scenario membership in $C_q$ and $C_{qs}$ is in RE; the $C_q$ case follows by dimension search, and we found no argument there for the $C_{qs}$ case. Section~\ref{sec:discussion} records a conditional tension with Theorem~A. We do not identify prescribed-table membership with game perfection.
+
+\precursordisclosure
+
+\subsection{Organization}
+Section~\ref{sec:prelim} fixes the models, languages and notation. Section~\ref{sec:upper} proves the $\Sigma^0_2$ upper bounds for spatial, finite-entropy, finite and semifinite perfection; Section~\ref{sec:momentupper} treats moment rungs and Section~\ref{sec:codeupper} reduces codes to games. Section~\ref{sec:compiler} builds the finite compiler shared by all hardness proofs. Sections~\ref{sec:tree}--\ref{sec:reduction} prove the spatial hardness of Theorem~A, and Section~\ref{sec:bell} the Bell variants. Sections~\ref{sec:renyi}--\ref{sec:programmable} prove Theorem~D, Sections~\ref{sec:selector}--\ref{sec:typeIII} together with Section~\ref{sec:iionly} prove Theorem~B; Section~\ref{sec:sep} compares the type languages. Sections~\ref{sec:normal}--\ref{sec:catalan} prove Theorem~C and the other communication rows. Section~\ref{sec:discussion} discusses open problems.

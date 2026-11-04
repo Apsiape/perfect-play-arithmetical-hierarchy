@@ -1,0 +1,134 @@
+\section{Spatial hardness: the reduction and value one}\label{sec:reduction}
+Fix any decidable predicate $\Rdec(e,j,t)$ and the set $\Adec=\{e:\exists j\,\forall t\ \Rdec(e,j,t)\}$. We effectively choose the cellular automaton in Section~\ref{sec:tree} to run the following program, with $e$ hardwired.
+
+\paragraph{Read a positive-time return.}
+At time $y$ a waiting front is at position $y$. Ignore the time-zero pulse. At the first positive-time pulse, freeze the front and retain its coordinate as unary input ${d_{\rm clk}}$. With the transition convention above the mark is written into row ${d_{\rm clk}}+1$ at position ${d_{\rm clk}}$. Test ${d_{\rm clk}}$. If ${d_{\rm clk}}=1$ or ${d_{\rm clk}}$ is composite, halt. Otherwise compute the unique $j\geq0$ with ${d_{\rm clk}}=p_{j+1}$, the $(j+1)$st prime. Then evaluate $\Rdec(e,j,0),\Rdec(e,j,1),\ldots$ and halt at the first false answer. All later computation states ignore the external pulse.
+
+For a $\Sigma^0_2$-complete choice of $\Adec$, there is no computable bound on a sufficient clock order as a function of the input game: such a bound would leave only finitely many possible $j$ in this reduction, making $\exists j\,\forall t\ \Rdec(e,j,t)$ a $\Pi^0_1$ predicate. Indeed one tests, for every finite time cutoff, whether some one of those finitely many candidates survives all checks so far; if none survives forever, all have failed by a common finite cutoff. This contradicts $\Sigma^0_2$-hardness.
+
+This finite program has an effective finite radius-one simulation. The initial-front rule, frozen unary track and ordinary tape/head tracks give the stated boundary conventions. We do not require a bound on its running time. Each completed false check causes the halt symbol after finitely many updates.
+
+\paragraph{The clock presentation and its labels.}
+Include the Fock, coordinate, clock, reader and tableau equations above, all typing relations, and the stated $Z_{\rm clk}$ commutators. They form an admissible finite presentation with $n=4$. In the four-bridge compiler of Lemma~\ref{lem:four} the transported typed list is exactly
+\begin{equation}\label{eq:labelset}
+ P_{\circ},\ U_x,\ U_y,\ P_x,\ P_y,\ W,\ C_{\rm ctr},\ Z_{\rm clk},\ J_{\rm W},\ K_{\rm W}.
+\end{equation}
+Table~\ref{tab:labels} records the label types. Here $P_{\circ},P_x,P_y$ are projections, $C_{\rm ctr}$ is positive, and the other six are unitary. Thus one unitary encoding per typed label suffices, so $|\Lambda|=10$. There are fifty support equations, forty block equations and sixteen refinements per bridge per party. Source-only labels $P_{\rm ret},T_{\rm inv},P_c$ do not occur at left endpoints of an $A_\alpha$ relation and need no transport. For example the transported polynomials include
+\[
+ W_4a_{ab}=a_{ab}Z_{{\rm clk},0}^bW_0^2,\qquad
+ C_{{\rm ctr},4}a_{ab}=2^{-b}a_{ab}C_{{\rm ctr},0}^2,\qquad
+ J_{{\rm W},4}a_{ab}=a_{ab}J_{{\rm W},0}.
+\]
+The source-only return equations and tableau equations are centralizer polynomials. Lemma~\ref{lem:four} therefore computes a finite rational Boolean game $\Gclk_e$.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}llll@{}}
+\toprule Label & Type & Transported? & Use\\\midrule
+$P_{\circ}$ & projection & yes & Fock root\\
+$U_x,U_y$ & unitary & yes & coordinate increments\\
+$P_x,P_y$ & projection & yes & boundaries\\
+$W$ & unitary & yes & clock\\
+$C_{\rm ctr}$ & positive contraction & yes & counter\\
+$Z_{\rm clk},J_{\rm W},K_{\rm W}$ & unitary & yes & Weyl clock\\
+$P_{\rm ret}$ & projection & no & pulse\\
+$T_{\rm inv}$ & general contraction & no & reader inverse\\
+$P_c$ & projection & no & tableau\\
+$a_\alpha$ & general contraction & scaffold only & lifted creation\\
+\bottomrule
+\end{tabular}
+\caption{Typed application labels of the clock presentation. Transported labels are copied through all bridges for use at a left endpoint.}\label{tab:labels}
+\end{table}
+
+\begin{figure}[ht]
+\centering\small
+\begin{tabular}{@{}c@{}}
+Presentation $\xrightarrow{\text{Lemma~\ref{lem:four}}}$ finite game $\Gclk_e$\\[4pt]
+Perfect normal strategy $\longrightarrow$ normal realization\\[2pt]
+$\longrightarrow$ Fock tree $\longrightarrow$ finite clock sector\\[2pt]
+$\longrightarrow$ deterministic tableau $\longrightarrow\forall t\ \Rdec(e,j,t)$\\[4pt]
+Witness $j$ $\longrightarrow$ Fock/Weyl model\\[2pt]
+$\longrightarrow$ scaffold, frame, row ancilla $\longrightarrow$ perfect strategy
+\end{tabular}
+\caption{Dependencies of the spatial hardness proof. Compactness and Bell attainment have separate upper-bound arguments.}\label{fig:dependencies}
+\end{figure}
+
+\begin{theorem}\label{thm:reduction}
+The map $e\mapsto \Gclk_e$ satisfies
+\[
+ \Gclk_e\in\perf_{\qs}\ \Longleftrightarrow\
+ \Gclk_e\in\perf_{\finS}\ \Longleftrightarrow\
+ \exists j\,\forall t\ \Rdec(e,j,t).
+\]
+No $\Gclk_e$ has a perfect finite-dimensional strategy.
+\end{theorem}
+\begin{proof}
+A perfect normal strategy extracts a nonzero faithful root realization. The determinant argument supplies a nonzero root phase sector of finite order ${d_{\rm clk}}$. By \eqref{eq:weyl} its word descendants persist at all depths. Equations~\eqref{eq:W}--\eqref{eq:return} force the exact return sequence, with its first positive return at ${d_{\rm clk}}$. Lemma~\ref{lem:tableau} needs only that the initial root vector lie in this $Z_{\rm clk}$-eigenspace: the clock pulse is then scalar on all its word descendants. The imposed $[Z_{\rm clk},P_c]=0$ relations are redundant for this induction. An invalid ${d_{\rm clk}}$ halts. For valid ${d_{\rm clk}}=p_{j+1}$ any false $\Rdec(e,j,t)$ also halts. A sufficiently large square would contain that halt, contrary to $P_{\mathtt H}=0$. Hence the extracted $j$ witnesses membership in $\Adec$.
+
+Conversely take a witness $j$ and set ${d_{\rm clk}}=p_{j+1}$. Use \eqref{eq:fockdensity} with $\rho_{\rm spec}=I_{d_{\rm clk}}/{d_{\rm clk}}$, a good primitive phase and its Weyl pair, the canonical coordinate permutations, \eqref{eq:coordinateclock}, \eqref{eq:return}, \eqref{eq:D}, and the classical nonhalting tableau. Every required operator is bounded and commutes with the density when so specified. This is a simultaneous realization. On $\mathbb C^{d_{\rm clk}}$ one may take $J_{\rm W}|i\rangle=\zeta^i|i\rangle$, $K_{\rm W}|i\rangle=|i+1\bmod {d_{\rm clk}}\rangle$, and $Z_{\rm clk}=\zeta I$. Its root entropy and largest Schmidt probability are
+\begin{equation}\label{eq:witnessentropy}
+ S(h)=\log_2{d_{\rm clk}}+\log_2(4/3)+4/3,\qquad p_{\max}=3/(4{d_{\rm clk}}).
+\end{equation}
+The compiler adds finite factors, giving a perfect finite-entropy strategy.
+
+The tensor-product witness can be written without an implicit extension. Let $\mathcal H_F=\ell^2(\WW)$ and let $\mathcal H_{\rm sc}=\mathbb C^{17}$ index the scaffold corners. Take
+\[
+ \mathcal H_A=\mathcal H_B=
+ \mathcal H_{\rm sc}\otimes\mathcal H_F\otimes\mathbb C^{d_{\rm clk}}
+ \otimes\mathbb C^3\otimes\mathbb C^{d_{\max}}.
+\]
+With $\mu_4=(1,2,2,2,2,4,4,4,4,8,8,8,8,16,16,16,16)/121$, use the pure vector
+\[
+ |\psi\rangle=|\sqrt{\mu_4}\rangle\!\rangle\otimes
+ |\sqrt{h_F}\rangle\!\rangle\otimes|\Phi_{d_{\rm clk}}\rangle
+ \otimes|\Phi_3\rangle\otimes|\Phi_{d_{\max}}\rangle,
+ \quad |\sqrt{\mu_4}\rangle\!\rangle=\sum_i\sqrt{\mu_{4,i}}|i,i\rangle.
+\]
+The Fock factor is $\sum_w\sqrt{(3/4)16^{-|w|}}|w,w\rangle$. Alice uses the scaffold FMS effects, actual graph projections, refinements and column partitions of Lemma~\ref{lem:four}; Bob uses the prescribed opposite FMS effects and the transposed transferred centralizer products. The row factor is the finite maximally entangled ancilla of Lemma~\ref{lem:rows}. These simultaneous effects were checked in the compiler proof. The marginal entropy is $H(\mu_4)+S(h_F)+\log_2{d_{\rm clk}}+\log_2 3+\log_2d_{\max}<\infty$.
+
+Finally finite-dimensional perfect play would extract four isometries with mutually orthogonal ranges on one nonzero finite-dimensional root space. Their range dimensions would sum to four times the dimension of that space, which is impossible. The argument applies to every input, whether or not it has a witness.
+\end{proof}
+
+Together with Section~\ref{sec:upper}, this proves both completeness statements in Theorem~A. The value-one promise is established next. For the promise version, the reduction maps every input into that promise; the unrestricted $\Sigma^0_2$ membership predicate restricts to it, giving promise-problem completeness. The construction can be made syntactically nonsynchronous and non-imitation on every input by adding a fresh binary question to each side, accepting every pair involving it. Either answer then has the same nonempty allowed-answer support against every opposite question, which violates the imitation separation condition. This addition does not change perfection or the value-one property.
+
+\paragraph{Size of the finite game.}
+Here is a coarse order-of-magnitude bound, independent of the witness ${d_{\rm clk}}$. Let $|\Gamma_{\rm CA}|$ be the alphabet size, let $N^{\rm proj}_e$ count the named graph projections, rows and word prefixes after endpoint translation, and let $b_e$ bound the bit length of their rational coefficients. The lookup table has at most $2(|\Gamma_{\rm CA}|+1)|\Gamma_{\rm CA}|^2$ entries, so unshared explicit polynomials give $N^{\rm proj}_e=\operatorname{poly}(|\Gamma_{\rm CA}|)$ for this fixed list of operator relations. Denominator clearing and signed repetitions give row dimension $d_{\max}\leq2^{O(N^{\rm proj}_e(b_e+\log(N^{\rm proj}_e+1)))}$. The scalar contexts, column questions and marginal bindings are polynomial in $N^{\rm proj}_e,d_{\max}$, so the padded question count $Q_e$ and maximum answer count obey the same coarse exponential bound. An explicit predicate table is polynomial in those two counts and has the same exponential order. Thus the effective compilation depends on the hardwired program, never on its chosen prime or running time. For scale, the bundled minimal one-isometry example already has $748$ rows and $27\,991$ questions per party; it is not a size claim for the full reduction. A dry count of the full ten-label instance
+$e=0$ gives $6\,191\,638\,087$ questions per party for literal expanded
+tableau polynomials. Shared bounded-circuit gates for the eight update
+rows give $8\,516\,580$ questions per party. The dry count uses the explicit eight-symbol automaton for $e=0$, with alphabet $\mathtt s,\mathtt b,\mathtt f,\mathtt d,\mathtt{z0},\mathtt z,\mathtt h,\mathtt H$, which halts unless the clock order is two. Its tables are \texttt{verification/full-compile/*/automaton.json}; it is a concrete scan automaton, not the generic product alphabet of Section~\ref{sec:tableau}. These are two encodings of
+that specified instance; neither full Boolean game was materialized.
+The latter adds source-only gates and preserves the canonical soundness
+and completeness translation. The counts are reproducible dry runs,
+not a claim that arbitrary verifier families have those sizes.
+
+\subsection{Every constructed game has value one}\label{sec:value}
+The finite-dimensional approximations do not need a witness for $e$. Truncate the Fock tree to depths $0,\ldots,m$ and choose a prime ${d_{\rm clk}}>2^m$ with a good phase (Lemma~\ref{lem:goodphase}). Use the normalized density
+\[
+ h^{[m]}=\frac{\sum_{|w|\leq m}16^{-|w|}|w\rangle\langle w|}
+ {\sum_{i=0}^m4^{-i}}\otimes\frac{I_{d_{\rm clk}}}{{d_{\rm clk}}}.
+\]
+Every represented time is less than ${d_{\rm clk}}$. The decoder therefore remains in the waiting stage in every square and never halts. Let $P_m$ denote the top-depth projection. Its mass is
+\begin{equation}\label{eq:topmass}
+ t_m=\Tr(h^{[m]}P_m)=\frac{3}{4^{m+1}-1}.
+\end{equation}
+
+Every endpoint identity $L_{\rm end}A_\alpha=A_\beta R_{\rm end}$ remains exact. Below top depth it is the canonical identity; on top depth both sides vanish because the endpoint expression $R_{\rm end}$ preserves depth. The modular equations, the range-sum identity and all off-diagonal $A_\alpha^*A_\beta=0$ also remain exact. The only failed original relations are the four diagonal isometry equations:
+\begin{equation}\label{eq:fourdefects}
+ A_\alpha^*A_\alpha-I=-P_m\quad(\alpha=00,01,10,11).
+\end{equation}
+All graph and triangle projections are defined from the actual products. Every structural graph, synchrony, binding, FMS, refinement and column test stays exact.
+
+Here is the full row accounting. For each $\alpha$ let $\ell_\alpha$ be the denominator-clearing integer and $d_\alpha$ the column dimension of the row obtained by translating $a_\alpha^*a_\alpha-e_0=0$ into graph projections. These depend on the finite input presentation, not on $m$ or ${d_{\rm clk}}$. In the scalar qutrit frame its defect $S_\alpha$ has off-diagonal blocks $-(P_m)_0$ and adjoint and zero diagonal blocks. The frame density is $I_3/3$ and the source scaffold mass is $1/121$, so
+\begin{equation}\label{eq:defectweight}
+ \Tr(h_{\rm old}S_\alpha^2)=\frac23\frac1{121}t_m.
+\end{equation}
+The same calculation applies separately to each of the four rows. Their row-zero events have distinct column questions and occur in no other failed rule. If the game has $Q_e$ equally padded questions per party, \eqref{eq:rowloss} gives
+\begin{align}
+ 1-\omega(\Gclk_e,\mathcal S_m)
+ &\leq C_e\frac{3}{4^{m+1}-1},\label{eq:valueloss}\\
+ C_e&=\frac{1}{Q_e^2}\frac{2}{363}
+ \sum_{\alpha\in\{00,01,10,11\}}\frac{4\ell_\alpha^2}{d_\alpha^3}.\label{eq:valueconstant}
+\end{align}
+If the four row constructions have common $\ell,d$, this is $C_e=32\ell^2/(363Q_e^2d^3)$. We include one oriented row-zero event per row. The opposite column questions are retained for identification without a second row-zero test. This fixes the convention in the constant. Duplicating the four row-zero tests in the opposite orientation would multiply the constant by two.
+
+Since the density factor $I_{d_{\rm clk}}/{d_{\rm clk}}$ has trace one, no factor of ${d_{\rm clk}}$ enters the loss. Thus $\omega_{\mathrm{q}}(\Gclk_e)=1$ for every $e$, proving the promise in Theorem~A. This calculation uses four rows, rather than suppressing them inside an unspecified continuity estimate.

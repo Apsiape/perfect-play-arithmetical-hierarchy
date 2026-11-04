@@ -1,0 +1,1653 @@
+{
+  "atoms": 142,
+  "reflection_parameters": 25,
+  "transported_labels": 10,
+  "words": 6041553,
+  "long_words": 6041293,
+  "inverse_triangles": 117,
+  "triangles": 18124515,
+  "projection_variables": 90623633,
+  "projection_rows": 72499152,
+  "application_rows": 230,
+  "old_questions": 90623718,
+  "questions_per_party": 6191638087,
+  "max_answers": 67108864,
+  "scalar_qubits": 26,
+  "row_dimensions": {
+    "16": 72499068,
+    "64": 69,
+    "256": 6,
+    "1024": 2,
+    "1048576": 1,
+    "4194304": 1,
+    "16777216": 4,
+    "67108864": 1
+  },
+  "question_kinds": {
+    "old": 90623718,
+    "scalar_cells_and_contexts": 195,
+    "cross_axes": 1248,
+    "commute_old": 4712428916,
+    "globals": 2,
+    "scalar_pairs": 89130312,
+    "columns_and_joints": 1299453696
+  },
+  "answer_entries_per_party": 4803794040109533,
+  "uint64_answer_payload_bytes_two_parties": 76860704641752528,
+  "fits_question_limit": false,
+  "full_game_compiled": false,
+  "app_details": [
+    {
+      "name": "cover",
+      "L": 1,
+      "d": 256,
+      "slots_unpadded": 66,
+      "monomials": 18
+    },
+    {
+      "name": "axis_x1",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 30,
+      "monomials": 7
+    },
+    {
+      "name": "axis_z1",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 30,
+      "monomials": 7
+    },
+    {
+      "name": "axis_x2",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 30,
+      "monomials": 7
+    },
+    {
+      "name": "axis_z2",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 30,
+      "monomials": 7
+    },
+    {
+      "name": "axis_x3",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 30,
+      "monomials": 7
+    },
+    {
+      "name": "axis_z3",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 30,
+      "monomials": 7
+    },
+    {
+      "name": "axis_x4",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 30,
+      "monomials": 7
+    },
+    {
+      "name": "axis_z4",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 30,
+      "monomials": 7
+    },
+    {
+      "name": "support_u0_root",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u0_root",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u0_Ux",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u0_Uy",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u0_Px",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u0_Px",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u0_Py",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u0_Py",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u0_W",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u0_C",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u0_Z",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u0_J",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u0_K",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u1_root",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u1_root",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u1_Ux",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u1_Uy",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u1_Px",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u1_Px",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u1_Py",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u1_Py",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u1_W",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u1_C",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u1_Z",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u1_J",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u1_K",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u2_root",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u2_root",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u2_Ux",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u2_Uy",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u2_Px",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u2_Px",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u2_Py",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u2_Py",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u2_W",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u2_C",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u2_Z",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u2_J",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u2_K",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u3_root",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u3_root",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u3_Ux",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u3_Uy",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u3_Px",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u3_Px",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u3_Py",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u3_Py",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u3_W",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u3_C",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u3_Z",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u3_J",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u3_K",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u4_root",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u4_root",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u4_Ux",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u4_Uy",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u4_Px",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u4_Px",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u4_Py",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_u4_Py",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_u4_W",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u4_C",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u4_Z",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u4_J",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_u4_K",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "block_1_root",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_1_Ux",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_1_Uy",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_1_Px",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_1_Py",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_1_W",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_1_C",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_1_Z",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_1_J",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_1_K",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_2_root",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_2_Ux",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_2_Uy",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_2_Px",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_2_Py",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_2_W",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_2_C",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_2_Z",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_2_J",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_2_K",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_3_root",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_3_Ux",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_3_Uy",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_3_Px",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_3_Py",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_3_W",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_3_C",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_3_Z",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_3_J",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_3_K",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_4_root",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_4_Ux",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_4_Uy",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_4_Px",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_4_Py",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_4_W",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_4_C",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_4_Z",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_4_J",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "block_4_K",
+      "L": 1,
+      "d": 64,
+      "slots_unpadded": 22,
+      "monomials": 17
+    },
+    {
+      "name": "support_source_ret",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_source_ret",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_source_s",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_source_s",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_source_b",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_source_b",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_source_f",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_source_f",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_source_d",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_source_d",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_source_z0",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_source_z0",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_source_z",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_source_z",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_source_h",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_source_h",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_source_H",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "involution_source_H",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 2
+    },
+    {
+      "name": "support_T0",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_T1",
+      "L": 1,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 4
+    },
+    {
+      "name": "support_a00",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 8
+    },
+    {
+      "name": "support_a01",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 8
+    },
+    {
+      "name": "support_a10",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 8
+    },
+    {
+      "name": "support_a11",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 8
+    },
+    {
+      "name": "fock_00_00",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 3
+    },
+    {
+      "name": "fock_00_01",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 4
+    },
+    {
+      "name": "fock_00_10",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 4
+    },
+    {
+      "name": "fock_00_11",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 4
+    },
+    {
+      "name": "fock_01_00",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 4
+    },
+    {
+      "name": "fock_01_01",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 3
+    },
+    {
+      "name": "fock_01_10",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 4
+    },
+    {
+      "name": "fock_01_11",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 4
+    },
+    {
+      "name": "fock_10_00",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 4
+    },
+    {
+      "name": "fock_10_01",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 4
+    },
+    {
+      "name": "fock_10_10",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 3
+    },
+    {
+      "name": "fock_10_11",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 4
+    },
+    {
+      "name": "fock_11_00",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 4
+    },
+    {
+      "name": "fock_11_01",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 4
+    },
+    {
+      "name": "fock_11_10",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 4
+    },
+    {
+      "name": "fock_11_11",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 6,
+      "monomials": 3
+    },
+    {
+      "name": "range",
+      "L": 2,
+      "d": 64,
+      "slots_unpadded": 36,
+      "monomials": 12
+    },
+    {
+      "name": "Ux_00",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 6
+    },
+    {
+      "name": "Uy_00",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 6
+    },
+    {
+      "name": "Px_00",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "Py_00",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "commute_J_00",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "commute_K_00",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "commute_Z_00",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "clock_W_00",
+      "L": 4,
+      "d": 64,
+      "slots_unpadded": 18,
+      "monomials": 12
+    },
+    {
+      "name": "counter_C_00",
+      "L": 64,
+      "d": 256,
+      "slots_unpadded": 218,
+      "monomials": 54
+    },
+    {
+      "name": "Ux_01",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 6
+    },
+    {
+      "name": "Uy_01",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "Px_01",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "Py_01",
+      "L": 4,
+      "d": 64,
+      "slots_unpadded": 18,
+      "monomials": 8
+    },
+    {
+      "name": "commute_J_01",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "commute_K_01",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "commute_Z_01",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "clock_W_01",
+      "L": 8,
+      "d": 64,
+      "slots_unpadded": 34,
+      "monomials": 20
+    },
+    {
+      "name": "counter_C_01",
+      "L": 128,
+      "d": 1024,
+      "slots_unpadded": 474,
+      "monomials": 54
+    },
+    {
+      "name": "Ux_10",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "Uy_10",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 6
+    },
+    {
+      "name": "Px_10",
+      "L": 4,
+      "d": 64,
+      "slots_unpadded": 18,
+      "monomials": 8
+    },
+    {
+      "name": "Py_10",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "commute_J_10",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "commute_K_10",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "commute_Z_10",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "clock_W_10",
+      "L": 4,
+      "d": 64,
+      "slots_unpadded": 18,
+      "monomials": 12
+    },
+    {
+      "name": "counter_C_10",
+      "L": 64,
+      "d": 256,
+      "slots_unpadded": 218,
+      "monomials": 54
+    },
+    {
+      "name": "Ux_11",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "Uy_11",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "Px_11",
+      "L": 4,
+      "d": 64,
+      "slots_unpadded": 18,
+      "monomials": 8
+    },
+    {
+      "name": "Py_11",
+      "L": 4,
+      "d": 64,
+      "slots_unpadded": 18,
+      "monomials": 8
+    },
+    {
+      "name": "commute_J_11",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "commute_K_11",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "commute_Z_11",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "clock_W_11",
+      "L": 8,
+      "d": 64,
+      "slots_unpadded": 34,
+      "monomials": 20
+    },
+    {
+      "name": "counter_C_11",
+      "L": 128,
+      "d": 1024,
+      "slots_unpadded": 474,
+      "monomials": 54
+    },
+    {
+      "name": "root_Ux",
+      "L": 4,
+      "d": 64,
+      "slots_unpadded": 18,
+      "monomials": 12
+    },
+    {
+      "name": "root_Uy",
+      "L": 4,
+      "d": 64,
+      "slots_unpadded": 18,
+      "monomials": 12
+    },
+    {
+      "name": "root_Px",
+      "L": 8,
+      "d": 64,
+      "slots_unpadded": 18,
+      "monomials": 12
+    },
+    {
+      "name": "root_Py",
+      "L": 8,
+      "d": 64,
+      "slots_unpadded": 18,
+      "monomials": 12
+    },
+    {
+      "name": "root_W",
+      "L": 4,
+      "d": 64,
+      "slots_unpadded": 18,
+      "monomials": 12
+    },
+    {
+      "name": "root_C",
+      "L": 16,
+      "d": 64,
+      "slots_unpadded": 34,
+      "monomials": 20
+    },
+    {
+      "name": "weyl",
+      "L": 4,
+      "d": 64,
+      "slots_unpadded": 18,
+      "monomials": 12
+    },
+    {
+      "name": "Z_J",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "Z_K",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "Z_Ux",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "Z_Uy",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "Z_Px",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "Z_Py",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "Z_W",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 8
+    },
+    {
+      "name": "Z_C",
+      "L": 8,
+      "d": 64,
+      "slots_unpadded": 26,
+      "monomials": 20
+    },
+    {
+      "name": "Z_source_ret",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "Z_source_s",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "Z_source_b",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "Z_source_f",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "Z_source_d",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "Z_source_z0",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "Z_source_z",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "Z_source_h",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "Z_source_H",
+      "L": 4,
+      "d": 16,
+      "slots_unpadded": 14,
+      "monomials": 12
+    },
+    {
+      "name": "Z_source_T",
+      "L": 4,
+      "d": 64,
+      "slots_unpadded": 18,
+      "monomials": 16
+    },
+    {
+      "name": "reader_return",
+      "L": 4,
+      "d": 64,
+      "slots_unpadded": 18,
+      "monomials": 12
+    },
+    {
+      "name": "reader_inverse",
+      "L": 32,
+      "d": 256,
+      "slots_unpadded": 162,
+      "monomials": 36
+    },
+    {
+      "name": "PVM",
+      "L": 2,
+      "d": 64,
+      "slots_unpadded": 58,
+      "monomials": 18
+    },
+    {
+      "name": "initial_s",
+      "L": 32,
+      "d": 256,
+      "slots_unpadded": 66,
+      "monomials": 36
+    },
+    {
+      "name": "initial_b",
+      "L": 32,
+      "d": 256,
+      "slots_unpadded": 66,
+      "monomials": 36
+    },
+    {
+      "name": "no_halt",
+      "L": 2,
+      "d": 16,
+      "slots_unpadded": 10,
+      "monomials": 4
+    },
+    {
+      "name": "update_s",
+      "L": 16,
+      "d": 64,
+      "slots_unpadded": 34,
+      "monomials": 18
+    },
+    {
+      "name": "update_b",
+      "L": 65536,
+      "d": 16777216,
+      "slots_unpadded": 11054594,
+      "monomials": 573883
+    },
+    {
+      "name": "update_f",
+      "L": 65536,
+      "d": 4194304,
+      "slots_unpadded": 3257602,
+      "monomials": 280843
+    },
+    {
+      "name": "update_d",
+      "L": 65536,
+      "d": 67108864,
+      "slots_unpadded": 47267842,
+      "monomials": 1822627
+    },
+    {
+      "name": "update_z0",
+      "L": 65536,
+      "d": 16777216,
+      "slots_unpadded": 12650498,
+      "monomials": 1111123
+    },
+    {
+      "name": "update_z",
+      "L": 32768,
+      "d": 16777216,
+      "slots_unpadded": 12599298,
+      "monomials": 769873
+    },
+    {
+      "name": "update_h",
+      "L": 32768,
+      "d": 1048576,
+      "slots_unpadded": 844290,
+      "monomials": 89473
+    },
+    {
+      "name": "update_H",
+      "L": 32768,
+      "d": 16777216,
+      "slots_unpadded": 7487490,
+      "monomials": 561505
+    }
+  ],
+  "elapsed_seconds": 288.0365828999784,
+  "peak_working_set_bytes": 2422968320
+}

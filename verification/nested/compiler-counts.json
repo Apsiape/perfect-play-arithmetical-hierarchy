@@ -1,0 +1,173 @@
+{
+  "uniform-no": {
+    "unitary_generators": 201,
+    "words": 6995,
+    "polynomials": 426,
+    "projections": 104991,
+    "rational_rows": 84402,
+    "row_kinds": {
+      "frame": 1,
+      "graph": 62955,
+      "reference": 1,
+      "placement_left": 6994,
+      "placement_right": 6994,
+      "product": 6592,
+      "inverse": 201,
+      "binding": 238,
+      "structural": 239,
+      "application": 187
+    },
+    "row_dimensions": {
+      "16": 84152,
+      "64": 190,
+      "256": 59,
+      "4096": 1
+    },
+    "size_parameters": {
+      "s": 2,
+      "c": 55,
+      "r": 47,
+      "a": 14,
+      "p_app": 187
+    },
+    "sha256": "b836352fd543b9f6eb0c4a1d9b83723b14f161817abc4dbcff9778a856d6ffd8",
+    "bytes": 19034863
+  },
+  "uniform-yes": {
+    "unitary_generators": 201,
+    "words": 6995,
+    "polynomials": 426,
+    "projections": 104991,
+    "rational_rows": 84402,
+    "row_kinds": {
+      "frame": 1,
+      "graph": 62955,
+      "reference": 1,
+      "placement_left": 6994,
+      "placement_right": 6994,
+      "product": 6592,
+      "inverse": 201,
+      "binding": 238,
+      "structural": 239,
+      "application": 187
+    },
+    "row_dimensions": {
+      "16": 84151,
+      "64": 191,
+      "256": 59,
+      "4096": 1
+    },
+    "size_parameters": {
+      "s": 2,
+      "c": 55,
+      "r": 47,
+      "a": 14,
+      "p_app": 187
+    },
+    "sha256": "77c150768ed2ea1415baf4312008b80f873ede46b7fa62e5ffd9591140dd2e76",
+    "bytes": 19035315
+  },
+  "uniform-lookup": {
+    "unitary_generators": 201,
+    "words": 6995,
+    "polynomials": 426,
+    "projections": 104991,
+    "rational_rows": 84402,
+    "row_kinds": {
+      "frame": 1,
+      "graph": 62955,
+      "reference": 1,
+      "placement_left": 6994,
+      "placement_right": 6994,
+      "product": 6592,
+      "inverse": 201,
+      "binding": 238,
+      "structural": 239,
+      "application": 187
+    },
+    "row_dimensions": {
+      "16": 84151,
+      "64": 191,
+      "256": 59,
+      "4096": 1
+    },
+    "size_parameters": {
+      "s": 2,
+      "c": 55,
+      "r": 47,
+      "a": 14,
+      "p_app": 187
+    },
+    "sha256": "98b7ab761b155a979baa61c0cd071207b74b42acfa286e3cc05657f14f2f0d59",
+    "bytes": 19035192
+  },
+  "comb-constant": {
+    "unitary_generators": 171,
+    "words": 8414,
+    "polynomials": 412,
+    "projections": 126306,
+    "rational_rows": 101446,
+    "row_kinds": {
+      "frame": 1,
+      "graph": 75726,
+      "reference": 1,
+      "placement_left": 8413,
+      "placement_right": 8413,
+      "product": 8071,
+      "inverse": 171,
+      "binding": 238,
+      "structural": 196,
+      "application": 216
+    },
+    "row_dimensions": {
+      "16": 101170,
+      "64": 213,
+      "256": 59,
+      "1024": 4
+    },
+    "size_parameters": {
+      "s": 5,
+      "c": 39,
+      "r": 31,
+      "a": 14,
+      "p_app": 216
+    },
+    "sha256": "d4f09ff4e24e6b0ef5d039bee49b2c2513b15633d74743067174a764e1de5ed8",
+    "bytes": 22910898
+  },
+  "comb-linear": {
+    "unitary_generators": 171,
+    "words": 8583,
+    "polynomials": 412,
+    "projections": 128841,
+    "rational_rows": 103474,
+    "row_kinds": {
+      "frame": 1,
+      "graph": 77247,
+      "reference": 1,
+      "placement_left": 8582,
+      "placement_right": 8582,
+      "product": 8240,
+      "inverse": 171,
+      "binding": 238,
+      "structural": 196,
+      "application": 216
+    },
+    "row_dimensions": {
+      "16": 103197,
+      "64": 213,
+      "256": 58,
+      "1024": 5,
+      "4096": 1
+    },
+    "size_parameters": {
+      "s": 5,
+      "c": 39,
+      "r": 31,
+      "a": 14,
+      "p_app": 216
+    },
+    "sha256": "2fc8b624de847893b117ca0ebbed57631de8afeb8c592bec1a6ff61b1e801f69",
+    "bytes": 23396558
+  }
+}

@@ -1,0 +1,2 @@
+naive code from rho_A = D^2: sum err 2.220446049250313e-16  max orthogonality violation 0.0012784369209046158
+PASS: naive marginal negative control fails orthogonality as required

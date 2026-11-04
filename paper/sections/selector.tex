@@ -1,0 +1,226 @@
+\section{Semifinite hosts: a critical tree selects a finite depth}\label{sec:selector}
+In a diffuse semifinite algebra the Weyl determinant of Section~\ref{sec:clock} is unavailable, so the spatial witness cannot be used. A trace still forces a finite object. A critical binary tree with modular ratio $1/2$ must have a nonzero leaf sector at some finite depth, and a group word chosen by that depth carries the $\Sigma^0_2$ witness. This section builds the resulting reduction and proves the semifinite half of Theorem~B. It does not use the Weyl-clock reduction.
+
+\subsection{The critical-tree selector}
+Work on a faithful normal support. Fix integers $d\ge2$ and a real $0<\gamma<1$. Let $P,Q$ be centralizer projections, $0\leq C\leq I$ a centralizer contraction, and let $B_1,\ldots,B_d$ satisfy
+\begin{align}
+ B_i^*B_j&=\delta_{ij}(I-P),&
+ \sum_iB_iB_i^*&=I-Q,\label{eq:tree}\\
+ \sigma_t^\varphi(B_i)&=d^{-it}B_i,\label{eq:modular}\\
+ CQ&=Q,& CB_i&=\gamma B_iC,&[C,P]&=0.\label{eq:depth}
+\end{align}
+These labels $P,Q,C,B_1,\ldots,B_d$ belong to the selector presentation only.
+\begin{lemma}[Critical-tree selector]\label{lem:selector}
+For branching $d$, modular ratio $1/d$ and depth ratio $\gamma$, in a normal semifinite realization, $P\ne0$, $\ker C=0$, and $E_n=1_{\{\gamma^n\}}(C)$ satisfy $\sum_{n\geq0}E_n=I$ strongly. Some finite $n$ has $PE_n\ne0$.
+\end{lemma}
+\begin{proof}
+The modular eigenoperators are entire analytic. KMS gives $\varphi(B_iB_i^*)=\varphi(B_i^*B_i)/d$. Summing gives
+\begin{equation}\label{eq:defectmass}
+ \varphi(P)=\varphi(Q).
+\end{equation}
+If $P=0$, faithfulness makes $Q=0$, giving a full Cuntz family. Write $\varphi(x)=\tau(hx)$, $h$ injective, $\tau(h)=1$. The covariance is $h^{it}B_i=B_i(h/d)^{it}$, hence $f(h)B_i=B_if(h/d)$ for bounded Borel $f$. For bounded $g\geq0$ with compact support in $(0,\infty)$, $hg(h)$ is positive integrable, and
+\[
+ \varphi(g(h))=\sum_i\tau(B_i^*hg(h)B_i)
+ =\tfrac1d\sum_i\tau(hg(h/d))=\varphi(g(h/d)).
+\]
+The trace exchange is $\tau(T^{1/2}vv^*T^{1/2})=\tau(v^*Tv)$ for positive integrable $T$. Use indicators of $(d^k,d^{k+1}]$, or monotone approximations to them. All these windows have equal $\varphi$-mass and partition $(0,\infty)$, whose mass is one. Countable additivity is contradicted. Thus $P\ne0$.
+
+Let $z=1_{\{0\}}(C)$. Covariance and its adjoint give $zB_i=B_iz$ by functional calculus at zero. Also $Qz=0$ and $[P,z]=0$. Since $z$ is a centralizer projection, $zMz$ is modularly invariant. The KMS calculation there gives $\varphi(Pz)=0$, hence $Pz=0$. If $z\ne0$, the normalized restriction of $\varphi$ is faithful normal on a semifinite corner with a full critical Cuntz family. The same window argument excludes this. Hence $z=0$.
+
+Put $\mathcal T(X)=\sum_iB_iXB_i^*$. Telescoping gives
+\begin{equation}\label{eq:telescope}
+ I=\sum_{j=0}^{m-1}\mathcal T^j(Q)+\mathcal T^m(I).
+\end{equation}
+For a length-$m$ word $v$, $CB_v=\gamma^mB_vC$. Bounded spectral calculus puts its range in $1_{[0,\gamma^m]}(C)\mathcal H$. Thus
+\[
+ 0\leq\mathcal T^m(I)\leq1_{[0,\gamma^m]}(C)\longrightarrow0
+\]
+strongly by injectivity of $C$. Each $\mathcal T^j(Q)$ is supported in the $\gamma^j$ eigenspace of $C$. These positive terms sum to $I$ and have mutually orthogonal spectral supports. Compressing the sum to each eigenspace gives
+\begin{equation}\label{eq:En}
+ E_j=\mathcal T^j(Q),\qquad \sum_{j\geq0}E_j=I.
+\end{equation}
+There is no residual spectral subspace since the sum is $I$. As $[P,C]=0$ and $P\ne0$, some $PE_n$ is nonzero. In particular $Q=E_0$.
+\end{proof}
+
+
+The selector of this section uses $d=2$ and $\gamma=1/2$, with edges reindexed $B_0,B_1$; the coupled construction uses $d=16$ and the same depth ratio.
+
+\subsection{Finite models and a small example}
+For words $w$ of length at most $n$, let $B_i$ append $i$ unless $w$ is a leaf, when it vanishes. Let $Q$ select the empty word and $P$ the depth-$n$ words. Put
+\begin{equation}\label{eq:treeh}
+ C|w\rangle=2^{-|w|}|w\rangle,\qquad
+ h_n|w\rangle=\frac{2^{-|w|}}{n+1}|w\rangle.
+\end{equation}
+Each nonleaf has two distinct children and each nonroot a unique parent. This proves \eqref{eq:tree}, including the cross term. The child-to-parent density ratio is $1/2$, proving \eqref{eq:modular}; the same ratio for $C$ proves \eqref{eq:depth}. Each depth has state mass $1/(n+1)$, whence
+\begin{equation}\label{eq:treeentropy}
+ \varphi_n(P)=\varphi_n(Q)=\frac1{n+1},\qquad
+ S(h_n)=\log_2(n+1)+\frac n2.
+\end{equation}
+For $n=2$, the seven word densities are $1/3$, two copies of $1/6$, and four copies of $1/12$. Their $C$ labels are $1,1/2,1/4$. The leaf rank is four but its state mass is $1/3$. A finite host's normalized trace gives $\tau(P)\geq1/2$ from \eqref{eq:tree}; this does not bound $\varphi(P)$ away from zero uniformly over states.
+
+\subsection{A finite presentation verifies the depth}\label{sec:group}
+Fix a total recursive predicate $\Rdec(e,n,t)$ and $\Adec=\{e:\exists n\,\forall t\,\Rdec(e,n,t)\}$. With $[x,y]=xyx^{-1}y^{-1}$ set
+\begin{equation}\label{eq:group}
+ \begin{split}
+ \Gamma_e=\langle a,b,c\mid {}&
+ {r^{\rm grp}}_n^2=1\ (n\geq0),\\[-2pt]
+ &{r^{\rm grp}}_n=1\text{ if }\exists t\,\neg\Rdec(e,n,t)\rangle,
+ \qquad {r^{\rm grp}}_n=[b,a^nca^{-n}].
+ \end{split}
+\end{equation}
+\begin{lemma}\label{lem:group}
+${r^{\rm grp}}_n$ is nontrivial in $\Gamma_e$ exactly when $\forall t\,\Rdec(e,n,t)$; a nontrivial ${r^{\rm grp}}_n$ has order two. Uniformly there is a finite presentation $\mathcal G_e$ and explicit words for embedded $a,b,c$ preserving this property.
+\end{lemma}
+\begin{proof}
+Let $\mathcal D_{\rm good}\subseteq\mathbb N$ be the good integers. Take two copies of $\mathbb V=\bigoplus_{m\in\mathbb Z}\mathbb F_2\varepsilon_m$ and $\mathbb W=\bigoplus_{k\in\mathcal D_{\rm good}}\mathbb F_2z_k$. Define $\mathfrak b(\varepsilon_m,\varepsilon_\ell)=z_{\ell-m}$ if $\ell-m\in\mathcal D_{\rm good}$, zero otherwise. On $\mathbb V\oplus \mathbb V\oplus \mathbb W$ put
+\begin{equation}\label{eq:model18}
+ (x,y,z)(x',y',z')=(x+x',y+y',z+z'+\mathfrak b(x,y')).
+\end{equation}
+Bilinearity makes the third coordinate in either association $z+z'+z''+\mathfrak b(x,y')+\mathfrak b(x,y'')+\mathfrak b(x',y'')$. The identity is $(0,0,0)$; the inverse of $(x,y,z)$ is $(x,y,z+\mathfrak b(x,y))$. Simultaneously shifting both $\mathbb V$ indices preserves $\mathfrak b$; adjoin this automorphism as $a$. Put $b=(\varepsilon_0,0,0)$ and $c=(0,\varepsilon_0,0)$. Multiplication gives ${r^{\rm grp}}_n=(0,0,z_n)$ for $n\in\mathcal D_{\rm good}$, identity otherwise. All relators hold, and every good word has a nontrivial order-two image. Bad words are killed by listed relators, proving the assertion.
+
+For precision we give a uniform Craig conversion \cite{Craig} of the c.e.\ relator list to a decidable literal-word list. Chiodo's convention already permits recursive enumeration, so this extra normalization is optional for the cited embedding theorem. Here is a Craig conversion that also preserves the old generator words. Adjoin $d$ with relator $d=1$. For an enumerated relator $r$ at time $t$, replace that occurrence by the literal word $r d^k$, where distinct increasing codes $k$ are chosen effectively with $k\geq t$. Given a word of length $\ell$, membership in the resulting literal relator set is decidable by simulating the first $\ell$ enumeration steps, constructing those coded words of length at most $\ell$, and comparing literally. Use freely reduced old words $r$, which contain no $d$; the final $d^k$ therefore survives free reduction. Include $d$ itself as a relator. Modulo $d=1$, the coded relations are exactly the original $r$. The group is therefore unchanged and the old generator images remain explicit. Higman embedding \cite{Higman}, in the effective uniform formulation of \cite[Theorem 2.2]{Chiodo}, gives a finite presentation with an explicit injective embedding. Injectivity preserves the nontrivial ${r^{\rm grp}}_n$. The model \eqref{eq:model18} need not itself be computable.
+\end{proof}
+
+Represent the generators of $\mathcal G_e$ by centralizer unitaries satisfying its finite relators. Add centralizer unitaries $T,L$. Require every group generator and $T$ to commute with $B_0,B_1,C$. Impose
+\begin{equation}\label{eq:reader19}
+ LQ=cQ,\quad LB_i=B_i aLa^*,\quad [L,C]=[L,P]=0,
+\end{equation}
+and the centralizer polynomial
+\begin{equation}\label{eq:terminal}
+ P\bigl(T[b,L]T^*+[b,L]\bigr)=0.
+\end{equation}
+\begin{lemma}[Level reader]\label{lem:reader}
+In every semifinite realization $LE_n=a^nca^{-n}E_n$. The terminal equation then implies that some $n$ is good.
+\end{lemma}
+\begin{proof}
+Group generators commute with $C$, hence with $Q=E_0$. In particular $a^*Q=Qa^*$; this is needed in the induction. For a word $v$ of length $n$, the endpoint equation and commutation of $a$ with the $B_i$ give $LB_vQ=B_v a^nLa^{-n}Q=B_va^nca^{-n}Q$. By \eqref{eq:En} these ranges span $E_n\mathcal H$, proving the level identity. A unitary commuting with $B_i$ also commutes with $B_i^*$: commute its inverse, then take adjoints. It therefore commutes with $P$. Thus $PE_n$ reduces the group generators, $T$ and $L$. Choose a nonzero such sector by Lemma~\ref{lem:selector}. On it \eqref{eq:terminal} becomes $T{r^{\rm grp}}_nT^*=-{r^{\rm grp}}_n$. A bad $n$ has relator ${r^{\rm grp}}_n=I$, giving $I=-I$ on a nonzero space. This contradiction proves goodness.
+\end{proof}
+
+\begin{lemma}[Finite realization]\label{lem:hnn}
+A good $n$ gives a finite-algebra realization of all relations.
+\end{lemma}
+\begin{proof}
+In $\mathcal G_e\times\langle j\mid j^2=1\rangle$, the subgroup $\langle {r^{\rm grp}}_n,j\rangle$ is $C_2^2$. The map ${r^{\rm grp}}_n\mapsto j{r^{\rm grp}}_n$, $j\mapsto j$ is its automorphism. Form the HNN extension $\Gamma^{\rm HNN}_n$ with stable letter $T$:
+\begin{equation}\label{eq:hnn}
+ T{r^{\rm grp}}_nT^{-1}=j{r^{\rm grp}}_n,\qquad TjT^{-1}=j.
+\end{equation}
+The HNN normal-form theorem \cite{HNN} embeds the base group. Consequently $j\ne1$, and $j$ commutes with the base and with $T$, so is central in $\Gamma^{\rm HNN}_n$. This is the group-extension mechanism used in the nonlocal-game setting of \cite{Slofstra}. In $L(\Gamma^{\rm HNN}_n)$, $p_-=(1-\lambda(j))/2$ is central and has trace $1/2$. The corner $M_{\rm HNN}=p_-L(\Gamma^{\rm HNN}_n)$ with trace $2\tau$ is finite. Compressed group unitaries are unitaries of $M_{\rm HNN}$, and \eqref{eq:hnn} becomes $T{r^{\rm grp}}_nT^*=-{r^{\rm grp}}_n$.
+
+Tensor $M_{\rm HNN}$ with the depth-$n$ tree, with density $h_n\otimes1$ relative to matrix trace times the normalized trace of $M_{\rm HNN}$. Group generators and $T$ are constant across vertices. Set $L=a^\ell ca^{-\ell}$ on depth $\ell$. It is a unitary centralizer label commuting with $P,C$. On a nonleaf, $LB_i=B_i aLa^*$ because depth increases by one; both sides vanish on a leaf. At the root $LQ=cQ$. The terminal equation is the sign-flip identity on the leaves and is vacuous elsewhere. The tree relations hold by \eqref{eq:treeh}. Tensor with $R_{\rm hyp}$ and select a factor fibre to obtain a $\II_1$ host. The presentation itself never needs to find the good $n$.
+\end{proof}
+
+For a small example, at good depth $n=1$ the tree is $\{\emptyset,0,1\}$ and the blocks of $L$ are $c,aca^{-1},aca^{-1}$. The terminal word is ${r^{\rm grp}}_1=[b,aca^{-1}]$. The model \eqref{eq:model18} with good set $\{1\}$ sends it to $z_1\ne1$, while ${r^{\rm grp}}_0,{r^{\rm grp}}_2$ vanish. The HNN step flips the chosen involution after compression to $j=-1$. One $T$ is not required to flip all good words.
+
+\subsection{One bridge compiles the selector presentation}\label{sec:onebridge}
+Use five orthogonal synchronized corners $e_0,m_{00},m_{01},m_{10},m_{11}$ covering $I$, with one FMS copy whose flag is $e_0$ and magic support is their other four corners. Put $e_1=m_{00}$. The actual bridge $v=\btrans_1:e_0\to e_1$ obeys \eqref{eq:bridgecomm}. KMS and the cover give $\varphi(e_0)=1/9$ and $\varphi(m_{ab})=2/9$; here $9=\mathfrak c_1$. These masses are independent of the root model.
+
+\begin{center}\begin{minipage}{\linewidth}
+\centering
+\[
+ \underbrace{e_0}_{1/9}
+ \ \xrightarrow[\sigma_t^\varphi(v)=2^{it}v]{v}\
+ \boxed{\underbrace{m_{00}=e_1}_{2/9}\quad
+ m_{01}\quad m_{10}\quad m_{11}}
+ \qquad\text{each magic corner has mass }2/9.
+\]
+\captionof{figure}{One calibrated bridge. All copies of transported labels use this same $v$; the box is the four-dimensional magic support.}
+\end{minipage}\end{center}
+
+Bind the five corners and the two positive $ZI,IX$ parameters to the qutrit frame. Introduce the two axis unitaries $\mathfrak x,\mathfrak z$ with the explicit formulas of Section~\ref{sec:bridge}. A \emph{typed label} is an operator name together with its required class (projection, positive contraction or unitary). The transported typed label list is exactly
+\begin{equation}\label{eq:labels}
+ Q,\ C,\ T,\ L,\ \{U_g:g\text{ is a generator of }\mathcal G_e\}.
+\end{equation}
+Encode a projection by a reflection, a positive contraction by $u_C=2C-I+2i\sqrt{C(I-C)}$, and a unitary directly. A \emph{unitary name} is a formal generator for the chosen unitary encoding, including separate names for separate summands when needed. For each resulting unitary name $\ell$ introduce copies $u_{r,\ell}$, $r=0,1$, with $(u_{r,\ell}-I)(I-e_r)=0$. The \emph{decoded copies} are the actual corner operators recovered from these encodings by the following formulas, respectively: $e_r(I+u_{r,Q})/2$, $e_r(2I+u_{r,C}+u_{r,C}^*)/4$, and $e_ru_{r,\ell}$. Require $u_{r,Q}^2=I$. Introduce the block unitary $V_{1,\ell}$ of \eqref{eq:blockcopies}; since the cover is the whole space it reads
+\[
+ V_{1,\ell}=e_0u_{0,\ell}+
+ \sum_{a,b}\mathfrak x^a\mathfrak z^b e_1u_{1,\ell}\mathfrak z^{-b}\mathfrak x^{-a}.
+\]
+Refine the retained FMS signs separately for the six frame projections
+\[
+ F_1,\quad F_2,\quad F_3,\quad G_{12}(1),\quad G_{13}(1),\quad G_{23}(1),
+\]
+and for every $G_{12}(V_{1,\ell})$. Lemma~\ref{lem:label} first makes $v$ preserve the frame, so $v=I_3\otimes\widetilde v$. The graph-label commutators in the target--source block give
+\begin{equation}\label{eq:transport}
+ vu_{0,\ell}=u_{1,\ell}v.
+\end{equation}
+Thus the same actual calibrated transport works for every label. Transport of decoded adjoints and polynomials follows too. $P$ is root-only, encoded by $P_0=e_0(I+u_P)/2$ with $u_P^2=I$ and $(u_P-I)(I-e_0)=0$.
+
+Introduce two centralizer contractions $b_i=e_1b_ie_0$. For compilation encode each as an average of two global unitaries. Extract $B_i=v^*b_i$ on $e_0Me_0$. Their modular eigenvalue is $1/2$ because that of $b_i$ is one. The complete endpoint translation is
+\begin{center}\small
+\begin{tabular}{@{}ll@{}}
+\toprule Root relation & Centralizer polynomial\\\midrule
+$B_i^*B_j=\delta_{ij}(I-P)$
+& $b_i^*b_j=\delta_{ij}(e_0-P_0)$\\
+$\sum_iB_iB_i^*=I-Q$ & $\sum_i b_ib_i^*=e_1-Q_1$\\
+$CB_i=\frac12B_iC$ & $C_1b_i=\frac12b_iC_0$\\
+$U_gB_i=B_iU_g$ & $(U_g)_1b_i=b_i(U_g)_0$\\
+$TB_i=B_iT$ & $T_1b_i=b_iT_0$\\
+$LB_i=B_i aLa^*$ & $L_1b_i=b_i a^{[0]}L_0(a^{[0]})^*$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Every remaining relation is a root centralizer polynomial: the finite relators of $\mathcal G_e$, $C_0Q_0=Q_0$, $[C_0,P_0]=0$, $[U_g,C_0]=[T_0,C_0]=0$, $L_0Q_0=c^{[0]}Q_0$, $[L_0,C_0]=[L_0,P_0]=0$, and the terminal equation. Expand its root projection as $P=(I+s_P)/2$. Here $a^{[0]},c^{[0]}$ mean the source words for the embedded $a,c$. If $W_{\rm ter}=[b,L]$, its non-self-adjoint polynomial is explicitly
+\[
+ p=\tfrac12\bigl(TW_{\rm ter}T^*+W_{\rm ter}+s_PTW_{\rm ter}T^*+s_PW_{\rm ter}\bigr).
+\]
+Use \eqref{eq:G3} for these words and their prefixes. In global scaffold coordinates multiply by $e_0$ and expand $e_0=(I+s_{e_0})/2$ as well. The two off-diagonal blocks impose $p=0$ and $p^*=0$. Expand all other typed polynomials in the same manner, apply graphs and triangles, then Lemma~\ref{lem:rows}. Retain all FMS and refinement questions. Sample all padded question pairs uniformly, reject the listed events, and accept unspecified pairs. This is an effective finite rational Boolean game, denoted $\Gsel_e$.
+
+\paragraph{Soundness and simultaneous completeness.}
+Soundness uses the nonzero root corner with normalized state $9\varphi|_{e_0Me_0}$. Equations \eqref{eq:transport} and the table give all root relations as bounded operator identities. For example $C_0v^*=v^*C_1$ gives $C_0B_i=v^*C_1b_i=B_iC_0/2$. Conjugating the range equation by $v^*$ uses $v^*Q_1v=Q_0$. The corner of a semifinite host is semifinite, so Lemmas~\ref{lem:selector} and \ref{lem:reader} prove soundness.
+
+Conversely take any faithful normal root realization $(M,\varphi)$. On $\Mat_5\vN M$ use the state
+\begin{equation}\label{eq:scaffoldone}
+ \varphi_{\rm sc}=\operatorname{diag}(1,2,2,2,2)/9\ \otimes\varphi.
+\end{equation}
+Use the identity corner maps $v=|e_1\rangle\langle e_0|\otimes I$, the ideal real FMS effects, and $b_i=|e_1\rangle\langle e_0|\otimes B_i$. The product modular group makes each $b_i$ centralizer because the two modular eigenvalues $2$ and $1/2$ cancel. The whole centralizer is finite, with its faithful trace $\varphi_{\rm sc}$. For any contraction $x$ in a finite von Neumann algebra, the polar partial isometry extends to a unitary $u$: equivalent initial and final projections have equivalent complements in a finite algebra. Then
+\[
+ u_\pm=u(|x|\pm i\sqrt{I-|x|^2}),\qquad x=(u_++u_-)/2.
+\]
+This supplies the exact encodings of both $b_i$ at once. Use $2Q-I,2P-I$ and the displayed functional-calculus encoding of $C$, copying the same choices to each required corner. Amplify by the scalar qutrit frame. All block labels commute with the ideal FMS signs, so use their actual joint products for refinement. Separate labels use separate questions. Finally apply the standard-form construction in Lemma~\ref{lem:rows}, with Bob's effects defined by its conjugation $\mathcal J_{\rm new}$. Formula \eqref{eq:scaffoldone} and the ideal real FMS effects give exactly the five-dimensional FMS probabilities, including the nonsynchronous signs. All graph and endpoint identities hold simultaneously. A finite-algebra root stays finite; after tensoring with $R_{\rm hyp}$ a $\II_1$ host exists. A $\III_{1/2}$ root stays $\III_{1/2}$ under the finite amplifications.
+
+\subsection{Both uniform promises and the hardness theorem}\label{sec:promises}
+\begin{theorem}[Uniform semifinite reduction]\label{thm:selreduction}
+Uniformly from a total recursive $\Rdec$ and an input $e$, the compiler gives a finite rational Boolean game $\Gsel_e$ such that
+\[
+ \Gsel_e\in\perf(\II_1)
+ \iff \Gsel_e\in\perf_{\sfhost}
+ \iff \exists n\,\forall t\,\Rdec(e,n,t).
+\]
+For every input $e$, $\Gsel_e$ has a perfect $\III_{1/2}$ strategy and $\omega_q(\Gsel_e)=1$.
+\end{theorem}
+\begin{proof}
+For the equivalence, soundness follows from the compiler and the selector and level-reader lemmas. A good $n$ gives a finite model by Lemma~\ref{lem:hnn}, which the compiler turns into perfect finite-host play and hence a $\II_1$ host.
+
+For the first uniform promise take the uniform KMS representation of $\mathcal O_2$ with generators $s_i$ satisfying $s_i^*s_j=\delta_{ij}I$, $\sum_i s_is_i^*=I$ and $\sigma_t(s_i)=2^{-it}s_i$. Its weak closure is $R_{1/2}$; see the Cuntz/KMS identification in \cite{OP} for the gauge KMS state and \cite[Theorem 4.9 and Example 4.13]{HarrisEmbezzlement} for this factor identification, also used in \cite[Section 3.1]{ReadType}. Set $B_i=s_i$, $P=Q=C=0$, and take all group generators, $T,L$ equal to $I$. Every root equation holds: $LQ=cQ$ and the terminal row are vacuous. In the scaffold \eqref{eq:scaffoldone}, $b_i=|e_1\rangle\langle e_0|\otimes s_i$ is centralizer. Its exact two-unitary completion exists in the finite centralizer, as proved above. The encoding of $C=0$ is $u_C=-I$ on each corner; the zero projections use reflection $-I$ there as well. Their transported block labels commute with the ideal signs. Thus every compiler gadget has a simultaneous perfect realization. The host, including all finite ancillary matrices, is $\III_{1/2}$.
+
+For the second promise take the finite-tree strategy $\mathcal V_N$ with the depth-$N$ finite tree and trivial group labels. Every root equation is exact except the terminal row. Its residual is
+\begin{equation}\label{eq:residual}
+ {R^{\rm ter}_N}=2P,\qquad
+ \varphi_N({R^{\rm ter}_N}^*{R^{\rm ter}_N})=4\varphi_N(P)=\frac4{N+1}.
+\end{equation}
+Build all graph, prefix, joint and column measurements by their exact formulas even for this nonzero application row. All their structural tests remain exact. Only its final row-zero event can lose. For an honest row, \eqref{eq:rowloss} gives its loss.
+
+More explicitly, if the lifted root residual is $p=e_0{R^{\rm ter}_N}$, its graph row has off-diagonal blocks $p,p^*$. The qutrit trace and root mass give
+\[
+ \varphi_{\rm old}(S_{\rm graph}^2)
+ =\tfrac13\varphi_{\rm sc}(p^*p+pp^*)
+ =\tfrac{2}{27}\varphi_N({R^{\rm ter}_N}^*{R^{\rm ter}_N}).
+\]
+The last equality uses traciality on the centralizer. The \emph{padded question count} is the common size of the two question sets after adding always-accepted fresh questions. An \emph{orientation} is a choice of which party receives the row question and which receives the scalar reference question. Let $m_e\geq1$ be the finite number of retained terminal-test copies in the chosen encoding, determined solely by $e$. If $Q_e$ is the padded question count and $\ell_e,d_e$ are the row denominator and slot dimension, then, for each retained terminal-test copy, union bounding its orientations gives a loss of at most $64\ell_e^2/(27d_e^3Q_e^2(N+1))$. Thus the total loss satisfies
+\[
+ 1-\omega(\Gsel_e,\mathcal V_N)
+ \le m_e\frac{64\ell_e^2}{27d_e^3Q_e^2}\,\frac1{N+1}=\frac{C^{\rm sel}_e}{N+1}.
+\]
+Take
+\[
+ C^{\rm sel}_e=m_e\frac{64\ell_e^2}{27d_e^3Q_e^2}.
+\]
+Thus $C^{\rm sel}_e$ depends only on the finite compiled specification, denominators, row dimensions and the fixed root mass $1/9$. It is independent of $N$, the density spectrum and the finite tree dimension. Letting $N\to\infty$ proves $\omega_q(\Gsel_e)=1$.
+\end{proof}
+
+Choose $\Adec$ to be $\Sigma^0_2$-complete. Theorem~\ref{thm:selreduction} and \eqref{eq:languageequal}, together with Theorem~\ref{thm:upper}, prove $\Sigma^0_2$-completeness of every claimed semifinite existence language in Theorem~B. Furthermore every $\Gsel_e$ is commuting perfect and has quantum value one, and
+\[
+ \Gsel_e\in\III\text{-}\mathrm{ONLY}\iff e\notin\Adec,
+ \qquad \III\text{-}\mathrm{ONLY}:=\perf_{\co}\setminus\perf_{\sfhost}.
+\]
+This proves $\Pi^0_2$-hardness within that promise, a stronger statement than hardness of intersection with the value-one language. Membership follows from $\perf_{\co}\in\Pi^0_1$ and $\perf_{\sfhost}^c\in\Pi^0_2$: their intersection is $\Pi^0_2$.

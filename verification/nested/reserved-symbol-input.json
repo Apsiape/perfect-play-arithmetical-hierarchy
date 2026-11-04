@@ -1,0 +1,1 @@
+{"name":"reserved-symbol-validation","labels":{"flag":"unitary","a_X":"projection","derived_0":"contraction"},"modular":["X"],"relations":[{"name":"endpoint","terms":[{"coefficient":"1","word":["flag","X"]},{"coefficient":"-1","word":["X","flag"]}]}]}
