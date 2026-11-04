@@ -1,6 +1,6 @@
 # A trace costs one quantifier: the exact complexity of perfect play in nonlocal games
 
-Seth Douglas and Nidhal Mghirbi. Preprint, November 2026.
+Seth Douglas and Nidhal Mghirbi. Version 1.0.0, November 2026. DOI: [10.5281/zenodo.23962890](https://doi.org/10.5281/zenodo.23962890). Concept DOI (all versions): [10.5281/zenodo.23962889](https://doi.org/10.5281/zenodo.23962889).
 
 **This is a preprint. It has not been peer reviewed.**
 
