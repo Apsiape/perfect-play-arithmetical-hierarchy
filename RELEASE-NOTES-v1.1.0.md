@@ -1,0 +1,10 @@
+# Version 1.1.0 release notes
+
+6 November 2026.
+
+- Theorem A is now proved in Lean, conditional only on a special case of Tarski's 1951 decision theorem for real arithmetic (Section 2, Theorem 31 and Corollary 32), and a comparator challenge that imports only Mathlib checks it. Theorems B-D are not checked beyond listed local lemmas; see lean/README.md and Appendix F.
+- **Correction:** equation (29) changes the explicit coefficient from 8 to 16. Equation (19) is the probability of one orientation of the row-zero forbidden pair. Version 1.0.0 counted one orientation without saying so; when the pair is tested in both ordered question pairs under uniform Q-by-Q sampling, as in the Lean-checked compiler, both contributions must be counted. The coefficient 16 is sufficient in either convention; the text now states that one oriented test per row, the convention of equation (54), permits 8. This changes the stated sufficient constant, not a theorem statement or a decidability classification. The named constant has no use outside equations (28)-(29) and their local explanation.
+- The finite-entropy definition explains why the one-marginal and two-sided existence languages agree by purification onto the other party. It does not identify entropy conventions on an arbitrary fixed mixed strategy.
+- The exposition is consolidated: a new abstract and introduction (the mechanism first, then the results), one figure, and merged derivations where the compiler section had repeated them. The clauses of Theorems B and D beyond their main statements now appear as Theorems 14.4 and 9.1, word for word. Notation that meant two things is renamed.
+- Removed from this version, and still available in version 1.0.0: the capacity discussion of Section 18 (now a short paragraph in Section 19.4) and the approximate-play dimension bound of Section 9.4. No other result is removed. The detailed software-check appendices moved to verification/DETAILS.md; Appendix C summarizes what is checked.
+- Version and date are updated to 1.1.0 and 2026-11-06.

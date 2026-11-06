@@ -41,7 +41,7 @@ Induction on word length identifies $U_x$ and $U_y$ as cyclic increments of $x$ 
 \[
  P_{x,\rm last}=U_x^*P_xU_x,\qquad P_{y,\rm last}=U_y^*P_yU_y
 \]
-mark the final column and row. These are conclusions on the full root multiplicity, not just selected vectors.
+mark the final column and row. These identities hold on the full root multiplicity space.
 
 \subsection{A finite deterministic tableau}\label{sec:tableau}
 Choose a deterministic radius-one cellular automaton on the half-line. Its finite alphabet $\Gamma_{\rm CA}$ includes start $\mathtt s$, blank $\mathtt b$ and halt $\mathtt H$, and its update is $\Phi(\ell,c,r,\varepsilon)$ with left boundary symbol $\#$ and external pulse $\varepsilon\in\{0,1\}$. The initial row is $\mathtt s,\mathtt b,\mathtt b,\ldots$. We use these conventions:
@@ -97,5 +97,5 @@ The half-line and the square agree throughout this induction. At time $y$ no dis
 The tableaux at distinct depths need not intertwine with the creation operators. Determinism forces each of them to the same finite prefix; soundness needs only one sufficiently large square. Every depth has positive normal weight by \eqref{eq:fockdensity}.
 
 \subsection{A worked front and mask example}\label{sec:toy}
-Table~\ref{tab:toy} is rendered by \texttt{spatial/review/generate\_toy.py} from \texttt{tableau(3,3)[3]}. Its $\mathtt d$ denotes a passed cell and $\mathtt m$ a frozen mark. These persistent annotations differ from the minimal front layer above, whose passed cells are blank and whose mark is $\mathtt z$; both put the mark at $(3,4)$. The pulse at time zero is ignored by $\mathtt s$. The pulse at $y=3$ produces the mark in row 4, and the later pulse at $y=6$ has no effect.
+Table~\ref{tab:toy} shows the depth-$3$ square for a clock of order three; the verification software regenerates it (Appendix~\ref{sec:repro}). Its $\mathtt d$ denotes a passed cell and $\mathtt m$ a frozen mark. These persistent annotations differ from the minimal front layer above, whose passed cells are blank and whose mark is $\mathtt z$; both put the mark at $(3,4)$. The start state $\mathtt s$ ignores the pulse at time zero. The pulse at $y=3$ produces the mark in row 4; the later pulse at $y=6$ has no effect.
 \input{sections/toy-table}

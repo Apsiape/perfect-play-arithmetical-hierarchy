@@ -1,828 +1,90 @@
 {
-  "date": "2026-11-04",
-  "timezone": "America/Los_Angeles",
-  "lean": "Lean (version 4.35.0, x86_64-w64-windows-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "date": "2026-11-06",
+  "lean_version": "4.35.0",
+  "lean_commit": "eb6cafb7290e8bd5f2937522d8d804f58f02bafc",
   "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
-  "theorem_pairs": 601,
-  "mapped_authored_declarations": 920,
+  "source_modules_built": 475,
+  "source_replay": "Serial source replay; matching source and dependency digests required for resume. Project sources were rebuilt on Windows x64 and Linux x64; each resumed object requires matching source and dependency digests. The actual comparator ran on Linux x64.",
+  "thin_core_roots": 601,
+  "audited_roots": 646,
+  "whole_project_declarations_audited_including_private": 11521,
   "permitted_axioms": [
-    "propext",
+    "Classical.choice",
     "Quot.sound",
-    "Classical.choice"
+    "propext"
   ],
-  "no_external_theorem_hypotheses": true,
   "compiler_threads": 1,
   "lean_heap_MiB": 6144,
-  "cap_bytes": 10000000000,
-  "comparator_mode": "trusted local Windows exports; --inadvisably-no-sandbox; no adversarial sandbox test",
-  "comparator_output": "WARNING: Sandbox disabled, this run is not trustworthy.\nRunning Lean default kernel on solution\nLean default kernel accepts the solution\nYour solution is okay!\n",
-  "records": [
-    {
-      "run": "release-attempt-1.json",
-      "step": "Sigma2_Statements",
-      "exit": 0,
-      "seconds": 18.601,
-      "peak_tree_commit_bytes": 4532097024
-    },
-    {
-      "run": "release-attempt-1.json",
-      "step": "Sigma2_Coefficients",
-      "exit": 0,
-      "seconds": 52.55,
-      "peak_tree_commit_bytes": 4841975808
-    },
-    {
-      "run": "release-attempt-1.json",
-      "step": "Sigma2_NormalCoefficients",
-      "exit": 0,
-      "seconds": 31.152,
-      "peak_tree_commit_bytes": 4841975808
-    },
-    {
-      "run": "release-attempt-1.json",
-      "step": "Sigma2_TensorLifts",
-      "exit": 0,
-      "seconds": 28.176,
-      "peak_tree_commit_bytes": 4841975808
-    },
-    {
-      "run": "release-attempt-1.json",
-      "step": "Sigma2_Purification",
-      "exit": 0,
-      "seconds": 23.121,
-      "peak_tree_commit_bytes": 4841975808
-    },
-    {
-      "run": "release-attempt-1.json",
-      "step": "Sigma2_PureTransfer",
-      "exit": 0,
-      "seconds": 17.213,
-      "peak_tree_commit_bytes": 4841975808
-    },
-    {
-      "run": "release-attempt-1.json",
-      "step": "Sigma2_TraceProducts",
-      "exit": 0,
-      "seconds": 18.9,
-      "peak_tree_commit_bytes": 4841975808
-    },
-    {
-      "run": "release-attempt-1.json",
-      "step": "Sigma2_Preliminaries",
-      "exit": 1,
-      "seconds": 47.007,
-      "peak_tree_commit_bytes": 4841975808
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_Preliminaries",
-      "exit": 0,
-      "seconds": 44.592,
-      "peak_tree_commit_bytes": 4804669440
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CompilerAlgebra",
-      "exit": 0,
-      "seconds": 27.439,
-      "peak_tree_commit_bytes": 4804669440
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_ProjectionGraph",
-      "exit": 0,
-      "seconds": 30.033,
-      "peak_tree_commit_bytes": 4804669440
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_DensitySpectral",
-      "exit": 0,
-      "seconds": 16.766,
-      "peak_tree_commit_bytes": 4804669440
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_FiniteContraction",
-      "exit": 0,
-      "seconds": 21.667,
-      "peak_tree_commit_bytes": 4804669440
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_DensityContraction",
-      "exit": 0,
-      "seconds": 20.111,
-      "peak_tree_commit_bytes": 4804669440
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CompilerBase",
-      "exit": 0,
-      "seconds": 26.115,
-      "peak_tree_commit_bytes": 4804669440
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_VectorTransfer",
-      "exit": 0,
-      "seconds": 15.972,
-      "peak_tree_commit_bytes": 4804669440
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_PureSupport",
-      "exit": 0,
-      "seconds": 18.371,
-      "peak_tree_commit_bytes": 4804669440
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_BridgeTransfer",
-      "exit": 0,
-      "seconds": 15.089,
-      "peak_tree_commit_bytes": 4804669440
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_MirrorCentralizer",
-      "exit": 0,
-      "seconds": 16.047,
-      "peak_tree_commit_bytes": 4804669440
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_SharpEvents",
-      "exit": 0,
-      "seconds": 18.128,
-      "peak_tree_commit_bytes": 4804669440
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CoarseCells",
-      "exit": 0,
-      "seconds": 24.942,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_FiniteSpectral",
-      "exit": 0,
-      "seconds": 49.625,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_MagicCells",
-      "exit": 0,
-      "seconds": 14.626,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_MirrorAlgebra",
-      "exit": 0,
-      "seconds": 14.128,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_MagicRelations",
-      "exit": 0,
-      "seconds": 15.735,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_PauliExtraction",
-      "exit": 0,
-      "seconds": 17.284,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_PauliMatrixUnits",
-      "exit": 0,
-      "seconds": 28.059,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_QubitUnits",
-      "exit": 0,
-      "seconds": 17.779,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_FourUnits",
-      "exit": 0,
-      "seconds": 15.196,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_DiagonalIdentification",
-      "exit": 0,
-      "seconds": 27.709,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_MatrixCentralizer",
-      "exit": 0,
-      "seconds": 18.021,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_BridgeMatrixUnits",
-      "exit": 0,
-      "seconds": 17.129,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CalibrationEvents",
-      "exit": 0,
-      "seconds": 20.19,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CoefficientOperator",
-      "exit": 0,
-      "seconds": 18.255,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CoefficientSupport",
-      "exit": 0,
-      "seconds": 16.636,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_MirrorUnits",
-      "exit": 0,
-      "seconds": 17.003,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CalibrationCoefficients",
-      "exit": 0,
-      "seconds": 15.696,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CalibrationGeometry",
-      "exit": 0,
-      "seconds": 20.972,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CalibrationFrame",
-      "exit": 0,
-      "seconds": 46.329,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CalibrationDensity",
-      "exit": 0,
-      "seconds": 23.122,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_FilteredSign",
-      "exit": 0,
-      "seconds": 16.899,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CalibrationSharpness",
-      "exit": 0,
-      "seconds": 15.682,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CalibrationCoordinates",
-      "exit": 0,
-      "seconds": 21.478,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CalibrationSigns",
-      "exit": 0,
-      "seconds": 18.787,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_VectorCovariance",
-      "exit": 0,
-      "seconds": 16.711,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CalibratedCancellation",
-      "exit": 0,
-      "seconds": 17.567,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CalibrationReference",
-      "exit": 0,
-      "seconds": 25.337,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_CalibrationTransport",
-      "exit": 0,
-      "seconds": 23.134,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_ActualCalibration",
-      "exit": 0,
-      "seconds": 18.801,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_RefinementPureTransfer",
-      "exit": 0,
-      "seconds": 16.461,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_RefinementModels",
-      "exit": 0,
-      "seconds": 16.032,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_BridgeRefinementTransfer",
-      "exit": 0,
-      "seconds": 12.832,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_RefinementAlgebra",
-      "exit": 0,
-      "seconds": 13.598,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_RefinementCoarse",
-      "exit": 0,
-      "seconds": 14.796,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_BobCalibration",
-      "exit": 0,
-      "seconds": 25.625,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_RefinementSigns",
-      "exit": 0,
-      "seconds": 17.388,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_RefinementLabel",
-      "exit": 0,
-      "seconds": 19.267,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_ActualRefinement",
-      "exit": 0,
-      "seconds": 12.55,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-2.json",
-      "step": "Sigma2_BellAttainment",
-      "exit": 1,
-      "seconds": 11.547,
-      "peak_tree_commit_bytes": 4913381376
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_BellAttainment",
-      "exit": 0,
-      "seconds": 12.328,
-      "peak_tree_commit_bytes": 4730785792
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_BridgeVector",
-      "exit": 0,
-      "seconds": 46.485,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_ExtractionBlocks",
-      "exit": 0,
-      "seconds": 18.81,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_RawBridgeVector",
-      "exit": 0,
-      "seconds": 28.397,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_Compiler",
-      "exit": 0,
-      "seconds": 12.265,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_TreeBasic",
-      "exit": 0,
-      "seconds": 13.139,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_FockEntropy",
-      "exit": 0,
-      "seconds": 16.03,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_Tree",
-      "exit": 0,
-      "seconds": 15.421,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_Clock",
-      "exit": 0,
-      "seconds": 14.12,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_CommonSigns",
-      "exit": 0,
-      "seconds": 15.185,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_RowSlots",
-      "exit": 0,
-      "seconds": 16.244,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_RowGame",
-      "exit": 0,
-      "seconds": 17.211,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_RowColumns",
-      "exit": 0,
-      "seconds": 16.516,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_RowSynchronization",
-      "exit": 0,
-      "seconds": 12.334,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_RowInterface",
-      "exit": 0,
-      "seconds": 18.16,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_RowFidelity",
-      "exit": 0,
-      "seconds": 13.422,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_RowRestriction",
-      "exit": 0,
-      "seconds": 16.547,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_RowScalar",
-      "exit": 0,
-      "seconds": 37.407,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_RowScalarJoints",
-      "exit": 0,
-      "seconds": 13.352,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_RowScalarAlgebra",
-      "exit": 0,
-      "seconds": 15.512,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_RowScalarGlobal",
-      "exit": 0,
-      "seconds": 17.867,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_RowSoundness",
-      "exit": 0,
-      "seconds": 12.339,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_SupportedContraction",
-      "exit": 0,
-      "seconds": 15.23,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_RowRegressions",
-      "exit": 0,
-      "seconds": 12.178,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Sigma2_ThinCore",
-      "exit": 0,
-      "seconds": 11.652,
-      "peak_tree_commit_bytes": 4838637568
-    },
-    {
-      "run": "release-attempt-3.json",
-      "step": "Challenge",
-      "exit": 1,
-      "seconds": 16.381,
-      "peak_tree_commit_bytes": 4891283456
-    },
-    {
-      "run": "release-attempt-4.json",
-      "step": "Challenge",
-      "exit": 1,
-      "seconds": 16.945,
-      "peak_tree_commit_bytes": 4890447872
-    },
-    {
-      "run": "release-attempt-5.json",
-      "step": "Challenge",
-      "exit": 0,
-      "seconds": 17.024,
-      "peak_tree_commit_bytes": 4891418624
-    },
-    {
-      "run": "release-attempt-5.json",
-      "step": "Solution",
-      "exit": 0,
-      "seconds": 16.206,
-      "peak_tree_commit_bytes": 4891418624
-    },
-    {
-      "run": "release-attempt-5.json",
-      "step": "Audit",
-      "exit": 0,
-      "seconds": 12.452,
-      "peak_tree_commit_bytes": 4891418624
-    },
-    {
-      "run": "release-attempt-6.json",
-      "step": "Challenge",
-      "exit": 0,
-      "seconds": 16.728,
-      "peak_tree_commit_bytes": 4891500544
-    },
-    {
-      "run": "release-attempt-6.json",
-      "step": "Solution",
-      "exit": 0,
-      "seconds": 15.395,
-      "peak_tree_commit_bytes": 4891500544
-    },
-    {
-      "run": "release-attempt-6.json",
-      "step": "export_Challenge",
-      "exit": 0,
-      "seconds": 23.031,
-      "peak_tree_commit_bytes": 5147947008
-    },
-    {
-      "run": "release-attempt-6.json",
-      "step": "export_Solution",
-      "exit": 0,
-      "seconds": 23.503,
-      "peak_tree_commit_bytes": 5184638976
-    },
-    {
-      "run": "release-attempt-6.json",
-      "step": "comparator",
-      "exit": 0,
-      "seconds": 110.531,
-      "peak_tree_commit_bytes": 5184638976
-    },
-    {
-      "run": "final-current-verification",
-      "step": "Sigma2_PrimePhase",
-      "exit": 0,
-      "seconds": 14.452,
-      "peak_tree_commit_bytes": 4441321472
-    },
-    {
-      "run": "final-current-verification",
-      "step": "Sigma2_Clock",
-      "exit": 0,
-      "seconds": 14.997,
-      "peak_tree_commit_bytes": 4794114048
-    },
-    {
-      "run": "final-current-verification",
-      "step": "Sigma2_Reduction",
-      "exit": 0,
-      "seconds": 15.76,
-      "peak_tree_commit_bytes": 4807385088
-    },
-    {
-      "run": "final-current-verification",
-      "step": "Sigma2_ThinCore",
-      "exit": 0,
-      "seconds": 13.009,
-      "peak_tree_commit_bytes": 4807385088
-    },
-    {
-      "run": "final-current-verification",
-      "step": "Challenge",
-      "exit": 0,
-      "seconds": 16.821,
-      "peak_tree_commit_bytes": 4901888000
-    },
-    {
-      "run": "final-current-verification",
-      "step": "Solution",
-      "exit": 0,
-      "seconds": 16.05,
-      "peak_tree_commit_bytes": 4901888000
-    },
-    {
-      "run": "final-current-verification",
-      "step": "Audit",
-      "exit": 0,
-      "seconds": 12.378,
-      "peak_tree_commit_bytes": 4901888000
-    },
-    {
-      "run": "final-current-verification",
-      "step": "export_Challenge",
-      "exit": 0,
-      "seconds": 20.138,
-      "peak_tree_commit_bytes": 5159538688
-    },
-    {
-      "run": "final-current-verification",
-      "step": "export_Solution",
-      "exit": 0,
-      "seconds": 22.35,
-      "peak_tree_commit_bytes": 5194072064
-    },
-    {
-      "run": "final-current-verification",
-      "step": "comparator",
-      "exit": 0,
-      "seconds": 106.852,
-      "peak_tree_commit_bytes": 5194072064
-    }
-  ],
-  "measured_seconds_including_release_attempts": 2240.672906,
-  "peak_tree_commit_bytes": 5194072064,
-  "stock_mathlib_rebuild": {
-    "records": [
-      {
-        "module": "Mathlib.MeasureTheory.VectorMeasure.Decomposition.Jordan",
-        "exit": 0,
-        "seconds": 10.044,
-        "peak_compiler_RSS_bytes": 811577344,
-        "peak_tree_commit_bytes": 2683310080,
-        "sha256": "498fbbe317d536b67feefddc702d31d5192c55ef81194dea4556e385129392bb"
-      },
-      {
-        "module": "Mathlib.MeasureTheory.VectorMeasure.Decomposition.Lebesgue",
-        "exit": 0,
-        "seconds": 11.454,
-        "peak_compiler_RSS_bytes": 1026150400,
-        "peak_tree_commit_bytes": 3473522688,
-        "sha256": "c8ea713339cc57005822aeacea086887a460be0a5093c1d81dc59499ee3a73cc"
-      }
-    ],
-    "total_seconds": 21.498897500000112,
-    "peak_tree_commit_bytes": 3473522688,
-    "cap_bytes": 10000000000,
-    "read_only_matching_dependency_cache": "<pinned-vendor>/mathlib/.lake/build/lib/lean"
-  },
-  "closed_original_admissions": [
-    "Sigma2.Reduction.application_admissible",
-    "Sigma2.Clock.lemma_6_1_good_primitive_phase"
-  ],
-  "core_ledger": {
-    "before": 13,
-    "after": 11,
-    "noncore_before": 31,
-    "noncore_after": 31
-  },
-  "integrated_blueprint_build": {
+  "axioms_sha256": "06c888a132916fca290e84c2cf05d643dcfaa006b32e866e5af9f219366a26c1",
+  "comparator": {
     "exit": 0,
-    "seconds": 148.1056583999998,
-    "peak_tree_commit_bytes": 5828276224,
-    "cap_bytes": 10000000000,
-    "actual_command": [
-      "<pinned-lean-bin>/lake.exe",
-      "build"
-    ]
+    "seconds": 408.639,
+    "peak_tree_rss_bytes": 4647108608,
+    "peak_tree_vms_bytes": 21451939840,
+    "stop_rss_bytes": 9000000000,
+    "memory_stop": false,
+    "lean_heap_MiB": 6144,
+    "sandbox": true,
+    "supplied_exports": false
   },
-  "stock_setup_attempts": [
-    {
-      "records": [
-        {
-          "module": "Mathlib.MeasureTheory.VectorMeasure.Decomposition.Jordan",
-          "exit": 1,
-          "seconds": 2.114,
-          "peak_compiler_RSS_bytes": 125837312,
-          "peak_tree_commit_bytes": 2471481344,
-          "sha256": "498fbbe317d536b67feefddc702d31d5192c55ef81194dea4556e385129392bb"
-        }
-      ],
-      "total_seconds": 2.114453400000002,
-      "peak_tree_commit_bytes": 2471481344,
-      "cap_bytes": 10000000000
+  "comparator_command": "lake comparator --config comparator.json",
+  "comparator_targets": [
+    "Sigma2.theoremA_of_tarski_paper",
+    "Sigma2.theoremA_shared_family",
+    "Sigma2.paper_admissible_iff"
+  ],
+  "sandbox_executable": "bubblewrap 0.9.0-1ubuntu0.3; invocation recorder additionally sets LEAN_NUM_THREADS=1",
+  "sandbox_invocations": 6,
+  "sandbox_networked_dependency_resolution_invocations": 1,
+  "solution_export_sha256": "144c2fc72f95f7ed4740ee23b6d3dcd26606ffa875f6a06f014e089c720bafd2",
+  "solution_export_bytes": 664629311,
+  "solution_export_roots": [
+    "Sigma2.theoremA_of_tarski_paper",
+    "Sigma2.theoremA_shared_family",
+    "Sigma2.paper_admissible_iff",
+    "Sigma2.theoremA_of_tarski",
+    "Sigma2.CompilerObligations.obligations_all"
+  ],
+  "kernel_replays": {
+    "leanchecker": {
+      "exit": 0,
+      "seconds": 220.064,
+      "peak_job_commit_bytes": 3333144576,
+      "job_cap_bytes": 9900000000,
+      "threads": 1,
+      "binary_sha256": "9ef6baeb28d5e28897d5ed6dddd60ff81e511d97374013ece435dff38e9e0137",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
-    {
-      "records": [
-        {
-          "module": "Mathlib.MeasureTheory.VectorMeasure.Decomposition.Jordan",
-          "exit": 1,
-          "seconds": 0.709,
-          "peak_compiler_RSS_bytes": 65187840,
-          "peak_tree_commit_bytes": 437174272,
-          "sha256": "498fbbe317d536b67feefddc702d31d5192c55ef81194dea4556e385129392bb"
-        }
-      ],
-      "total_seconds": 0.7092609999999695,
-      "peak_tree_commit_bytes": 437174272,
-      "cap_bytes": 10000000000,
-      "read_only_matching_dependency_cache": "<pinned-vendor>/mathlib/.lake/build/lib/lean"
+    "nanoda": {
+      "exit": 0,
+      "seconds": 129.658,
+      "peak_job_commit_bytes": 1083158528,
+      "job_cap_bytes": 9900000000,
+      "threads": 1,
+      "binary_sha256": "82c9dcf4f8df8ef2b9849bfc8198d0edd01e910913bd221f0c960c3332ab5e51",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
-  ]
+  },
+  "remaining_admissions": {
+    "project_proofs": 0,
+    "solution": 0,
+    "independent_challenge_target_holes": 2
+  },
+  "named_published_input": "hT : Sigma2.UpperRealArithmetic.TarskiDecision",
+  "independent_challenge": {
+    "imports": [
+      "Mathlib.Analysis.InnerProductSpace.l2Space",
+      "Mathlib.Analysis.InnerProductSpace.Adjoint",
+      "Mathlib.Analysis.InnerProductSpace.Positive",
+      "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+      "Mathlib.Computability.Reduce",
+      "Mathlib.Tactic.DeriveEncodable",
+      "Mathlib.Tactic",
+      "Mathlib.Computability.Primrec.List",
+      "Mathlib.Computability.RE"
+    ],
+    "transparent_statement_vocabulary": true,
+    "project_imports": 0,
+    "generated_private_names": "The local copies temporarily select the corresponding source-module name for Mathlib deriving, then restore Challenge; no project module is imported."
+  }
 }

@@ -2,13 +2,13 @@
   "original_local_library_comparison": {
     "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
     "source_files_compared": 8624,
-    "differences_from_restored_thermal_stock": [],
     "seconds": 19.924943100000064,
     "known_stock": {
       "Jordan": "498fbbe317d536b67feefddc702d31d5192c55ef81194dea4556e385129392bb",
       "Lebesgue": "c8ea713339cc57005822aeacea086887a460be0a5093c1d81dc59499ee3a73cc"
     },
-    "comparison_reference": "read-only restored stock Thermal lane, with the same pinned Mathlib commit"
+    "comparison_reference": "read-only restored stock library, with the same pinned Mathlib commit",
+    "differences_from_restored_stock_library": []
   },
   "independent_official_archive_comparison": {
     "url": "https://codeload.github.com/leanprover-community/mathlib4/tar.gz/56a005855ea17e0b0958f73ec801ae140b0a1679",

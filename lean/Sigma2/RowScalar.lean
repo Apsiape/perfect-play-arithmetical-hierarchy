@@ -181,7 +181,7 @@ theorem context_product {ι : Type} [Fintype ι] [DecidableEq ι]
   simp only [weighted,value_product,← Finset.smul_sum,hs]
 
 /-- The nine concrete context observables satisfy every square relation.
-This discharges the scalar Pauli-relation extraction subobligation of turn 11,
+This discharges the scalar Pauli-relation extraction subobligation of stage 11,
 formalizing the unflagged calculation in Lemma 4.3 and entropy Theorem B. -/
 theorem pure_square_relations (G : Game) (R : Rows G.scenario)
     (S : PureStrategy (scenario G R)) (hS : Perfect (game G R) (normalOfPure S))
@@ -246,7 +246,7 @@ theorem square_relations (G : Game) (R : Rows G.scenario)
   rwa [he] at hh
 
 /-- Both Pauli pairs and all four cross-pair commutators, obtained from
-perfect play of the concrete turn-10 game, with no geometric hypothesis. -/
+perfect play of the concrete stage 10 game, with no geometric hypothesis. -/
 theorem pauli_pairs (G : Game) (R : Rows G.scenario)
     (S : NormalStrategy (scenario G R)) (hS : Perfect (game G R) S)
     (h : Density) (hm : MarginalA S h) (P : Op) (hP : SupportOf h P)

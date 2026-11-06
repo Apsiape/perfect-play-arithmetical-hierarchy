@@ -1,4 +1,5 @@
 import Sigma2.CompilerBase
+import Sigma2.RowBooleanClosure
 import Sigma2.ActualCalibration
 import Sigma2.RawBridgeVector
 import Sigma2.ActualRefinement
@@ -24,7 +25,7 @@ theorem lemma_4_1_normal_bridge {s} (S : NormalStrategy s) (I : FMSInstance s)
   exact Sigma2.ActualCalibration.actual_normal_bridge S I hS h hm support hsupport
 
 
-/-- Eq. (6), calibrated component identity, including Bob's sqrt(2) extraction.
+/-- Eq. (12), calibrated component identity, including Bob's sqrt(2) extraction.
 The assertion is on every positive-weight component of the original mixed state,
 so it also holds on its untouched environment purification. -/
 theorem calibrated_bridge_vector {s} (S : NormalStrategy s) (I : FMSInstance s)
@@ -62,5 +63,15 @@ theorem lemma_4_2_label_refinement {s} (S : NormalStrategy s) (I : FMSInstance s
         (eB*S.measurements.bob (I.qB 3) (I.aB b)*eB)) := by
   exact ActualRefinement.actual_refinement S I F hF hA hB mA mB eA eB sA sB
 
+
+/-- Lemma 4.3, Boolean rational rows, soundness and simultaneous extension.
+The finite maximally entangled ancilla is incorporated in T's state. -/
+theorem lemma_4_3_boolean_rows (G : Game) (R : Rows G.scenario) :
+    ∃ (G' : Game) (E : ScenarioEmbedding G.scenario G'.scenario),
+      (∀ T, Perfect G' T → ∃ S, Perfect G S ∧ Extends E S T ∧ RowsHold R S) ∧
+      (∀ S, Perfect G S → RowsHold R S → NamedBinaryProjections R S →
+        ∃ T, Perfect G' T ∧ Extends E S T ∧
+          (FiniteMarginalEntropy S → FiniteMarginalEntropy T)) := by
+  exact RowCompleteness.boolean_rows G R
 
 end Sigma2.Compiler

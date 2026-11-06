@@ -27,7 +27,7 @@ Conversely restrict to $\supp\rho$, so $\rho$ is faithful. Each $0\leq R\leq\rho
 \begin{equation}\label{eq:douglas}
  R=\rho^{1/2}K\rho^{1/2},\qquad 0\leq K\leq I.
 \end{equation}
-Indeed Douglas' factorization lemma \cite{Douglas} applied to $R\leq\rho$ gives $R^{1/2}=\rho^{1/2}V_0$ for a contraction $V_0$, and $K=V_0V_0^*$. Uniqueness follows from the dense range of $\rho^{1/2}$. The sum identities imply $\sum_xK_{i,x}=I$, by the same dense-range argument. No unbounded inverse of $\rho$ is used.
+Indeed Douglas' factorization lemma \cite{Douglas} applied to $R\leq\rho$ gives $R^{1/2}=\rho^{1/2}V_0$ for a contraction $V_0$, and $K=V_0V_0^*$. Uniqueness follows from the dense range of $\rho^{1/2}$. The sum identities imply $\sum_xK_{i,x}=I$, by the same dense-range argument.
 
 In a spectral basis for $\rho$, let Alice measure $K_{i,x}^{\mathsf T}$ on the purification $|\sqrt\rho\rangle\!\rangle$. Bob's conditional operator is $R_{i,x}$. Equation~\eqref{eq:assemblage} makes the $T_i^y$ have orthogonal supports, so their support projections, with any unused subspace assigned to one message, form a decoding POVM. This constructs a normal pure code.
 
@@ -70,7 +70,7 @@ For every finite game $G$,
  \ \Longleftrightarrow\
  G\text{ has a perfect pure spatial strategy with }\Tr D<\infty.
 \]
-For a specified code marginal $\rho$, the reverse strategy has $D=\rho/\|\rho\|_2$. For a specified game strategy $D$ with finite trace, the forward pure code has marginal $\rho=D/\Tr D$. No synchrony hypothesis is required.
+For a specified code marginal $\rho$, the reverse strategy has $D=\rho/\|\rho\|_2$. For a specified game strategy $D$ with finite trace, the forward pure code has marginal $\rho=D/\Tr D$. The game need not be synchronous.
 \end{theorem}
 \begin{proof}
 In the forward construction, store Bob's effects in transposed form, and denote all local effects by $E_{c,a}$ for tagged questions $c$. Put $\rho=D/\Tr D$ and
@@ -79,7 +79,7 @@ In the forward construction, store Bob's effects in transposed form, and denote 
 \]
 with zero operators off the designated clique. Each message family sums to $\rho$. For cross losing edges, the perfect-game sandwich $E_{c,a}DE_{c',b}=0$ gives the required zero product. The remaining products between distinct messages vanish by their clique assignments. Lemma~\ref{lem:assemblage} realizes the code. The trace condition is exactly what normalizes its marginal.
 
-For the converse, as in \cite[Theorem~6]{Mancinska}, apply Lemma~\ref{lem:saturation} to an arbitrary saturating code, not only a code in the displayed form. Aggregate
+For the converse, as in \cite[Theorem~6]{Mancinska}, apply Lemma~\ref{lem:saturation} to an arbitrary saturating code, whether or not it has the displayed form. Aggregate
 \[
  T_{c,a}=\sum_iR_{i,(c,a)}.
 \]

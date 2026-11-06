@@ -277,13 +277,13 @@ def TheoremAStatement : Prop :=
   SigmaTwoComplete SpatialPerfect ∧ SigmaTwoComplete EntropyPerfect ∧
   PromiseHard SpatialPerfect PromisedGame ∧ PromiseHard EntropyPerfect PromisedGame
 
-/-- Introduction, Theorem B. Supplied valid bounds also form a promise problem. -/
+/-- Theorem 8.1, Bell attainment. Supplied valid bounds also form a promise problem. -/
 def TheoremBStatement : Prop :=
   SigmaTwoComplete BellBoundAttainment ∧ SigmaTwoComplete BellSupAttainment ∧
   SigmaTwoComplete BellScalarAttainment ∧
   PromiseHard BellBoundAttainment BellValidBoundCode
 
-/-- Introduction, Theorem C; positive strata are uniform in the code and κ. -/
+/-- Theorem 3.1, Schmidt strata; positive strata are uniform in the code and κ. -/
 def TheoremCStatement : Prop :=
   PiOne (fun ek : ℕ × ℕ => CodeStratum ek.1 (ek.2+1)) ∧
   (∀ c, SpatialPerfect c ↔ ∃ κ, 0 < κ ∧ CodeStratum c κ) ∧

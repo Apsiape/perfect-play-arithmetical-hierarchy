@@ -1,0 +1,6 @@
+{
+  "module": "Sigma2.Main",
+  "declaration": "Sigma2.theoremA_of_tarski",
+  "statement_utf8": "theorem theoremA_of_tarski (hT : UpperRealArithmetic.TarskiDecision) : TheoremAStatement :=",
+  "statement_sha256": "6854688fc18f7dddab2f3236e45266461afde8fc4a8d6eeff23b8aef8ef4dc00"
+}

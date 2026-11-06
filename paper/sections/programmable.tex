@@ -7,9 +7,9 @@ Use two modular contractions $S,T$ and impose
  S^*S=T^*T=I,\quad ST=TS,\quad S^*T=TS^*.
                                                                \label{eq:nested-A1}
 \end{equation}
-Name projections $P_x,P_t$ with $SS^*=I-P_x$, $TT^*=I-P_t$.
+Name projections $\Pi_x,\Pi_t$ with $SS^*=I-\Pi_x$, $TT^*=I-\Pi_t$.
 Name positive contraction counters $C_x,C_t$ and impose their
-commutation, $C_xP_x=P_x$, $C_tP_t=P_t$, and
+commutation, $C_x\Pi_x=\Pi_x$, $C_t\Pi_t=\Pi_t$, and
 \begin{equation}
  C_xS=\tfrac12SC_x,\ C_xT=TC_x,\quad
  C_tS=SC_t,\ C_tT=\tfrac12TC_t.                               \label{eq:nested-A2}
@@ -21,14 +21,14 @@ For the clock use centralizer unitaries $Z,J,K,W$ with
 \]
 $Z,J,K$ constant along both shifts, and
 \[
- WS=SZW,\ WT=TW,\ WP_x=P_x.
+ WS=SZW,\ WT=TW,\ W\Pi_x=\Pi_x.
 \]
 For a projection $E_{\rm ret}$ and a contraction $R_{\rm ret}$ use
 \begin{equation}
  (W-I)E_{\rm ret}=0,\qquad
  R_{\rm ret}(W-I)=\tfrac12C_x(I-E_{\rm ret}).                 \label{eq:nested-A3}
 \end{equation}
-Every row is either centralizer polynomial, degree-one endpoint, or one of the quadratic rows of the translation table in Appendix~\ref{nested:sec:nested}. In particular the mixed row $S^*T=TS^*$ of \eqref{eq:nested-A1} is submitted as $a_S'^*a_T'=ta_Ta_S^*t^*$, in the notation of that appendix; no modular transport is synchronized.
+Every row is either centralizer polynomial, degree-one endpoint, or one of the quadratic rows of the translation table in Appendix~\ref{nested:sec:nested}. In particular the mixed row $S^*T=TS^*$ of \eqref{eq:nested-A1} is compiled as $a_S'^*a_T'=ta_Ta_S^*t^*$, in the notation of that appendix; no modular transport is synchronized.
 
 To specify a verifier, supply a finite radius-one deterministic
 one-sided cellular automaton, with alphabet $\mathcal A$, interior
@@ -43,14 +43,14 @@ Thus $L_d(x,t)=P_d(x-1,t)$ for $x>0$, $R_d(x,t)=P_d(x+1,t)$,
 and $N_d(x,t)=P_d(x,t+1)$. The unused $L_d(0,t)$ is arbitrary.
 Submit the exact finite update polynomials
 \begin{equation}
- N_d=(I-P_x)\sum_{F(a,b,c)=d}L_aP_bR_c
-              +P_x\sum_{G(b,c)=d}P_bR_c.                   \label{eq:nested-A5}
+ N_d=(I-\Pi_x)\sum_{F(a,b,c)=d}L_aP_bR_c
+              +\Pi_x\sum_{G(b,c)=d}P_bR_c.                   \label{eq:nested-A5}
 \end{equation}
-Specify every initial track on $P_t$: the return marker from
-$E_{\rm ret}$, the head from $P_x$, and the blank work tracks. If
+Specify every initial track on $\Pi_t$: the return marker from
+$E_{\rm ret}$, the head from $\Pi_x$, and the blank work tracks. If
 $\iota$ maps these finitely many input bits to an alphabet symbol,
-the initial row for $d$ is $P_tP_d=P_t\sum_{\iota(b)=d}\prod_jQ_j^{b_j}$,
-where $Q_j^1=Q_j$, $Q_j^0=I-Q_j$. The input projections commute:
+the initial row for $d$ is $\Pi_tP_d=\Pi_t\sum_{\iota(b)=d}\prod_iQ_i^{b_i}$,
+where $Q_i^1=Q_i$, $Q_i^0=I-Q_i$. The input projections commute:
 they are scalar coordinate markers in the normal representation
 proved next. Equivalently one may add their finite commutator rows.
 For each rejecting symbol impose $P_d=0$.
@@ -58,9 +58,9 @@ Equations \eqref{eq:nested-A4} have modular degree one; \eqref{eq:nested-A5} has
 regardless of its centralizer polynomial degree. This is the precise
 admissibility distinction needed for the tableau.
 
-Use the Fibonacci convention $F_1=F_2=1$, $F_{k+2}=F_{k+1}+F_k$. For a total computable predicate $R(e,n,s)$, a finite machine first
+Use the Fibonacci convention $F_1=F_2=1$, $F_{k+2}=F_{k+1}+F_k$. For a total computable predicate $R(e,j,s)$, a finite machine first
 scans for the first positive return marker, verifies that its period
-is $F_{n+3}$, decodes $n$, and searches for $s$ with $\neg R(e,n,s)$.
+is $F_{j+3}$, decodes $j$, and searches for $s$ with $\neg R(e,j,s)$.
 Its ordinary finite transition table gives such a cellular automaton:
 a symbol records a tape letter and optionally a head with its control
 state. A head writes its new letter, and its indicated neighbor receives
@@ -70,7 +70,7 @@ symbol. Multiple tapes can be interleaved with finitely many tracks
 and finite control, with extra time steps as needed. Only the unique
 initialized one-head computation is used by the soundness induction.
 This construction is effective in a supplied program for $R$ and in $e$.
-Concrete word and row counts depend on that table. Appendix~\ref{sec:nestedchecks} supplies explicit validation programs; the reduction family is parametric.
+Concrete word and row counts depend on that table; the reduction family is parametric. Appendix~\ref{sec:repro} describes the compiled validation instances.
 
 \subsection{Normal classification, the clock, and all positive moments}
 Cyclicity gives $\Tr(h_0S^kS^{*k})=2^{-k}$ and the same for $T$.
@@ -81,7 +81,7 @@ makes the two wandering decompositions compatible and gives
  h_0=\rhoreg\otimes\rhoreg\otimes\rho_{\rm spec},\quad
  \rhoreg=\sum_{x\ge0}2^{-x-1}|x\rangle\langle x|.                \label{eq:nested-A6}
 \end{equation}
-Indeed the mutually orthogonal spaces $S^xT^tP_xP_t\HH_0$ exhaust the
+Indeed the mutually orthogonal spaces $S^xT^t\Pi_x\Pi_t\HH_0$ exhaust the
 support; their density blocks are $2^{-x-t}$ times the joint root block.
 Normalization makes that block $\rho_{\rm spec}/4$. Equation \eqref{eq:nested-A2} then forces
 $C_x=2^{-x}$ and $C_t=2^{-t}$, by induction from each boundary.
@@ -99,9 +99,9 @@ and $C_x>0$ force it to be identity. On each chosen clock sector the initialized
 are scalars. Equations \eqref{eq:nested-A4}--\eqref{eq:nested-A5} force each next row to be the unique
 classical successor; the induction also proves invariance of the
 sector for those projections. Thus rejecting symbols cannot be absent
-unless $\forall s\,R(e,n,s)$ for the decoded integer.
+unless $\forall s\,R(e,j,s)$ for the decoded integer.
 
-Conversely a true witness uses ${d_{\rm clk}}=F_{n+3}$, $a=F_{n+2}$,
+Conversely a true witness uses ${d_{\rm clk}}=F_{j+3}$, $a=F_{j+2}$,
 $z=\exp(2\pi ia/{d_{\rm clk}})$, $Z=zI_{d_{\rm clk}}$, and Weyl matrices on $\mathbb C^{d_{\rm clk}}$.
 With $\rho_{\rm spec}=I_{d_{\rm clk}}/{d_{\rm clk}}$ the honest initialized tableau is diagonal and
 all the relations hold. Before the finite compiler factors,
@@ -166,8 +166,8 @@ contractions ${V_{\rm sp}},B_0,B_1$ with
 All modular symbols have ratio $1/2$. These are inner-product, range,
 and endpoint rows of the translation table. In particular a range sum
 is compiled as a sum $ta_ia_i^*t^*$, together with the transported
-range projection. No $XX^*$ is submitted as a root centralizer label
-without its defining translated row.
+range projection. Every range product $XX^*$ used as a root
+centralizer label comes with its defining translated row.
 
 Add an independent quarter-plane pair $S,T$ satisfying \eqref{eq:nested-A1}--\eqref{eq:nested-A2}.
 For every comb modular symbol $X\in\{{V_{\rm sp}},B_0,B_1\}$ impose both
@@ -175,7 +175,7 @@ $XS=SX$, $X^*S=SX^*$ and the corresponding equations with $T$.
 For $Q,P,\Csp,L$ impose shift commutation by endpoint rows. These
 relations give the tensor decomposition \eqref{eq:nested-A6} with the entire comb
 algebra acting on its multiplicity space. The checker has its own
-$C_x,C_t,P_x,P_t$ and a separate computation time.
+$C_x,C_t,\Pi_x,\Pi_t$ and a separate computation time.
 
 \paragraph{The guard preserves the coordinate fibres.}
 Since ${E_{\rm guard}}=B_0^*B_0$, the counter relations and their adjoints give
@@ -184,9 +184,8 @@ Since ${E_{\rm guard}}=B_0^*B_0$, the counter relations and their adjoints give
  {E_{\rm guard}}L=2B_0^*LB_0=L{E_{\rm guard}}.                                           \label{eq:nested-A8}
 \end{equation}
 Ordinary and double commutation with checker shifts similarly give
-commutation of ${E_{\rm guard}}$ with those shifts and adjoints. Adding these
-redundant commutator rows is harmless and is done in the generated
-validation instance.
+commutation of ${E_{\rm guard}}$ with those shifts and adjoints, so adding
+these commutator rows to the presentation is harmless.
 
 The four orthogonal projections $P,{V_{\rm sp}}{V_{\rm sp}}^*,B_0B_0^*,B_1B_1^*$ sum to
 identity. Starting from an $h$ eigenvector of eigenvalue $p>0$, each

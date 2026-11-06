@@ -12,7 +12,7 @@ centralizer coefficients can occur before, between, and after them.
 Centralizer polynomial equations and degree-one endpoint equations are
 included. A normal realization has a nonzero Hilbert space and a faithful
 trace-class density $h_0$ of trace one, with all identities on its support.
-The ratio in \eqref{eq:nested-N0} is part of the input convention, not an operator to be
+The ratio in \eqref{eq:nested-N0} is part of the input convention; it is not an operator to be
 synchronized. Section~\ref{nested:sec:variants} treats the common ratio $2^{-n}$.
 Arbitrary unrelated real ratios are outside this stated lemma: the
 calibration used here supplies powers of two.
@@ -71,12 +71,7 @@ The two calibrated transports satisfy
  u^*u=f,\ uu^*=e,\ hu=2uh;\qquad
  {\btrans}^*{\btrans}={\Pact_{\rm in}},\ {\btrans}{\btrans}^*=E,\ h{\btrans}=2{\btrans}h.                                 \label{eq:nested-N3}
 \end{equation}
-The inner masses give $\Tr(h{\Pact_{\rm in}})=9\Tr(hf)$; the outer masses give
-$1=9\Tr(h{\Pact_{\rm in}})$. Thus $\Tr(hf)=1/81$ without an assumed nonvanishing
-sector. The bridge theorem remains valid for a zero activity, and
-these equalities and the cover then prove nonvanishing.
-
-The outer bridge carries the whole inner activity, including each lifted contraction, into a copy with one common gauge. A centralizer unitary identifies equal-density corners there. Consequently two modular factors can be represented by actual centralizer products; transporting the labels separately would not identify the intermediate gauges.
+The soundness argument below derives the source mass $\Tr(hf)=1/81$ from these relations and the cover.
 
 \subsection{The complete transport list and the whole-activity block}
 Encode a projection $P$ by $2P-I$, a positive contraction $C$ by a
@@ -123,20 +118,7 @@ For each bridge separately refine its retained signs for the six projections
  F_1,\quad F_2,\quad F_3,\quad G_{12}(1),\quad G_{13}(1),\quad G_{23}(1).
 \]
 For the outer bridge also refine them separately for every $G_{12}({V^{\rm blk}_k})$.
-The unchanged opposite questions are retained. The six frame refinements
-first make both calibrated transports scalar on the qutrit frame.
-The outer graph commutator then has lower-left block
-\begin{equation}
-                 {\btrans}(\Pact_{\rm in}U_k)=(EV_k){\btrans}.                            \label{eq:nested-N5}
-\end{equation}
-This follows with the same ${\btrans}$ for every $k$, including the two
-encodings of a contraction. Hence $f'={\btrans}f{\btrans}^*$, $e'={\btrans}e{\btrans}^*$,
-and, with ${\btrans}_0={\btrans}f$, ${\btrans}_1={\btrans}e$,
-\begin{equation}
-                  a_i'={\btrans}_1a_i{\btrans}_0^*.                          \label{eq:nested-N6}
-\end{equation}
-Both sides are actual operators, not independently gauged copies.
-There are six refinements at the inner bridge and $6+|\Lambda|$ at
+The unchanged opposite questions are retained. There are six refinements at the inner bridge and $6+|\Lambda|$ at
 the outer bridge, per retained question and per party.
 
 Label refinement (Lemma~\ref{lem:label}) makes every
@@ -162,19 +144,27 @@ lemma gives
  {V^{\rm blk}_k}=\begin{pmatrix}\Pact_{\rm in}U_k|_{{\Pact_{\rm in}}\HH}&0\\0&EV_k|_{E\HH}\end{pmatrix}.
 \]
 Here $c_0$ means the selected outer magic direction $E$ and $f$
-means its flag, namely the \emph{whole} ${\Pact_{\rm in}}$, not the inner $f$.
-The $(c_0,f)$ block is exactly
-$\widetilde {\btrans}(\Pact_{\rm in}U_k)-(EV_k)\widetilde {\btrans}$.
-$\Pact_{\rm in}U_k$ may mix all
-five inner corners. For example, if $\Pact_{\rm in}U_k=(U_{rs})$ in inner-corner
-coordinates, this equation simply says $EV_k={\btrans}(U_{rs}){\btrans}^*$;
-Thus the commutator argument gives \eqref{eq:nested-N5} with the
-same ${\btrans}$ for every label.
+means its flag, which is the \emph{whole} ${\Pact_{\rm in}}$ rather than the inner $f$.
+The $(c_0,f)$ block of the commutator is exactly
+$\widetilde {\btrans}(\Pact_{\rm in}U_k)-(EV_k)\widetilde {\btrans}$, so
+\begin{equation}
+                 {\btrans}(\Pact_{\rm in}U_k)=(EV_k){\btrans},                            \label{eq:nested-N5}
+\end{equation}
+with the same ${\btrans}$ for every $k$, including the two
+encodings of a contraction. Here $\Pact_{\rm in}U_k$ may mix all
+five inner corners: if $\Pact_{\rm in}U_k=(U_{rs})$ in inner-corner
+coordinates, \eqref{eq:nested-N5} says $EV_k={\btrans}(U_{rs}){\btrans}^*$.
 Multiplying \eqref{eq:nested-N5} by the unitary adjoints gives transport also for
 $U_k^*,V_k^*$. Decoding the same polynomials in these unitaries
 therefore transports projections, positive contractions and averages
-of two unitaries. In particular it gives \eqref{eq:nested-N6}, including both
-encodings of each $a_i$, rather than just its diagonal compressions.
+of two unitaries. Hence $f'={\btrans}f{\btrans}^*$, $e'={\btrans}e{\btrans}^*$,
+and, with ${\btrans}_0={\btrans}f$, ${\btrans}_1={\btrans}e$,
+\begin{equation}
+                  a_i'={\btrans}_1a_i{\btrans}_0^*,                          \label{eq:nested-N6}
+\end{equation}
+including both encodings of each $a_i$ rather than just its diagonal
+compressions. Both sides are actual operators; neither is an
+independently gauged copy.
 
 Introduce a centralizer contraction $t$ by two global unitaries and impose
 \begin{equation}
@@ -186,8 +176,7 @@ Set $\HH_0=f\HH$ and $h_0=81fhf|_{\HH_0}$. The extracted contractions are
 \begin{equation}
                          X_i={\btrans}_0^*ta_i.                      \label{eq:nested-N8}
 \end{equation}
-Since $h{\btrans}_0^*={\btrans}_0^*h/2$, all other factors centralize $h$, and
-$\Tr(hf)=1/81$, \eqref{eq:nested-N8} gives \eqref{eq:nested-N0} for the faithful trace-one $h_0$.
+The soundness argument below shows that $h_0$ is a faithful trace-one density and that \eqref{eq:nested-N8} satisfies \eqref{eq:nested-N0}.
 
 \subsection{All quadratic translations and arbitrary coefficients}
 Put $\ell={\btrans}_0^*t{\btrans}_1^*$. It is a corner unitary from $e'\HH$ to $f\HH$.
@@ -202,7 +191,7 @@ projections are $e,f',e'$ and cancel by their stated source/range rules.
 The following table is consequently an equivalence in both directions.
 \begin{center}\small
 \begin{tabular}{@{}ll@{}}
-\toprule Root identity & Submitted centralizer identity\\\midrule
+\toprule Root identity & Centralizer identity\\\midrule
 $X_i^*X_j={R_{\rm tar}}$ & $a_i^*a_j={R_{\rm tar}}$ at $f$\\
 $\sum_iX_iX_i^*={R_{\rm tar}}$ & $\sum_i ta_ia_i^*t^*={R_{\rm tar}}'$ at $f'$\\
 $X_iX_j=X_kX_l$ & $a_i'ta_j=a_k'ta_l$\\
@@ -244,16 +233,14 @@ the declared contraction bounds. Only the two displayed kinds of derived
 coefficients are needed for degree two. Define the base labels and $t$
 first, the original transports next, and then the derived coefficients
 and their transports. Definitions involve no newly transported derived
-coefficient. In the implemented application and regression routes the
-chosen bounds are $K=1$, so division by $\max(1,K)$ is vacuous
-there; it is a provision of the general procedure. Adding their
+coefficient. Adding their
 separate refinements constrains the original
 ${\btrans}$, and never extracts a fresh gauge. This is a finite, non-circular
 assembly for the whole stated class.
 
 \subsection{Soundness and the Boolean game}
 Start with a normal strategy, purify without querying the environment,
-and reduce to the original marginal supports by the toolkit items (N1)--(N8) of Section~\ref{sec:compiler}. Perfect matching precedes every use of projectivity. Boolean
+and reduce to the original marginal supports by facts (N1)--(N8) of Section~\ref{sec:compiler}. Perfect matching precedes every use of projectivity. Boolean
 row tests give the rational identities on these supports. Graphs and
 triangles then give actual common unitary words. Parameter bindings
 identify the actual FMS events; they do not replace them by free labels.
@@ -265,10 +252,8 @@ classification in extracting the scaffold.
 
 All cancellations of a coefficient operator use its dense range on the
 original local support, as proved in (N1)--(N8). On a mixed-state cut
-$A\mid BE$ the coefficient map need not be injective; no assertion of
-injectivity on all of $B\otimes E$ is used. All graph calculations are
-bounded block identities. No density inverse, bounded or otherwise,
-occurs. The source density is faithful since $f$ commutes with $h$ and
+$A\mid BE$ the coefficient map need not be injective. All graph calculations are
+bounded block identities. The source density is faithful since $f$ commutes with $h$ and
 $h$ is faithful on the reduced support.
 
 Write $h=h_A$ on $P_A\HH_A$. The synchronized
@@ -283,7 +268,8 @@ The centralizer magic-corner maps give equal masses to the four
 inner selected copies and, separately, the four outer selected
 copies. Thus $\Tr(h{\Pact_{\rm in}})=9\Tr(hf)$ and
 $1=\Tr(h{\Pact_{\rm in}})+4\Tr(hE)=9\Tr(h{\Pact_{\rm in}})$, proving $\Tr(hf)=1/81$.
-It follows that $\HH_0=fP_A\HH_A\ne0$ and
+The bridge lemma holds also for a zero activity, so no nonvanishing sector
+is assumed here. It follows that $\HH_0=fP_A\HH_A\ne0$ and
 $h_0=81fhf|_{\HH_0}$ is faithful, trace class and trace one.
 
 A supported unitary commutes with its support by the calculation
@@ -294,7 +280,7 @@ contraction, and contraction, and each commutes with $h_0$.
 The supported $a_i=e a_i f$ is a contraction; \eqref{eq:nested-N7} makes $t$ a
 partial isometry from $e$ onto $f'$, and ${\btrans}_0$ is one from $f$ onto
 $f'$. Hence $X_i={\btrans}_0^*ta_i$ maps $\HH_0$ into itself with norm at
-most one. More explicitly,
+most one. Since $h{\btrans}_0^*={\btrans}_0^*h/2$ and all other factors centralize $h$,
 \[
  h_0X_i=81fh{\btrans}_0^*ta_i
  =\tfrac{81}{2}{\btrans}_0^*hta_i
@@ -302,7 +288,7 @@ most one. More explicitly,
 \]
 Transport of decoded labels and their adjoints, followed by the
 bounded corner multiplications in Section~\ref{nested:sec:nested}, now gives every
-submitted application identity on this actual $\HH_0$ in both
+imposed application identity on this actual $\HH_0$ in both
 directions. The degree splitting uses the density eigenbasis on
 this support, never an inverse of $h$.
 
@@ -310,16 +296,14 @@ Bob's original marginal support is treated in the same way: matched
 coarse effects are its projective mirrors, the bridge and refinement
 lemmas apply on that support, and the same cyclicity gives source
 mass $1/81$. Mirroring products reverses their order, as in (N4a);
-no extra mirror equation is submitted. Alice's extracted realization
+no extra mirror equation is imposed. Alice's extracted realization
 already proves soundness; the symmetric support argument justifies
 all Bob-side bindings and refinements, including on a purified
 mixed-state cut with its original Bob marginal.
 
 Expand the final finite centralizer polynomials in their real rational
 unitary words, cancel adjacent inverse tokens, and close under proper
-prefixes. The exported words cancel adjacent inverse tokens, but are
-not reduced using parameter involutions; this is stated redundancy
-in their counts. The exact row audit may use those involutions.
+prefixes.
 Add all graphs, placement triangles, product triangles,
 inverse triangles, parameter bindings, and the off-diagonal polynomial
 rows. Apply the Boolean-row construction already proved above. Retain
@@ -354,9 +338,8 @@ ones on their respective five-dimensional factors, with the inner
 copy inactive off outer index $0$. Their compressed sign vectors are
 $|f,f\rangle+(-1)^{xy}|c_x,r_y\rangle$, up to the common positive
 amplitude and spectator factors. The FMS sign completeness used here
-is the explicit calculation in
-Lemma~\ref{lem:four},
-not a completeness assertion in Section~\ref{sec:compiler}.
+is the explicit calculation at the end of the proof of
+Lemma~\ref{lem:four}.
 
 Every positive density eigenspace is finite-dimensional. For a
 centralizer contraction $T$, its polar partial isometry extends on
@@ -378,10 +361,9 @@ projections. For every refinement use actual joint products: its
 block unitary commutes with its own FMS signs. Distinct labels require
 no mutual commutation. Finally append $I_{d_{\max}}/d_{\max}$ and the
 Boolean-row effects. Alice uses these operators and Bob their
-transposes in a product density eigenbasis. The toolkit proves every
+transposes in a product density eigenbasis. Facts (N1)--(N8) prove every
 matching, calibration, orthogonality, and row-zero test with this one
-state and assignment. Hence no separate realization is being chosen
-for separate rows.
+state and assignment.
 
 Both nested bridges have magic density twice the
 flag density. For the inner one the flag spectator density is $h_0$
@@ -418,8 +400,7 @@ bridge has only the six frame refinements, which commute because
 the frame is a separate scalar factor. Thus every labelling
 refinement is the actual positive joint product of commuting
 projections, sums to the original coarse measurement, and has the
-required graph marginal. No commutation between distinct labels is
-needed. Transposition in the product density eigenbasis preserves
+required graph marginal. Transposition in the product density eigenbasis preserves
 these commutators and products on Bob's side. All centralizer
 matching and orthogonality tests follow from \eqref{eq:nested-N8}, and the appended
 row factor gives all Boolean row tests simultaneously with the same
@@ -449,10 +430,10 @@ Therefore each chosen translation has factor $\beta_j/81$, with
 $\beta_j\le4$. Splitting degrees preserves the sum of squared norms
 because their density matrix entries have disjoint ratios.
 
-For the qutrit row $S_j$ the two off-diagonal blocks are $p_j,p_j^*$.
+For the qutrit row $\Delta_j$ the two off-diagonal blocks are $p_j,p_j^*$.
 Since $p_j$ is in the centralizer, trace cyclicity gives
 \[
- \Tr(h_{\rm old}S_j^2)=\frac{2\beta_j}{243}\|r_j\|_{2,h_0}^2.
+ \Tr(h_{\rm old}\Delta_j^2)=\frac{2\beta_j}{243}\|r_j\|_{2,h_0}^2.
 \]
 Let $L_j$ clear the rational row denominators and let $d_j$ be its
 padded power-of-four column dimension. Equation~\eqref{eq:rowloss}
@@ -470,7 +451,7 @@ multiplicity, as $C_{\rm nest}$. It is independent of the Hilbert space,
 density spectrum, witness period, and computation time. If just one
 forbidden projection has root probability $p$, its residual squared norm
 is $p$, and \eqref{eq:nested-N1} reads loss at most $C_{\rm nest}p$. This proves the
-completeness estimate, not a robust extraction assertion.
+completeness estimate.
 
 \section{The bridge-count and branching variants}\label{nested:sec:variants}
 \begin{corollary}[Common dyadic ratio and arbitrary finite branching]
@@ -507,9 +488,9 @@ presentation-dependent constants.
 
 The number $b$ affects only the finite list of lifted $a_i$ and its
 isometry, orthogonality, and range rows. No bridge has to possess $b$
-magic corners: its magic square still has four. If $S_i^*S_j=\delta_{ij}I$
-and $hS_i=2^{-n}S_ih$, cyclicity gives total range mass $b2^{-n}$.
-Pull a positive density eigenvector backwards through nonzero $S_i^*$;
+magic corners: its magic square still has four. If $A_i^*A_j=\delta_{ij}I$
+and $hA_i=2^{-n}A_ih$, cyclicity gives total range mass $b2^{-n}$.
+Pull a positive density eigenvector backwards through nonzero $A_i^*$;
 its eigenvalue increases by $2^n$ and so the process must terminate.
 The defect and all its word descendants exhaust the support. The word
 sectors are orthogonal, and their densities are $2^{-n|w|}$ times
@@ -529,7 +510,7 @@ copies $u_{g,\ell}$ fixing $I-e_g$ and the block equation
 \eqref{eq:blockcopies}. Refine that link for the six frame projections and every
 $G_{12}(V_{g,\ell})$. This gives the same calibrated transport of every
 label through $v$, with no independent link gauges. Introduce
-$b_i=e_nb_ie_0$ and extract $S_i=v^*b_i$. The input rows are exactly
+$b_i=e_nb_ie_0$ and extract $A_i=v^*b_i$. The input rows are exactly
 \[
  b_i^*b_j=\delta_{ij}e_0,\qquad
  \sum_i b_ib_i^*=e_n-P_n,\qquad L_nb_i=b_jR_0,

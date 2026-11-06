@@ -1,54 +1,95 @@
-# Sigma2 thin checked core — 4 November 2026
+# Lean verification sources
 
-Lean kernel-checks the 601 listed proof roots for the concrete row-game construction, selected actual-support and matrix-unit arguments, bridge/refinement and row-algebra steps, fixed-n=4 application syntax, word-coordinate and scalar Fock-entropy calculations, local clock/reader implications, elementary winning-functional identities, and the good-primitive-phase lemma for every prime. Only `propext`, `Classical.choice` and `Quot.sound` occur as solution axioms. Theorem A and the complete compiler, extraction and reduction are not Lean-checked.
-
-## Exact scope
-
-This package certifies the listed finite constructions and proof steps in the spatial l2 model of countable normal ensembles: purification and support/matching facts; actual flagged magic-square matrix units, calibration and component bridge identities; label-refinement soundness and its algebraic joint-product criterion; projection graph/triangle identities and centralizer contraction encoding; the concrete Boolean rational-row game, rational slot identities, old-game restriction and finite regressions; Pauli relations for the actual four measured scalar axes derived from perfection; one common full matrix-unit system and its algebraic marginal-density blocks on Alice’s original support; sharp new effects, Alice global-bit identification and spectral action, and the exact positive-weight component-mirror clause of RowsHold; creation-word covariance and coordinate actions, the normalized Fock-word entropy series and the fixed-ratio finite-dimensional obstruction; the finite Weyl determinant identity, the reader-kernel implication under an injective-counter premise, word-level clock/counter recurrences and the scalar bounded-reader formula under its explicit good-phase premise; and the two elementary winning-functional identities. It additionally proves syntactic admissibility of the actual fixed n=4 application row table, including all generated transition and endpoint rows, and the good-primitive-phase lemma for every prime: a primitive qth root ζ exists with (1/2)^(t+1) ≤ ‖ζ^t-1‖ for every positive t not divisible by q. No complete Hilbert-space tensor-coordinate realization is certified by the algebraic matrix-unit conclusions. The release does not prove the full Boolean-row soundness or completeness theorem, the n-bridge compiler, Fock decomposition/exhaustiveness, a finite clock phase sector, support-wide counter injectivity, exact-return extraction, effective program construction, the end-to-end reduction, compactness/upper bounds, or any main undecidability/completeness theorem, including Theorem A. All own-paper results used as proofs in this package are proved; no named own-paper theorem is installed as a hypothesis or axiom. There are no separately supplied published-theorem hypotheses. Only propext, Classical.choice and Quot.sound are permitted as logical axioms.
-
-`Presentation.admissible` checks a partial fixed-n=4 syntax contract. In addition, paper admissibility requires transport of the root and of every label used to the left of a creation symbol in a linear endpoint sum. The actual `applicationPresentation` satisfies both additional requirements: its root is transported and its linear-endpoint-sum list is empty. No generic compiler theorem is certified.
-
-`RowsHold` records component mirrors and row equations on the actual marginal supports. The paper's synchronized-projection premise is represented by `NamedBinaryProjections R S` in addition to `RowsHold R S`; `RowsHold` alone permits nonprojective effects. The certified row-mirror result proves only the mirror clause for the old-strategy restriction of the concrete extended game.
-
-## Pins and prerequisites
-
-- Lean `leanprover/lean4:v4.35.0`, commit `eb6cafb7290e8bd5f2937522d8d804f58f02bafc`.
-- Mathlib's 8,624 mathematical library Lean sources match official commit `56a005855ea17e0b0958f73ec801ae140b0a1679` byte for byte. The supplied vendor tree has three local changes in `Cache/Requests.lean` that disable repository detection, automatic Git-head cache scoping, and a manifest-mismatch check. That cache-tool module is outside the proof source import closure. This verification reuses dependency oleans and does not rebuild Mathlib from zero. All transitive pins are in `lake-manifest.json`.
-- Python 3; the pinned toolchain supplies `lean`, `leanexport`, `lake` and its kernel comparator. Linux sandboxed comparison requires bubblewrap. Windows additionally needs the normal Git-for-Windows Unix lookup helpers on PATH; the verifier only resolves executable paths and runs no git commands.
-- Install the pinned dependencies and matching Mathlib cache before verification. Dependency acquisition is a separate setup step. The source-only archive contains no toolchain, vendor packages, cached oleans, NDJSON exports or admitted blueprint.
-
-From this directory, after setup:
-
-```sh
-python -B verify.py
-```
-
-An existing offline dependency cache may instead be selected explicitly:
-
-```powershell
-python -B verify.py --dependency-dir /path/to/pinned/vendor --lean-bin /path/to/pinned/lean/bin
-```
-
-The default verifier freshly rebuilds every copied project module, then both comparator modules and `Audit.lean`; it reuses pinned dependency cache artifacts. A later local `--incremental` run can reuse only this verifier’s matching source-hash and dependency-timestamp records. All compilers run serially with `LEAN_NUM_THREADS=1`, `-j1 -M6144`, and the Windows process tree is capped at 10,000,000,000 committed bytes. The direct worker honors Mathlib’s pinned `-DmaxSynthPendingDepth=3`. This is not a from-zero rebuild of all Mathlib.
+This directory proves Theorem A of *A trace costs one quantifier* in Lean 4, conditional only on a special case of Tarski's decision theorem for real arithmetic. A thin core checks selected local steps of the other written proofs.
 
 ## What is checked
 
-`Audit.lean` prints axioms for every listed proof, including all eight ordinary-`decide` regressions. `AXIOMS.txt` freezes the successful compiler output. `theorem-map.json` gives all 601 named checked theorem roots and their supporting authored declarations, its source, stable merged-paper labels and its whole-statement/step status. It separately identifies supporting definitions. Generated constructor/recursor/equation artifacts and private implementation helpers are covered transitively by the proof-root audits. Module names and source comments retain some precursor numbers; the theorem-map labels control attribution. Printed PDF references are observations from the recorded PDF hash and are marked **to re-sync**. Precursor `thm:B` is merged-paper `lem:rows`; the broader merged-paper bridge and compiler statements are not credited merely from an algebraic step.
+The comparator challenge `Challenge.lean` states Theorem A as
 
-`Challenge.lean` contains one intentional `sorry` placeholder per proposition; `Solution.lean` proves the exact same proposition with the corresponding checked theorem. `type_of% (@declaration)` copies its kernel type exactly without pretty-printer abbreviation or truncation. It does not import a proof as a new axiom. The common proof modules and solution contain no admissions. `comparator.json` uses the leanprover/comparator schema, with only the three permitted logical axioms. The bundled exporter and comparator check the closed solution proof terms and type equality in the Lean kernel.
-
-On Linux, the normal sandboxed invocation is:
-
-```sh
-lake comparator --config comparator.json
+```lean
+theorem theoremA_of_tarski_paper (hT : UpperRealArithmetic.TarskiDecision) :
+    TheoremAStatement
 ```
 
-For trusted local Windows sources, `verify.py` supplies exports and passes `--inadvisably-no-sandbox` because the pinned CLI’s adversarial sandbox is unavailable on Windows. A successful local run verifies proof terms, types and permitted axioms; it does not test adversarial process isolation. The comparator’s sandbox warning is retained verbatim in the verification record.
+with `TheoremAStatement` as defined in `Sigma2/Statements.lean`:
 
-Unproved blueprint declarations and proof-dependent wrappers are omitted from this source-only release. The archive and its historical verification records are identified by their checksums; no build artifacts or dependencies are bundled.
+```lean
+def TheoremAStatement : Prop :=
+  SigmaTwoComplete SpatialPerfect ∧ SigmaTwoComplete EntropyPerfect ∧
+  PromiseHard SpatialPerfect PromisedGame ∧ PromiseHard EntropyPerfect PromisedGame
+```
+
+In words: for natural-number codes of finite rational Boolean two-player games, with invalid codes in neither language, the existence of a perfect normal spatial strategy (perfection is attained, not merely value one) and the existence of such a strategy with finite entropy of both reduced density operators are Sigma^0_2-complete under total computable many-one reductions, and each hardness reduction can be chosen so that every output has finite-dimensional value one and no output has a perfect finite-dimensional strategy. Section 2 of the paper explains why the one-marginal entropy convention gives the same language.
+
+The hypothesis `Sigma2.UpperRealArithmetic.TarskiDecision`, an explicit argument of the theorem, says that truth of existentially quantified rational ordered-ring sentences in disjunctive normal form is computable. This is a special case of Alfred Tarski, *A Decision Method for Elementary Algebra and Geometry*, second revised edition (1951), Section 2, Theorem 31 and Corollary 32, p. 39.
+
+The same statement is proved as `Sigma2.theoremA_of_tarski` in `Sigma2/Main.lean` and as `Sigma2.theoremA_of_tarski_paper`, through the printed admissibility predicate, in `Sigma2/MainPaper.lean`. `Sigma2.theoremA_shared_family` in `Sigma2/SharedFamily.lean` proves that a single total computable map is a promised reduction for both languages, which is the family of Theorem A.
+
+| Printed result | Lean name | Checked form |
+|---|---|---|
+| Theorem A | `Sigma2.theoremA_of_tarski`, `Sigma2.theoremA_of_tarski_paper`, `Sigma2.theoremA_shared_family` | Full, given `TarskiDecision` only: both completeness clauses, both promised-hardness clauses, and one computable hardness family for both languages (the third name, which needs no hypothesis). |
+| Lemma 4.5, n = 4 | `Sigma2.CompilerContract.lemma_4_4_strong_of_obligations`, `Sigma2.CompilerSpecification.strong_compiler`, `Sigma2.CompilerSpecification.four_bridge_compiler`, `Sigma2.CompilerObligations.obligations_all` | Partial: four-bridge exact compilation, with all seven compiler obligations proved; not general n or commuting hosts. |
+| Theorem 3.1 (membership clauses); Lemma 3.2 | `Sigma2.Upper.uniform_strata_piOne_of_tarski`, `Sigma2.Upper.spatial_union`, `Sigma2.Upper.spatial_sigmaTwo_of_tarski`, `Sigma2.Upper.lemma_3_1_compact_sandwiches` | Partial: the first two clauses of Theorem 3.1, with the strata and Sigma^0_2 membership given `TarskiDecision`; Lemma 3.2. |
+| Proposition 3.3; Corollary 3.4; equation (5) | `Sigma2.UpperEntropyAssembly.perfect_of_sequence`, `Sigma2.Upper.entropy_tail`, `Sigma2.Upper.entropy_stage_slack`, `Sigma2.Upper.entropy_scheduled_iff`, `Sigma2.Upper.entropy_relaxation_computable_of_tarski`, `Sigma2.Upper.entropy_sigmaTwo_of_tarski` | Partial: perfect-game compactness and effective finite-entropy membership, the latter given `TarskiDecision`; not prescribed-table compactness, entropy infima or optimal entropy. |
+| Sections 2 and 4, normal toolkit | `Sigma2.Preliminaries.normal_pure_perfect_equivalence` | Partial: the normal/pure perfection equivalence, not all of (N1)-(N8). |
+| Lemma 4.1 | `Sigma2.Compiler.lemma_4_1_normal_bridge`, `Sigma2.Compiler.calibrated_bridge_vector` | Partial: the spatial support interface and component identity; not commuting hosts. |
+| Lemma 4.2 | `Sigma2.Compiler.lemma_4_2_label_refinement`, `Sigma2.Compiler.joint_refinement_iff` | Coarse-sign identification and the converse commuting refinement. |
+| Lemma 4.3; equation (19) | `Sigma2.Compiler.lemma_4_3_boolean_rows`, `Sigma2.Compiler.row_loss_formula` | Conditional: perfect games, with the `RowsHold` and `NamedBinaryProjections` premises; (19) only as a trace identity under a slot-sum hypothesis, not an event probability. |
+| Definition 4.4 | `Sigma2.Presentation`, `Sigma2.Presentation.admissible`, `Sigma2.NormalRealization`, `Sigma2.Compiler.Compiled`, `Sigma2.Compiler.ApproxCompiled`, `Sigma2.PaperAdmissible`, `Sigma2.PaperAdmissibility.application_paper_admissible`, `Sigma2.PaperAdmissibility.saturation_bridge` | `Presentation.admissible`, the domain of the compiler theorems, omits two transport conditions of the printed definition. `PaperAdmissible` is the printed definition; it holds for the Theorem A input tables, and every admissible presentation saturates to a `PaperAdmissible` one with equivalent normal realizations and the same compiled game. |
+| Section 4.7, equations (28)-(29) | `Sigma2.CompilerSpecification.approximate_compilation`, `Sigma2.CompilerApproxBase.approxCompiled_of_base15` | Partial: an existential dimension-independent loss bound under exact structural hypotheses; not the explicit coefficient (29), robust extraction, or preservation of an input witness or its finite dimension. |
+| Section 5.1, equations (30)-(33) | `Sigma2.Tree.fock_decomposition`, `Sigma2.Tree.fock_density`, `Sigma2.Tree.fock_entropy`, `Sigma2.Tree.no_finite_realization` | Rooted Fock structure, weights, entropy and finite-dimensional obstruction. |
+| Lemma 5.1 | `Sigma2.Tree.lemma_5_1_definite_computation`, `Sigma2.ReductionSoundBridge.nonreject_of_data` | Classical tableau on a root-clock sector, with its concrete data from the row-extraction modules. |
+| Section 6, equations (40)-(46); Lemma 6.1 | `Sigma2.Clock.finite_phase_sector`, `Sigma2.Clock.coordinate_clock`, `Sigma2.Clock.exact_return`, `Sigma2.Clock.lemma_6_1_good_primitive_phase`, `Sigma2.Clock.bounded_reader` | Conditional: `finite_phase_sector`, `coordinate_clock` and `exact_return` take `hP : P.admissible` and `D : Clock.Data R`; the last two also take a root vector, and exact return a primitive-phase eigenvector. `bounded_reader` assumes a primitive phase and its separation bound; Lemma 6.1 supplies a suitable phase and bound for every prime. `Reduction.realization_sound` supplies the clock data for Theorem A. |
+| Section 7; Theorem 7.1 | `Sigma2.Reduction.effective_program`, `Sigma2.Reduction.application_admissible`, `Sigma2.Reduction.presentation_codes_computable`, `Sigma2.Reduction.realization_sound`, `Sigma2.Reduction.realization_complete`, `Sigma2.CompiledReduction.theorem_7_1_reduction` | Effective input construction, both perfection equivalences and absence of any finite-dimensional perfect output. |
+| Section 7.1, equations (50)-(54) | `Sigma2.CompiledFockApproximation.normal_approximation`, `Sigma2.CompiledFockApproximation.finite_approximation`, `Sigma2.CompiledValue.four_defect_approximation`, `Sigma2.CompiledValue.value_one`, `Sigma2.CompiledValue.reduction_promised` | Partial: geometric approximation and the promise on every input; the Q, L, d of `four_defect_approximation` are existential, not the actual row counts or denominators. |
+| Other local results | thin core: `THIN-CORE.md`, `theorem-map.json` | Local statements only, each marked WHOLE (the stated local assertion) or STEP (one step of the cited result). |
+
+The first column uses the paper's numbering; `lemma_4_4_strong_of_obligations` refers to Lemma 4.5 at n = 4 and `lemma_3_1_compact_sandwiches` to Lemma 3.2. Several theorems in the table take a compiler specification `hC : CompilerSpecification.Specification f` as an argument. The final theorems supply it from the proved obligations `CompilerObligations.obligations_all`, so it is not a hypothesis of any final theorem. The only hypothesis of the final theorems is `TarskiDecision`.
+
+**Not formalized:** Theorems B-D beyond their thin-core lemmas, including the general semifinite and type classification and the communication classification; Theorem 8.1 beyond its winning-functional identities, and the last two clauses of Theorem 3.1; the general n-bridge and commuting-host compiler; the economical ten-label schedule, its size counts and equation (54) with actual row denominators (the formal compiler transports all typed labels); the reduction of strategies on arbitrary Hilbert spaces to l2(N) by compression; Tarski's decision algorithm.
+
+**Conventions:** both local spaces are l2(N), and normal states are countable ensembles of unit vectors in l2(N x N), their completed tensor product. A finite-dimensional strategy is a unit vector supported on finitely many basis vectors, with POVMs on l2(N). Every game has at least one question and one answer for each party.
+
+## Trust base
+
+- Lean 4.35.0 and Mathlib commit `56a005855ea17e0b0958f73ec801ae140b0a1679`. Every pin is in `lean-toolchain`, `lake-manifest.json` and `pins/`.
+- Every declaration of the `Sigma2` library, including private declarations and every theorem in the table, uses no axioms beyond Lean's three standard axioms, `propext`, `Classical.choice` and `Quot.sound`.
+- The proof of Theorem A passes two independent kernel checkers, `leanchecker` and `nanoda`.
+- The comparator challenge `Challenge.lean` imports only Mathlib and defines the statement vocabulary transparently. It states Theorem A as displayed above, the shared hardness family `Sigma2.theoremA_shared_family` and the printed admissibility definition `Sigma2.paper_admissible_iff`. `Solution.lean` imports the proofs, and `comparator.json` permits only the three standard axioms. From `lean/`, on Linux with bubblewrap and with the dependencies placed as below, one command checks all three: `lake comparator --config comparator.json`. The two theorem holes in `Challenge.lean` are the only `sorry` tokens in the project.
+- Records of the comparator run and the kernel checks are in `evidence/`.
+
+## Reproduce
+
+You need the pinned Lean 4.35.0 toolchain first on `PATH`, Python 3.11 or later, Git and at least 6 GiB of free memory (each Lean process runs with `-M6144`); the build runs on Windows x64 and Linux x64. Keep the release layout: Lake expects dependency sources under `lean/vendor/` and runs `../work/build-core.py` as its default target.
+
+1. Get the dependency sources. Clone each package listed in `pins/THIN-DEPENDENCIES.json` from its url into a directory named by its name, and check out its rev with Git line-ending conversion disabled, for example
+
+   ```
+   git -c core.autocrlf=false clone https://github.com/leanprover-community/mathlib4.git mathlib
+   git -c core.autocrlf=false -C mathlib checkout 56a005855ea17e0b0958f73ec801ae140b0a1679
+   ```
+
+   and likewise batteries, aesop, Qq, proofwidgets, importGraph, LeanSearchClient, plausible and Cli.
+
+2. From `lean/`, copy them into `vendor/`:
+
+   ```
+   python -B prepare_dependencies.py --source-dir EXISTING_PINNED_VENDOR
+   ```
+
+   `EXISTING_PINNED_VENDOR` is the parent directory of the clones. The helper checks every file against `pins/DEPENDENCY-SOURCES.json`, runs no Git command, and substitutes `cache-tool/Requests.lean` for one Mathlib cache-tool file outside the proof's imports, so that the cache works with path packages.
+
+3. From `lean/`, build and audit:
+
+   ```powershell
+   $env:LEAN_NUM_THREADS = '1'
+   lake exe cache get
+   lake build
+   lake env lean -j1 -M6144 Audit.lean
+   ```
+
+`lake exe cache get` fetches the Mathlib build cache. `lake build` rebuilds every project module from source. It audits the axioms of every declaration of the library, including private declarations, and rejects admitted proofs and additional axioms; it audits the proofs of the two final Theorem A theorems and checks with `PaperNames.lean` that every Lean name in the table exists. Logs go to `.lake/build-logs/`, and `python -B ../work/build-core.py --resume` resumes an interrupted build. `lake build` rewrites `AXIOMS.txt`; its hash should match the one in `SHA256SUMS`. `Audit.lean` prints the axioms of every theorem in the table, and `AXIOMS.txt` is the expected output.
 
 ## License
 
-The authors' Lean sources and verification scripts are licensed under MIT or Apache 2.0, at your option; documentation and recorded outputs are CC BY 4.0. See `../RIGHTS.md`, the three root license files and `../NOTICE`. These grants do not alter rights in third-party material.
-
-Machine-local dependency-cache and executable paths in the historical `verification-summary.json` are replaced by portable placeholders. Its results, timings and exit records are unchanged.
+Authored Lean sources and scripts: MIT or Apache 2.0, at your option. Documentation: CC BY 4.0. See `../RIGHTS.md`, `../NOTICE` and the root license files. Third-party rights are unchanged.

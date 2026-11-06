@@ -122,7 +122,7 @@ theorem synchronized_of_mirror {s} (S : NormalStrategy s) (e : NamedEvent s)
   rw [hprob,← normalOfPure_probability]
   exact hh a b hab
 
-/-- Expose the sharp-label conclusion already proved in the turn-7 refinement
+/-- Expose the sharp-label conclusion already proved in the stage 7 refinement
 argument, at the original label effect rather than a replacement event. -/
 theorem pure_refinement_label_sharp {s} (S : PureStrategy s) (I : FMSInstance s)
     (F : LabelRefinementInstance s I) (hF : RefinementPerfect (normalOfPure S) I F)

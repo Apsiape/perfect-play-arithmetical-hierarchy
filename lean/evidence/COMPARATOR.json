@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-06",
+  "lean_version": "4.35.0",
+  "lean_commit": "eb6cafb7290e8bd5f2937522d8d804f58f02bafc",
+  "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "independent_challenge": {
+    "imports": [
+      "Mathlib.Analysis.InnerProductSpace.l2Space",
+      "Mathlib.Analysis.InnerProductSpace.Adjoint",
+      "Mathlib.Analysis.InnerProductSpace.Positive",
+      "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+      "Mathlib.Computability.Reduce",
+      "Mathlib.Tactic.DeriveEncodable",
+      "Mathlib.Tactic",
+      "Mathlib.Computability.Primrec.List",
+      "Mathlib.Computability.RE"
+    ],
+    "transparent_statement_vocabulary": true,
+    "project_imports": 0,
+    "generated_private_names": "The local copies temporarily select the corresponding source-module name for Mathlib deriving, then restore Challenge; no project module is imported."
+  },
+  "comparator": {
+    "exit": 0,
+    "seconds": 408.639,
+    "peak_tree_rss_bytes": 4647108608,
+    "peak_tree_vms_bytes": 21451939840,
+    "stop_rss_bytes": 9000000000,
+    "memory_stop": false,
+    "lean_heap_MiB": 6144,
+    "sandbox": true,
+    "supplied_exports": false
+  },
+  "comparator_command": "lake comparator --config comparator.json",
+  "comparator_targets": [
+    "Sigma2.theoremA_of_tarski_paper",
+    "Sigma2.theoremA_shared_family",
+    "Sigma2.paper_admissible_iff"
+  ],
+  "sandbox_executable": "bubblewrap 0.9.0-1ubuntu0.3; invocation recorder additionally sets LEAN_NUM_THREADS=1",
+  "sandbox_invocations": 6,
+  "sandbox_networked_dependency_resolution_invocations": 1,
+  "permitted_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ]
+}

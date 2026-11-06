@@ -1,4 +1,7 @@
 import Sigma2.ThinCore
+import Sigma2.Main
+import Sigma2.SharedFamily
+
 #print axioms Sigma2.ActualCalibration.actual_modular_commutator
 #print axioms Sigma2.ActualCalibration.actual_normal_bridge
 #print axioms Sigma2.ActualCalibration.bob_difference_selfadjoint
@@ -381,11 +384,9 @@ import Sigma2.ThinCore
 #print axioms Sigma2.Purification.pack_packing
 #print axioms Sigma2.Purification.packed_identity_transfer
 #print axioms Sigma2.Purification.packing_apply
-#print axioms Sigma2.Purification.packing_apply'
 #print axioms Sigma2.Purification.reindex_apply
 #print axioms Sigma2.Purification.slice_add
 #print axioms Sigma2.Purification.slice_apply
-#print axioms Sigma2.Purification.slice_apply'
 #print axioms Sigma2.Purification.slice_joint
 #print axioms Sigma2.Purification.slice_left
 #print axioms Sigma2.Purification.slice_pack
@@ -600,3 +601,50 @@ import Sigma2.ThinCore
 #print axioms Sigma2.calibrated_vector_iff
 #print axioms Sigma2.conditional_pure_model
 #print axioms Sigma2.normalOfPure_probability
+#print axioms Sigma2.CompilerObligations.obligations_all
+#print axioms Sigma2.theoremA_of_tarski
+#print axioms Sigma2.theoremA_of_tarski_paper
+#print axioms Sigma2.Clock.exact_return
+#print axioms Sigma2.Clock.finite_phase_sector
+#print axioms Sigma2.Compiler.ApproxCompiled
+#print axioms Sigma2.Compiler.Compiled
+#print axioms Sigma2.Compiler.lemma_4_3_boolean_rows
+#print axioms Sigma2.CompilerApproxBase.approxCompiled_of_base15
+#print axioms Sigma2.CompilerContract.lemma_4_4_strong_of_obligations
+#print axioms Sigma2.CompilerSpecification.approximate_compilation
+#print axioms Sigma2.CompilerSpecification.four_bridge_compiler
+#print axioms Sigma2.CompilerSpecification.strong_compiler
+#print axioms Sigma2.CompiledFockApproximation.finite_approximation
+#print axioms Sigma2.CompiledFockApproximation.normal_approximation
+#print axioms Sigma2.NormalRealization
+#print axioms Sigma2.PaperAdmissibility.application_paper_admissible
+#print axioms Sigma2.PaperAdmissibility.saturation_bridge
+#print axioms Sigma2.PaperAdmissible
+#print axioms Sigma2.Presentation
+#print axioms Sigma2.Presentation.admissible
+#print axioms Sigma2.Reduction.effective_program
+#print axioms Sigma2.Reduction.presentation_codes_computable
+#print axioms Sigma2.Reduction.realization_complete
+#print axioms Sigma2.Reduction.realization_sound
+#print axioms Sigma2.CompiledReduction.theorem_7_1_reduction
+#print axioms Sigma2.ReductionSoundBridge.nonreject_of_data
+#print axioms Sigma2.TheoremAStatement
+#print axioms Sigma2.Tree.fock_decomposition
+#print axioms Sigma2.Tree.lemma_5_1_definite_computation
+#print axioms Sigma2.Upper.entropy_relaxation_computable_of_tarski
+#print axioms Sigma2.Upper.entropy_scheduled_iff
+#print axioms Sigma2.Upper.entropy_sigmaTwo_of_tarski
+#print axioms Sigma2.Upper.entropy_stage_slack
+#print axioms Sigma2.Upper.entropy_tail
+#print axioms Sigma2.Upper.lemma_3_1_compact_sandwiches
+#print axioms Sigma2.Upper.spatial_sigmaTwo_of_tarski
+#print axioms Sigma2.Upper.spatial_union
+#print axioms Sigma2.Upper.uniform_strata_piOne_of_tarski
+#print axioms Sigma2.UpperEntropyAssembly.perfect_of_sequence
+#print axioms Sigma2.UpperRealArithmetic.TarskiDecision
+#print axioms Sigma2.CompiledValue.four_defect_approximation
+#print axioms Sigma2.CompiledValue.reduction_promised
+#print axioms Sigma2.CompiledValue.value_one
+#print axioms Sigma2.theoremA_shared_family
+#print axioms Sigma2.SharedFamilyHardness
+#print axioms Sigma2.paper_admissible_iff

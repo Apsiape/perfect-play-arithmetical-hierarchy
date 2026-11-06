@@ -5,11 +5,12 @@
 \usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
 \usepackage[margin=1.08in]{geometry}
 \usepackage{booktabs,array,enumitem,microtype,xcolor,needspace}
+\usepackage{tikz}
 \usepackage[hypcap=false]{caption}
 \usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
 \setlength{\emergencystretch}{2em}
 \setlist{nosep}
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{1}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -72,22 +73,20 @@
 \newcommand{\tailbd}{t^{\rm bd}}
 \newcommand{\Pact}{E^{\rm act}}
 \newcommand{\codearchive}{\url{https://github.com/Apsiape/perfect-play-arithmetical-hierarchy}}
-\newcommand{\precursordisclosure}{Earlier versions of Theorems A, B and C, of Theorems 3.1 and 8.1, of the trace-class correspondence, of the summability threshold, of the commuting row and of the I-only and infinite-entropy-only classifications appeared in our preprints \cite{SpatialPrecursor,TypePrecursor,CommunicationPrecursor}, which this paper consolidates and supersedes. Apart from those preprints we know of no prior statement of these results; Theorem D and the completion of the semifinite-but-not-spatial cells are new here. The $\Pi^0_1$-completeness of commuting perfection is known \cite{Slofstra,MNY}; what is new in Theorem B is that every fixed type-III subtype has exactly that language.}
+\newcommand{\precursordisclosure}{This paper consolidates and supersedes our preprints \cite{SpatialPrecursor,TypePrecursor,CommunicationPrecursor}. Theorem D and the completion of the semifinite-but-not-spatial difference classification are new here. The commuting $\Pi^0_1$ classification is known \cite{Slofstra,MNY}; Theorem B identifies its language with that of every fixed type-III subtype.}
 \hypersetup{pdftitle={A trace costs one quantifier: the exact complexity of perfect play in nonlocal games},pdfauthor={Seth Douglas and Nidhal Mghirbi}}
 \title{A trace costs one quantifier:\\ the exact complexity of perfect play in nonlocal games}
 \author{Seth Douglas \and Nidhal Mghirbi}
-\date{November 2026}
+\date{Version 1.1.0, November 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
-Given a finite nonlocal game, can the players win with certainty? We find the exact level of the arithmetical hierarchy at which this is decided, for each standard model of quantum strategy. With normal states on tensor products of Hilbert spaces, perfect play is $\Sigma^0_2$-complete, also when the strategy must have finite entanglement entropy, so it cannot be decided even with an oracle for the halting problem. This completes a table in which finite-dimensional perfection is $\Sigma^0_1$-complete, commuting perfection is $\Pi^0_1$-complete and value one is $\Pi^0_2$-complete. Inside the commuting model the answer depends on the von Neumann type of the players' algebra: perfect play in a type $\II_1$ algebra, or in any semifinite algebra, is $\Sigma^0_2$-complete, while in a type $\III_\lambda$ factor, for each fixed $\lambda\in[0,1]$, it is equivalent to commuting perfection. In this sense a trace costs one existential quantifier. Commuting perfect play without semifinite perfect play is $\Pi^0_2$-complete; the remaining semifinite-without-spatial differences are $D_2(\Sigma^0_2)$-complete. In the hardness proofs the existential witness is a finite object that every perfect strategy must choose: the order of a clock phase in the spatial model, or the depth of a critical binary tree in semifinite algebras. The same level governs communication: deciding whether a finite classical channel can send a given number of messages in one use with zero error, helped by normal entanglement, is $\Sigma^0_2$-complete, and some channel's zero-error codes all need infinite entanglement entropy. Positive computable moment orders below one form a strict $\Sigma^0_2$-complete resource ladder; the infimal critical indices of spatially perfect games (attained by the realizing games) are exactly the right-c.e.-in-$0'$ reals in $[0,1]$.
+Given a finite nonlocal game, can the players win with certainty? We prove that the existence of a perfect normal spatial strategy is $\Sigma^0_2$-complete, even when restricted to games of value one, so it cannot be decided even with an oracle for the halting problem. This is strictly harder than perfect play in the finite-dimensional and commuting-operator models, which are $\Sigma^0_1$-complete and $\Pi^0_1$-complete. Within the commuting model, the existence of a perfect normal strategy with a finite or semifinite von Neumann host is $\Sigma^0_2$-complete, whereas for every fixed type $\mathrm{III}_\lambda$ subtype it has the same $\Pi^0_1$-complete language as unrestricted commuting play. A trace thus costs one existential number quantifier: the hardness constructions force every perfect strategy to choose a finite clock period or a finite tree depth. The spatial classification persists when finite entanglement entropy is required, and it is formally verified in Lean, assuming only a special case of Tarski's decision theorem. We also prove $\Sigma^0_2$-completeness for one-shot zero-error communication with normal entanglement, and construct a finite channel with zero-error codes of a given size every one of which needs infinite entanglement entropy.
 \end{abstract}
-\begin{center}\small AI systems assisted with this work. The authors take responsibility for its claims; see ``How this work was done.'' This preprint has not been peer reviewed.\end{center}
-\begin{center}\small Programs and finite checks: \codearchive. This paper consolidates and supersedes the authors' preprints doi:10.5281/zenodo.23910986, doi:10.5281/zenodo.23925091 and doi:10.5281/zenodo.23924868 \cite{SpatialPrecursor,TypePrecursor,CommunicationPrecursor}.\end{center}
-\clearpage
+\begin{center}\small Opus 5.5, GPT-6.1 Sol and GPT-6 assisted with this work; the authors take responsibility for every claim (see ``How this work was done''). Programs and finite checks: \codearchive.\end{center}
+\input{sections/intro}
 {\small\tableofcontents}
 \clearpage
-\input{sections/intro}
 \input{sections/preliminaries}
 \input{sections/upper}
 \input{sections/compiler}
@@ -104,15 +103,14 @@ Given a finite nonlocal game, can the players win with certainty? We find the ex
 \input{sections/codes}
 \input{sections/communication}
 \input{sections/commuting}
-\input{sections/capacity}
 \input{sections/catalan}
 \input{sections/discussion}
 \input{sections/methods}
 \appendix
 \input{sections/nested-compiler}
 \input{sections/reproducibility}
-\input{sections/nested-checks}
 \input{sections/attribution}
+\input{sections/lean-verification}
 \bibliographystyle{plain}
 \bibliography{references}
 \end{document}

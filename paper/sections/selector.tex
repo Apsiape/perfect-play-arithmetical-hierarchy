@@ -1,5 +1,5 @@
 \section{Semifinite hosts: a critical tree selects a finite depth}\label{sec:selector}
-In a diffuse semifinite algebra the Weyl determinant of Section~\ref{sec:clock} is unavailable, so the spatial witness cannot be used. A trace still forces a finite object. A critical binary tree with modular ratio $1/2$ must have a nonzero leaf sector at some finite depth, and a group word chosen by that depth carries the $\Sigma^0_2$ witness. This section builds the resulting reduction and proves the semifinite half of Theorem~B. It does not use the Weyl-clock reduction.
+In a diffuse semifinite algebra the Weyl determinant of Section~\ref{sec:clock} is unavailable, so the spatial witness cannot be used. A trace still forces a finite object. A critical binary tree with modular ratio $1/2$ must have a nonzero leaf sector at some finite depth, and a group word chosen by that depth carries the $\Sigma^0_2$ witness. This section builds the resulting reduction and proves the semifinite half of Theorem~B.
 
 \subsection{The critical-tree selector}
 Work on a faithful normal support. Fix integers $d\ge2$ and a real $0<\gamma<1$. Let $P,Q$ be centralizer projections, $0\leq C\leq I$ a centralizer contraction, and let $B_1,\ldots,B_d$ satisfy
@@ -97,7 +97,7 @@ Group generators commute with $C$, hence with $Q=E_0$. In particular $a^*Q=Qa^*$
 \end{proof}
 
 \begin{lemma}[Finite realization]\label{lem:hnn}
-A good $n$ gives a finite-algebra realization of all relations.
+A good $n$ gives a realization of all relations in a finite von Neumann algebra.
 \end{lemma}
 \begin{proof}
 In $\mathcal G_e\times\langle j\mid j^2=1\rangle$, the subgroup $\langle {r^{\rm grp}}_n,j\rangle$ is $C_2^2$. The map ${r^{\rm grp}}_n\mapsto j{r^{\rm grp}}_n$, $j\mapsto j$ is its automorphism. Form the HNN extension $\Gamma^{\rm HNN}_n$ with stable letter $T$:
@@ -172,11 +172,11 @@ Conversely take any faithful normal root realization $(M,\varphi)$. On $\Mat_5\v
 \begin{equation}\label{eq:scaffoldone}
  \varphi_{\rm sc}=\operatorname{diag}(1,2,2,2,2)/9\ \otimes\varphi.
 \end{equation}
-Use the identity corner maps $v=|e_1\rangle\langle e_0|\otimes I$, the ideal real FMS effects, and $b_i=|e_1\rangle\langle e_0|\otimes B_i$. The product modular group makes each $b_i$ centralizer because the two modular eigenvalues $2$ and $1/2$ cancel. The whole centralizer is finite, with its faithful trace $\varphi_{\rm sc}$. For any contraction $x$ in a finite von Neumann algebra, the polar partial isometry extends to a unitary $u$: equivalent initial and final projections have equivalent complements in a finite algebra. Then
+Use the identity corner maps $v=|e_1\rangle\langle e_0|\otimes I$, the ideal real FMS effects, and $b_i=|e_1\rangle\langle e_0|\otimes B_i$. The product modular group makes each $b_i$ centralizer because the two modular eigenvalues $2$ and $1/2$ cancel. The whole centralizer is finite, with its faithful trace $\varphi_{\rm sc}$. For any contraction $x$ in a finite von Neumann algebra, the polar partial isometry extends to a unitary $u$: equivalent initial and final projections have equivalent complements in a finite von Neumann algebra. Then
 \[
  u_\pm=u(|x|\pm i\sqrt{I-|x|^2}),\qquad x=(u_++u_-)/2.
 \]
-This supplies the exact encodings of both $b_i$ at once. Use $2Q-I,2P-I$ and the displayed functional-calculus encoding of $C$, copying the same choices to each required corner. Amplify by the scalar qutrit frame. All block labels commute with the ideal FMS signs, so use their actual joint products for refinement. Separate labels use separate questions. Finally apply the standard-form construction in Lemma~\ref{lem:rows}, with Bob's effects defined by its conjugation $\mathcal J_{\rm new}$. Formula \eqref{eq:scaffoldone} and the ideal real FMS effects give exactly the five-dimensional FMS probabilities, including the nonsynchronous signs. All graph and endpoint identities hold simultaneously. A finite-algebra root stays finite; after tensoring with $R_{\rm hyp}$ a $\II_1$ host exists. A $\III_{1/2}$ root stays $\III_{1/2}$ under the finite amplifications.
+This supplies the exact encodings of both $b_i$ at once. Use $2Q-I,2P-I$ and the displayed functional-calculus encoding of $C$, copying the same choices to each required corner. Amplify by the scalar qutrit frame. All block labels commute with the ideal FMS signs, so use their actual joint products for refinement. Separate labels use separate questions. Finally apply the standard-form construction in Lemma~\ref{lem:rows}, with Bob's effects defined by its conjugation $\mathcal J_{\rm new}$. Formula \eqref{eq:scaffoldone} and the ideal real FMS effects give exactly the five-dimensional FMS probabilities, including the nonsynchronous signs. All graph and endpoint identities hold simultaneously. A root in a finite von Neumann algebra stays finite; after tensoring with $R_{\rm hyp}$ a $\II_1$ host exists. A $\III_{1/2}$ root stays $\III_{1/2}$ under the finite amplifications.
 
 \subsection{Both uniform promises and the hardness theorem}\label{sec:promises}
 \begin{theorem}[Uniform semifinite reduction]\label{thm:selreduction}
@@ -198,11 +198,9 @@ For the second promise take the finite-tree strategy $\mathcal V_N$ with the dep
  {R^{\rm ter}_N}=2P,\qquad
  \varphi_N({R^{\rm ter}_N}^*{R^{\rm ter}_N})=4\varphi_N(P)=\frac4{N+1}.
 \end{equation}
-Build all graph, prefix, joint and column measurements by their exact formulas even for this nonzero application row. All their structural tests remain exact. Only its final row-zero event can lose. For an honest row, \eqref{eq:rowloss} gives its loss.
-
-More explicitly, if the lifted root residual is $p=e_0{R^{\rm ter}_N}$, its graph row has off-diagonal blocks $p,p^*$. The qutrit trace and root mass give
+Build all graph, prefix, joint and column measurements by their exact formulas even for this nonzero application row. All their structural tests remain exact. Only its final row-zero event can lose, with probability given by \eqref{eq:rowloss}. The lifted root residual is $p=e_0{R^{\rm ter}_N}$, and its graph row has off-diagonal blocks $p,p^*$. The qutrit trace and root mass give
 \[
- \varphi_{\rm old}(S_{\rm graph}^2)
+ \varphi_{\rm old}(\Delta_{\rm graph}^2)
  =\tfrac13\varphi_{\rm sc}(p^*p+pp^*)
  =\tfrac{2}{27}\varphi_N({R^{\rm ter}_N}^*{R^{\rm ter}_N}).
 \]
@@ -220,7 +218,8 @@ Thus $C^{\rm sel}_e$ depends only on the finite compiled specification, denomina
 
 Choose $\Adec$ to be $\Sigma^0_2$-complete. Theorem~\ref{thm:selreduction} and \eqref{eq:languageequal}, together with Theorem~\ref{thm:upper}, prove $\Sigma^0_2$-completeness of every claimed semifinite existence language in Theorem~B. Furthermore every $\Gsel_e$ is commuting perfect and has quantum value one, and
 \[
- \Gsel_e\in\III\text{-}\mathrm{ONLY}\iff e\notin\Adec,
- \qquad \III\text{-}\mathrm{ONLY}:=\perf_{\co}\setminus\perf_{\sfhost}.
+ \Gsel_e\in\perf_{\co}\setminus\perf_{\sfhost}\iff e\notin\Adec.
 \]
-This proves $\Pi^0_2$-hardness within that promise, a stronger statement than hardness of intersection with the value-one language. Membership follows from $\perf_{\co}\in\Pi^0_1$ and $\perf_{\sfhost}^c\in\Pi^0_2$: their intersection is $\Pi^0_2$.
+This proves $\Pi^0_2$-hardness of $\perf_{\co}\setminus\perf_{\sfhost}$ within that promise, a stronger statement than hardness of intersection with the value-one language. Membership follows from $\perf_{\co}\in\Pi^0_1$ and $\perf_{\sfhost}^c\in\Pi^0_2$: their intersection is $\Pi^0_2$.
+
+Our earlier finite game \cite{Hyperfinite} also has a perfect strategy on a type $\III_{1/2}$ factor and quantum value one, and no perfect strategy whose marginal is normal on an injective von Neumann algebra. The exclusions differ: every $\Gsel_e$ has a perfect strategy on a matrix amplification of the injective factor $R_{1/2}$, and the NO instances exclude every semifinite host instead.

@@ -1,35 +1,7 @@
 \section*{How this work was done}\label{sec:methods}
 \addcontentsline{toc}{section}{How this work was done}
-The authors selected the questions and proof standards, directed the
-research and take responsibility for the claims. AI systems assisted
-with derivation, refutation-first review, programming and writing.
-The derivations of the II-ONLY completion, R\'enyi ladder,
-nested assembly and capacity boundary were produced with one model
-family. A second model family performed refutation-first checks,
-reconstructing the operator arguments and complexity reductions and
-checking the proofs presented here. This describes
-computational assistance, not independent human refereeing.
+Opus 5.5, GPT-6.1 Sol and GPT-6 assisted with derivations, checking, programming and writing. The authors selected the questions, directed the work and take responsibility for the paper. The semifinite-but-not-spatial completion, the moment ladder and the nested compiler were derived with models from one developer and checked by a model from the other; these checks were automated.
 
-Finite computation is separate evidence. Separate counters recompute both full-game dry counts from the producer's emitted polynomials. The polynomial expansion and the minimal compiler each have a single producer, and the minimal structural audit reuses the serialized checker in \texttt{spatial/compiler/toolkit/}.
-For the nested compiler, a producer emits words, rational rows and row
-plans; a separate checker re-expands their semantic expressions and
-verifies the exact projection and transport algebra. The five concrete
-programs are validation instances, not compiled representatives of every
-reduction program. Random models test finite algebraic identities, not
-normal-support extraction. The parity graph's theta witness, independence
-number, block code and complete Schrijver symmetry decomposition were
-recomputed in an independent exact implementation for this paper.
-The commuting loss estimate is an analytic telescoping proof, with its
-finite word identity and constants checked exactly.
-
-The ancillary runner also checks finite selector models, equality
-readers, Boolean reductions, tree and comb spectra, explicit histories,
-finite-cutoff defects, channel correspondences, clique-saturation slicing
-and the rate identity. Exact rational or symbolic checks are distinguished
-from floating-point matrix calculations. Appendix~\ref{sec:repro} and
-Appendix~\ref{sec:nestedchecks} describe the arithmetic and limits.
-These computations do not prove infinite-dimensional existence,
-compactness, arbitrary-normal soundness, the group embedding theorems,
-type-III classification or hardness by sampling. Those conclusions rest
-on the written proofs and cited external theorems. This preprint has
-not been peer reviewed.
+Exact and numerical checks of the finite identities, counts and examples used in the proofs are in the repository,
+\begin{center}\codearchive,\end{center}
+and Appendix~\ref{sec:repro} describes their scope. Appendix~\ref{app:leanA} describes the formal verification of Theorem~A and its one assumption, together with the selected formalized lemmas for Theorems~B--D.

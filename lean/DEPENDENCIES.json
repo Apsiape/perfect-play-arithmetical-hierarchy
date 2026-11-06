@@ -1,4 +1,5 @@
 {
+  "description": "Historical version 1.0.0 thin-core dependency record; current external hypothesis and final roots are in pins/DEPENDENCIES.json.",
   "lean": "leanprover/lean4:v4.35.0",
   "lean_commit": "eb6cafb7290e8bd5f2937522d8d804f58f02bafc",
   "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",

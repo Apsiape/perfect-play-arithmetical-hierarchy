@@ -21,29 +21,15 @@ Then $\Tr D_{{\rm esc},n}^2=2$ and $D_{{\rm esc},n}\to|0\rangle\langle0|$ in ope
 
 For the finite-entropy realization class, Corollary~\ref{cor:entropybudget}
 proves the $\Sigma^0_2$ upper bound for exact rational or real-algebraic
-tables. The remaining proposed bounds concern other restrictions.
+tables.
 
-\paragraph{Unproved remarks on prescribed-table bounds.}
-The following upper-bound remarks are not proved in this paper and are not used in any theorem. For a prescribed table with rational or real-algebraic entries, direct coding of countable operators and a normal vector gives a $\Sigma^1_1$ upper bound. A supplied computable Schmidt-tail modulus makes the normalized state family effectively compact and gives a $\Pi^0_1$ upper bound. An existential choice from a uniformly total computable family of such moduli gives $\Sigma^0_2$. If an arbitrary program for a computable modulus is existentially supplied, totality and the tail conditions give a $\Sigma^0_3$ upper bound. These proposed bounds concern the respective restricted realization classes; establishing their effective coding details is outside the present proofs. We do not prove that every algebraic spatial table has a computable-tail realization, or give a completeness classification for unrestricted table membership.
-
-\subsection{The Fu--Miller--Slofstra remark}
-After Theorem~1.1, Fu, Miller and Slofstra state that their fixed-scenario membership problem is in $\mathsf{RE}$ for $t=q$ or $t=qs$ \cite{FMS}. We found no proof of the general $qs$ upper assertion in that discussion. The following consequence needs a uniform interpretation over finite scenarios.
-
-Suppose membership of real-algebraic tables in $C_{qs}$ has a uniform RE procedure. If every spatially perfect game in our reduction had an algebraic perfect table, enumerate all algebraic tables of its scenario, test the losing zeros exactly, and dovetail the membership procedures. This would enumerate precisely the YES inputs of a $\Sigma^0_2$-complete family, a contradiction. Under that interpretation, either the RE remark fails for $qs$, or some spatially perfect games in this family have no perfect correlation table with all entries algebraic. The conclusion is existential over YES games; it does not say that every YES game has only nonalgebraic perfect tables.
-
-The literal remark is per fixed scenario. The scenario of $\Gclk_e$ grows with $e$, which is hardwired into the automaton alphabet, so separate nonuniform RE procedures for each scenario give no contradiction. Tension arises only if there is one procedure uniform across scenarios, together with algebraic perfect tables for every YES game of the reduction. This is an open discrepancy, not a refutation. Resolving the uniformity and algebraicity questions is a natural next problem.
+\subsection{Uniform membership and algebraic correlations}
+Two questions remain about prescribed spatial correlations. Is membership of real-algebraic tables in $C_{qs}$ recursively enumerable uniformly over finite scenarios? Must every spatially perfect game have an algebraic perfect table? The two answers cannot both be yes: enumerating algebraic tables, checking their losing zeros, and dovetailing their membership searches would enumerate the YES instances of our $\Sigma^0_2$-complete family. The fixed-scenario remark of Fu, Miller and Slofstra \cite{FMS} does not by itself settle the required uniformity.
 
 \subsection{Zero-error capacities}\label{sec:capacity}
-Section~\ref{sec:capacityboundary} gives exact finite-block cancellation,
-theta bounds and arithmetical upper bounds for rates. Capacity
-computability and strict normal versus finite-dimensional asymptotic
-separations remain open. The Catalan and parity examples expose
-respectively an entropy barrier and a positive game-value gap; neither
-turns one-shot hardness into a capacity-undecidability theorem.
-
-Obtaining relative Hilbert--Schmidt control of an approximate game assemblage from a high-rate code, and quantitative game lower bounds, remain open.
+Theorem~C concerns one use of a channel. A tensor power of the channel of a game has the strong-product confusability graph, which is not the confusability graph of the AND-repeated game, so one-shot hardness does not transfer to the entanglement-assisted zero-error capacity. Whether this capacity is computable, and whether normal entanglement can give a strictly larger capacity than finite-dimensional entanglement, remain open. For the squared-Catalan channel of Section~\ref{sec:catalan}, normal entanglement already reaches the clique-partition bound of Lemma~\ref{lem:saturation} in one use; whether finite-dimensional entanglement reaches the same capacity asymptotically is unknown.
 
 \subsection{Other questions}
-The type languages are existence languages: the host and its normal state may be chosen together. They do not decide whether a prescribed factor and state realize a correlation, or determine the least resources of a strategy. Natural questions ask which syntactic classes force finite-entropy spatial perfection whenever spatial perfection is possible, and how quantitative entropy requirements interact with the difference classification. The shared-family theorem resolves the nested differences by an explicit finite-entropy model. A quantitative stability theorem for the new spectral factors is a separate problem.
+The type languages are existence languages: the host and its normal state may be chosen together. They do not decide whether a prescribed factor and state realize a correlation, or determine the least resources of a strategy. Natural questions ask which syntactic classes force finite-entropy spatial perfection whenever spatial perfection is possible, and how quantitative entropy requirements interact with the difference classification.
 
-Can the game compiler be made substantially smaller? Can the period reader be realized by a simpler predicate? What are the optimal effective bounds when one supplies an entropy budget or a Schmidt-tail modulus? A classification of unrestricted prescribed-table membership would require additional control of the normalization that escapes in the example above.
+Can the game compiler be made substantially smaller? Can the period reader be realized by a simpler predicate? What are the optimal effective bounds for prescribed tables when one supplies an entropy budget or a computable bound on the Schmidt tail? A classification of unrestricted prescribed-table membership would require additional control of the normalization that escapes in the example above.

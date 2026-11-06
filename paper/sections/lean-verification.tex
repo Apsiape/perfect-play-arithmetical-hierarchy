@@ -1,0 +1,254 @@
+\section{Lean verification of Theorem A}\label{app:leanA}
+Theorem A is proved in Lean~4, conditional only on
+\nolinkurl{UpperRealArithmetic.TarskiDecision}: truth of existentially
+quantified rational ordered-ring sentences in disjunctive normal form is
+computable. This is a special case of Tarski's decision theorem for real
+arithmetic \cite[Section~2, Theorem~31 and Corollary~32, p.~39]{Tarski1951}.
+It is an explicit argument of the theorem; the decision algorithm is not
+formalized. The comparator challenge \nolinkurl{lean/Challenge.lean}
+states Theorem A as follows, with \nolinkurl{TheoremAStatement} as defined
+in \nolinkurl{lean/Sigma2/Statements.lean}:
+\begin{flushleft}\leftskip1.5em\footnotesize\ttfamily\frenchspacing
+\detokenize{theorem theoremA_of_tarski_paper (hT : UpperRealArithmetic.TarskiDecision) :}\\
+\hspace*{2em}\detokenize{TheoremAStatement}\\[4pt]
+\detokenize{def TheoremAStatement : Prop :=}\\
+\hspace*{1em}\detokenize{SigmaTwoComplete SpatialPerfect} $\wedge$ \detokenize{SigmaTwoComplete EntropyPerfect} $\wedge$\\
+\hspace*{1em}\detokenize{PromiseHard SpatialPerfect PromisedGame} $\wedge$ \detokenize{PromiseHard EntropyPerfect PromisedGame}
+\end{flushleft}
+Here the languages consist of natural-number codes of finite rational
+Boolean two-player games, and invalid codes belong to none of them.
+\texttt{SpatialPerfect} is the set of games with a perfect normal spatial
+strategy (perfection is attained, not merely value one), and
+\texttt{EntropyPerfect} the set of games with such a strategy whose two
+reduced density operators have finite entropy; Section~\ref{sec:prelim}
+explains why the one-marginal entropy convention gives the same language.
+\texttt{SigmaTwoComplete} means $\Sigma^0_2$ membership and hardness under
+total computable many-one reductions. \texttt{PromiseHard} says that each
+hardness reduction can be chosen so that every output lies in
+\texttt{PromisedGame}: it has finite-dimensional value one and no perfect
+finite-dimensional strategy. The same statement is proved as
+\nolinkurl{theoremA_of_tarski} in \nolinkurl{lean/Sigma2/Main.lean} and as
+\nolinkurl{theoremA_of_tarski_paper}, through the printed admissibility
+predicate, in \nolinkurl{lean/Sigma2/MainPaper.lean}. The theorem
+\nolinkurl{theoremA_shared_family} in \nolinkurl{lean/Sigma2/SharedFamily.lean}
+proves that a single total computable map is a promised reduction for both
+languages, which is the family of Theorem A.
+
+\subsection{What is checked}
+The first column uses this paper's numbering. The Lean names
+\nolinkurl{lemma_4_4_strong_of_obligations} and
+\nolinkurl{lemma_3_1_compact_sandwiches} refer to Lemma~\ref{lem:four} at
+$n=4$ and to Lemma~\ref{lem:sandwich}. Several theorems in the table take
+as an argument a compiler specification, of type
+\nolinkurl{CompilerSpecification.Specification}. The final theorems supply
+it from the proved obligations \nolinkurl{CompilerObligations.obligations_all},
+so it is not a hypothesis of any final theorem. The only hypothesis of the final theorems is
+\nolinkurl{TarskiDecision}; the rows below say where it enters.
+
+\begin{center}\footnotesize
+\begin{minipage}{\linewidth}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.17\linewidth}>{\raggedright\arraybackslash}p{.44\linewidth}>{\raggedright\arraybackslash}p{.33\linewidth}@{}}
+\toprule Printed result & Lean name & Checked form\\\midrule
+Theorem A &
+\nolinkurl{Sigma2.theoremA_of_tarski};
+\nolinkurl{Sigma2.theoremA_of_tarski_paper};
+\nolinkurl{Sigma2.theoremA_shared_family} &
+Full, given \texttt{TarskiDecision} only: both completeness clauses, both
+promised-hardness clauses, and one computable hardness family for both
+languages (the third name, which needs no hypothesis).\\[4pt]
+Lemma 4.5, $n=4$ &
+\nolinkurl{Sigma2.CompilerContract.lemma_4_4_strong_of_obligations};
+\nolinkurl{Sigma2.CompilerSpecification.strong_compiler};
+\nolinkurl{Sigma2.CompilerSpecification.four_bridge_compiler};
+\nolinkurl{Sigma2.CompilerObligations.obligations_all} &
+Partial: four-bridge exact compilation, with all seven compiler
+obligations proved; not general $n$ or commuting hosts.\\[4pt]
+Theorem 3.1, membership clauses; Lemma 3.2 &
+\nolinkurl{Sigma2.Upper.uniform_strata_piOne_of_tarski};
+\nolinkurl{Sigma2.Upper.spatial_union};
+\nolinkurl{Sigma2.Upper.spatial_sigmaTwo_of_tarski};
+\nolinkurl{Sigma2.Upper.lemma_3_1_compact_sandwiches} &
+Partial: the first two clauses of Theorem 3.1, with the strata and
+$\Sigma^0_2$ membership given \texttt{TarskiDecision}; Lemma 3.2.\\[4pt]
+Proposition 3.3; Corollary 3.4; equation (5) &
+\nolinkurl{Sigma2.UpperEntropyAssembly.perfect_of_sequence};
+\nolinkurl{Sigma2.Upper.entropy_tail};
+\nolinkurl{Sigma2.Upper.entropy_stage_slack};
+\nolinkurl{Sigma2.Upper.entropy_scheduled_iff};
+\nolinkurl{Sigma2.Upper.entropy_relaxation_computable_of_tarski};
+\nolinkurl{Sigma2.Upper.entropy_sigmaTwo_of_tarski} &
+Partial: perfect-game compactness and effective finite-entropy
+membership, the latter given \texttt{TarskiDecision}; not
+prescribed-table compactness, entropy infima or optimal entropy.\\[4pt]
+Sections 2 and 4, normal toolkit &
+\nolinkurl{Sigma2.Preliminaries.normal_pure_perfect_equivalence} &
+Partial: the normal/pure perfection equivalence, not all of
+(N1)--(N8).\\[4pt]
+Lemma 4.1 &
+\nolinkurl{Sigma2.Compiler.lemma_4_1_normal_bridge};
+\nolinkurl{Sigma2.Compiler.calibrated_bridge_vector} &
+Partial: the spatial support interface and component identity; not
+commuting hosts.\\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{center}
+
+\begin{center}\footnotesize
+\begin{minipage}{\linewidth}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.17\linewidth}>{\raggedright\arraybackslash}p{.44\linewidth}>{\raggedright\arraybackslash}p{.33\linewidth}@{}}
+\toprule Printed result & Lean name & Checked form\\\midrule
+Lemma 4.2 &
+\nolinkurl{Sigma2.Compiler.lemma_4_2_label_refinement};
+\nolinkurl{Sigma2.Compiler.joint_refinement_iff} &
+Coarse-sign identification and the converse commuting refinement.\\[4pt]
+Lemma 4.3; equation (19) &
+\nolinkurl{Sigma2.Compiler.lemma_4_3_boolean_rows};
+\nolinkurl{Sigma2.Compiler.row_loss_formula} &
+Conditional: perfect games, with the \texttt{RowsHold} and
+\texttt{NamedBinaryProjections} premises; (19) only as a trace
+identity under a slot-sum hypothesis, not an event probability.\\[4pt]
+Definition 4.4 &
+\nolinkurl{Sigma2.Presentation};
+\nolinkurl{Sigma2.Presentation.admissible};
+\nolinkurl{Sigma2.NormalRealization};
+\nolinkurl{Sigma2.Compiler.Compiled};
+\nolinkurl{Sigma2.Compiler.ApproxCompiled};
+\nolinkurl{Sigma2.PaperAdmissible};
+\nolinkurl{Sigma2.PaperAdmissibility.application_paper_admissible};
+\nolinkurl{Sigma2.PaperAdmissibility.saturation_bridge} &
+\texttt{Presentation.admissible}, the domain of the compiler theorems,
+omits two transport conditions of the printed definition.
+\texttt{PaperAdmissible} is the printed definition; it holds for the
+Theorem A input tables, and every admissible presentation saturates to a
+\texttt{PaperAdmissible} one with equivalent normal realizations and the
+same compiled game.\\[4pt]
+Section 4.7, equations (28)--(29) &
+\nolinkurl{Sigma2.CompilerSpecification.approximate_compilation};
+\nolinkurl{Sigma2.CompilerApproxBase.approxCompiled_of_base15} &
+Partial: an existential dimension-independent loss bound under exact
+structural hypotheses; not the explicit coefficient (29), robust
+extraction, or preservation of an input witness or its finite
+dimension.\\[4pt]
+Section 5.1, equations (30)--(33) &
+\nolinkurl{Sigma2.Tree.fock_decomposition};
+\nolinkurl{Sigma2.Tree.fock_density};
+\nolinkurl{Sigma2.Tree.fock_entropy};
+\nolinkurl{Sigma2.Tree.no_finite_realization} &
+Rooted Fock structure, weights, entropy and finite-dimensional
+obstruction.\\[4pt]
+Lemma 5.1 &
+\nolinkurl{Sigma2.Tree.lemma_5_1_definite_computation};
+\nolinkurl{Sigma2.ReductionSoundBridge.nonreject_of_data} &
+Classical tableau on a root-clock sector, with its concrete data from
+the row-extraction modules.\\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{center}
+
+\begin{center}\footnotesize
+\begin{minipage}{\linewidth}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.17\linewidth}>{\raggedright\arraybackslash}p{.44\linewidth}>{\raggedright\arraybackslash}p{.33\linewidth}@{}}
+\toprule Printed result & Lean name & Checked form\\\midrule
+Section 6, equations (40)--(46); Lemma 6.1 &
+\nolinkurl{Sigma2.Clock.finite_phase_sector};
+\nolinkurl{Sigma2.Clock.coordinate_clock};
+\nolinkurl{Sigma2.Clock.exact_return};
+\nolinkurl{Sigma2.Clock.lemma_6_1_good_primitive_phase};
+\nolinkurl{Sigma2.Clock.bounded_reader} &
+Conditional: \nolinkurl{finite_phase_sector}, \nolinkurl{coordinate_clock} and \nolinkurl{exact_return} take \nolinkurl{hP : P.admissible} and \nolinkurl{D : Clock.Data R}; the last two also take a root vector, and exact return a primitive-phase eigenvector. \nolinkurl{bounded_reader} assumes a primitive phase and its separation bound; Lemma~6.1 supplies a suitable phase and bound for every prime. \nolinkurl{Reduction.realization_sound} supplies the clock data for Theorem~A.\\[4pt]
+Section 7; Theorem 7.1 &
+\nolinkurl{Sigma2.Reduction.effective_program};
+\nolinkurl{Sigma2.Reduction.application_admissible};
+\nolinkurl{Sigma2.Reduction.presentation_codes_computable};
+\nolinkurl{Sigma2.Reduction.realization_sound};
+\nolinkurl{Sigma2.Reduction.realization_complete};
+\nolinkurl{Sigma2.CompiledReduction.theorem_7_1_reduction} &
+Effective input construction, both perfection equivalences and absence
+of any finite-dimensional perfect output.\\[4pt]
+Section 7.1, equations (50)--(54) &
+\nolinkurl{Sigma2.CompiledFockApproximation.normal_approximation};
+\nolinkurl{Sigma2.CompiledFockApproximation.finite_approximation};
+\nolinkurl{Sigma2.CompiledValue.four_defect_approximation};
+\nolinkurl{Sigma2.CompiledValue.value_one};
+\nolinkurl{Sigma2.CompiledValue.reduction_promised} &
+Partial: geometric approximation and the promise on every input; the
+$Q,L,d$ of \nolinkurl{four_defect_approximation} are existential, not the
+actual row counts or denominators.\\[4pt]
+Other local results &
+Thin core, \nolinkurl{lean/THIN-CORE.md} &
+Local statements only; see Table~\ref{tab:leancore}.\\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{center}
+
+\noindent\textbf{Not formalized:} Theorems B--D beyond their thin-core
+lemmas, including the general semifinite and type classification and the
+communication classification; Theorem~\ref{thm:bell} beyond its
+winning-functional identities, and the last two clauses of
+Theorem~\ref{thm:strata}; the general $n$-bridge and commuting-host
+compiler; the economical ten-label schedule, its size counts and
+equation~\eqref{eq:valueconstant} with actual row denominators (the
+formal compiler transports all typed labels); the reduction of strategies
+on arbitrary Hilbert spaces to $\ell^2(\mathbb N)$ by compression;
+Tarski's decision algorithm.
+
+\noindent\textbf{Conventions:} both local spaces are $\ell^2(\mathbb N)$,
+and normal states are countable ensembles of unit vectors in
+$\ell^2(\mathbb N\times\mathbb N)$, their completed tensor product. A
+finite-dimensional strategy is a unit vector supported on finitely many
+basis vectors, with POVMs on $\ell^2(\mathbb N)$. Every game has at least
+one question and one answer for each party.
+
+\subsection{Trust base}
+The proofs use Lean 4.35.0 and the Mathlib commit
+\begin{quote}\small
+\nolinkurl{56a005855ea17e0b0958f73ec801ae140b0a1679};
+\end{quote}
+every pin is in \nolinkurl{lean/}. Every declaration of the
+\texttt{Sigma2} library, including every theorem in the table, uses no
+axioms beyond Lean's three standard axioms:
+\begingroup\scriptsize
+\begin{verbatim}
+'Sigma2.theoremA_of_tarski' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sigma2.theoremA_of_tarski_paper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sigma2.theoremA_shared_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+\end{verbatim}\endgroup
+The proof of Theorem A passes two independent kernel checkers,
+\texttt{leanchecker} and \texttt{nanoda}. The comparator challenge
+\nolinkurl{lean/Challenge.lean} imports only Mathlib and defines the
+statement vocabulary transparently. It states Theorem A as displayed
+above, the shared hardness family \nolinkurl{theoremA_shared_family}, and
+the printed admissibility definition \nolinkurl{paper_admissible_iff}.
+\nolinkurl{lean/Solution.lean} imports the proofs, and
+\nolinkurl{lean/comparator.json} permits only the three standard axioms.
+From \texttt{lean/}, on Linux with bubblewrap and with the dependencies
+placed as below, one command checks all three:
+\texttt{lake comparator -{}-config comparator.json}.
+Records of the comparator run and the kernel checks are in
+\nolinkurl{lean/evidence/}.
+
+\subsection{Reproduce}
+With the Lean 4.35.0 toolchain first on the path and the pinned
+dependency sources placed under \nolinkurl{lean/vendor/} as described in
+\nolinkurl{lean/README.md}, run from \texttt{lean/} (the first line is
+PowerShell syntax):
+\begin{flushleft}\leftskip1.5em\ttfamily\frenchspacing
+\$env:LEAN\_NUM\_THREADS = \textquotesingle 1\textquotesingle\\
+lake exe cache get\\
+lake build\\
+lake env lean -{}j1 -{}M6144 Audit.lean
+\end{flushleft}
+The first line selects one Lean thread, and \texttt{lake exe cache get}
+fetches the Mathlib build cache. \texttt{lake build} rebuilds every project
+module from source. It audits the axioms of every declaration of the
+library, including private declarations, and rejects admitted proofs and
+additional axioms; it audits the proofs of the two final Theorem A theorems and
+checks that every Lean name in the table exists. The last command prints
+the axioms of every theorem in the table; \nolinkurl{lean/AXIOMS.txt} is
+the expected output.

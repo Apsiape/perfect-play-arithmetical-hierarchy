@@ -282,7 +282,7 @@ def RefinementPerfect {s} (S : NormalStrategy s) (I : FMSInstance s)
     S.measurements.left F.labelQA F.labelA (S.vector k)=
       S.measurements.right F.labelQB F.labelB (S.vector k))
 
-/-- Eq. (8), rational 3-4-5 graph certificate; u is the actual off-diagonal block. -/
+/-- Eq. (15), rational 3-4-5 graph certificate; u is the actual off-diagonal block. -/
 theorem graph_certificate (Fi Fj G H Gc Hc : Op)
     (hFi : Projection Fi) (hFj : Projection Fj) (horth : Fi*Fj=0)
     (hG : Projection G) (hH : Projection H) (hGc : Projection Gc) (hHc : Projection Hc)
@@ -292,7 +292,7 @@ theorem graph_certificate (Fi Fj G H Gc Hc : Op)
     star u*u=Fj ∧ u*star u=Fi := by
   exact ProjectionGraph.graph_certificate Fi Fj G H Gc Hc hFi hFj horth hG hH hGc hHc sG sH hrow
 
-/-- Eq. (9), triangle projectivity certifies actual multiplication. -/
+/-- Eq. (16), triangle projectivity certifies actual multiplication. -/
 theorem triangle_product (u v w : Op)
     (hu : Unitary u) (hv : Unitary v) (hw : Unitary w)
     (htri : let P : Matrix (Fin 3) (Fin 3) Op :=
@@ -302,7 +302,7 @@ theorem triangle_product (u v w : Op)
       P*P=P) : w=u*v := by
   exact CompilerAlgebra.triangle_product u v w hu hv hw htri
 
-/-- Eq. (10), the graph row has exactly the polynomial and its adjoint off diagonal. -/
+/-- Eq. (17), the graph row has exactly the polynomial and its adjoint off diagonal. -/
 theorem graph_linear_row {n} (q : Fin n → ℚ) (U : Fin n → Op)
     (hU : ∀ i, Unitary (U i)) :
     (∑ i, (q i:ℂ) • U i)=0 ↔
@@ -366,6 +366,7 @@ def NamedBinaryProjections {s} (R : Rows s) (S : NormalStrategy s) : Prop :=
       BinaryProjectionOn eB (S.measurements.bob (R.event i).y (R.event i).b)) ∧
     (∀ i, BinaryEventSynchronized S (R.event i))
 
+/-- Eq. (18), column identity for arbitrary noncommuting reflections. -/
 theorem row_column_overlap {d : ℕ} (hd : 0<d) (V : Fin d → Op)
     (hV : ∀ j, Unitary (V j)) :
     let C : Matrix (Fin d) (Fin d) Op := fun i j => (1/(d:ℂ)) • (V i*star (V j))
@@ -373,7 +374,7 @@ theorem row_column_overlap {d : ℕ} (hd : 0<d) (V : Fin d → Op)
     C*R=0 ↔ (∑ j, V j)=0 := by
   exact CompilerAlgebra.row_column_overlap hd V hV
 
-/-- Eq. (13), exact row-zero probability, including the scalar density factor. -/
+/-- Eq. (19), exact row-zero probability, including the scalar density factor. -/
 theorem row_loss_formula (L d : ℕ) (hd : 0<d) (S : Op) (hS : star S=S)
     (h : Density) (hs : Centralizes h.op S)
     (V : Fin d → Op) (hV : ∀ j, Unitary (V j))
@@ -433,13 +434,22 @@ def Compiled (P : Presentation) (c : ℕ) : Prop :=
         R.density.op=(121:ℂ) • (R.support*h.op*R.support) ∧
         (trace (h.op*R.support)).re=1/121)
 
+/-- Section 4.7 estimate for a specified code, paired with exact correctness
+before choosing the compiler. -/
+def ApproxCompiled (P : Presentation) (c : ℕ) : Prop :=
+  ∃ C : ℝ,0 ≤ C ∧ ∀ G,decodeGame c=some G →
+    ∀ R : StructuralRealization P,∃ S : NormalStrategy G.scenario,
+      loss G S ≤ C * ((applicationResiduals P R).map (fun r =>
+        (trace (R.density.op*(star r*r))).re)).sum
+
+/-- Eq. (23), four calibrated bridges fix the nonzero source mass. -/
 theorem scaffold_mass (m : Fin 5 → ℝ) (h : ∀ g : Fin 4, m ⟨g.val+1,by omega⟩=2*m ⟨g.val,by omega⟩)
     (hs : m 0+4*(m 1+m 2+m 3+m 4)=1) : m 0=1/121 := by
   have h0 := h 0; have h1 := h 1; have h2 := h 2; have h3 := h 3
   norm_num at h0 h1 h2 h3
   linarith
 
-/-- Eq. (18), the very same four calibrated bridges transport every label;
+/-- Eq. (26), the very same four calibrated bridges transport every label;
 no commutation of labels and no new independently gauged bridge is assumed. -/
 theorem same_bridge_transport {n : ℕ} (L : Fin 5 → Fin n → Op)
     (w1 w2 w3 w4 : Op)

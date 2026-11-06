@@ -1,0 +1,247 @@
+{
+  "original_closure_omissions": 48,
+  "restored_in_union": 4,
+  "remaining_omissions": 44,
+  "files": [
+    {
+      "path": "Sigma2/Audit.lean",
+      "restored_in_union": false,
+      "sha256": "54664d63f69d03d38681b3ecd6469d932abd1c96b3298cb4fa0b2ca1b1b476f9"
+    },
+    {
+      "path": "Sigma2/CommonSigns.lean",
+      "restored_in_union": true,
+      "sha256": "389180906371b3a95d48db729b6738f3e5b7b22511469b5e2af6a9692b1c9ad3"
+    },
+    {
+      "path": "Sigma2/CompilerEffectiveAudit.lean",
+      "restored_in_union": false,
+      "sha256": "bff8fa3a2c971d6cc41b8b538865b23367a94f25f5b95db03120fa82c3a8fdb0"
+    },
+    {
+      "path": "Sigma2/CompilerEffectiveAudit2.lean",
+      "restored_in_union": false,
+      "sha256": "d96a5bd174a2cd71534e26b4e4f65bfdecfd8edef1977f4b94441fac203f4a19"
+    },
+    {
+      "path": "Sigma2/CompilerTransport.lean",
+      "restored_in_union": false,
+      "sha256": "9cafc2f956d2044fa1915bae1561158e7d05245da146fbaded3ea15fe07dcffd"
+    },
+    {
+      "path": "Sigma2/Core.lean",
+      "restored_in_union": false,
+      "sha256": "e0663bdefc6e8b9e41cb1f83664767afc20c5b7bf18a94d8cf22eb213e731883"
+    },
+    {
+      "path": "Sigma2/CoreAudit.lean",
+      "restored_in_union": false,
+      "sha256": "97bd23336ef63f6700ec8a1befe04de50da387a4a8ae0ebe58b716822078e241"
+    },
+    {
+      "path": "Sigma2/EntropyAssembly.lean",
+      "restored_in_union": false,
+      "sha256": "92fb8a1c09603a98bff8fb1c2e772198af068b132d1b2f47282f4fff7df1a321"
+    },
+    {
+      "path": "Sigma2/EntropyComponents.lean",
+      "restored_in_union": false,
+      "sha256": "411a17b2f536c5c0fc0dd90f92fdd57e006715e35daee0cf558957f153645284"
+    },
+    {
+      "path": "Sigma2/EntropyContinuity.lean",
+      "restored_in_union": false,
+      "sha256": "b0c2d1844f923cee06bf14d3950999d9d14319fe78c655b20ef88ccd92d22cd0"
+    },
+    {
+      "path": "Sigma2/FockOrientedEvents.lean",
+      "restored_in_union": false,
+      "sha256": "6de27aad9a444e3a3048b95440adc9928ace05f8d9e1dda9691c8375272ba631"
+    },
+    {
+      "path": "Sigma2/RowConstructionAudit.lean",
+      "restored_in_union": false,
+      "sha256": "ec87bb51bfeea3a1838d8514fb2b88d0ac9020c1b3a95b8d46034b4d0e3daa6a"
+    },
+    {
+      "path": "Sigma2/RowFidelity.lean",
+      "restored_in_union": true,
+      "sha256": "f518b3d6befeb4aa83b812996383d7211857598281265690dfcecabf2075bf20"
+    },
+    {
+      "path": "Sigma2/RowInterface.lean",
+      "restored_in_union": true,
+      "sha256": "4266ec06c83183a7c5087bb59f91902b5f1418cc604bee7c0a2a934b1290ac3e"
+    },
+    {
+      "path": "Sigma2/RowSoundnessAudit.lean",
+      "restored_in_union": false,
+      "sha256": "329ba05773c549459185a75f2fe9f8403e90e9583b280e07449a7e004f587660"
+    },
+    {
+      "path": "Sigma2/SupportedContraction.lean",
+      "restored_in_union": true,
+      "sha256": "642c1231365cb35fcf3ed8e827d9d02ae2042782d1bf7405bd928fef734ce2bc"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "8e651f5569f6a1c0a948b18f61d5d4507c37a269aa87cf4852259d069afea6cf",
+      "description": "Historical audit 17"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "755d7b80e15cbeba9c5dc505ec5ba58716d7c980440b1f9e4dd9c7bee91eb832",
+      "description": "Historical audit 18"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "9f8eb277657a1ef4057274f547fe04f48c94d07f007492bf6c6684016b2ebf2a",
+      "description": "Historical audit 19"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "205bb6fe665591a34a5b8bc74616e8dc7d2a50a90f0fcd242beac1492a9a92ce",
+      "description": "Historical audit 20"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "ad23fc92023eaf2512cf4648f095c89c9036b09f3c4f8fc924281213cad6e4bc",
+      "description": "Historical audit 21"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "7b32c0e1cae8e5ced85a8071ba3cd1992ed9dda14e862991d315b6904dbd0631",
+      "description": "Historical audit 22"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "056ab3492f8b5d624994372539343790e55d7775bf8ed142859c89a607ece976",
+      "description": "Historical audit 23"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "e4c9e7cb2fcab02d086691a81841630906f74df1526797b679cc164b1b2a80aa",
+      "description": "Historical merge audit 24"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "7be55bb860eae322b25583220bbdd2a79c53db5aeb430fe19ebe5a6587003a27",
+      "description": "Historical audit 25"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "c0a53909b7391fcec256c80fd22f5c334290494dbe5b9214caac9fc4a1dabb4b",
+      "description": "Historical audit 26"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "c0fcf39b1c44a7da60f457033f54c303d7104b2b84e510e7bf6e06df1a8e580a",
+      "description": "Historical proof audit 27"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "3afc47383a18504c05f60f198d242581a66bc4aee02820af5a88e733d70ce20b",
+      "description": "Historical merge audit 28"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "b282776bdc2a5d87fbd2d1c6d10bf90b81bfce5f936dfc217e6a0c704de2246d",
+      "description": "Historical proof audit 29"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "45883244ad4b6cdd270afea0f3d97b92089ced456c3a80ef9456d86eed712221",
+      "description": "Historical audit 30"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "caf831a5e7991f5bfc5b875d4da6c9c48bf9c67927724890c173129c65b8ad88",
+      "description": "Historical cache audit 31"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "c356ed86f734b60b6c8d8d81cfb294372f02c09f94abd5f1fdc990874e65d2af",
+      "description": "Historical proof audit 32"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "e282b2222fc21a967f78903c65a3e7c5e6748406aa43c8ac9453d118b4c82c6d",
+      "description": "Historical merge audit 33"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "95244f804c556824b9e600039bbf562ad42f0be80caaa2c1b532a766d4bf8561",
+      "description": "Historical proof audit 34"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "d6df63dac2dc154f89f88b44f30123a038cf6debfc918cad89eaaafacb861200",
+      "description": "Historical merge audit 35"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "39acc19e6cae05aa7ebc756fb6dafb210eebf7eff1b67bd016ed73b3358e0697",
+      "description": "Historical proof audit 36"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "981afda4da92817da84f42a52d41dbb9367974a7cb4eea5f1d243a72d5144527",
+      "description": "Historical entropy audit 37"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "7e2dad16558936fae6677651dffd74d3f30cf7666e6a73f1cceff71a7c37f394",
+      "description": "Historical merge audit 38"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "3a3aa7f122ef923eb61102785ce399d323dcafa6e97e88d35968642d5bee9f41",
+      "description": "Historical proof audit 39"
+    },
+    {
+      "restored_in_union": false,
+      "sha256": "912628a47dfc1ed54da08e236359dc0d22bc26afc63722f0fd9496a0b7f4bfa4",
+      "description": "Historical proof audit 40"
+    },
+    {
+      "path": "Sigma2/UpperAudit.lean",
+      "restored_in_union": false,
+      "sha256": "e72f3d659d7719ffe1d07fca9cfc9e6126e9233543ba8bf379047005c708f54e"
+    },
+    {
+      "path": "Sigma2/UpperAudit3.lean",
+      "restored_in_union": false,
+      "sha256": "f1475a30568fa0a947a49e5d1ee2ed5cefd5a1fd1b966f3c9e6fb35a89dbae9d"
+    },
+    {
+      "path": "Sigma2/UpperAudit4.lean",
+      "restored_in_union": false,
+      "sha256": "044634aa121bcc116ee54304c4cc09bb936bb751ed83d93e206b92160266d9d1"
+    },
+    {
+      "path": "Sigma2/UpperAudit5.lean",
+      "restored_in_union": false,
+      "sha256": "ee193bd0cfdd535b20f0b0dc9dcdc646b5a80d89f97ebe16adeb265487c44ce3"
+    },
+    {
+      "path": "Sigma2/UpperAudit6.lean",
+      "restored_in_union": false,
+      "sha256": "0fb5e37bc115764d64256ed8d3291a21ad12082402f6c8601fbcf142fd2a7069"
+    },
+    {
+      "path": "Sigma2/UpperDependencyAudit.lean",
+      "restored_in_union": false,
+      "sha256": "fc13c40d0e89c43caf75aadf31ea6b6baf82f00f12b5a6401713152fa60c993e"
+    },
+    {
+      "path": "Sigma2/UpperDependencyAudit5.lean",
+      "restored_in_union": false,
+      "sha256": "7540b8421faf16251014b2b395aae451efb74dbbd999d775c847472d344db477"
+    },
+    {
+      "path": "Sigma2/UpperDependencyAudit6.lean",
+      "restored_in_union": false,
+      "sha256": "41907b95225eecc13ad91cb9c7a77e37b17cf1001af17967c7f058040df9a3a6"
+    }
+  ]
+}

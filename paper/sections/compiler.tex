@@ -1,46 +1,42 @@
 \section{A finite compiler for normal strategies}\label{sec:compiler}
-The spatial, semifinite and communication hardness proofs compile operator relations into one finite game. This section builds that compiler once. It works for normal spatial strategies and for normal commuting strategies; the finite predicates are the same in both models, and the proofs say where separation in standard form replaces Schmidt-range cancellation.
-
-The modular operators below are not synchronized. A synchronized operator commutes with the marginal density, so it cannot itself change a density eigenvalue. We retain conditional flagged magic-square questions to supply that change. Everything submitted to the graph compiler lies in the density centralizer.
-
-We first restate the bridge, label and rational-row tools from \cite[Lemmas~4.1 and 4.2, Theorem~B, Eq.~(32)]{Entropy}, with their proofs, and extend them from spatial strategies to normal commuting strategies. These arguments concern arbitrary normal supports and finite word lists. We then give the $n$-bridge assembly. No product of two modular transports is submitted as a centralizer word.
-
 \subsection*{From a presentation to a game}
 \addcontentsline{toc}{subsection}{\protect\numberline{}From a presentation to a game}
-This overview says what the compiler does. The proofs follow in Sections~\ref{sec:bridge}--\ref{sec:approxcompiler}.
+The spatial, semifinite and communication hardness proofs compile operator relations into one finite game. This section builds that compiler once, for normal spatial and for normal commuting strategies; the finite predicates are the same in both models. The proofs follow in Sections~\ref{sec:bridge}--\ref{sec:approxcompiler}.
 
 \emph{Input.} An admissible presentation (Section~\ref{sec:admissible}) is a finite rational list: four contraction symbols $A_\alpha$, a root projection $P_\circ$, finitely many typed centralizer labels and finitely many rational $*$-polynomial equations. Its intended solutions are normal realizations: bounded operators on a Hilbert space $\HH_0$ with a faithful trace-class density $h_0$, such that the labels commute with $h_0$, the equations hold, and $h_0A_\alpha=A_\alpha h_0/16$.
 
 \emph{Output.} A finite game with a rational question distribution and a $0/1$ predicate. Its perfect normal spatial strategies and the normal realizations of the presentation correspond in both directions (Lemma~\ref{lem:four}).
 
-\emph{The pipeline.}
+\emph{Construction.}
 \begin{enumerate}
 \item \emph{Labels become unitaries.} A projection $P$ is encoded by $2P-I$, a positive contraction $T_+$ by a unitary $u_+$ with $T_+=(2I+u_++u_+^*)/4$, and a general contraction by an average of two unitaries.
-\item \emph{A scaffold carries the factor $16$.} Seventeen synchronized corners and four conditional flagged magic-square bridges certify partial isometries ${\btrans}_g$ with $h{\btrans}_g=2{\btrans}_gh$ (Lemma~\ref{lem:bridge}). Their product $v$ maps the source corner $e_0$ onto $e_4$ with $hv=16vh$, and the cover fixes the source mass $1/121$.
+\item \emph{A scaffold carries the factor $16$.} A synchronized event commutes with the marginal density, so it cannot change a density eigenvalue. Conditional flagged magic-square bridges, whose sign questions are not synchronized, supply that change: seventeen synchronized corners and four such bridges certify partial isometries ${\btrans}_g$ with $h{\btrans}_g=2{\btrans}_gh$ (Lemma~\ref{lem:bridge}). Their product $v$ maps the source corner $e_0$ onto $e_4$ with $hv=16vh$, and the cover fixes the source mass $1/121$.
 \item \emph{Labels travel through the bridges.} Corner copies, block unitaries and shared-question refinements (Lemma~\ref{lem:label}) force $L_4v=vL_0$ for every transported label $L$.
-\item \emph{The modular operators disappear.} Each creation symbol is written $A_\alpha=v^*a_\alpha$ with a centralizer contraction $a_\alpha$ from $e_0$ to $e_4$. Every application equation becomes an equation among centralizer labels in which $v$ does not occur.
+\item \emph{The modular operators disappear.} Each creation symbol is written $A_\alpha=v^*a_\alpha$ with a centralizer contraction $a_\alpha$ from $e_0$ to $e_4$. Every application equation becomes an equation among centralizer labels in which $v$ does not occur, so every word passed to the graph compiler lies in the density centralizer.
 \item \emph{Words become projections.} A qutrit frame, graph projections and triangle projections certify actual products of unitary labels. A rational equation among words becomes a rational linear equation among synchronized projections (Section~\ref{sec:projection}).
 \item \emph{Linear equations become Boolean tests.} Each such equation is enforced by finitely many orthogonality tests against a certified scalar matrix algebra (Lemma~\ref{lem:rows}).
 \item \emph{Assembly.} All questions are kept, the question sets are padded, and question pairs are sampled uniformly; unspecified pairs are accepted.
 \end{enumerate}
 
-\emph{Soundness.} In a perfect normal strategy every losing event of positive weight has probability zero. This makes each synchronized event a projection on the state support that commutes with the marginal density, and it turns each submitted equation into an operator identity on that support. The bridges then give the realization on the source corner, with density $h_0=121e_0he_0$. No step inverts a density.
+\emph{Soundness.} In a perfect normal strategy every losing event of positive weight has probability zero. This makes each synchronized event a projection on the state support that commutes with the marginal density, and it turns each imposed equation into an operator identity on that support. The bridges then give the realization on the source corner, with density $h_0=121e_0he_0$.
 
 \emph{Completeness.} A realization is copied into the scaffold density \eqref{eq:scaffold}. Contractions are written as averages of unitaries inside the finite-dimensional positive eigenspaces of that density. A qutrit frame and a finite maximally entangled row ancilla are appended, and Bob uses transposes in an eigenbasis of the density. Every test then holds exactly. Only finite-dimensional factors are added, so finite entropy is preserved.
 
-\emph{What was compiled.} Section~\ref{sec:approxcompiler} bounds the loss when the application equations hold only approximately, and Section~\ref{sec:reduction} bounds the size of the reduction game. The one compiled instance, described in Appendix~\ref{sec:repro}, is minimal: four bridges, one modular isometry and no transported labels. A full reduction instance has been dry-counted, but no full Boolean game was materialized; Section~\ref{sec:reduction} states the two counts and their encoding conventions.
+\emph{Size and approximation.} Section~\ref{sec:approxcompiler} bounds the loss when the application equations hold only approximately. Section~\ref{sec:reduction} bounds the size of the reduction game and counts the questions of one full instance. Appendix~\ref{sec:repro} describes a small compiled instance with four bridges, one modular isometry and no transported labels.
 
 
 \subsection*{Normal states, supports and exact cancellation}
 \addcontentsline{toc}{subsection}{\protect\numberline{}Normal states, supports and exact cancellation}
-The proofs in this section use only the following facts. They apply to arbitrary, possibly nonseparable, Hilbert spaces. None of them uses a dimension count, a determinant or a bounded inverse of a density.
+We first restate the bridge, label and rational-row tools from \cite[Lemmas~4.1 and 4.2, Theorem~B, Eq.~(32)]{Entropy}, with their proofs, and extend them from spatial strategies to normal commuting strategies, where separation in standard form replaces Schmidt-range cancellation. These arguments concern arbitrary normal supports and finite word lists. We then give the $n$-bridge assembly.
+
+The proofs use only the following facts, which hold on arbitrary, possibly nonseparable, Hilbert spaces. When a marginal density has infinite rank, its inverse on its range is unbounded. Cancellations therefore go through the dense range of the marginal: by (N3), an operator that kills the state vector vanishes on the whole support.
 
 \paragraph{(N1) Normal states and purifications.}
 A normal state on $\HH_A\otimes\HH_B$ is a positive trace-class operator $\rho$ of trace one. By the spectral theorem for compact operators, $\rho=\sum_j\lambda_j|\psi_j\rangle\langle\psi_j|$ with countably many $\lambda_j>0$. Let $J$ be the countable index set, put $\HH_{\rm env}=\ell^2(J)$, and put $\Omega=\sum_j\lambda_j^{1/2}\psi_j\otimes|j\rangle$. Then
 \[
  \Tr\rho(E\otimes F)=\langle\Omega,(E\otimes F\otimes I_{\rm env})\Omega\rangle
 \]
-for all bounded $E,F$, and no measurement acts on $\HH_{\rm env}$. The marginals $h_A=\Tr_B\rho$ and $h_B=\Tr_A\rho$ are positive trace-class operators of trace one. Write $P_A,P_B$ for their support projections, the projections onto the closures of their ranges; these closures are separable. The restriction of $h_A$ to $P_A\HH_A$ is injective with dense range. Its positive eigenspaces are finite-dimensional and span a dense subspace of $P_A\HH_A$. The same holds for $h_B$. If $P_A$ has infinite rank, the inverse of $h_A$ on its range is unbounded; it is never used.
+for all bounded $E,F$, and no measurement acts on $\HH_{\rm env}$. The marginals $h_A=\Tr_B\rho$ and $h_B=\Tr_A\rho$ are positive trace-class operators of trace one. Write $P_A,P_B$ for their support projections, the projections onto the closures of their ranges; these closures are separable. The restriction of $h_A$ to $P_A\HH_A$ is injective with dense range. Its positive eigenspaces are finite-dimensional and span a dense subspace of $P_A\HH_A$. The same holds for $h_B$.
 
 \paragraph{(N2) Coefficient operators.}
 Put $\HH_{B,{\rm env}}=\HH_B\otimes\HH_{\rm env}$. Fix orthonormal bases $(b_j)$ of $\HH_B$ and $(e_\ell)$ of
@@ -87,14 +83,14 @@ so $(I-P_A)EP_A=0$ by (N3), and self-adjointness gives $EP_A=P_AEP_A=P_AE$. Then
 
 \paragraph{(N6) Compressions and joint measurements.}
 \begin{enumerate}[label=(\alph*)]
-\item If $0\leq q\leq Z$ with $Z$ a projection, then $q=ZqZ$. Indeed $0\leq(I-Z)q(I-Z)\leq(I-Z)Z(I-Z)=0$, so $q^{1/2}(I-Z)=0$.
+\item If $0\leq Y\leq Z$ with $Z$ a projection, then $Y=ZYZ$. Indeed $0\leq(I-Z)Y(I-Z)\leq(I-Z)Z(I-Z)=0$, so $Y^{1/2}(I-Z)=0$.
 \item \emph{Projective compression.} If $P$ is a projection, $E$ an effect and $PEP$ a projection, then $E$ reduces $P\HH$. For $u\in\ran(PEP)$, $\langle u,(I-E)u\rangle=0$ and positivity give $Eu=u$. For $u\in P\HH$ with $PEPu=0$, $\langle u,Eu\rangle=0$ gives $Eu=0$. Thus $E$ maps $P\HH$ into itself, and self-adjointness gives reduction.
 \item \emph{Only compressions matter.} Since $(P_A\otimes I)\Omega=\Omega=(I\otimes P_B\otimes I)\Omega$, every probability equals $\langle\Omega,(P_AEP_A\otimes P_BFP_B\otimes I)\Omega\rangle$. Identities may therefore be proved first for compressed effects. Changing effects outside the supports, while keeping them POVMs, changes no probability.
 \item \emph{Sharp marginals.} Let $(E_c)$ be a finite POVM indexed by tuples $c=(c_1,\ldots,c_m)$ whose compressions to a reducing subspace $P\HH$ have projections as coarse marginals $Q^k_s=\sum_{c:\,c_k=s}E_c$. By (a), each compressed $E_c$ satisfies $E_c=Q^k_{c_k}E_cQ^k_{c_k}$, hence $E_cQ^k_s=\delta_{s,c_k}E_c$. Summing, $Q^1_{s_1}Q^2_{s_2}=\sum_{c_1=s_1,\,c_2=s_2}E_c$, which is self-adjoint, so the marginals commute. Iterating, $Q^1_{s_1}\cdots Q^m_{s_m}$ is the compressed effect of the outcome $(s_1,\ldots,s_m)$, or zero if there is no such outcome. Each compressed fine effect is thus a product of commuting projections, hence a projection, and (b) makes the original fine effect reduce $P\HH$.
 \end{enumerate}
 
 \paragraph{(N7) Forbidden events.}
-Let $Q$ be an Alice effect and $R$ a Bob effect whose compression $R_B=P_BRP_B$ is a synchronized projection with Alice mirror $R_A$. If the event $Q\otimes R$ has probability zero, then $QR_AP_A=0$. If $Q$ also reduces $P_A$, then $R_AQP_A=0$ as well. Indeed $0=\langle\Omega,(Q\otimes R_B\otimes I)\Omega\rangle=\|(Q^{1/2}\otimes R_B\otimes I)\Omega\|^2$, and $(Q^{1/2}\otimes R_B\otimes I)\Omega=(Q^{1/2}R_A\otimes I)\Omega$, so (N3) gives $Q^{1/2}R_AP_A=0$. The second claim is the adjoint of the first, because $P_A$ commutes with $Q$ and $R_A$. No commutation with a density is used.
+Let $Q$ be an Alice effect and $R$ a Bob effect whose compression $R_B=P_BRP_B$ is a synchronized projection with Alice mirror $R_A$. If the event $Q\otimes R$ has probability zero, then $QR_AP_A=0$. If $Q$ also reduces $P_A$, then $R_AQP_A=0$ as well. Indeed $0=\langle\Omega,(Q\otimes R_B\otimes I)\Omega\rangle=\|(Q^{1/2}\otimes R_B\otimes I)\Omega\|^2$, and $(Q^{1/2}\otimes R_B\otimes I)\Omega=(Q^{1/2}R_A\otimes I)\Omega$, so (N3) gives $Q^{1/2}R_AP_A=0$. The second claim is the adjoint of the first, because $P_A$ commutes with $Q$ and $R_A$.
 
 \paragraph{(N8) Canonical purifications for completeness.}
 Let $h$ be a faithful positive trace-class operator of trace one on $\HH$. By (N1), $\HH$ is separable and has an orthonormal basis $(\varphi_i)$ with $h\varphi_i=\lambda_i\varphi_i$ and $\lambda_i>0$. Put $\Omega_h=\sum_i\lambda_i^{1/2}\varphi_i\otimes\varphi_i$, and let $X^{\mathsf T}$ denote the transpose in $(\varphi_i)$. Both marginals of $\Omega_h$ equal $h$. If $X$ commutes with $h$, it commutes with $h^{1/2}$, and the rule of (N2) gives
@@ -169,22 +165,16 @@ The flag answer and its projection are both denoted $f$. The other three magic d
 The proof first extracts the magic matrix algebra from the synchronized cells. Calibration then identifies the two binary sign supports. The four sign equations force an off-diagonal unitary between the flag and a magic corner, and commutation with the calibrated marginal gives the density ratio two.
 
 \begin{proof}
-First apply Section~\ref{sec:support} to the activity, flags and checked cells. They reduce the original state supports and are sharp there. On the compressed nonflag space each compressed fine effect lies below its assigned sharp cell marginals. Thus it is their joint spectral projection. The projective-compression fact then makes the original fine effects reduce the support. Alice's row relations and Bob's column relations transfer through the dense coefficient range, in reversed product order; within a context the products commute.
-
 Fix a purification $\Omega$ as in (N1). The predicate makes the following pairs of events perfectly matched in the sense of (N5): an inactive answer on one side and the inactive answer on the other; each noninactive event and the opposite synchronized activity projection; each row or column flag and the opposite synchronized flag; and, for every cell $(i,j)$ and sign $s$, Alice's event ``$\mathsf R_i$ is not a flag and its entry $j$ equals $s$'' and Bob's event ``$\mathsf C_j$ is not a flag and its entry $i$ equals $s$''. The last pair is matched because the rule on $\mathsf R_i,\mathsf C_j$ rejects a flag against a nonflag and checks the intersecting cell otherwise. By (N5), each coarse effect in this list reduces its party's support, its compression is a projection commuting with that party's marginal density, and matched compressions are mirrors. Let $a_A$ and $f_A$ be Alice's activity and flag projections, put $N_A=a_A-f_A$, and let $Q^s_{ij}$ be the compression of the cell event above, so that $Q^+_{ij}+Q^-_{ij}=N_A$. The cell observables $\mathsf M^A_{ij}=Q^+_{ij}-Q^-_{ij}$ are self-adjoint unitaries on $N_AP_A\HH_A$. Each is a mirror of Bob's operator $\mathsf M^B_{ij}$, built in the same way from $\mathsf C_j$.
 
 For a nonflag answer $t=(t_0,t_1,t_2)$ of $\mathsf R_i$, the compressed effect lies below $Q^{t_j}_{ij}$ for each $j$, since the other nonflag effects of $\mathsf R_i$ with entry $j$ equal to $t_j$ are positive. By (N6d) it equals $Q^{t_0}_{i0}Q^{t_1}_{i1}Q^{t_2}_{i2}$, the three cell observables of row $i$ commute, and the original fine effect reduces $P_A$. Summing over the triples of product $+1$ gives $\mathsf M^A_{i0}\mathsf M^A_{i1}\mathsf M^A_{i2}=N_A$ on $P_A\HH_A$. The same argument for Bob's columns gives commuting $\mathsf M^B_{0j},\mathsf M^B_{1j},\mathsf M^B_{2j}$ with product $\epsilon_jN_B$, where $\epsilon_0=\epsilon_1=1$ and $\epsilon_2=-1$. By (N4a), $\mathsf M^A_{0j}\mathsf M^A_{1j}\mathsf M^A_{2j}$ is a mirror of $\mathsf M^B_{2j}\mathsf M^B_{1j}\mathsf M^B_{0j}=\epsilon_jN_B$, which is a mirror of $\epsilon_jN_A$. Then (N4b) gives $\mathsf M^A_{0j}\mathsf M^A_{1j}\mathsf M^A_{2j}=\epsilon_jN_A$ on $P_A\HH_A$. In the same way $\mathsf M^A_{ij}\mathsf M^A_{i'j}$ and $\mathsf M^A_{i'j}\mathsf M^A_{ij}$ are mirrors of the equal operators $\mathsf M^B_{i'j}\mathsf M^B_{ij}$ and $\mathsf M^B_{ij}\mathsf M^B_{i'j}$, so they agree on $P_A\HH_A$. The nine cell observables therefore satisfy every row and column relation of \eqref{eq:square} as operator identities on $N_AP_A\HH_A$. The symmetric argument gives the same for Bob on $N_BP_B\HH_B$.
 
-For completeness, write $a=\mathsf M_{00},b=\mathsf M_{01},c=\mathsf M_{10},d=\mathsf M_{11}$ for the four top-left cell reflections of the square, where $\mathsf M_{ij}$ denotes the checked cell observable. Context relations give
+Next comes the Pauli-pair calculation. Write $a=\mathsf M^A_{00},b=\mathsf M^A_{01},c=\mathsf M^A_{10},d=\mathsf M^A_{11}$ for the four top-left cell observables of the square. Context relations give
 \[
  [a,b]=[c,d]=[a,c]=[b,d]=0,\qquad
  (ac)(bd)=-(ab)(cd).
 \]
-Cancel the outside $a,d$ to obtain $cb=-bc$. Commutation of $ac$ and $bd$ then gives $da=-ad$. The pairs $(a,d)$ and $(b,c)$ are anticommuting Pauli pairs commuting across pairs. Each pair exchanges its two eigenspaces unitarily. Hence they generate $\Mat_4\otimes I_{\mathcal H_{\rm mag}}$. Marginal commutation gives the stated density form. The synchronized magic units identify its coefficient block as
-$I_4\otimes T_{\rm mag}$; write the flag coefficient block as $T_f$.
-The coefficient maps have dense range on the corresponding local marginal supports.
-
-Put $\mathcal N_A=N_AP_A\HH_A$, and let $\mathcal N_\pm$ be the $\pm1$ eigenspaces of $a$, so that $\mathcal N_A=\mathcal N_+\oplus\mathcal N_-$. Since $da=-ad$, $d$ maps $\mathcal N_\pm$ into $\mathcal N_\mp$, and $d^2=I$ makes $d|_{\mathcal N_+}$ unitary onto $\mathcal N_-$. This identifies $\mathcal N_A$ with $\mathbb C^2\otimes\mathcal N_+$, with $a=Z\otimes I$ and $d=X\otimes I$. The operators $b,c$ commute with $a$ and $d$, hence with the algebra $\Mat_2\otimes I$ they generate, so $b=I\otimes b'$ and $c=I\otimes c'$ for anticommuting self-adjoint unitaries $b',c'$. Repeating the argument for $c',b'$ gives $\mathcal N_+=\mathbb C^2\otimes\mathcal H_{\rm mag}$. No dimension count is used. The space $\mathcal H_{\rm mag}$ may be infinite-dimensional; it is separable because it lies in $P_A\HH_A$.
+Cancel the outside $a,d$ to obtain $cb=-bc$. Commutation of $ac$ and $bd$ then gives $da=-ad$. Thus $(a,d)$ and $(b,c)$ are anticommuting pairs, and each commutes with the other pair. Put $\mathcal N_A=N_AP_A\HH_A$, and let $\mathcal N_\pm$ be the $\pm1$ eigenspaces of $a$, so that $\mathcal N_A=\mathcal N_+\oplus\mathcal N_-$. Since $da=-ad$, $d$ maps $\mathcal N_\pm$ into $\mathcal N_\mp$, and $d^2=I$ makes $d|_{\mathcal N_+}$ unitary onto $\mathcal N_-$. This identifies $\mathcal N_A$ with $\mathbb C^2\otimes\mathcal N_+$, with $a=Z\otimes I$ and $d=X\otimes I$. The operators $b,c$ commute with $a$ and $d$, hence with the algebra $\Mat_2\otimes I$ they generate, so $b=I\otimes b'$ and $c=I\otimes c'$ for anticommuting self-adjoint unitaries $b',c'$. Repeating the argument for $c',b'$ gives $\mathcal N_+=\mathbb C^2\otimes\mathcal H_{\rm mag}$. The space $\mathcal H_{\rm mag}$ may be infinite-dimensional; it is separable because it lies in $P_A\HH_A$.
 
 For later use we record the identification through the units $t_{ab}$. The projection $m_{00}$ is the joint $(+1,+1)$ eigenprojection of the column-zero cells $a=\mathsf M_{00}$ and $c=\mathsf M_{10}$, and $m_{ab}$ is their joint $((-1)^a,(-1)^b)$ eigenprojection; this is the stated correspondence with $(+++),(+--),(-+-),(--+)$. On $\mathcal N_A$ the reflection $\mathfrak x$ equals $d=\mathsf M_{11}$, which anticommutes with $a$ and commutes with $c$, and $\mathfrak z$ equals $b=\mathsf M_{01}$, which commutes with $a$ and anticommutes with $c$. Hence $t_{ab}=\mathfrak x^a\mathfrak z^bm_{00}$ maps $m_{00}\mathcal N_A$ isometrically onto $m_{ab}\mathcal N_A$, and
 \[
@@ -207,112 +197,72 @@ $T_f:\mathcal H^B_f\otimes\HH_{\rm env}\to\mathcal H^A_f$
 are the coefficient maps in the fixed product coordinates.
 They satisfy $T_{\rm mag}T_{\rm mag}^*=h^A_{\rm mag}$ and $T_fT_f^*=h^A_f$, and have dense range. All cancellations below use (N3) on the corresponding original local support.
 
-For a column-zero triple $c$, let $\Pi_c$ be the joint spectral projection of its three cell reflections, and $\Pi_r$ the joint projection of Bob's row-zero cells. Calibration makes Alice\textquotesingle{}s sign support $S_x^A=f+\Pi_{c_x}$ and Bob's $S_y^B=f+\Pi_{r_y}$. The selected directions have overlap $\langle c_x,r_y\rangle=\epsilon_{xy}/\sqrt2$, where $\epsilon_{xy}=(-1)^{xy}$. Their compressed coefficient operator is
-\[
- W_{xy}=\operatorname{diag}(T_f,\epsilon_{xy}T_{\rm mag}/\sqrt2).
-\]
-For compressed sign effects $E_a,F_b$, a forbidden pair gives
-$E_a^{1/2}W_{xy}(F_b^T)^{1/2}=0$, and therefore $E_aW_{xy}F_b^T=0$. Summing the two complete binary effects gives
-\[
- E_aW_{xy}=W_{xy}F_{\epsilon_{xy}a}^T
-            =E_aW_{xy}F_{\epsilon_{xy}a}^T.
-\]
-The vector calculation below, followed by (N3) on each original
-local sign support, gives $F_b^2=F_b$ and $E_a^2=E_a$ there. Their zero extensions give projective compressions; thus the original sign effects reduce the state supports. Their differences $\mathcal X_x,\mathcal Y_y$ obey
-\begin{equation}\label{eq:sign}
- \mathcal X_xW_{xy}=\epsilon_{xy}W_{xy}\mathcal Y_y^T.
-\end{equation}
-
-The rule on $\mathsf T_x,\mathsf C_0$ matches Alice's coarse sign event of $\mathsf T_x$ with Bob's event $\{f,c_x\}$ of $\mathsf C_0$, and each retained triple of $\mathsf T_x$ with the same triple of $\mathsf C_0$. Bob's $\mathsf C_0$ projection for a triple is the joint projection of his column-zero cells, and by (N4a) its mirror is Alice's joint projection $\Pi_c$ of her cells $\mathsf M^A_{00},\mathsf M^A_{10},\mathsf M^A_{20}$. Thus (N4b) gives $S^A_x=f_A+\Pi_{c_x}$ on $P_A\HH_A$, and the retained effects of $\mathsf T_x$ are the other column-zero projections. Symmetrically, the rule on $\mathsf R_0,\mathsf B_y$ gives $S^B_y=f_B+\Pi_{r_y}$, where $\Pi_{r_y}$ is Bob's joint projection of his row-zero cells. In the coordinates above, $c_0=u_{00}$ and $c_1=u_{01}$, while $r_y=(u_{00}+(-1)^yu_{01})/\sqrt2$, because row zero consists of $a=Z\otimes I$, $b=I\otimes X$ and $ab$. Hence $\langle c_x,r_y\rangle=\epsilon_{xy}/\sqrt2$, and
+Now the sign questions. For a column-zero triple $c$, let $\Pi_c$ be the joint spectral projection of Alice's three cell reflections in column zero, and $\Pi_r$ the joint projection of Bob's row-zero cells; put $\epsilon_{xy}=(-1)^{xy}$. The rule on $\mathsf T_x,\mathsf C_0$ matches Alice's coarse sign event of $\mathsf T_x$ with Bob's event $\{f,c_x\}$ of $\mathsf C_0$, and each retained triple of $\mathsf T_x$ with the same triple of $\mathsf C_0$. Bob's $\mathsf C_0$ projection for a triple is the joint projection of his column-zero cells, and by (N4a) its mirror is Alice's joint projection $\Pi_c$ of her cells $\mathsf M^A_{00},\mathsf M^A_{10},\mathsf M^A_{20}$. Thus (N4b) gives $S^A_x=f_A+\Pi_{c_x}$ on $P_A\HH_A$, and the retained effects of $\mathsf T_x$ are the other column-zero projections. Symmetrically, the rule on $\mathsf R_0,\mathsf B_y$ gives $S^B_y=f_B+\Pi_{r_y}$, where $\Pi_{r_y}$ is Bob's joint projection of his row-zero cells. In the coordinates above, $c_0=u_{00}$ and $c_1=u_{01}$, while $r_y=(u_{00}+(-1)^yu_{01})/\sqrt2$, because row zero consists of $a=Z\otimes I$, $b=I\otimes X$ and $ab$. Hence $\langle c_x,r_y\rangle=\epsilon_{xy}/\sqrt2$, and
 \[
  \Omega_{xy}:=(S^A_x\otimes S^B_y\otimes I)\Omega
  =\Omega_{ff}+\frac{\epsilon_{xy}}{\sqrt2}\,c_x\otimes r_y\otimes\omega_{\rm mag}.
 \]
-The maps $V^A_x(\xi\oplus\eta)=\xi+c_x\otimes\eta$ and $V^B_y(\xi'\oplus\eta')=\xi'+r_y\otimes\eta'$ identify $\mathcal H_f\oplus\mathcal H^A_{\rm mag}$ and $\mathcal H^B_f\oplus\mathcal H^B_{\rm mag}$ with the two sign supports. Under them $\Omega_{xy}$ becomes $\Omega_{ff}+\epsilon_{xy}\omega_{\rm mag}/\sqrt2$, with the two terms in the flag-flag and the magic-magic blocks; its coefficient operator is $W_{xy}$. Its Alice marginal is $h_f\oplus h^A_{\rm mag}/2$ and its Bob marginal is $h^B_f\oplus h^B_{\rm mag}/2$; both are faithful.
+The maps $V^A_x(\xi\oplus\eta)=\xi+c_x\otimes\eta$ and $V^B_y(\xi'\oplus\eta')=\xi'+r_y\otimes\eta'$ identify $\mathcal H_f\oplus\mathcal H^A_{\rm mag}$ and $\mathcal H^B_f\oplus\mathcal H^B_{\rm mag}$ with the two sign supports. Under them $\Omega_{xy}$ becomes $\Omega_{ff}+\epsilon_{xy}\omega_{\rm mag}/\sqrt2$, with the two terms in the flag-flag and the magic-magic blocks; its coefficient operator is
+\[
+ W_{xy}=\operatorname{diag}(T_f,\epsilon_{xy}T_{\rm mag}/\sqrt2).
+\]
+Its Alice marginal is $h_f\oplus h^A_{\rm mag}/2$ and its Bob marginal is $h^B_f\oplus h^B_{\rm mag}/2$; both are faithful.
 
 Let $E'_a=P_AE_aP_A$ and $F'_b=P_BF_bP_B$ be the compressed sign effects of $\mathsf T_x$ and $\mathsf B_y$. Then $0\leq E'_a\leq S^A_x$ and $0\leq F'_b\leq S^B_y$, so $E'_a=E'_aS^A_x$ and $F'_b=F'_bS^B_y$ by (N6a). If $ab\ne\epsilon_{xy}$, the pair is rejected, so
 \[
  0=\langle\Omega,(E'_a\otimes F'_b\otimes I)\Omega\rangle=\|(E'^{1/2}_a\otimes F'^{1/2}_b\otimes I)\Omega\|^2,
 \]
-whence $(E'_a\otimes F'_b\otimes I)\Omega=0$. These are the vector forms of $E_a^{1/2}W_{xy}(F_b^T)^{1/2}=0$ and $E_aW_{xy}F_b^T=0$. Writing $\epsilon=\epsilon_{xy}$ and summing the complete binary effects,
+whence $(E'_a\otimes F'_b\otimes I)\Omega=0$; in coefficient form, $E_a^{1/2}W_{xy}(F_b^T)^{1/2}=0$ and $E_aW_{xy}F_b^T=0$. Writing $\epsilon=\epsilon_{xy}$ and summing the complete binary effects,
 \[
  (E'_a\otimes I)\Omega_{xy}=(E'_a\otimes S^B_y\otimes I)\Omega=(E'_a\otimes F'_{\epsilon a}\otimes I)\Omega=(S^A_x\otimes F'_{\epsilon a}\otimes I)\Omega=(I\otimes F'_{\epsilon a}\otimes I)\Omega_{xy}.
 \]
 Next, $(E'_aE'_{-a}\otimes I)\Omega_{xy}=(E'_a\otimes F'_{-\epsilon a}\otimes I)\Omega_{xy}=(E'_a\otimes F'_{-\epsilon a}\otimes I)\Omega=0$. Since $E'_{-a}=S^A_x-E'_a$, this says $((E'_a-E'^2_a)\otimes I)\Omega_{xy}=0$. The Alice marginal of $\Omega_{xy}$ is faithful on $S^A_xP_A\HH_A$, so (N3), applied to $\Omega_{xy}$, gives $E'^2_a=E'_a$. This is where dense range enters. Bob's case is symmetric. By (N6b) the original sign effects reduce the supports. The differences $\mathcal X_x=E'_+-E'_-$ and $\mathcal Y_y=F'_+-F'_-$ are self-adjoint unitaries on $S^A_xP_A\HH_A$ and $S^B_yP_B\HH_B$, and
 \[
- (\mathcal X_x\otimes I)\Omega_{xy}=\epsilon_{xy}(I\otimes\mathcal Y_y\otimes I)\Omega_{xy}
+ (\mathcal X_x\otimes I)\Omega_{xy}=\epsilon_{xy}(I\otimes\mathcal Y_y\otimes I)\Omega_{xy}.
 \]
-is the vector form of \eqref{eq:sign}.
+In coefficient form this reads
+\begin{equation}\label{eq:sign}
+ \mathcal X_xW_{xy}=\epsilon_{xy}W_{xy}\mathcal Y_y^T.
+\end{equation}
 
-Use the matrix units $t_{ab}t_{cd}^*$ to identify each selected
-magic direction with the same multiplicity space, and use
-$\sqrt2\Pi_{c_x}\Pi_{r_y}$ with its sign $\epsilon_{xy}$ for the selected
-row directions. Set $T_{\rm cal}=\operatorname{diag}(T_f,T_{\rm mag}/\sqrt2)$ and
-${J_{\rm sgn}}=\operatorname{diag}(I,-I)$. For $(x,y)=(0,0),(0,1),(1,0)$,
-Eq.~\eqref{eq:sign} reads respectively
-$\mathcal X_0T_{\rm cal}=T_{\rm cal}\mathcal Y_0^T$, $\mathcal X_0T_{\rm cal}=T_{\rm cal}\mathcal Y_1^T$, and $\mathcal X_1T_{\rm cal}=T_{\rm cal}\mathcal Y_0^T$.
-Writing these three equations in vector form and applying (N3)
-on Alice's and Bob's respective local sign supports gives
-$\mathcal X_0=\mathcal X_1=\mathcal X$ and
-$\mathcal Y_0=\mathcal Y_1=\mathcal Y$.
-For $(1,1)$ it reads $\mathcal X{J_{\rm sgn}} T_{\rm cal}=-{J_{\rm sgn}} T_{\rm cal}\mathcal Y^T=-{J_{\rm sgn}}\mathcal X T_{\rm cal}$, so dense range gives
-$\mathcal X{J_{\rm sgn}}=-{J_{\rm sgn}}\mathcal X$. In blocks $\mathcal X=(\mathcal X_{ij})$, this says
-$\mathcal X_{11}=\mathcal X_{22}=0$. Since $\mathcal X=\mathcal X^*$ and $\mathcal X^2=I$, its remaining block
-$\beta=\mathcal X_{21}$ is unitary. Thus
-\[
- \mathcal X=\begin{pmatrix}0&\beta^*\\\beta&0\end{pmatrix},\qquad
- \beta:\HH_f\longrightarrow\mathcal H_{\rm mag}\ \hbox{unitary}.
-\]
-Self-adjointness and
-$\mathcal X T_{\rm cal}=T_{\rm cal}\mathcal Y^T$ imply
-$[\mathcal X,T_{\rm cal}T_{\rm cal}^*]=0$.
-Here $h_f=T_fT_f^*$ and
-$h_{\rm mag}=T_{\rm mag}T_{\rm mag}^*$ are Alice's density blocks.
-The off-diagonal block gives
-$h_{\rm mag}\beta=2\beta h_f$.
-The corresponding corner transport has the required ratio.
-
-Put $\widehat{\mathcal X}_x=V^{A*}_x\mathcal X_xV^A_x$ and $\widehat{\mathcal Y}_y=V^{B*}_y\mathcal Y_yV^B_y$, and let $\Omega_{\rm cal}=\Omega_{ff}+\omega_{\rm mag}/\sqrt2$, whose coefficient operator is $T_{\rm cal}$. For $(x,y)\ne(1,1)$ the vector $\Omega_{xy}$ becomes $\Omega_{\rm cal}$, and for $(1,1)$ it becomes $({J_{\rm sgn}}\otimes I)\Omega_{\rm cal}=(I\otimes{J_{\rm sgn}}\otimes I)\Omega_{\rm cal}$. The cases $(0,0)$ and $(1,0)$ give $((\widehat{\mathcal X}_0-\widehat{\mathcal X}_1)\otimes I)\Omega_{\rm cal}=0$, and the cases $(0,0)$ and $(0,1)$ give $(I\otimes(\widehat{\mathcal Y}_0-\widehat{\mathcal Y}_1)\otimes I)\Omega_{\rm cal}=0$. Both marginals of $\Omega_{\rm cal}$, namely $h_f\oplus h^A_{\rm mag}/2$ and $h^B_f\oplus h^B_{\rm mag}/2$, are faithful, so (N3) gives $\widehat{\mathcal X}_0=\widehat{\mathcal X}_1=\mathcal X$ and $\widehat{\mathcal Y}_0=\widehat{\mathcal Y}_1=\mathcal Y$. These are applications of (N3) to the two original local marginals. The case $(1,1)$ then gives
+Set $T_{\rm cal}=\operatorname{diag}(T_f,T_{\rm mag}/\sqrt2)$ and ${J_{\rm sgn}}=\operatorname{diag}(I,-I)$, so that $W_{xy}=T_{\rm cal}$ for $(x,y)\ne(1,1)$ and $W_{11}={J_{\rm sgn}}T_{\rm cal}$. Put $\widehat{\mathcal X}_x=V^{A*}_x\mathcal X_xV^A_x$ and $\widehat{\mathcal Y}_y=V^{B*}_y\mathcal Y_yV^B_y$, and let $\Omega_{\rm cal}=\Omega_{ff}+\omega_{\rm mag}/\sqrt2$, whose coefficient operator is $T_{\rm cal}$. For $(x,y)\ne(1,1)$ the vector $\Omega_{xy}$ becomes $\Omega_{\rm cal}$, and for $(1,1)$ it becomes $({J_{\rm sgn}}\otimes I)\Omega_{\rm cal}=(I\otimes{J_{\rm sgn}}\otimes I)\Omega_{\rm cal}$. The cases $(0,0)$ and $(1,0)$ give $((\widehat{\mathcal X}_0-\widehat{\mathcal X}_1)\otimes I)\Omega_{\rm cal}=0$, and the cases $(0,0)$ and $(0,1)$ give $(I\otimes(\widehat{\mathcal Y}_0-\widehat{\mathcal Y}_1)\otimes I)\Omega_{\rm cal}=0$. Both marginals of $\Omega_{\rm cal}$, namely $h_f\oplus h^A_{\rm mag}/2$ and $h^B_f\oplus h^B_{\rm mag}/2$, are faithful, so (N3) gives $\widehat{\mathcal X}_0=\widehat{\mathcal X}_1=\mathcal X$ and $\widehat{\mathcal Y}_0=\widehat{\mathcal Y}_1=\mathcal Y$. These are applications of (N3) to the two original local marginals. The case $(1,1)$ then gives
 \[
  (\mathcal X{J_{\rm sgn}}\otimes I)\Omega_{\rm cal}=-(I\otimes\mathcal Y\otimes I)({J_{\rm sgn}}\otimes I)\Omega_{\rm cal}
  =-({J_{\rm sgn}}\mathcal X\otimes I)\Omega_{\rm cal},
 \]
-so $\mathcal X{J_{\rm sgn}}+{J_{\rm sgn}}\mathcal X=0$ by (N3). A self-adjoint unitary anticommuting with ${J_{\rm sgn}}=\operatorname{diag}(I,-I)$ has zero diagonal blocks, and $\mathcal X^2=I$ gives its lower block $\beta$ the identities $\beta^*\beta=I_{\mathcal H_f}$ and $\beta\beta^*=I_{\mathcal H_{\rm mag}}$. The operators $\mathcal X,\mathcal Y$ are self-adjoint mirrors for $\Omega_{\rm cal}$, so (N4c) gives $[\mathcal X,h_f\oplus h^A_{\rm mag}/2]=0$. In coefficient form this is the displayed commutator: from $\mathcal XT_{\rm cal}=T_{\rm cal}\mathcal Y^T$, the operator $\mathcal XT_{\rm cal}T_{\rm cal}^*=T_{\rm cal}\mathcal Y^TT_{\rm cal}^*$ is self-adjoint. Its off-diagonal block is $\beta h_f=\tfrac12h^A_{\rm mag}\beta$. On Bob's side the same argument gives a unitary $\beta_B$ with $h^B_{\rm mag}\beta_B=2\beta_Bh^B_f$.
+so $\mathcal X{J_{\rm sgn}}+{J_{\rm sgn}}\mathcal X=0$ by (N3). A self-adjoint unitary anticommuting with ${J_{\rm sgn}}$ has zero diagonal blocks, so
+\[
+ \mathcal X=\begin{pmatrix}0&\beta^*\\\beta&0\end{pmatrix},
+\]
+and $\mathcal X^2=I$ gives $\beta^*\beta=I_{\mathcal H_f}$ and $\beta\beta^*=I_{\mathcal H_{\rm mag}}$: the block $\beta:\HH_f\to\mathcal H_{\rm mag}$ is unitary. The operators $\mathcal X,\mathcal Y$ are self-adjoint mirrors for $\Omega_{\rm cal}$, so (N4c) gives $[\mathcal X,h_f\oplus h^A_{\rm mag}/2]=0$. In coefficient form: from $\mathcal XT_{\rm cal}=T_{\rm cal}\mathcal Y^T$, the operator $\mathcal XT_{\rm cal}T_{\rm cal}^*=T_{\rm cal}\mathcal Y^TT_{\rm cal}^*$ is self-adjoint, and $T_{\rm cal}T_{\rm cal}^*=h_f\oplus h^A_{\rm mag}/2$ with $h_f=T_fT_f^*$ and $h^A_{\rm mag}=T_{\rm mag}T_{\rm mag}^*$. Its off-diagonal block is $\beta h_f=\tfrac12h^A_{\rm mag}\beta$, so $h^A_{\rm mag}\beta=2\beta h_f$: the corner transport has the required ratio. On Bob's side the same argument gives a unitary $\beta_B$ with $h^B_{\rm mag}\beta_B=2\beta_Bh^B_f$.
 
 The actual Alice extraction is ${\btrans}_A=\Pi_{c_0}\mathcal X_0f$. Bob's $r_0$ projection is the retained $(+++)$ answer of $\mathsf B_1$, equivalently the sign support of $\mathsf B_0$ minus its flag. His extraction to the same $c_0$ direction is
 \[
  {\btrans}_B=\sqrt2\Pi_{c_0}\Pi_{r_0}\mathcal Y_0f.
 \]
-The coefficient $\sqrt2$ occurs in extraction, not in the predicate. To see the phase in \eqref{eq:bridgevector} directly, put $\Omega'=(S_0^A\otimes S_0^B)\Omega$. The zero sign events give $\mathcal X_0\Omega'=\mathcal Y_0\Omega'$. Project onto $c_0\otimes f$. The left side is $({\btrans}_A\otimes I)\Omega_{ff}$; the right side is
-\[
- 2^{-1/2}(I\otimes f\mathcal Y_0|r_0\rangle\langle c_0|)
-       \Omega_{c_0c_0}.
-\]
-Apply Bob's flag-to-$r_0$ block and then $|c_0\rangle\langle r_0|=\sqrt2\Pi_{c_0}\Pi_{r_0}$. This gives \eqref{eq:bridgevector}.
+The coefficient $\sqrt2$ enters only the extraction; the predicate stays rational.
 
 In the coordinates $V^A_0$, ${\btrans}_A$ is the map $\xi\mapsto c_0\otimes\beta\xi$ from $\mathcal H_f$ into $m_{00}P_A\HH_A$. Thus ${\btrans}_A^*{\btrans}_A=f_A$ and ${\btrans}_A{\btrans}_A^*=m_{00}$ on the support, and $h_A{\btrans}_A=2{\btrans}_Ah_A$, because $h_A$ acts as $h_f$ on the flag and as $h^A_{\rm mag}$ on $c_0\otimes\mathcal H^A_{\rm mag}$. On Bob's side $\mathcal Y_0f_B$ is $\xi'\mapsto r_0\otimes\beta_B\xi'$, and $\sqrt2\Pi_{c_0}\Pi_{r_0}$ restricts to the isometry $r_0\otimes\eta\mapsto c_0\otimes\eta$ from $\Pi_{r_0}P_B\HH_B$ onto $m_{00}P_B\HH_B$, since $\langle c_0,r_0\rangle=2^{-1/2}$. So ${\btrans}_B=c_0\otimes\beta_B$ has the same three properties. The components in $\mathcal H^A_{\rm mag}\otimes\mathcal H^B_f\otimes\HH_{\rm env}$ of the two sides of $(\mathcal X\otimes I)\Omega_{\rm cal}=(I\otimes\mathcal Y\otimes I)\Omega_{\rm cal}$ give $(\beta\otimes I)\Omega_{ff}=(I\otimes\beta_B^*\otimes I)\omega_{\rm mag}/\sqrt2$, that is, $\omega_{\rm mag}=\sqrt2(\beta\otimes\beta_B\otimes I)\Omega_{ff}$. Since $\Omega_{c_0c_0}=c_0\otimes c_0\otimes\omega_{\rm mag}$, this is \eqref{eq:bridgevector}. The formula for $\Omega_{NN}$ also gives $\Omega_{m_{ab}m_{ab}}=(t^A_{ab}\otimes t^B_{ab}\otimes I)\Omega_{c_0c_0}$, and the components for two different magic directions vanish. These are the transported versions for the other three directions.
 
-For a mixed state, first apply the pure-vector calculation on the cut $A\mid B\,\mathrm{env}$. The synchronized opposite effects reduce the Schmidt support, and the sign effects do so after their compressed sharpness is proved. Thus every compressed product used above is the restriction of an original Bob-only product tensored with $I_{\rm env}$. The resulting Alice identities hold on her original marginal support. Repeat on $B\mid A\,\mathrm{env}$ for Bob's identities. The component calculation then gives Eq.~\eqref{eq:bridgevector} on the original purification, using ${\btrans}_A\otimes {\btrans}_B\otimes I_{\rm env}$. Tracing out the environment preserves the displayed component identity.
-
-The calculation above already used the purification $\Omega$ on the cut $A\mid B\,{\rm env}$, with every Bob operator of the form $F\otimes I_{\rm env}$; the cut $B\mid A\,{\rm env}$ is the Bob form of (N3). The supports $P_A,P_B$ are those of $\Tr_B\rho$ and $\Tr_A\rho$, so every identity holds on the original marginal supports. The partial trace over $\HH_{\rm env}$ of the rank-one operators of the two sides of \eqref{eq:bridgevector} gives $(m_{00}\otimes m_{00})\rho(m_{00}\otimes m_{00})=2({\btrans}_A\otimes {\btrans}_B)(f\otimes f)\rho(f\otimes f)({\btrans}_A\otimes {\btrans}_B)^*$.
+Mixed states are covered by the same calculation. It used the purification $\Omega$ on the cut $A\mid B\,{\rm env}$, with every Bob operator of the form $F\otimes I_{\rm env}$. The synchronized opposite effects reduce the Schmidt support, and the sign effects do so once their compressed sharpness is proved, so every compressed product above is the restriction of an original Bob-only product tensored with $I_{\rm env}$. Bob's identities come from the cut $B\mid A\,{\rm env}$, the Bob form of (N3). The supports $P_A,P_B$ are those of $\Tr_B\rho$ and $\Tr_A\rho$, so every identity holds on the original marginal supports, and \eqref{eq:bridgevector} holds on the original purification with ${\btrans}_A\otimes {\btrans}_B\otimes I_{\rm env}$. The partial trace over $\HH_{\rm env}$ of the rank-one operators of its two sides gives $(m_{00}\otimes m_{00})\rho(m_{00}\otimes m_{00})=2({\btrans}_A\otimes {\btrans}_B)(f\otimes f)\rho(f\otimes f)({\btrans}_A\otimes {\btrans}_B)^*$.
 \end{proof}
 
 \Needspace{5\baselineskip}
 \subsubsection{The commuting form}\label{sec:bridgecomm}
-On a normal commuting host the same predicate calibrates a modular eigenoperator. We recall the arbitrary-normal bridge argument of \cite[Lemma 2.2]{ReadType}. Matching makes the cells sharp centralizer effects. Write the upper-left four cell reflections as $a,b,c,d$. The row/column relations give $[a,b]=[a,c]=[b,d]=[c,d]=0$, $(ac)(bd)=-(ab)(cd)$, and $[ac,bd]=0$. Canceling the outside $a,d$ gives $cb=-bc$; substitution into the last commutator gives $ad=-da$. The two commuting Pauli pairs therefore generate centralizer $\Mat_4$. In $\mathbb C^2\otimes\mathbb C^2$ the calibrated unit vectors are $\chi_x=|+\rangle\otimes|x\rangle$ and $\rho_y^{\rm dir}=|+\rangle\otimes|(-1)^y\rangle$, where $|+\rangle=(|0\rangle+|1\rangle)/\sqrt2$ and $|(-1)^y\rangle=(|0\rangle+(-1)^y|1\rangle)/\sqrt2$. Choose a minimal projection $q$ of the magic matrix algebra $\Mat_4$ and centralizer partial isometries $u^A_x,u^B_y$ with initial projection $q$ and ranges the projections onto $\chi_x,\rho_y^{\rm dir}$ (tensored with the multiplicity identity). Choose their phases so that their overlap is $(u^A_x)^*u^B_y=(-1)^{xy}q/\sqrt2$. If $\Sigma_x^A,\Sigma_y^B$ are the original sign differences, their pull-backs on the standard corner $(f+q)\mathcal J(f+q)\mathcal J L^2(M)$ are
+On a normal commuting host the same predicate calibrates a modular eigenoperator. We recall the arbitrary-normal bridge argument of \cite[Lemma 2.2]{ReadType}. Matching makes the cells sharp centralizer effects. Write the upper-left four cell reflections as $a,b,c,d$. The row/column relations give $[a,b]=[a,c]=[b,d]=[c,d]=0$, $(ac)(bd)=-(ab)(cd)$, and $[ac,bd]=0$. Canceling the outside $a,d$ gives $cb=-bc$; substitution into the last commutator gives $ad=-da$. The two commuting Pauli pairs therefore generate centralizer $\Mat_4$. In $\mathbb C^2\otimes\mathbb C^2$ the calibrated unit vectors are $\chi_x=|+\rangle\otimes|x\rangle$ and $\rho_y^{\rm dir}=|+\rangle\otimes|(-1)^y\rangle$, where $|+\rangle=(|0\rangle+|1\rangle)/\sqrt2$ and $|(-1)^y\rangle=(|0\rangle+(-1)^y|1\rangle)/\sqrt2$. Choose a minimal projection $m_{\rm min}$ of the magic matrix algebra $\Mat_4$ and centralizer partial isometries $u^A_x,u^B_y$ with initial projection $m_{\rm min}$ and ranges the projections onto $\chi_x,\rho_y^{\rm dir}$ (tensored with the multiplicity identity). Choose their phases so that their overlap is $(u^A_x)^*u^B_y=(-1)^{xy}m_{\rm min}/\sqrt2$. If $\Sigma_x^A,\Sigma_y^B$ are the original sign differences, their pull-backs on the standard corner $(f+m_{\rm min})\mathcal J(f+m_{\rm min})\mathcal J L^2(M)$ are
 \[
  \mathcal X_x=(f+(u^A_x)^*)\Sigma_x^A(f+u^A_x),\qquad
  \mathcal Y_y=\mathcal J(f+(u^B_y)^*)\mathcal J\Sigma_y^B \mathcal J(f+u^B_y)\mathcal J.
 \]
 They are commuting self-adjoint contractions. Their joint-support vector is
 \[
- \theta_{xy}=(f+(-1)^{xy}q/\sqrt2)\xi_\varphi .
+ \theta_{xy}=(f+(-1)^{xy}m_{\rm min}/\sqrt2)\xi_\varphi .
 \]
-Forbidden sign events give $\mathcal X_x\theta_{xy}=(-1)^{xy}\mathcal Y_y\theta_{xy}$ and $\mathcal X_x\mathcal Y_y\theta_{xy}=(-1)^{xy}\theta_{xy}$. The multiplier $f\pm q/\sqrt2$ is bounded invertible in the corner centralizer, so $\theta_{xy}$ separates both corner algebras. Commuting the opposite contraction through the first identity gives $\mathcal X_x^2\theta_{xy}=\theta_{xy}$ and $\mathcal Y_y^2\theta_{xy}=\theta_{xy}$; separation makes them reflections. Put $c_{\rm cal}=f+q/\sqrt2$. The three positive cells give $\mathcal X c_{\rm cal}\xi_\varphi=\mathcal Y c_{\rm cal}\xi_\varphi$ and identify $\mathcal X_0=\mathcal X_1=\mathcal X$ and $\mathcal Y_0=\mathcal Y_1=\mathcal Y$ by separation on $c_{\rm cal}\xi_\varphi$. The fourth vector is ${J_{\rm sgn}} c_{\rm cal}\xi_\varphi$, ${J_{\rm sgn}}=f-q$. Its equation is $\mathcal X{J_{\rm sgn}} c_{\rm cal}\xi_\varphi=-\mathcal Y{J_{\rm sgn}} c_{\rm cal}\xi_\varphi=-{J_{\rm sgn}}\mathcal Y c_{\rm cal}\xi_\varphi=-{J_{\rm sgn}}\mathcal X c_{\rm cal}\xi_\varphi$, since opposite algebras commute. Separation gives $\mathcal X{J_{\rm sgn}}=-{J_{\rm sgn}}\mathcal X$. Thus $\mathcal X={\btrans}+{\btrans}^*$, ${\btrans}=q\mathcal Xf$, ${\btrans}^*{\btrans}=f$, ${\btrans}{\btrans}^*=q$. The mirror equation means that $\mathcal X$ centralizes $\omega(\cdot)=\varphi(d_{\rm cal}\,\cdot)$, $d_{\rm cal}=f+q/2$. The bounded centralizer perturbation formula of Pedersen--Takesaki \cite[Lemma 4.5]{PT} $\sigma_t^\omega(x)=d_{\rm cal}^{it}\sigma_t^\varphi(x)d_{\rm cal}^{-it}$ gives on the $q$--$f$ block
+Forbidden sign events give $\mathcal X_x\theta_{xy}=(-1)^{xy}\mathcal Y_y\theta_{xy}$ and $\mathcal X_x\mathcal Y_y\theta_{xy}=(-1)^{xy}\theta_{xy}$. The multiplier $f\pm m_{\rm min}/\sqrt2$ is bounded invertible in the corner centralizer, so $\theta_{xy}$ separates both corner algebras. Commuting the opposite contraction through the first identity gives $\mathcal X_x^2\theta_{xy}=\theta_{xy}$ and $\mathcal Y_y^2\theta_{xy}=\theta_{xy}$; separation makes them reflections. Put $c_{\rm cal}=f+m_{\rm min}/\sqrt2$. The three positive cells give $\mathcal X c_{\rm cal}\xi_\varphi=\mathcal Y c_{\rm cal}\xi_\varphi$ and identify $\mathcal X_0=\mathcal X_1=\mathcal X$ and $\mathcal Y_0=\mathcal Y_1=\mathcal Y$ by separation on $c_{\rm cal}\xi_\varphi$. The fourth vector is ${J_{\rm sgn}} c_{\rm cal}\xi_\varphi$, ${J_{\rm sgn}}=f-m_{\rm min}$. Its equation is $\mathcal X{J_{\rm sgn}} c_{\rm cal}\xi_\varphi=-\mathcal Y{J_{\rm sgn}} c_{\rm cal}\xi_\varphi=-{J_{\rm sgn}}\mathcal Y c_{\rm cal}\xi_\varphi=-{J_{\rm sgn}}\mathcal X c_{\rm cal}\xi_\varphi$, since opposite algebras commute. Separation gives $\mathcal X{J_{\rm sgn}}=-{J_{\rm sgn}}\mathcal X$. Thus $\mathcal X={\btrans}+{\btrans}^*$, ${\btrans}=m_{\rm min}\mathcal Xf$, ${\btrans}^*{\btrans}=f$, ${\btrans}{\btrans}^*=m_{\rm min}$. The mirror equation means that $\mathcal X$ centralizes $\omega(\cdot)=\varphi(d_{\rm cal}\,\cdot)$, $d_{\rm cal}=f+m_{\rm min}/2$. The bounded centralizer perturbation formula of Pedersen--Takesaki \cite[Lemma 4.5]{PT} $\sigma_t^\omega(x)=d_{\rm cal}^{it}\sigma_t^\varphi(x)d_{\rm cal}^{-it}$ gives on the $m_{\rm min}$--$f$ block
 \begin{equation}\label{eq:bridgecomm}
- \sigma_t^\varphi({\btrans})=2^{it}{\btrans},\qquad \varphi(q)=2\varphi(f).
+ \sigma_t^\varphi({\btrans})=2^{it}{\btrans},\qquad \varphi(m_{\rm min})=2\varphi(f).
 \end{equation}
-The last equality is KMS. Multiplication by the magic matrix units gives all four transports. If one sector vanished, the off-diagonal reflection would kill the other; hence on a nonzero active corner both sectors are nonzero. No finite multiplicity is used.
+The last equality is KMS. Multiplication by the magic matrix units gives all four transports. If one sector vanished, the off-diagonal reflection would kill the other; hence on a nonzero active corner both sectors are nonzero.
 
 
 \subsubsection{A shared question fixes transported labels}
@@ -340,16 +290,16 @@ Calibration fixes the retained effects and the sign support. Pull the new coarse
 All projections in this section are synchronized. We give the finite rules used in the compiler. The projection-partition viewpoint is standard \cite{Fritz}; the formulas here provide the needed actual multiplication identities. See also the graph-projection encoding in \cite[Section 4]{CZ}.
 
 \subsubsection{Graphs and triangles}
-Let $F_i,F_j$ be orthogonal, $S=F_i+F_j$, and introduce projections $G,H,G^\perp,H^\perp$ with
+Let $F_i,F_j$ be orthogonal, put $F_{ij}=F_i+F_j$, and introduce projections $G,H,G^\perp,H^\perp$ with
 \begin{equation}\label{eq:G1}
- G+G^\perp=S,\quad H+H^\perp=S,\quad 5H+S=3F_i+4G.
+ G+G^\perp=F_{ij},\quad H+H^\perp=F_{ij},\quad 5H+F_{ij}=3F_i+4G.
 \end{equation}
-On $S$, put ${Z_{ij}^{\rm gr}}=F_i-F_j$, $\Xi_{ij}=2G-S$. These are reflections, and $2H-S=(3{Z_{ij}^{\rm gr}}+4\Xi_{ij})/5$. Squaring forces ${Z_{ij}^{\rm gr}}\Xi_{ij}+\Xi_{ij}{Z_{ij}^{\rm gr}}=0$. Thus
+On $F_{ij}$, put ${Z_{ij}^{\rm gr}}=F_i-F_j$, $\Xi_{ij}=2G-F_{ij}$. These are reflections, and $2H-F_{ij}=(3{Z_{ij}^{\rm gr}}+4\Xi_{ij})/5$. Squaring forces ${Z_{ij}^{\rm gr}}\Xi_{ij}+\Xi_{ij}{Z_{ij}^{\rm gr}}=0$. Thus
 \[
  \Xi_{ij}=\begin{pmatrix}0&u_{ij}\\u_{ij}^*&0\end{pmatrix},\qquad
  u_{ij}^*u_{ij}=F_j,\quad u_{ij}u_{ij}^*=F_i.
 \]
-The graph blocks are certified, rather than assumed. Conversely any such unitary corner map gives the four projections in \eqref{eq:G1}.
+The equations thus certify the graph blocks. Conversely any such unitary corner map gives the four projections in \eqref{eq:G1}.
 
 For a partition $F_1+F_2+F_3=I$ impose the graph tests on all three pairs and add a projection $P_\triangle$ with
 \begin{equation}\label{eq:G2}
@@ -375,20 +325,20 @@ These symbols are names for projections before the equations identify their prod
  J_{11}+J_{01}&=G_{ij}(1),&
  G_{ij}(s_{\rm par})&=J_{11}+J_{00}.
 \end{align*}
-Projection sums give the indicated joint partitions. The symbol $s_{\rm par}$ is a unitary parameter label. These equations force $P^{\rm par}$ to commute with the frame and identify the extracted $s_{\rm par}$ with $2e-I$, where $P^{\rm par}=I_3\otimes e$. In particular these parameters are the specified FMS events, not independent replacements. The four-bridge assembly uses twenty-five such parameters.
+Projection sums give the indicated joint partitions. The symbol $s_{\rm par}$ is a unitary parameter label. These equations force $P^{\rm par}$ to commute with the frame and identify the extracted $s_{\rm par}$ with $2e-I$, where $P^{\rm par}=I_3\otimes e$. In particular each parameter is the specified FMS event itself. The four-bridge assembly uses twenty-five such parameters.
 
 These rules are a deterministic finite compiler for the finite word list. Cancellation of adjacent inverse tokens is performed before taking proper prefixes. All coefficients stay rational. Conversely a centralizer unitary assignment with the prescribed parameter projections gives every graph, complement, $H$, triangle and joint projection simultaneously by these formulas.
 
 \paragraph{Scope in infinite dimensions.}
-All projections in this section are support-restricted synchronized projections on Alice's support $P_A\HH_A$, as in (N5), and every displayed equation holds there as an operator identity by Lemma~\ref{lem:rows}. The derivations are block-matrix calculations for orthogonal decompositions of $P_A\HH_A$. Projections whose sum is a projection are mutually orthogonal, and a self-adjoint unitary anticommuting with $\operatorname{diag}(I,-I)$ has the off-diagonal form used for $\Xi_{ij}$. No trace, rank or dimension is used. The frame identification is the unitary
+All projections in this section are support-restricted synchronized projections on Alice's support $P_A\HH_A$, as in (N5), and every displayed equation holds there as an operator identity by Lemma~\ref{lem:rows}. The derivations are block-matrix calculations for orthogonal decompositions of $P_A\HH_A$. Projections whose sum is a projection are mutually orthogonal, and a self-adjoint unitary anticommuting with $\operatorname{diag}(I,-I)$ has the off-diagonal form used for $\Xi_{ij}$. The frame identification is the unitary
 \[
  \mathbb C^3\otimes\mathcal H_{\rm base}\to P_A\HH_A,\qquad e_i\otimes\xi\mapsto u_{i1}\xi,\qquad \mathcal H_{\rm base}=F_1P_A\HH_A,
 \]
 where $u_{11}=F_1$, $u_{21}=u_{12}^*$, $u_{31}=u_{13}^*$, and $u_{ij}=F_i(2G_{ij}(1)-F_i-F_j)F_j$. The frame projections and the maps $u_{ij}$ commute with $h_A$ by (N5), so $h_A=I_3\otimes h_{\rm base}$ in these coordinates. An extracted label $\Theta$ is defined by $F_1(2G_{12}(\Theta)-F_1-F_2)F_2=e_{12}\otimes\Theta$, and it commutes with $h_{\rm base}$.
 
-The binding equations are solved in the same way. Write $\pi^{\rm par}_i=P^{\rm par}F_i$ and $\eta^{\rm par}_i=NF_i$. These are projections below $F_i$ with $\pi^{\rm par}_i+\eta^{\rm par}_i=F_i$, and $\sum_i\pi^{\rm par}_i=P^{\rm par}$, so $P^{\rm par}F_i=\pi^{\rm par}_i=F_iP^{\rm par}$ and $P^{\rm par}$ commutes with every $F_i$. For a pair $ij$ the four projections $J_{ab}$ sum to $S=F_i+F_j$ and are therefore mutually orthogonal. Both $\pi^{\rm par}=\pi^{\rm par}_i+\pi^{\rm par}_j$ and $G_{ij}(1)$ are sums of them, so they commute and $\pi^{\rm par} G_{ij}(1)=J_{11}$. In frame coordinates write $\pi^{\rm par}_i=e_{ii}\otimes p_i$. Commutation of $\pi^{\rm par}$ with $\Xi_{ij}(1)=(e_{ij}+e_{ji})\otimes I$ gives $p_i=p_j$; over all pairs, $P^{\rm par}=I_3\otimes e$. Finally $J_{00}=(S-\pi^{\rm par})(S-G_{ij}(1))$, so
+The binding equations are solved in the same way. Write $\pi^{\rm par}_i=P^{\rm par}F_i$ and $\eta^{\rm par}_i=NF_i$. These are projections below $F_i$ with $\pi^{\rm par}_i+\eta^{\rm par}_i=F_i$, and $\sum_i\pi^{\rm par}_i=P^{\rm par}$, so $P^{\rm par}F_i=\pi^{\rm par}_i=F_iP^{\rm par}$ and $P^{\rm par}$ commutes with every $F_i$. For a pair $ij$ the four projections $J_{ab}$ sum to $F_{ij}$ and are therefore mutually orthogonal. Both $\pi^{\rm par}=\pi^{\rm par}_i+\pi^{\rm par}_j$ and $G_{ij}(1)$ are sums of them, so they commute and $\pi^{\rm par} G_{ij}(1)=J_{11}$. In frame coordinates write $\pi^{\rm par}_i=e_{ii}\otimes p_i$. Commutation of $\pi^{\rm par}$ with $\Xi_{ij}(1)=(e_{ij}+e_{ji})\otimes I$ gives $p_i=p_j$; over all pairs, $P^{\rm par}=I_3\otimes e$. Finally $J_{00}=(F_{ij}-\pi^{\rm par})(F_{ij}-G_{ij}(1))$, so
 \[
- G_{ij}(s_{\rm par})=\pi^{\rm par} G_{ij}(1)+(S-\pi^{\rm par})(S-G_{ij}(1))=\tfrac12\bigl(S+(e_{ij}+e_{ji})\otimes(2e-I)\bigr),
+ G_{ij}(s_{\rm par})=\pi^{\rm par} G_{ij}(1)+(F_{ij}-\pi^{\rm par})(F_{ij}-G_{ij}(1))=\tfrac12\bigl(F_{ij}+(e_{ij}+e_{ji})\otimes(2e-I)\bigr),
 \]
 which identifies $s_{\rm par}$ with $2e-I$.
 
@@ -408,13 +358,9 @@ The same proof, paragraph ``The commuting form of rational rows'', gives the com
 \end{remark}
 
 \subsubsection{A certified scalar matrix algebra}
-Choose $d_{\max}=2^{2r}$ large enough for every row construction below. Use $r$ synchronized magic squares, binding each context's cell marginals to synchronized binary cells. The Pauli-pair calculation in Lemma~\ref{lem:bridge} gives two anticommuting pairs per square. Four-answer joint questions for all pairs of axes from distinct squares force cross-square commutation. Hence their algebra is $\Mat_{d_{\max}}\otimes I$ on the support. Synchronization makes the marginal $I_{d_{\max}}/d_{\max}\otimes h$.
+Choose $d_{\max}=2^{2r}$ large enough for every row construction below. Use $r$ synchronized magic squares, binding each context's cell marginals to synchronized binary cells. Add four-answer joint questions for all pairs of axes from distinct squares, joint questions between every named old projection and every scalar axis, and global $Z$ and global $X$ measurements with all bit outcomes, binding each bit marginal to its axis. These steps concern only synchronized projections, never an FMS sign.
 
-Add joint questions between every named old projection and every scalar axis. Their sharp marginals force the old projections into the commutant: $E_i=I_{d_{\max}}\otimes e_i$. This step concerns only synchronized projections, never an FMS sign. Add global $Z$ and global $X$ measurements with all bit outcomes, binding each bit marginal to its axis. They are the actual joint spectral measurements.
-
-The Pauli-pair calculation is the one beginning
-``For completeness, write $a=\mathsf M_{00}$'' in the proof of
-Lemma~\ref{lem:bridge}, without flags. A four-answer joint question for axes $\varsigma,\varsigma'$ of distinct squares has its two binary marginals bound to synchronized cells, so the axes commute on $P_A\HH_A$ by (N6d). Iterating the eigenspace argument of that proof over the $2r$ mutually commuting anticommuting pairs identifies $P_A\HH_A$ with $\mathbb C^{d_{\max}}\otimes\mathcal H'$, the axes generating $\Mat_{d_{\max}}\otimes I$; the space $\mathcal H'$ may be infinite-dimensional. The axes commute with $h_A$ by (N5), so $h_A$ lies in $(\Mat_{d_{\max}}\otimes I)'=I\otimes B(\mathcal H')$, which is the stated form. A joint question between a named projection $E_i$ and an axis makes them commute by (N6d). The axes generate $\Mat_{d_{\max}}\otimes I$ as an algebra, so $E_i$ lies in its commutant, and $E_i=I_{d_{\max}}\otimes e_i$ for a projection $e_i$ on $\mathcal H'$. The global $Z$ and $X$ measurements have sharp bit marginals, so by (N6d) they are the joint spectral measures of the commuting $Z$ axes and of the commuting $X$ axes.
+The Pauli-pair calculation in the proof of Lemma~\ref{lem:bridge}, without flags, gives two anticommuting pairs of axes per square. A four-answer joint question for axes $\varsigma,\varsigma'$ of distinct squares has its two binary marginals bound to synchronized cells, so the axes commute on $P_A\HH_A$ by (N6d). Iterating the eigenspace argument of that proof over the $2r$ mutually commuting anticommuting pairs identifies $P_A\HH_A$ with $\mathbb C^{d_{\max}}\otimes\mathcal H'$, the axes generating $\Mat_{d_{\max}}\otimes I$; the space $\mathcal H'$ may be infinite-dimensional. The axes commute with $h_A$ by (N5), so $h_A$ lies in $(\Mat_{d_{\max}}\otimes I)'=I\otimes B(\mathcal H')$: the marginal is $I_{d_{\max}}/d_{\max}\otimes h$ for a density $h$ on $\mathcal H'$. A joint question between a named projection $E_i$ and an axis makes them commute by (N6d). The axes generate $\Mat_{d_{\max}}\otimes I$ as an algebra, so $E_i$ lies in its commutant, and $E_i=I_{d_{\max}}\otimes e_i$ for a projection $e_i$ on $\mathcal H'$. The global $Z$ and $X$ measurements have sharp bit marginals, so by (N6d) they are the joint spectral measures of the commuting $Z$ axes and of the commuting $X$ axes.
 
 For a row dimension $d=2^{k_{\rm row}}\leq d_{\max}$ use the first ${k_{\rm row}}$ qubits; the rest are spectators. For each nonzero $j\in\mathbb F_2^{k_{\rm row}}$, choose a basis $\ell_1,\ldots,\ell_{{k_{\rm row}}-1}$ of $j^\perp$. Add a joint context for $X^j,Z^{\ell_1},\ldots,Z^{\ell_{{k_{\rm row}}-1}}$, binding its marginals to the corresponding global parity events. These commute because $\ell\cdot j=0$. The zero-$Z$-syndrome outcomes with $X^j$ sign $\pm$ are
 \[
@@ -424,14 +370,14 @@ For a row dimension $d=2^{k_{\rm row}}\leq d_{\max}$ use the first ${k_{\rm row}
 Write $|+_d\rangle=d^{-1/2}\sum_{j=0}^{d-1}|j\rangle$. The reference $\Pi^{\rm ref}_d=|+_d\rangle\langle+_d|\otimes I_{\rm spectator}$ is the event that the first ${k_{\rm row}}$ global $X$ bits are positive. It includes all spectator outcomes.
 
 \subsubsection{Signed reflections and column graphs}
-For one row $S=\alpha_0I+\sum_i\alpha_ie_i$, let $L$ clear all coefficient denominators and set
+For one row $\Delta=\alpha_0I+\sum_i\alpha_ie_i$, let $L$ clear all coefficient denominators and set
 \[
  s_i=2e_i-I,\quad c_i=L\alpha_i,\quad
  c_0=2L\alpha_0+\sum_iL\alpha_i.
 \]
-Then $2LS=c_0I+\sum_ic_is_i$. Expand this into signed reflections with integer repetitions, add a canceling $I,-I$ pair with $V_0=I$, and pad by further such pairs to a power of four $d$. The list has even length because its coefficient sum is even. Thus
+Then $2L\Delta=c_0I+\sum_ic_is_i$. Expand this into signed reflections with integer repetitions, add a canceling $I,-I$ pair with $V_0=I$, and pad by further such pairs to a power of four $d$. The list has even length because its coefficient sum is even. Thus
 \begin{equation}\label{eq:slots}
- \sum_{j=0}^{d-1}V_j=2LS,\qquad V_0=I,\qquad
+ \sum_{j=0}^{d-1}V_j=2L\Delta,\qquad V_0=I,\qquad
  V_j\in\{\pm I,\ \pm(2e_i-I)\}.
 \end{equation}
 For each $j>0$ use a six-answer joint question of $e_i$ and the three-way scalar measurement $\Pi_j^+,\Pi_j^-,I-\Pi_j^+-\Pi_j^-$. For $V_j=\pm I$, bind its binary bit to a synchronized deterministic anchor: its $1$-projection is $I$ and its $0$-projection is zero. Matching both marginals identifies all joint effects. Appropriate coarse events are the two-coordinate graph projections
@@ -440,40 +386,27 @@ For each $j>0$ use a six-answer joint question of $e_i$ and the three-way scalar
 \]
 on coordinates $0,j$, zero elsewhere. A negative reflection sign exchanges the two coarse events.
 
-Add a synchronized $d$-answer question with projections $\Pi^{\rm row}_t$, indexed by $t\in\mathbb F_2^{k_{\rm row}}$. Put $\chi_t(j)=(-1)^{t\cdot j}$. Forbid $\Pi^{\rm row}_t$ together with $G_j^-$ when $\chi_t(j)=1$, or $G_j^+$ when $\chi_t(j)=-1$. The forbidden-event support rule gives actual orthogonality. A vector in $\ran \Pi^{\rm row}_t$ therefore has coordinates $v_j=\chi_t(j)V_jv_0$.
-
-Define
+Add a synchronized $d$-answer question with projections $\Pi^{\rm row}_t$, indexed by $t\in\mathbb F_2^{k_{\rm row}}$. Put $\chi_t(j)=(-1)^{t\cdot j}$. Forbid $\Pi^{\rm row}_t$ together with $G_j^-$ when $\chi_t(j)=1$, or $G_j^+$ when $\chi_t(j)=-1$. Define
 \[
  \mathcal I_t\xi=d^{-1/2}\bigl(\chi_t(j)V_j\xi\bigr)_{j=0}^{d-1},
  \qquad \mathcal P_t=\mathcal I_t\mathcal I_t^*.
 \]
-Unitarity and character orthogonality give $\mathcal I_t^*\mathcal I_u=\delta_{tu}I$ and $\sum_t\mathcal P_t=I$. Neither equation requires different $V_j$ to commute. The kernel conditions give $\Pi^{\rm row}_t\leq \mathcal P_t$. Since both families sum to identity, $\Pi^{\rm row}_t=\mathcal P_t$ for every $t$.
+Unitarity and character orthogonality give $\mathcal I_t^*\mathcal I_u=\delta_{tu}I$ and $\sum_t\mathcal P_t=I$. Neither equation requires different $V_j$ to commute. Finally forbid $\Pi^{\rm row}_0$ jointly with the opposite $\Pi^{\rm ref}_d$.
 
-Finally forbid $\Pi^{\rm row}_0$ jointly with the opposite $\Pi^{\rm ref}_d$. Then $\Pi^{\rm row}_0\Pi^{\rm ref}_d=0$, equivalently $\Pi^{\rm ref}_d\mathcal I_0=0$. The column overlap is
+For soundness, the forbidden pairs are handled by (N7). Take $Q$ to be the coarse event $G^\mp_j$ of the party that asks it and $R$ the opposite synchronized $\Pi^{\rm row}_t$. Both reduce the support, so $G^\mp_j\Pi^{\rm row}_t=\Pi^{\rm row}_tG^\mp_j=0$ on that party's support. The events $G^\pm_j$ and $\Pi^{\rm row}_t$ are products of mirrored projections, so (N4a) and (N3) transfer this identity to the other party. In particular it holds on $P_A\HH_A$. Write a vector of $P_A\HH_A=\mathbb C^d\otimes\mathbb C^{d_{\max}/d}\otimes\mathcal H'$ as $(v_j)_{j\in\mathbb F_2^{k_{\rm row}}}$, and regard each $V_j$ as a support-restricted reflection, a self-adjoint unitary on $\mathbb C^{d_{\max}/d}\otimes\mathcal H'$. If $\chi_t(j)=1$, the equation $G^-_jv=0$ says $v_j=V_jv_0$. If $\chi_t(j)=-1$, the equation $G^+_jv=0$ says $v_j=-V_jv_0$. Thus $\ran\Pi^{\rm row}_t\subseteq\ran\mathcal I_t$, that is, $\Pi^{\rm row}_t\leq\mathcal P_t$. The two families are complete, so $\sum_t(\mathcal P_t-\Pi^{\rm row}_t)=0$ with positive terms, and $\Pi^{\rm row}_t=\mathcal P_t$. The forbidden pair $(\Pi^{\rm row}_0,\Pi^{\rm ref}_d)$ gives $\Pi^{\rm ref}_d\mathcal P_0=0$ by (N7), and $\Pi^{\rm ref}_d\mathcal I_0=\Pi^{\rm ref}_d\mathcal P_0\mathcal I_0=0$. Finally $(\langle+_d|\otimes I)\mathcal I_0=d^{-1}\sum_jV_j=(2L/d)\Delta$, so
 \[
- \mathcal I_0^*\Pi^{\rm ref}_d\mathcal I_0=d^{-2}\Bigl(\sum_jV_j\Bigr)^*
-                                  \Bigl(\sum_jV_j\Bigr).
+ \|\Pi^{\rm ref}_d\mathcal I_0\xi\|^2=\frac{4L^2}{d^2}\|\Delta\xi\|^2
 \]
-It vanishes exactly when $S=0$. This proves soundness on arbitrary normal supports.
+for every $\xi$ in the support. Hence $\Pi^{\rm ref}_d\mathcal I_0=0$ holds exactly when $\Delta$ vanishes on the support. This proves soundness on arbitrary normal supports.
 
-The forbidden pairs are handled by (N7). Take $Q$ to be the coarse event $G^\mp_j$ of the party that asks it and $R$ the opposite synchronized $\Pi^{\rm row}_t$. Both reduce the support, so $G^\mp_j\Pi^{\rm row}_t=\Pi^{\rm row}_tG^\mp_j=0$ on that party's support. The events $G^\pm_j$ and $\Pi^{\rm row}_t$ are products of mirrored projections, so (N4a) and (N3) transfer this identity to the other party. In particular it holds on $P_A\HH_A$. Write a vector of $P_A\HH_A=\mathbb C^d\otimes\mathbb C^{d_{\max}/d}\otimes\mathcal H'$ as $(v_j)_{j\in\mathbb F_2^{k_{\rm row}}}$, and regard each $V_j$ as a support-restricted reflection, a self-adjoint unitary on $\mathbb C^{d_{\max}/d}\otimes\mathcal H'$. If $\chi_t(j)=1$, the equation $G^-_jv=0$ says $v_j=V_jv_0$. If $\chi_t(j)=-1$, the equation $G^+_jv=0$ says $v_j=-V_jv_0$. Thus $\ran\Pi^{\rm row}_t\subseteq\ran\mathcal I_t$, that is, $\Pi^{\rm row}_t\leq\mathcal P_t$. The two families are complete, so $\sum_t(\mathcal P_t-\Pi^{\rm row}_t)=0$ with positive terms, and $\Pi^{\rm row}_t=\mathcal P_t$. The forbidden pair $(\Pi^{\rm row}_0,\Pi^{\rm ref}_d)$ gives $\Pi^{\rm ref}_d\mathcal P_0=0$ by (N7), and $\Pi^{\rm ref}_d\mathcal I_0=\Pi^{\rm ref}_d\mathcal P_0\mathcal I_0=0$. Finally $(\langle+_d|\otimes I)\mathcal I_0=d^{-1}\sum_jV_j=(2L/d)S$, so
-\[
- \|\Pi^{\rm ref}_d\mathcal I_0\xi\|^2=\frac{4L^2}{d^2}\|S\xi\|^2
-\]
-for every $\xi$ in the support. Hence $\Pi^{\rm ref}_d\mathcal I_0=0$ holds exactly when $S$ vanishes on the support. No inverse of $S$ or of a density is used.
-
-For completeness append $\Phi_{d_{\max}}$, use the scalar Paulis and the actual joint products, and define the column partition by the $\mathcal I_t$. Synchronized original projections commute with the marginal and transfer across a purification. Products transfer in reversed order. Define Bob's column effects by those transferred products, equivalently by transpose in canonical Schmidt coordinates. This order matters for noncommuting $e_i$. All column and synchrony tests hold. The row-zero test holds precisely because $S=0$. These constructions act trivially on every old measurement's new factor and prove completeness, including for mixed original states.
-
-Let the old strategy have purification $\Omega$ and supports $P_A,P_B$. By (N6c) we may replace every named synchronized effect by its support-restricted projection, completed by a fixed outcome off the support; no probability changes. Adjoin $\Phi_{d_{\max}}$, so that the new purification is $\Omega'=\Omega\otimes\Phi_{d_{\max}}$ and the new state is again normal. Alice's new effects are the displayed operators: scalar Paulis, joint products $E_i\varsigma$ and $E_i\Pi_j^\pm$ of commuting projections, and the column projections $\mathcal P_t=\mathcal I_t\mathcal I_t^*$, all defined on the support and completed by a fixed outcome off it. For an Alice operator $\sum_kz_k\otimes p_k(e)$, with scalar factors $z_k$ and products $p_k(e)$ of named projections, Bob uses $\sum_kz_k^{\mathsf T}\otimes p^{\rm rev}_k(e^B)$, where $p^{\rm rev}_k(e^B)$ is the reversed product of his matched projections. By (N4a) and $(z\otimes I)\Phi_{d_{\max}}=(I\otimes z^{\mathsf T})\Phi_{d_{\max}}$, it is a mirror of the Alice operator. This assignment commutes with adjoints, so the counterpart $Y$ of an Alice projection $P$ is self-adjoint. Moreover $(I\otimes(Y^2-Y)\otimes I)\Omega'=((P^2-P)\otimes I)\Omega'=0$, so $Y$ is a projection on Bob's support by (N3), and the counterparts of the column projections sum to the identity. Every matching test therefore has disagreement probability zero. Every forbidden pair has probability zero because the corresponding Alice product vanishes, and the row-zero pair does so because $S=0$ on the support. The old measurements act as $E\otimes I_{d_{\max}}$, so all old tests, including nonsynchronous ones, keep their probabilities.
+For completeness, let the old strategy have purification $\Omega$ and supports $P_A,P_B$. By (N6c) we may replace every named synchronized effect by its support-restricted projection, completed by a fixed outcome off the support; no probability changes. Adjoin $\Phi_{d_{\max}}$, so that the new purification is $\Omega'=\Omega\otimes\Phi_{d_{\max}}$ and the new state is again normal. Alice's new effects are the displayed operators: scalar Paulis, joint products $E_i\varsigma$ and $E_i\Pi_j^\pm$ of commuting projections, and the column projections $\mathcal P_t=\mathcal I_t\mathcal I_t^*$, all defined on the support and completed by a fixed outcome off it. For an Alice operator $\sum_kz_k\otimes p_k(e)$, with scalar factors $z_k$ and products $p_k(e)$ of named projections, Bob uses $\sum_kz_k^{\mathsf T}\otimes p^{\rm rev}_k(e^B)$, where $p^{\rm rev}_k(e^B)$ is the reversed product of his matched projections; equivalently, Bob uses transposes in canonical Schmidt coordinates. The order matters when the $e_i$ do not commute. By (N4a) and $(z\otimes I)\Phi_{d_{\max}}=(I\otimes z^{\mathsf T})\Phi_{d_{\max}}$, it is a mirror of the Alice operator. This assignment commutes with adjoints, so the counterpart $Y$ of an Alice projection $P$ is self-adjoint. Moreover $(I\otimes(Y^2-Y)\otimes I)\Omega'=((P^2-P)\otimes I)\Omega'=0$, so $Y$ is a projection on Bob's support by (N3), and the counterparts of the column projections sum to the identity. Every matching test therefore has disagreement probability zero. Every forbidden pair has probability zero because the corresponding Alice product vanishes, and the row-zero pair does so because $\Delta=0$ on the support. The old measurements act as $E\otimes I_{d_{\max}}$, so all old tests, including nonsynchronous ones, keep their probabilities. Since the argument runs on a purification, it covers mixed original states.
 
 
-Write $h_{\rm old}$ for the trace-one marginal before the row ancilla is appended (including the qutrit frame when present). For the honest column construction, without assuming $S=0$, the sole row-zero event has probability
+Write $h_{\rm old}$ for the trace-one marginal before the row ancilla is appended (including the qutrit frame when present). For the honest column construction, without assuming $\Delta=0$, the sole row-zero event has probability
 \begin{equation}\label{eq:rowloss}
- p(\Pi^{\rm row}_0,\Pi^{\rm ref}_d)=\frac{4L^2}{d^3}\Tr(h_{\rm old}S^2).
+ p(\Pi^{\rm row}_0,\Pi^{\rm ref}_d)=\frac{4L^2}{d^3}\Tr(h_{\rm old}\Delta^2).
 \end{equation}
-Indeed the scalar density is $I_d/d$, the column isometry is normalized by $d^{-1/2}$, and the reference vector by $d^{-1/2}$. The overlap computed above supplies $(2LS)^*(2LS)$. Spectator factors have normalized trace one. All column-graph and matching tests remain exact even when the row is nonzero. This formula is \cite[Eq.~(32)]{Entropy} in the general row setting.
-
-Bob's reference effect is the transpose of $\Pi^{\rm ref}_d$ on the scalar factor and is a mirror of $\Pi^{\rm ref}_d$. The probability is therefore $\|(\mathcal P_0\otimes (\Pi^{\rm ref}_d)^{\mathsf T})\Omega'\|^2=\Tr(h'\Pi^{\rm ref}_d\mathcal P_0\Pi^{\rm ref}_d)$, where $h'=(I_d/d)\otimes(d/d_{\max})I_{\rm spectator}\otimes h_{\rm old}$. Since $(\langle+_d|\otimes I)\mathcal I_0=(2L/d)S$, we have $\Pi^{\rm ref}_d\mathcal P_0\Pi^{\rm ref}_d=|+_d\rangle\langle+_d|\otimes I_{\rm spectator}\otimes(4L^2/d^2)S^2$. The trace against $h'$ is \eqref{eq:rowloss}: the factor $1/d$ is $\langle+_d|I_d/d|+_d\rangle$, and the spectator trace is one. The calculation uses only that the $V_j$ are self-adjoint unitaries, so it holds for every row, zero or not.
+All column-graph and matching tests remain exact even when the row is nonzero. This formula is \cite[Eq.~(32)]{Entropy} in the general row setting. To prove it, note that Bob's reference effect is the transpose of $\Pi^{\rm ref}_d$ on the scalar factor and is a mirror of $\Pi^{\rm ref}_d$. The probability is therefore $\|(\mathcal P_0\otimes (\Pi^{\rm ref}_d)^{\mathsf T})\Omega'\|^2=\Tr(h'\Pi^{\rm ref}_d\mathcal P_0\Pi^{\rm ref}_d)$, where $h'=(I_d/d)\otimes(d/d_{\max})I_{\rm spectator}\otimes h_{\rm old}$. Since $(\langle+_d|\otimes I)\mathcal I_0=(2L/d)\Delta$, we have $\Pi^{\rm ref}_d\mathcal P_0\Pi^{\rm ref}_d=|+_d\rangle\langle+_d|\otimes I_{\rm spectator}\otimes(4L^2/d^2)\Delta^2$. The trace against $h'$ is \eqref{eq:rowloss}: the factor $1/d$ is $\langle+_d|I_d/d|+_d\rangle$, and the spectator trace is one. The calculation uses only that the $V_j$ are self-adjoint unitaries, so it holds for every row, zero or not.
 
 
 \paragraph{The commuting form of rational rows.}
@@ -493,7 +426,7 @@ A normal realization consists of a nonzero Hilbert space $\HH_0$, a faithful pos
  h_0A_\alpha=\nu A_\alpha h_0.
 \end{equation}
 \end{definition}
-Thus all identities are imposed on the state support, where the density is faithful. No positive lower spectral bound is required for a positive contraction. Finite entropy of a realization means $S(h_0)<\infty$. The ratio is imposed by the assembly, rather than by a real coefficient in the Boolean game. The spatial hardness proof of Sections~\ref{sec:tree}--\ref{sec:bell} uses $n=4$, so $\nu=1/16$; Section~\ref{sec:communication} uses $n=5$.
+Thus all identities are imposed on the state support, where the density is faithful. A positive contraction need not be bounded below. Finite entropy of a realization means $S(h_0)<\infty$. The ratio is imposed by the assembly, rather than by a real coefficient in the Boolean game. The spatial hardness proof of Sections~\ref{sec:tree}--\ref{sec:bell} uses $n=4$, so $\nu=1/16$; Section~\ref{sec:communication} uses $n=5$.
 
 \subsection{The \texorpdfstring{$n$}{n}-bridge compiler}\label{sec:fourbridge}
 Each FMS bridge forces a density ratio of two between consecutive selected corners (Figure~\ref{fig:chain}). A chain of $n$ bridges therefore gives the ratio $2^n$ from source to far corner, and transporting a source-to-far creation operator back to the source gives $\nu=2^{-n}$. Set
@@ -533,20 +466,20 @@ Put $e_g=m_{g,00}$ and $m_g=\sum_{ab}m_{g,ab}$, and impose the cover $e_0+\sum_g
  \mathfrak z_g=I-2m_g+2E_{g,IX,+},
 \]
 where $E_{g,ZI,+},E_{g,IX,+}$ are the positive nonflag events of bridge $g$, bound to synchronized binary questions as above.
-The calibrated partial isometries satisfy ${\btrans}_g^*{\btrans}_g=e_{g-1}$, ${\btrans}_g{\btrans}_g^*=e_g$ and $h{\btrans}_g=2{\btrans}_gh$. The other three magic corners are identified by synchronized Pauli matrix units and have the same density block as $e_g$. Thus
+
+Let a perfect normal spatial strategy be given, with purification and supports as in (N1), and write $h=h_A$. By (N5) every corner, frame and graph question yields a synchronized projection on $P_A\HH_A$ commuting with $h$, and by Section~\ref{sec:projection} and Lemma~\ref{lem:rows} every imposed equation, including the cover, holds on $P_A\HH_A$. Projections with sum $I$ are mutually orthogonal, so the $4n+1$ corners partition $P_A\HH_A$. Bridge $g$ is a perfect conditional FMS strategy with activity $e_{g-1}+m_g$, flag $e_{g-1}$ and magic support $m_g$, whose magic directions are the bound corners $m_{g,ab}$. Lemma~\ref{lem:bridge} gives calibrated partial isometries ${\btrans}_g$ with ${\btrans}_g^*{\btrans}_g=e_{g-1}$, ${\btrans}_g{\btrans}_g^*=e_g$ and $h{\btrans}_g=2{\btrans}_gh$ on the support; the other three magic corners are identified with $e_g$ by synchronized Pauli matrix units and have the same density block. Moving $h$ through the $n$ factors gives
 \begin{equation}\label{eq:fourv}
  v={\btrans}_n\cdots {\btrans}_1,\quad v^*v=e_0,\quad vv^*=e_n,\quad hv=2^nvh.
 \end{equation}
-Trace cyclicity gives four magic masses twice the preceding flag mass in each bridge. The cover fixes
+For the masses, $h$ is trace class and ${\btrans}_g$ is bounded, so cyclicity gives
+\[
+ \Tr(he_g)=\Tr(h{\btrans}_g{\btrans}_g^*)=\Tr({\btrans}_g^*h{\btrans}_g)=2\Tr({\btrans}_g^*{\btrans}_gh)=2\Tr(he_{g-1}).
+\]
+Each $t_{ab}$ of bridge $g$ commutes with $h$, so $\Tr(hm_{g,ab})=\Tr(he_g)$: the four magic masses are twice the preceding flag mass. Summing over the cover, with $\Tr h=1$, gives
 \begin{equation}\label{eq:121}
  \Tr(he_0)=1/\mathfrak c_n;\qquad 121=\mathfrak c_4=1+4(2+4+8+16).
 \end{equation}
 In particular the source corner is nonzero.
-Let a perfect normal spatial strategy be given, with purification and supports as in (N1). By (N5) every corner, frame and graph question yields a synchronized projection on $P_A\HH_A$ commuting with $h_A$, and by Section~\ref{sec:projection} and Lemma~\ref{lem:rows} every submitted equation, including the cover, holds on $P_A\HH_A$. Projections with sum $I$ are mutually orthogonal, so the $4n+1$ corners partition $P_A\HH_A$. Bridge $g$ is a perfect conditional FMS strategy with activity $e_{g-1}+m_g$, flag $e_{g-1}$ and magic support $m_g$, whose magic directions are the bound corners $m_{g,ab}$. Lemma~\ref{lem:bridge} gives partial isometries ${\btrans}_g$ with ${\btrans}_g^*{\btrans}_g=e_{g-1}$, ${\btrans}_g{\btrans}_g^*=e_g$ and $h_A{\btrans}_g=2{\btrans}_gh_A$ on the support. Hence $v^*v=e_0$ and $vv^*=e_n$, and moving $h_A$ through the $n$ factors gives $h_Av=2^nvh_A$. For the masses, $h_A$ is trace class and ${\btrans}_g$ is bounded, so cyclicity gives
-\[
- \Tr(h_Ae_g)=\Tr(h_A{\btrans}_g{\btrans}_g^*)=\Tr({\btrans}_g^*h_A{\btrans}_g)=2\Tr({\btrans}_g^*{\btrans}_gh_A)=2\Tr(h_Ae_{g-1}).
-\]
-Each $t_{ab}$ of bridge $g$ commutes with $h_A$, so $\Tr(h_Am_{g,ab})=\Tr(h_Ae_g)$. Summing over the cover, with $\Tr h_A=1$, gives \eqref{eq:121}.
 
 \begin{figure}[ht]
 \centering\small
@@ -592,22 +525,20 @@ For this bridge, apply Lemma~\ref{lem:label} to the six projections
 \]
 and the $|\Lambda|$ graph projections $G_{12}(V_{g,\ell})$. Thus there are $6+|\Lambda|$ refinements of each retained sign question per bridge, on each party. Each label has its own duplicated question; the unchanged opposite questions are always retained. There are $(n+1)|\Lambda|$ support equations and $n|\Lambda|$ block equations.
 
-The six frame commutators make ${\btrans}_g=I_3\otimes\widetilde {\btrans}_g$. The commutator of the original sign with $G_{12}(V_{g,\ell})$, in its $(c_0,f)$ block, is precisely
+We show that the commutator of the original sign with $G_{12}(V_{g,\ell})$, in its $(c_0,f)$ block, is precisely
 \begin{equation}\label{eq:transportcopies}
- {\btrans}_gu_{g-1,\ell}=u_{g,\ell}{\btrans}_g.
+ {\btrans}_gu_{g-1,\ell}=u_{g,\ell}{\btrans}_g,
 \end{equation}
-For clarity the sign has off-diagonal block ${\btrans}_g$ between flag and selected magic direction, while the block unitary has the respective diagonal blocks $u_{g-1,\ell},u_{g,\ell}$. Their commutator equates these two products. Consequently $L_nv=vL_0$ for every decoded transported label, and for every expression built from them. Here $L_r$ means its decoded copy at $e_r$, whose corner identity is $e_r$. The same actual ${\btrans}_g$ works for every label. Distinct transported labels need not commute with each other.
-
-Equation~\eqref{eq:supportcopies} says $u_{r,\ell}(I-e_r)=I-e_r$. Multiplying by $u_{r,\ell}^*$ gives $u_{r,\ell}^*(I-e_r)=I-e_r$, and the adjoint of this is $(I-e_r)u_{r,\ell}=I-e_r$. Hence $u_{r,\ell}$ commutes with $e_r$ and is the identity on $(I-e_r)P_A\HH_A$. On the active space of bridge $g$, the $(a,b)$ term of \eqref{eq:blockcopies} is $t_{ab}(e_gu_{g,\ell}e_g)t_{ab}^*$, because $\mathfrak x_g,\mathfrak z_g$ are reflections and $\mathfrak x_g^a\mathfrak z_g^be_g=t_{ab}$. So $V_{g,\ell}$ is block diagonal for $e_{g-1}\oplus\bigoplus_{ab}m_{g,ab}$, with the block $u_{g-1,\ell}$ on the flag and transported copies of $u_{g,\ell}$ on the magic corners; in particular it reduces $e_{g-1}$ and $e_g$. The six frame refinements make the sign $\mathcal X_0$ of bridge $g$ commute with $F_1,F_2,F_3$ and $G_{ij}(1)$. These generate $\Mat_3\otimes I$ in the frame coordinates of Section~\ref{sec:projection}, whose commutant is $I_3\otimes B(\mathcal H_{\rm base})$, and the corners are frame-bound; hence ${\btrans}_g=I_3\otimes\widetilde {\btrans}_g$. The refinement by $G_{12}(V_{g,\ell})=\frac12(F_1+F_2+e_{12}\otimes V_{g,\ell}+e_{21}\otimes V_{g,\ell}^*)$ makes $\mathcal X_0$ commute with it, and the $(1,2)$ frame block gives $[\widetilde{\mathcal X}_0,V_{g,\ell}]=0$ on the base. With respect to $e_{g-1}\oplus e_g$,
+with the same actual ${\btrans}_g$ for every label; distinct transported labels need not commute with each other. Equation~\eqref{eq:supportcopies} says $u_{r,\ell}(I-e_r)=I-e_r$. Multiplying by $u_{r,\ell}^*$ gives $u_{r,\ell}^*(I-e_r)=I-e_r$, and the adjoint of this is $(I-e_r)u_{r,\ell}=I-e_r$. Hence $u_{r,\ell}$ commutes with $e_r$ and is the identity on $(I-e_r)P_A\HH_A$. On the active space of bridge $g$, the $(a,b)$ term of \eqref{eq:blockcopies} is $t_{ab}(e_gu_{g,\ell}e_g)t_{ab}^*$, because $\mathfrak x_g,\mathfrak z_g$ are reflections and $\mathfrak x_g^a\mathfrak z_g^be_g=t_{ab}$. So $V_{g,\ell}$ is block diagonal for $e_{g-1}\oplus\bigoplus_{ab}m_{g,ab}$, with the block $u_{g-1,\ell}$ on the flag and transported copies of $u_{g,\ell}$ on the magic corners; in particular it reduces $e_{g-1}$ and $e_g$. The six frame refinements make the sign $\mathcal X_0$ of bridge $g$ commute with $F_1,F_2,F_3$ and $G_{ij}(1)$. These generate $\Mat_3\otimes I$ in the frame coordinates of Section~\ref{sec:projection}, whose commutant is $I_3\otimes B(\mathcal H_{\rm base})$, and the corners are frame-bound; hence ${\btrans}_g=I_3\otimes\widetilde {\btrans}_g$. The refinement by $G_{12}(V_{g,\ell})=\frac12(F_1+F_2+e_{12}\otimes V_{g,\ell}+e_{21}\otimes V_{g,\ell}^*)$ makes $\mathcal X_0$ commute with it, and the $(1,2)$ frame block gives $[\widetilde{\mathcal X}_0,V_{g,\ell}]=0$ on the base. With respect to $e_{g-1}\oplus e_g$,
 \[
  \widetilde{\mathcal X}_0=\begin{pmatrix}0&\beta^*\\\beta&0\end{pmatrix},\qquad
  V_{g,\ell}=\begin{pmatrix}u_{g-1,\ell}&0\\0&u_{g,\ell}\end{pmatrix},
 \]
-and the lower-left block of the commutator is $\beta u_{g-1,\ell}-u_{g,\ell}\beta$. This is \eqref{eq:transportcopies}. Induction over $g$ gives $u_{n,\ell}v=vu_{0,\ell}$. Multiplying on the left by $u_{n,\ell}^*$ and on the right by $u_{0,\ell}^*$ gives $u_{n,\ell}^*v=vu_{0,\ell}^*$. The decoded copies in the table are polynomials in $e_r,u_{r,L},u_{r,L}^*$ with the same coefficients for every $r$, and $e_nv=v=ve_0$. Hence $L_nv=vL_0$ and $L_n^*v=vL_0^*$, and the same holds for sums and products of decoded labels.
+and the lower-left block of the commutator is $\beta u_{g-1,\ell}-u_{g,\ell}\beta$. This is \eqref{eq:transportcopies}. Induction over $g$ gives $u_{n,\ell}v=vu_{0,\ell}$. Multiplying on the left by $u_{n,\ell}^*$ and on the right by $u_{0,\ell}^*$ gives $u_{n,\ell}^*v=vu_{0,\ell}^*$. The decoded copies in the table are polynomials in $e_r,u_{r,L},u_{r,L}^*$ with the same coefficients for every $r$, and $e_nv=v=ve_0$. Hence $L_nv=vL_0$ and $L_n^*v=vL_0^*$ for every decoded transported label, where $L_r$ is the decoded copy at $e_r$ with corner identity $e_r$, and the same holds for sums and products of decoded labels.
 
 
 \paragraph{Extraction and exact translation.}
-Introduce four centralizer contractions $a_\alpha=(a_{\alpha,+}+a_{\alpha,-})/2$ and impose $a_\alpha=e_na_\alpha e_0$. On the root corner extract $A_\alpha=v^*a_\alpha$. The adjoint of \eqref{eq:fourv} gives $hv^*=2^{-n}v^*h$, so $h_0A_\alpha=\nu A_\alpha h_0$, where $h_0=\mathfrak c_ne_0he_0$. Supply the following polynomials to the graph compiler:
+Introduce four centralizer contractions $a_\alpha=(a_{\alpha,+}+a_{\alpha,-})/2$ and impose $a_\alpha=e_na_\alpha e_0$. On the root corner extract $A_\alpha=v^*a_\alpha$. Supply the following polynomials to the graph compiler:
 \begin{center}\small
 \begin{tabular}{@{}ll@{}}
 \toprule
@@ -628,29 +559,28 @@ Put $\HH_0=e_0P_A\HH_A$ and let $h_0$ be the restriction of $\mathfrak c_ne_0h_A
 \[
  h_0A_\alpha=\mathfrak c_n\,e_0h_Av^*a_\alpha=2^{-n}\mathfrak c_n\,v^*h_Aa_\alpha=2^{-n}\mathfrak c_n\,v^*a_\alpha e_0h_Ae_0=2^{-n}A_\alpha h_0,
 \]
-using $e_0v^*=v^*$, $h_Av^*=2^{-n}v^*h_A$, $a_\alpha=a_\alpha e_0$ and $[e_0,h_A]=0$. The translations are exact. For the creation equations, $A_\alpha^*A_\beta=a_\alpha^*vv^*a_\beta=a_\alpha^*e_na_\beta=a_\alpha^*a_\beta$. For the range sum, $\sum_\alpha A_\alpha A_\alpha^*=v^*(\sum_\alpha a_\alpha a_\alpha^*)v$. If $\sum_\alpha a_\alpha a_\alpha^*=e_n-(P_\circ)_n$, this equals $e_0-v^*(P_\circ)_nv=e_0-(P_\circ)_0$; conversely, conjugation by $v$ recovers the centralizer form, because $vv^*=e_n$ and $a_\alpha=e_na_\alpha$. For an endpoint equation, $v^*L_n=L_0v^*$ gives $L_0A_\alpha-A_\beta R_0=v^*(L_na_\alpha-a_\beta R_0)$. The bracket has range in $e_nP_A\HH_A$, where $v^*$ is isometric, so either side vanishes exactly when the other does. Sums $\sum_\iota L_\iota A_{\alpha_\iota}L'_\iota$ translate in the same way, with $(L_\iota)_n$ on the left. Root-only polynomials involve only source copies. Every application equation therefore holds as an operator identity on $\HH_0$.
+using $e_0v^*=v^*$, the adjoint $h_Av^*=2^{-n}v^*h_A$ of \eqref{eq:fourv}, $a_\alpha=a_\alpha e_0$ and $[e_0,h_A]=0$; this is $h_0A_\alpha=\nu A_\alpha h_0$. The translations are exact. For the creation equations, $A_\alpha^*A_\beta=a_\alpha^*vv^*a_\beta=a_\alpha^*e_na_\beta=a_\alpha^*a_\beta$. For the range sum, $\sum_\alpha A_\alpha A_\alpha^*=v^*(\sum_\alpha a_\alpha a_\alpha^*)v$. If $\sum_\alpha a_\alpha a_\alpha^*=e_n-(P_\circ)_n$, this equals $e_0-v^*(P_\circ)_nv=e_0-(P_\circ)_0$; conversely, conjugation by $v$ recovers the centralizer form, because $vv^*=e_n$ and $a_\alpha=e_na_\alpha$. For an endpoint equation, $v^*L_n=L_0v^*$ gives $L_0A_\alpha-A_\beta R_0=v^*(L_na_\alpha-a_\beta R_0)$. The bracket has range in $e_nP_A\HH_A$, where $v^*$ is isometric, so either side vanishes exactly when the other does. Sums $\sum_\iota L_\iota A_{\alpha_\iota}L'_\iota$ translate in the same way, with $(L_\iota)_n$ on the left. Root-only polynomials involve only source copies. Every application equation therefore holds as an operator identity on $\HH_0$.
 
 
 \paragraph{One simultaneous realization.}
-Given a root realization with density $h_0$, take
+Let $(\HH_0,h_0)$ be a normal realization, and put $\HH_{\rm sc}=\mathbb C^{4n+1}\otimes\HH_0$ with the density
 \begin{equation}\label{eq:scaffold}
  h_{\rm sc}=\operatorname{diag}(\mu_n)\otimes h_0
  =\frac1{\mathfrak c_n}\operatorname{diag}
  (h_0;\,2h_0^{\oplus4};\,4h_0^{\oplus4};\,\ldots;\,2^nh_0^{\oplus4}).
 \end{equation}
-Use identity corner identifications in the bridges and $a_\alpha=|e_n\rangle\langle e_0|\otimes A_\alpha$. Its commutation with $h_{\rm sc}$ is exactly the modular relation. Every positive eigenspace of a faithful trace-class density is finite-dimensional. In each such block the polar partial isometry of a contraction $T$ extends to a unitary $V_{\rm pol}$, and
+It is faithful and trace class, of trace one by the definition of $\mathfrak c_n$. Use identity corner identifications in the bridges and $a_\alpha=|e_n\rangle\langle e_0|\otimes A_\alpha$; its commutation with $h_{\rm sc}$ is exactly the modular relation. The positive eigenspaces of $h_{\rm sc}$ are spanned by corner vectors tensored with positive eigenvectors of $h_0$, so they are finite-dimensional, and a bounded operator commuting with $h_{\rm sc}$ maps each of them into itself by (N4d). On such a block $\mathcal E$ the contraction $T=a_\alpha|_{\mathcal E}$ has a polar decomposition $T=V|T|$. Because $\dim\ker T=\dim\ker T^*$ in finite dimension, $V$ extends to a unitary $V_{\rm pol}$ with $T=V_{\rm pol}|T|$, and $|T|\pm i(I-|T|^2)^{1/2}$ are commuting unitaries, so
 \[
  T=(U_++U_-)/2,\qquad
  U_\pm=V_{\rm pol}(|T|\pm i\sqrt{I-|T|^2}).
 \]
-Direct sums give centralizer encodings for all four $a_\alpha$ at once. The root isometries $A_\alpha$ are never themselves written as averages of centralizer unitaries. The contraction completion takes place on the scaffold. Encode each source contraction inside the source density blocks, choose $2P-I$ for projections, and use
+The direct sums of the resulting unitaries over all blocks are unitaries commuting with $h_{\rm sc}$; they give centralizer encodings for all four $a_\alpha$ at once. Finite-dimensional blocks are needed here: a nonunitary isometry, such as a root isometry $A_\alpha$, is an extreme point of the unit ball and is therefore not an average of two unitaries. That is why $A_\alpha$ is never encoded directly and the contraction completion takes place on the scaffold. Encode each source contraction inside the source density blocks, choose $2P-I$ for projections, and use
 \[
  u_+=2T_+-I+2i\sqrt{T_+(I-T_+)}
 \]
-for a positive contraction $T_+$. Copy these same choices through the corner identifications and extend by identity outside the corners. The block equations now hold simultaneously. Append the scalar qutrit frame, use the graph formulas, and take actual joint products for all refinements. Their block unitaries commute with the coarse FMS effects. Separate labels need not commute. Finally append the finite maximally entangled row factor of dimension $d_{\max}$. All tests hold with one state and one assignment. The scaffold and ancillary dimensions are finite, so they add only finite entropy.
-Let $(\HH_0,h_0)$ be a normal realization, and put $\HH_{\rm sc}=\mathbb C^{4n+1}\otimes\HH_0$ with the density \eqref{eq:scaffold}. It is faithful and trace class, of trace one by the definition of $\mathfrak c_n$. Its positive eigenspaces are spanned by corner vectors tensored with positive eigenvectors of $h_0$, so they are finite-dimensional, and a bounded operator commuting with $h_{\rm sc}$ maps each of them into itself by (N4d). On such a block $\mathcal E$ the contraction $T=a_\alpha|_{\mathcal E}$ has a polar decomposition $T=V|T|$. Because $\dim\ker T=\dim\ker T^*$ in finite dimension, $V$ extends to a unitary $V_{\rm pol}$ with $T=V_{\rm pol}|T|$, and $|T|\pm i(I-|T|^2)^{1/2}$ are commuting unitaries. The direct sums of the resulting unitaries over all blocks are unitaries commuting with $h_{\rm sc}$. Finite-dimensional blocks are needed here: a nonunitary isometry, such as a root isometry $A_\alpha$, is an extreme point of the unit ball and is therefore not an average of two unitaries. That is why $A_\alpha$ is never encoded directly. The other encodings are functions of operators commuting with $h_0$, so they commute with $h_0$. The copies $u_{r,\ell}=|e_r\rangle\langle e_r|\otimes U_\ell+(I-|e_r\rangle\langle e_r|)\otimes I$ satisfy \eqref{eq:supportcopies}; the block unitaries \eqref{eq:blockcopies} act as $U_\ell$ on every corner of bridge $g$ and as $I$ elsewhere; and ${\btrans}_g=|e_g\rangle\langle e_{g-1}|\otimes I$ gives \eqref{eq:transportcopies}. The translated equations hold because, for example, $L_na_\alpha-a_\beta R_0=|e_n\rangle\langle e_0|\otimes(LA_\alpha-A_\beta R)$.
+for a positive contraction $T_+$. These encodings are functions of operators commuting with $h_0$, so they commute with $h_0$. Copy these same choices through the corner identifications and extend by identity outside the corners: the copies $u_{r,\ell}=|e_r\rangle\langle e_r|\otimes U_\ell+(I-|e_r\rangle\langle e_r|)\otimes I$ satisfy \eqref{eq:supportcopies}, the block unitaries \eqref{eq:blockcopies} act as $U_\ell$ on every corner of bridge $g$ and as $I$ elsewhere, and ${\btrans}_g=|e_g\rangle\langle e_{g-1}|\otimes I$ gives \eqref{eq:transportcopies}. Thus the block equations hold simultaneously. The translated equations hold because, for example, $L_na_\alpha-a_\beta R_0=|e_n\rangle\langle e_0|\otimes(LA_\alpha-A_\beta R)$. Append the scalar qutrit frame, use the graph formulas, and take actual joint products for all refinements; their block unitaries commute with the coarse FMS effects, and separate labels need not commute. Finally append the finite maximally entangled row factor of dimension $d_{\max}$. The scaffold and ancillary dimensions are finite, so they add only finite entropy.
 
-The strategy is explicit. Take $\HH_A=\HH_B=\mathbb C^3\otimes\HH_{\rm sc}\otimes\mathbb C^{d_{\max}}$, the density $h=(I_3/3)\otimes h_{\rm sc}\otimes(I_{d_{\max}}/d_{\max})$ and the pure state $\Omega_h$ of (N8), formed in a product eigenbasis. Every synchronized question of Alice measures a projection commuting with $h$: corner, frame, graph, triangle and binding projections built from the centralizer unitaries by the formulas of Section~\ref{sec:projection}; the FMS cell, activity and corner projections; and the row projections of Lemma~\ref{lem:rows}. Bob measures their transposes. By (N8) every matching test passes. Every forbidden pair between centralizer events has probability $\Tr(hQR)=0$, because the defining identities give $QR=0$. The FMS sign questions are not in the centralizer. For bridge $g$, Alice's sign observable for $\mathsf T_x$ is the reflection $|f\rangle\langle c_x|+|c_x\rangle\langle f|$ on the span of the flag corner $e_{g-1}$ and the corner $c_x$, tensored with the identity of $\HH_0$. Bob's sign observable for $\mathsf B_y$ is $|f\rangle\langle r_y|+|r_y\rangle\langle f|$, with $r_y=(c_0+(-1)^yc_1)/\sqrt2$. Their retained answers are the remaining column-zero and row-zero projections. If $\mu$ is the mass of $e_{g-1}$, each magic corner has mass $2\mu$, and $\langle c_x,r_y\rangle=\epsilon_{xy}/\sqrt2$. So, up to the frame and row factors, the compressed state is $\Omega_{xy}=\mu^{1/2}(|f,f\rangle+\epsilon_{xy}|c_x,r_y\rangle)\otimes\Omega_{h_0}$. Substitution gives $(\mathcal X_x\otimes I)\Omega_{xy}=\epsilon_{xy}(I\otimes\mathcal Y_y)\Omega_{xy}$, so every forbidden sign pair has probability zero; the calibrated rules against $\mathsf C_0$ and $\mathsf R_0$ hold by construction. The FMS effects are corner operators tensored with the identity of $\HH_0$. They commute with every block unitary $V_{g,\ell}$ and with the frame, on Alice's side and, after transposition in the product eigenbasis, on Bob's. The refinements $E_aP^{\rm lab}$ of Lemma~\ref{lem:label} are therefore POVMs. The marginal entropy is $\log_23+S(h_{\rm sc})+\log_2d_{\max}$, where $S(h_{\rm sc})=H(\mu_n)+S(h_0)$.\qedhere
+All tests hold with one state and one assignment; the strategy is explicit. Take $\HH_A=\HH_B=\mathbb C^3\otimes\HH_{\rm sc}\otimes\mathbb C^{d_{\max}}$, the density $h=(I_3/3)\otimes h_{\rm sc}\otimes(I_{d_{\max}}/d_{\max})$ and the pure state $\Omega_h$ of (N8), formed in a product eigenbasis. Every synchronized question of Alice measures a projection commuting with $h$: corner, frame, graph, triangle and binding projections built from the centralizer unitaries by the formulas of Section~\ref{sec:projection}; the FMS cell, activity and corner projections; and the row projections of Lemma~\ref{lem:rows}. Bob measures their transposes. By (N8) every matching test passes. Every forbidden pair between centralizer events has probability $\Tr(hQR)=0$, because the defining identities give $QR=0$. The FMS sign questions are not in the centralizer. For bridge $g$, Alice's sign observable for $\mathsf T_x$ is the reflection $|f\rangle\langle c_x|+|c_x\rangle\langle f|$ on the span of the flag corner $e_{g-1}$ and the corner $c_x$, tensored with the identity of $\HH_0$. Bob's sign observable for $\mathsf B_y$ is $|f\rangle\langle r_y|+|r_y\rangle\langle f|$, with $r_y=(c_0+(-1)^yc_1)/\sqrt2$. Their retained answers are the remaining column-zero and row-zero projections. If $\mu$ is the mass of $e_{g-1}$, each magic corner has mass $2\mu$, and $\langle c_x,r_y\rangle=\epsilon_{xy}/\sqrt2$. So, up to the frame and row factors, the compressed state is $\Omega_{xy}=\mu^{1/2}(|f,f\rangle+\epsilon_{xy}|c_x,r_y\rangle)\otimes\Omega_{h_0}$. Substitution gives $(\mathcal X_x\otimes I)\Omega_{xy}=\epsilon_{xy}(I\otimes\mathcal Y_y)\Omega_{xy}$, so every forbidden sign pair has probability zero; the calibrated rules against $\mathsf C_0$ and $\mathsf R_0$ hold by construction. The FMS effects are corner operators tensored with the identity of $\HH_0$. They commute with every block unitary $V_{g,\ell}$ and with the frame, on Alice's side and, after transposition in the product eigenbasis, on Bob's. The refinements $E_aP^{\rm lab}$ of Lemma~\ref{lem:label} are therefore POVMs. The marginal entropy is $\log_23+S(h_{\rm sc})+\log_2d_{\max}$, where $S(h_{\rm sc})=H(\mu_n)+S(h_0)$.\qedhere
 
 \end{proof}
 
@@ -677,7 +607,7 @@ The commuting bridge of Section~\ref{sec:bridgecomm} applies in each $\Pact_gM\P
  vv^*=e_n,\quad
  \sigma_t^\varphi(v)=2^{nit}v.
 \]
-This is an extracted operator, never a centralizer word submitted to the graph compiler. KMS and the magic matrix units give
+This is an extracted operator, never a centralizer word passed to the graph compiler. KMS and the magic matrix units give
 \[
  \varphi(m_{g,\epsilon\delta})=2^g\varphi(e_0),\qquad
  \varphi(e_0)=\mathfrak c_n^{-1}.
@@ -720,16 +650,16 @@ Here is the proof, including the density factors. The same scaffold, exact unita
  \|p_j\|_{2,h_{\rm sc}}^2=\frac{\beta_j}{121}\|r_j\|_{2,h_0}^2,
  \qquad \beta_j=\begin{cases}16,&\text{range row at }e_4,\\1,&\text{otherwise}.\end{cases}
 \]
-For the endpoint case use $v^*v=e_0$. For the range case use $v^*h_{\rm sc}v=16h_0/121$. These are equalities with no density-gap estimate.
+For the endpoint case use $v^*v=e_0$. For the range case use $v^*h_{\rm sc}v=16h_0/121$.
 
-The qutrit graph row $S_j$ has off-diagonal blocks $p_j,p_j^*$. Since $p_j$ commutes with $h_{\rm sc}$,
+The qutrit graph row $\Delta_j$ has off-diagonal blocks $p_j,p_j^*$. Since $p_j$ commutes with $h_{\rm sc}$,
 \[
- \Tr(h_{\rm old}S_j^2)
+ \Tr(h_{\rm old}\Delta_j^2)
  =\frac13\Tr[h_{\rm sc}(p_j^*p_j+p_jp_j^*)]
  =\frac{2\beta_j}{363}\|r_j\|_{2,h_0}^2.
 \]
-Apply \eqref{eq:rowloss}, with $L_j$ and $d_j$ the denominator and slot dimension of row $j$. For uniform $Q$-by-$Q$ sampling one may take
+Apply \eqref{eq:rowloss}, with $L_j$ and $d_j$ the denominator and slot dimension of row $j$. An orientation of the row-zero test is a choice of which party receives the row question, and each orientation has probability \eqref{eq:rowloss}. If the forbidden pair is imposed in both ordered question pairs, as in the formal compiler of Appendix~\ref{app:leanA}, both contributions count. For uniform $Q$-by-$Q$ sampling one may therefore take
 \begin{equation}\label{eq:generalconstant}
- C_{\rm comp}=\max_j\frac{8L_j^2\beta_j}{363d_j^3Q^2}.
+ C_{\rm comp}=\max_j\frac{16L_j^2\beta_j}{363d_j^3Q^2}.
 \end{equation}
-Summing event probabilities gives an upper bound even if rejecting rules overlap. The dimension, clock order, density spectrum and spectator dimensions do not enter this constant. No continuity of polar completions or approximate dense-range cancellation is used: the structural realization is built exactly. This is a completeness estimate for constructed strategies under the stated exact structural hypotheses. It is not a robust extraction claim for arbitrary nearly perfect strategies.
+With one oriented row-zero test per row, the convention of \eqref{eq:valueconstant}, the coefficient $16$ may be replaced by $8$. Summing event probabilities gives an upper bound even if rejecting rules overlap. The dimension, clock order, density spectrum and spectator dimensions do not enter this constant. The estimate applies to the constructed strategies, whose structural tests are exact.

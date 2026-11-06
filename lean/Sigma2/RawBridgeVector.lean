@@ -88,7 +88,7 @@ theorem conditional_component {s} (S : NormalStrategy s) (I : FMSInstance s)
     le_antisymm hp (mul_nonneg (S.weight_nonneg k) (pure_probability_nonnegative _ _ _ _ _))
   exact (mul_eq_zero.mp hz).resolve_left (ne_of_gt hk)
 
-/-- The untouched original positive-weight component quantifier of Eq. (6). -/
+/-- The untouched original positive-weight component quantifier of Eq. (12). -/
 theorem mixed_vector {s} (S : NormalStrategy s) (I : FMSInstance s)
     (hS : ConditionalPerfect S I) : CalibratedIdentity S I := by
   intro k hk

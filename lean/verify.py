@@ -1,4 +1,4 @@
-"""Serial, memory-capped build, axiom audit, and kernel comparator for the thin core.
+"""Serial, memory-capped build, axiom audit, and sandboxed comparator for Theorem A.
 No source downloads or dependency edits. Use cached pinned packages already installed.
 """
 import argparse,ctypes,datetime,hashlib,json,os,pathlib,re,shutil,subprocess,sys,time
@@ -14,16 +14,40 @@ def comparator_lookup_path(env):
     # Pinned Lake's context does Unix `which git`/`which env` lookups even for
     # two supplied exports. No git process or dependency resolution is run.
     if os.name=='nt':
-        base=pathlib.Path(os.environ.get('ProgramFiles',r'C:\Program Files'))/'Git'
+        base=pathlib.Path(os.environ.get('ProgramFiles',str(pathlib.Path(sys.executable).anchor))) / 'Git'
         additions=[p for p in (base/'usr/bin',base/'cmd') if p.is_dir()]
         env['PATH']=os.pathsep.join(map(str,additions))+os.pathsep+env['PATH']
 
 
 def memory_cap():
     if os.name!='nt':
-        import resource
-        resource.setrlimit(resource.RLIMIT_AS,(CAP,CAP))
-        return lambda: None
+        # Bound resident memory, not the address space occupied by mapped proof files.
+        import resource,threading,signal
+        resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+        state={'peak':0}
+        root_pid=os.getpid()
+        def watch():
+            while True:
+                entries={}
+                for d in pathlib.Path('/proc').iterdir():
+                    if not d.name.isdigit():continue
+                    try:
+                        fields=dict(line.split(':',1) for line in (d/'status').read_text().splitlines() if ':' in line)
+                        entries[int(d.name)]=(int(fields['PPid']),int(fields.get('VmRSS','0 kB').split()[0])*1024)
+                    except (OSError,KeyError,ValueError):pass
+                ids={root_pid};changed=True
+                while changed:
+                    new_ids={n for n,v in entries.items() if v[0] in ids};changed=not new_ids<=ids;ids|=new_ids
+                rss=sum(entries.get(n,(0,0))[1] for n in ids);state['peak']=max(state['peak'],rss)
+                if rss>=min(CAP-100000000,9000000000):
+                    for n in ids-{root_pid}:
+                        try:os.kill(n,signal.SIGKILL)
+                        except ProcessLookupError:pass
+                    os.kill(root_pid,signal.SIGTERM)
+                    return
+                time.sleep(.25)
+        threading.Thread(target=watch,daemon=True).start()
+        return lambda:state['peak']
     from ctypes import wintypes as w
     class Basic(ctypes.Structure):
         _fields_=[('PerProcessUserTimeLimit',ctypes.c_int64),('PerJobUserTimeLimit',ctypes.c_int64),('LimitFlags',w.DWORD),('MinimumWorkingSetSize',ctypes.c_size_t),('MaximumWorkingSetSize',ctypes.c_size_t),('ActiveProcessLimit',w.DWORD),('Affinity',ctypes.c_size_t),('PriorityClass',w.DWORD),('SchedulingClass',w.DWORD)]
@@ -112,7 +136,10 @@ def main():
     audit=(out/'Audit.log').read_text(encoding='utf-8')
     cfg=json.loads((ROOT/'comparator.json').read_text())
     lines=[s for s in audit.splitlines() if 'depends on axioms' in s or 'does not depend on any axioms' in s]
-    if len(lines)!=len(cfg['theorem_names']):raise RuntimeError('Incomplete axiom audit')
+    audit_roots=json.loads((ROOT/'pins/AUDIT-ROOTS.json').read_text(encoding='utf-8')) if (ROOT/'pins/AUDIT-ROOTS.json').exists() else cfg['theorem_names']
+    if len(lines)!=len(audit_roots):raise RuntimeError('Incomplete axiom audit')
+    for name,line in zip(audit_roots,lines):
+        if "'"+name+"'" not in line:raise RuntimeError('Unexpected audited root: '+line)
     permitted=set(cfg['permitted_axioms'])
     for line in lines:
         axioms=set(re.search(r'\[(.*?)\]',line).group(1).split(', ')) if 'depends on axioms' in line else set()
@@ -120,9 +147,10 @@ def main():
     (ROOT/'AXIOMS.txt').write_text('\n'.join(lines)+'\n',encoding='utf-8')
     for mod in ('Challenge','Solution'):
         run('export_'+mod,[exporter,mod,'--',*export_targets(cfg)],stdout=out/(mod+'.ndjson'))
-    run('comparator',[lake,'comparator','--config',ROOT/'comparator.json','--challenge-from-export',out/'Challenge.ndjson','--solution-from-export',out/'Solution.ndjson',*(['--inadvisably-no-sandbox'] if os.name=='nt' else [])])
+    if sys.platform != 'linux':raise RuntimeError('Comparator requires Linux with bubblewrap; run lake comparator --config comparator.json there.')
+    run('comparator',[lake,'comparator','--config',ROOT/'comparator.json'])
     print((out/'comparator.log').read_text(encoding='utf-8'),flush=True)
-    print('Verified all '+str(len(cfg['theorem_names']))+' thin-core theorems.',flush=True)
+    print('Verified all '+str(len(cfg['theorem_names']))+' Theorem A challenge targets.',flush=True)
 if __name__=='__main__':
     try:main()
     except Exception as e:print(str(e),file=sys.stderr);sys.exit(1)

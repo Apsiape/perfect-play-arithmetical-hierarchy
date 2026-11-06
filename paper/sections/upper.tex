@@ -64,6 +64,8 @@ Now suppose pure spatial strategies approach perfect play while $p_{\max}\geq1/\
 Positive question weights force every such probability to zero. The same compact limit gives a perfect spatial strategy. Contraposition proves the final assertion of Theorem~\ref{thm:strata}, including sequences of finite-dimensional pure strategies. Equivalently their Schmidt min-entropy tends to infinity.
 
 \subsection{Entropy budgets}\label{sec:finS}\label{sec:entropybudgets}
+This subsection treats entropy budgets and their busy-beaver profiles; readers heading for the trace mechanism may skip to Section~\ref{sec:cornerupper}.
+
 Fix a finite Bell scenario and let $K_H$ be its correlations realized by
 normal spatial strategies with $S(\rho_A)\le H$, for $0\le H<\infty$.
 Purify onto Bob, the unconstrained party: Alice's marginal and every
@@ -83,7 +85,7 @@ For sorted Schmidt probabilities $p_i$, $p_i\le1/i$, so
 This gives tightness in $\ell^1$, and finite partial entropy sums give
 lower semicontinuity. Hence the sorted distributions of entropy at most
 $H$ are compact in $\ell^1$. Their Schmidt vectors are compact in $\ell^2$,
-since $\|\sqrt p-\sqrt q\|_2^2\le\|p-q\|_1$.
+since $\|\sqrt p-\sqrt{p'}\|_2^2\le\|p-p'\|_1$.
 Compress the POVMs to the Schmidt supports and absorb the basis changes
 into them, obtaining common copies of $\ell^2$ (if the Schmidt rank is finite, extend each POVM by a fixed deterministic answer on the complement in $\ell^2$). Finite POVM tuples are
 weak-operator sequentially compact there. Tensor products of convergent
@@ -223,7 +225,6 @@ also when an entropy is infinite,
  S(h)=S(\operatorname{diag}(\mu_4))+S(h_F)+S(\rho_{\rm spec})
  \ge\log_2p_{j_*+1}.
 \]
-No monotonicity under compression is used.
 \end{proof}
 
 \begin{corollary}[The entropy busy beaver]\label{cor:entropybeaver}
@@ -283,23 +284,23 @@ by arbitrary answers; padding therefore changes neither $h$ nor the
 bound of Lemma~\ref{lem:clockentropy}. Define the computable, nondecreasing,
 unbounded size envelope
 \[
- q(n)=\max_{a,k\le n}|G_{a,k}|.
+ \ell(n)=\max_{a,k\le n}|G_{a,k}|.
 \]
 For a given total $0'$-computable $F:\mathbb N\to\mathbb N$, the limit
 lemma \cite{Shoenfield} supplies an index $a_0$ with
 \[
  \lim_s g(a_0,n,s)=f(n),\qquad
- f(n)=2^{1+\max_{m\le q(n+1)}F(m)}.
+ f(n)=2^{1+\max_{m\le \ell(n+1)}F(m)}.
 \]
 The envelope was defined using all indices before selecting $a_0$,
 so there is no circular size definition. Each $G_{a_0,n}$ is a YES
 instance, and every witness index is at least $f(n)$. For $n\ge a_0$
-and $q(n)\le m<q(n+1)$, Lemma~\ref{lem:clockentropy} therefore gives
+and $\ell(n)\le m<\ell(n+1)$, Lemma~\ref{lem:clockentropy} therefore gives
 \[
  B(m)\ge m_*(G_{a_0,n})\ge\log_2p_{f(n)+1}
  >\log_2f(n)>F(m).
 \]
-The intervals cover every sufficiently large integer since $q$ is
+The intervals cover every sufficiently large integer since $\ell$ is
 nondecreasing and unbounded. This proves eventual strict domination.
 \end{proof}
 
@@ -359,11 +360,11 @@ if it has not halted by then, it never halts. Thus $0'\le_T K$, and
 the preceding reductions give $K\equiv_T0''$.
 
 Finally use the same computable array, padded games and nondecreasing
-unbounded envelope $q$ as in Corollary~\ref{cor:entropybeaver}; padding
+unbounded envelope $\ell$ as in Corollary~\ref{cor:entropybeaver}; padding
 preserves the state and hence the Schmidt probabilities. Given total
 $0'$-computable $F$, the limit lemma supplies $a_0$ for
-$f(n)=2^{1+\max_{r\le q(n+1)}F(r)}$. Every witness for $G_{a_0,n}$
-is at least $f(n)$. For $n\ge a_0$ and $q(n)\le m<q(n+1)$,
+$f(n)=2^{1+\max_{r\le \ell(n+1)}F(r)}$. Every witness for $G_{a_0,n}$
+is at least $f(n)$. For $n\ge a_0$ and $\ell(n)\le m<\ell(n+1)$,
 \[
  K(m)\ge\kappa_{\min}(G_{a_0,n})
  \ge\frac{121}{12}p_{f(n)+1}>f(n)>F(m).
@@ -394,10 +395,10 @@ determines $\log_2p_{j_*+1}$ up to a computable additive error.
 \end{remark}
 
 \subsection{A finite tracial corner}\label{sec:cornerupper}
-The same quantifier pattern governs every semifinite host. Here the existential integer bounds the overlap of the state with a finite tracial corner.
+The spatial upper bound fixes a nonzero Schmidt coefficient. For a general semifinite host, the corresponding parameter is a nonzero overlap with a finite tracial corner. The existential integer bounds this overlap, and the quantifier pattern is the same.
 
 \begin{lemma}[Finite-corner overlap]\label{lem:overlap}
-Let $\mathcal A,\mathcal B$ be commuting unital $C^*$-algebras containing a game's effects. Suppose unit vectors $\psi,\eta$ and $e=e^2=e^*\in\mathcal A$ satisfy: $\psi$ is perfect, $e\eta=\eta$, $\langle\eta,\psi\rangle\ne0$, and the vector state of $\eta$ is tracial on $e\mathcal A e$. Then the game has a perfect normal semifinite strategy. If $e=1$, it has a finite-algebra strategy.
+Let $\mathcal A,\mathcal B$ be commuting unital $C^*$-algebras containing a game's effects. Suppose unit vectors $\psi,\eta$ and $e=e^2=e^*\in\mathcal A$ satisfy: $\psi$ is perfect, $e\eta=\eta$, $\langle\eta,\psi\rangle\ne0$, and the vector state of $\eta$ is tracial on $e\mathcal A e$. Then the game has a perfect normal semifinite strategy. If $e=1$, it has a perfect normal strategy in a finite von Neumann algebra.
 \end{lemma}
 \begin{proof}
 Let $\mathcal H_\eta=\overline{\operatorname{span}\mathcal A\mathcal B\eta}$. It reduces both algebras because they are self-adjoint and commute. Put $M=(\mathcal A|_{\mathcal H_\eta})''$ and $p=e|_{\mathcal H_\eta}$. The vector functional of $\eta$ is normal on $M$ and tracial on $pMp$: Kaplansky density approximates each corner element by a bounded net from $p\mathcal A p$, and separate ultraweak continuity extends $\tau_\eta(xy)=\tau_\eta(yx)$ one variable at a time. Moreover
@@ -420,7 +421,7 @@ Conversely standardize a normal semifinite strategy and write $\psi=h^{1/2}\in L
  =\frac{\tau(eh^{1/2}e)}{\sqrt{\tau(e)}}
  \geq\sqrt a\sqrt{\tau(e)}>0.
 \end{equation}
-Its corner state is tracial. In a finite algebra take a faithful normalized trace and $e=1$; then $\tau(h^{1/2})>0$. Adjoin $e$ to Alice's algebra if necessary.
+Its corner state is tracial. In a finite von Neumann algebra take a faithful normalized trace and $e=1$; then $\tau(h^{1/2})>0$. Adjoin $e$ to Alice's algebra if necessary.
 
 \begin{theorem}\label{thm:upper}
 $\perf_{\finhost}$ and $\perf_{\sfhost}$ belong to $\Sigma^0_2$.
@@ -438,7 +439,7 @@ At stage $m$ take the first $m$ constraints and their coordinates. Feasibility $
 \begin{equation}\label{eq:sigma2sf}
  G\in\perf_{\sfhost}\iff\exists k\,\forall m\,F_{\sfhost}(G,k,m).
 \end{equation}
-Set $e=1$ for the finite-algebra version.
+Set $e=1$ for finite von Neumann algebras.
 \end{proof}
 
 Tensoring a finite factor host with $R_{\rm hyp}$ gives a $\II_1$ host. Tensoring a semifinite factor host with $R_{\rm hyp}\vN B(\ell^2)$ gives a $\II_\infty$ host. Product-state expectations, or standard-form tensoring, preserve the probabilities. Factor decomposition as in Section~\ref{sec:prelim} therefore gives

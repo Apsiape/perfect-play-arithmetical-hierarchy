@@ -1,4 +1,7 @@
+import Sigma2.GameTable
 import Sigma2.TraceProducts
+import Sigma2.EntropyBridge
+import Sigma2.EntropyComponentBounds
 import Mathlib.Analysis.InnerProductSpace.StarOrder
 import Mathlib.Analysis.CStarAlgebra.ContinuousFunctionalCalculus.Order
 
@@ -219,6 +222,10 @@ theorem normal_pure_perfect_equivalence (G : Game) :
     rw [← heq]
     exact hS
   · rintro ⟨T,hT⟩;exact ⟨normalOfPure T,hT⟩
+
+/-- Finite rational tables are fully represented by the natural-number coding. -/
+theorem game_codes_surjective (G : Game) : ∃ c,decodeGame c=some G := by
+  exact GameTable.game_codes_surjective G
 
 theorem marginals_exist {s} (S : NormalStrategy s) :
     ∃ hA hB : Density,MarginalA S hA ∧ MarginalB S hB := by
@@ -554,5 +561,28 @@ theorem dense_range_cancel (B T : Op) (hT : DenseRange T) (hz : B*T=0) : B=0 := 
 
 theorem fact_2_4_forbidden (Q K T : Op) (hT : DenseRange T) (hz : (Q*K)*T=0) :
     Q*K=0 := dense_range_cancel (Q*K) T hT hz
+
+/-- Mixed finite entropy conventions agree with pure finite entropy for perfection. -/
+theorem finite_entropy_pure_component (G : Game) :
+    HasFiniteEntropyPerfect G ↔ ∃ S : PureStrategy G.scenario,
+      Perfect G (normalOfPure S) ∧ FiniteMarginalEntropy (normalOfPure S) := by
+  constructor
+  · rintro ⟨S, hS, hA, hB, hmA, hmB, hEA, hEB⟩
+    obtain ⟨k,hk⟩ : ∃ k, 0 < S.weight k := by
+      by_contra hn
+      have hz (k : ℕ) : S.weight k = 0 :=
+        le_antisymm (not_lt.mp (not_exists.mp hn k)) (S.weight_nonneg k)
+      have he : (∑' k, S.weight k) = 0 := by simp only [hz, tsum_zero]
+      linarith [S.weight_sum]
+    have hPk := fact_2_1_pure_components G S hS k hk
+    obtain ⟨gA, gB, hgA, hgB⟩ := marginals_exist (normalOfPure (S.component k))
+    refine ⟨S.component k, hPk, gA, gB, hgA, hgB, ?_, ?_⟩
+    · exact EntropySpectrum.finite_entropy_of_dominated hA gA (S.weight k) hk
+        (EntropyComponentBounds.component_marginalA_dominated S k hA gA hmA hgA) hEA
+    · exact EntropySpectrum.finite_entropy_of_dominated hB gB (S.weight k) hk
+        (EntropyComponentBounds.component_marginalB_dominated S k hB gB hmB hgB) hEB
+  · rintro ⟨S, hS, hH⟩
+    exact ⟨normalOfPure S, hS, hH⟩
+
 
 end Sigma2.Preliminaries

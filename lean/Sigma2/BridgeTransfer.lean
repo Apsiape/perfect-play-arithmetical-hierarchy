@@ -54,7 +54,7 @@ theorem bridge_pure_transfer {s} (S : NormalStrategy s) (I : FMSInstance s)
   simpa only [BridgeConclusion,flagA,magicA,transportA,normalOfPure,hA] using hh
 
 
-/-- The remaining Eq. (6) obligation, after the completed-space lifts are fixed. -/
+/-- The remaining Eq. (12) obligation, after the completed-space lifts are fixed. -/
 def CalibratedIdentity {s} (S : NormalStrategy s) (I : FMSInstance s) : Prop :=
   ∀ k,0<S.weight k →
     (S.measurements.left (I.qA 4) (I.aA 2)*S.measurements.right (I.qB 0) (I.aB 1)) (S.vector k)=

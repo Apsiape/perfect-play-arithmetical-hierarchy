@@ -1,6 +1,6 @@
 # Finite checks
 
-This directory accompanies *A trace costs one quantifier: the exact complexity of perfect play in nonlocal games*. It contains eight suites, a fresh-directory runner, small reference records and generators. Large nested compiler cores are regenerated in the chosen output directory and are never shipped in this tree.
+This directory accompanies *A trace costs one quantifier: the exact complexity of perfect play in nonlocal games*. It contains eight suites, a fresh-directory runner, small reference records and generators. Large nested compiler cores are regenerated in the chosen output directory and are never shipped in this tree. `DETAILS.md` describes every check, count and tolerance; the paper's appendix "Software checks" is the one-page summary.
 
 | Folder | Scope |
 |---|---|

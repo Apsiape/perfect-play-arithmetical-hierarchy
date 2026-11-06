@@ -1,0 +1,6 @@
+{
+  "checked_original_declarations": 5094,
+  "unexpected_changes": [],
+  "removed_named_declarations": 50,
+  "method": "Reverse approved namespace renames; compare original declaration/proof text after removing comments and normalizing whitespace."
+}
