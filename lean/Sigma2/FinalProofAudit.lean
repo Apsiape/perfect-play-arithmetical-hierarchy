@@ -1,5 +1,6 @@
 import Sigma2.Main
 import Sigma2.MainPaper
+import Sigma2.SharedFamily
 import Lean.Util.CollectAxioms
 
 /-! Final-root audit: declaration types and opaque bodies, not import membership. -/
@@ -8,9 +9,9 @@ open Lean Elab Command
 run_cmd do
   let env ← getEnv
   let standard := [``propext, ``Classical.choice, ``Quot.sound]
-  let modules : Array Name := #[`Sigma2.CompilerHonestStructuralAssembly, `Sigma2.CompilerHonestBase, `Sigma2.CompilerHonestGraph, `Sigma2.CompilerHonestListRows, `Sigma2.CompilerRegisterIdentities, `Sigma2.CompilerHonestRowAlgebra, `Sigma2.CompilerHonestRowBlocks, `Sigma2.CompilerHonestRows, `Sigma2.CompilerHonestStructural, `Sigma2.CompilerHonestTransport, `Sigma2.CompilerApproxIndex, `Sigma2.CompilerApproxEnergy, `Sigma2.CompilerApproxBound, `Sigma2.CompilerApproxEvents, `Sigma2.CompilerApproxStrategy, `Sigma2.CompilerApproxBase, `Sigma2.CompilerCompleteSupport, `Sigma2.CompilerCompleteness, `Sigma2.CompilerObligations, `Sigma2.MainPaper]
+  let modules : Array Name := #[`Sigma2.CompilerHonestStructuralAssembly, `Sigma2.CompilerHonestBase, `Sigma2.CompilerHonestGraph, `Sigma2.CompilerHonestListRows, `Sigma2.CompilerRegisterIdentities, `Sigma2.CompilerHonestRowAlgebra, `Sigma2.CompilerHonestRowBlocks, `Sigma2.CompilerHonestRows, `Sigma2.CompilerHonestStructural, `Sigma2.CompilerHonestTransport, `Sigma2.CompilerApproxIndex, `Sigma2.CompilerApproxEnergy, `Sigma2.CompilerApproxBound, `Sigma2.CompilerApproxEvents, `Sigma2.CompilerApproxStrategy, `Sigma2.CompilerApproxBase, `Sigma2.CompilerCompleteSupport, `Sigma2.CompilerCompleteness, `Sigma2.CompilerObligations, `Sigma2.MainPaper, `Sigma2.Main, `Sigma2.UpperGridCertificate, `Sigma2.UpperBoxStages]
   let roots : List Name := [`Sigma2.CompilerObligations.obligations_all,
-    `Sigma2.theoremA_of_tarski, `Sigma2.theoremA_of_tarski_paper]
+    `Sigma2.theoremA, `Sigma2.theoremA_paper, `Sigma2.theoremA_shared_family]
   let explicitForbidden : List Name := [`Sigma2.Compiler.lemma_4_4_strong,
     `Sigma2.Compiler.lemma_4_4_four_bridge_compiler,
     `Sigma2.Compiler.compileCode, `Sigma2.Compiler.compileCode_computable,
@@ -67,21 +68,25 @@ run_cmd do
       elabCommand (← `(#print axioms $(mkIdent root)))
       logInfo m!"ROOT30:{toJson (root.toString, ledger.map Name.toString, closure.size, ax.map Name.toString) |>.compress}"
       logInfo m!"CLOSURE30:{toJson (root.toString, closure.toList.map Name.toString) |>.compress}"
-  for root in [`Sigma2.theoremA_of_tarski, `Sigma2.theoremA_of_tarski_paper] do
+  for (root, stmt) in [(`Sigma2.theoremA, ``Sigma2.TheoremAStatement),
+      (`Sigma2.theoremA_paper, ``Sigma2.TheoremAStatement),
+      (`Sigma2.theoremA_shared_family, ``Sigma2.SharedFamilyHardness)] do
     let some ci := env.find? root | throwError "Missing final theorem {root}"
+    unless ci matches .thmInfo _ do throwError "Final root is not a theorem {root}"
     unless ci.levelParams.isEmpty do throwError "Unexpected theorem universe parameters {root}"
-    match ci.type with
-    | .forallE n domain body _ =>
-      unless n == `hT && domain == mkConst ``Sigma2.UpperRealArithmetic.TarskiDecision &&
-          body == mkConst ``Sigma2.TheoremAStatement do
-        throwError "Final theorem has unexpected hypotheses: {ci.type}"
-    | _ => throwError "Final theorem does not have its single explicit hypothesis"
-    logInfo m!"HYPOTHESIS30:{root}: hT : UpperRealArithmetic.TarskiDecision (only argument)"
+    unless ci.type == mkConst stmt do
+      throwError "Final theorem takes arguments or has an unexpected type: {root} : {ci.type}"
+    if env.contains `Sigma2.UpperRealArithmetic.TarskiDecision then
+      throwError "TarskiDecision is still declared"
+    logInfo m!"HYPOTHESIS30:{root} : {stmt} (no arguments, no hypotheses)"
   logInfo m!"FORBIDDEN30:{toJson (forbidden.map Name.toString) |>.compress}"
   logInfo m!"DECLCOUNT30:{newRoots.length}"
   logInfo m!"TRAVERSED30:{seen.size}"
 
 #print Sigma2.CompilerObligations.obligations_all
-#print Sigma2.theoremA_of_tarski
-#print Sigma2.theoremA_of_tarski_paper
-#print axioms Sigma2.theoremA_of_tarski
+#print Sigma2.theoremA
+#print Sigma2.theoremA_paper
+#print Sigma2.theoremA_shared_family
+#print axioms Sigma2.theoremA
+#print axioms Sigma2.theoremA_paper
+#print axioms Sigma2.theoremA_shared_family

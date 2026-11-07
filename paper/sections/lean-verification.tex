@@ -1,16 +1,10 @@
 \section{Lean verification of Theorem A}\label{app:leanA}
-Theorem A is proved in Lean~4, conditional only on
-\nolinkurl{UpperRealArithmetic.TarskiDecision}: truth of existentially
-quantified rational ordered-ring sentences in disjunctive normal form is
-computable. This is a special case of Tarski's decision theorem for real
-arithmetic \cite[Section~2, Theorem~31 and Corollary~32, p.~39]{Tarski1951}.
-It is an explicit argument of the theorem; the decision algorithm is not
-formalized. The comparator challenge \nolinkurl{lean/Challenge.lean}
+Theorem A is proved in Lean~4 with no hypotheses; the proof uses only
+Lean's three standard axioms. The comparator challenge \nolinkurl{lean/Challenge.lean}
 states Theorem A as follows, with \nolinkurl{TheoremAStatement} as defined
 in \nolinkurl{lean/Sigma2/Statements.lean}:
 \begin{flushleft}\leftskip1.5em\footnotesize\ttfamily\frenchspacing
-\detokenize{theorem theoremA_of_tarski_paper (hT : UpperRealArithmetic.TarskiDecision) :}\\
-\hspace*{2em}\detokenize{TheoremAStatement}\\[4pt]
+\detokenize{theorem theoremA_paper : TheoremAStatement}\\[4pt]
 \detokenize{def TheoremAStatement : Prop :=}\\
 \hspace*{1em}\detokenize{SigmaTwoComplete SpatialPerfect} $\wedge$ \detokenize{SigmaTwoComplete EntropyPerfect} $\wedge$\\
 \hspace*{1em}\detokenize{PromiseHard SpatialPerfect PromisedGame} $\wedge$ \detokenize{PromiseHard EntropyPerfect PromisedGame}
@@ -27,8 +21,8 @@ total computable many-one reductions. \texttt{PromiseHard} says that each
 hardness reduction can be chosen so that every output lies in
 \texttt{PromisedGame}: it has finite-dimensional value one and no perfect
 finite-dimensional strategy. The same statement is proved as
-\nolinkurl{theoremA_of_tarski} in \nolinkurl{lean/Sigma2/Main.lean} and as
-\nolinkurl{theoremA_of_tarski_paper}, through the printed admissibility
+\nolinkurl{theoremA} in \nolinkurl{lean/Sigma2/Main.lean} and as
+\nolinkurl{theoremA_paper}, through the printed admissibility
 predicate, in \nolinkurl{lean/Sigma2/MainPaper.lean}. The theorem
 \nolinkurl{theoremA_shared_family} in \nolinkurl{lean/Sigma2/SharedFamily.lean}
 proves that a single total computable map is a promised reduction for both
@@ -42,8 +36,19 @@ $n=4$ and to Lemma~\ref{lem:sandwich}. Several theorems in the table take
 as an argument a compiler specification, of type
 \nolinkurl{CompilerSpecification.Specification}. The final theorems supply
 it from the proved obligations \nolinkurl{CompilerObligations.obligations_all},
-so it is not a hypothesis of any final theorem. The only hypothesis of the final theorems is
-\nolinkurl{TarskiDecision}; the rows below say where it enters.
+so it is not a hypothesis of any final theorem. The final theorems have no hypotheses.
+The formal $\Sigma^0_2$ upper bounds of Theorem~A use no decision procedure for real arithmetic.
+Each stage is a conjunction of polynomial equations and non-strict inequalities. Every satisfiable finite stage or finite entropy relaxation has a
+solution with all coordinates in $[-1,1]$: amplitudes and probabilities lie
+in $[0,1]$, and the formal stages encode each effect as $E=Y^*Y$, where a Gram factor $Y$ of an effect in a POVM has entries of modulus
+at most one. On this box each constraint is Lipschitz in the maximum norm (each coordinate moved by at most the spacing), with a constant
+computed from its coefficients. A stage therefore fails exactly when, for
+some $k$, at every point of the grid of spacing $1/(k+1)$ some constraint is
+violated by more than its Lipschitz constant times $1/(k+1)$. Soundness is
+the Lipschitz estimate and completeness is compactness of the box. Each
+test is a finite exact rational computation, so the stages are uniformly
+$\Pi^0_1$ (\nolinkurl{UpperGridCertificate.boxTruth_iff_cert},
+\nolinkurl{Upper.finite_stage_piOne}, \nolinkurl{Upper.entropy_relaxation_piOne}).
 
 \begin{center}\footnotesize
 \begin{minipage}{\linewidth}
@@ -51,12 +56,11 @@ so it is not a hypothesis of any final theorem. The only hypothesis of the final
 \begin{tabular}{@{}>{\raggedright\arraybackslash}p{.17\linewidth}>{\raggedright\arraybackslash}p{.44\linewidth}>{\raggedright\arraybackslash}p{.33\linewidth}@{}}
 \toprule Printed result & Lean name & Checked form\\\midrule
 Theorem A &
-\nolinkurl{Sigma2.theoremA_of_tarski};
-\nolinkurl{Sigma2.theoremA_of_tarski_paper};
+\nolinkurl{Sigma2.theoremA};
+\nolinkurl{Sigma2.theoremA_paper};
 \nolinkurl{Sigma2.theoremA_shared_family} &
-Full, given \texttt{TarskiDecision} only: both completeness clauses, both
-promised-hardness clauses, and one computable hardness family for both
-languages (the third name, which needs no hypothesis).\\[4pt]
+Full: both completeness clauses, both promised-hardness clauses, and one
+computable hardness family for both languages.\\[4pt]
 Lemma 4.5, $n=4$ &
 \nolinkurl{Sigma2.CompilerContract.lemma_4_4_strong_of_obligations};
 \nolinkurl{Sigma2.CompilerSpecification.strong_compiler};
@@ -65,22 +69,29 @@ Lemma 4.5, $n=4$ &
 Partial: four-bridge exact compilation, with all seven compiler
 obligations proved; not general $n$ or commuting hosts.\\[4pt]
 Theorem 3.1, membership clauses; Lemma 3.2 &
-\nolinkurl{Sigma2.Upper.uniform_strata_piOne_of_tarski};
+\nolinkurl{Sigma2.Upper.uniform_strata_piOne};
 \nolinkurl{Sigma2.Upper.spatial_union};
-\nolinkurl{Sigma2.Upper.spatial_sigmaTwo_of_tarski};
+\nolinkurl{Sigma2.Upper.spatial_sigmaTwo};
 \nolinkurl{Sigma2.Upper.lemma_3_1_compact_sandwiches} &
-Partial: the first two clauses of Theorem 3.1, with the strata and
-$\Sigma^0_2$ membership given \texttt{TarskiDecision}; Lemma 3.2.\\[4pt]
+Partial: the first two clauses of Theorem 3.1; Lemma 3.2.\\[4pt]
+Section 3.2 and the relaxations of Proposition 3.3 &
+\nolinkurl{Sigma2.UpperGridCertificate.boxTruth_iff_cert};
+\nolinkurl{Sigma2.UpperGridCertificate.boxTruth_piOne};
+\nolinkurl{Sigma2.UpperBoxStages.stage_boxTruth};
+\nolinkurl{Sigma2.UpperBoxStages.entropy_boxTruth};
+\nolinkurl{Sigma2.Upper.finite_stage_piOne} &
+The finite predicates are uniformly $\Pi^0_1$ by exact rational grid
+certificates; quantifier elimination is not used.\\[4pt]
 Proposition 3.3; Corollary 3.4; equation (5) &
 \nolinkurl{Sigma2.UpperEntropyAssembly.perfect_of_sequence};
 \nolinkurl{Sigma2.Upper.entropy_tail};
 \nolinkurl{Sigma2.Upper.entropy_stage_slack};
 \nolinkurl{Sigma2.Upper.entropy_scheduled_iff};
-\nolinkurl{Sigma2.Upper.entropy_relaxation_computable_of_tarski};
-\nolinkurl{Sigma2.Upper.entropy_sigmaTwo_of_tarski} &
+\nolinkurl{Sigma2.Upper.entropy_relaxation_piOne};
+\nolinkurl{Sigma2.Upper.entropy_sigmaTwo} &
 Partial: perfect-game compactness and effective finite-entropy
-membership, the latter given \texttt{TarskiDecision}; not
-prescribed-table compactness, entropy infima or optimal entropy.\\[4pt]
+membership; not prescribed-table compactness, entropy infima or optimal
+entropy.\\[4pt]
 Sections 2 and 4, normal toolkit &
 \nolinkurl{Sigma2.Preliminaries.normal_pure_perfect_equivalence} &
 Partial: the normal/pure perfection equivalence, not all of
@@ -196,7 +207,7 @@ compiler; the economical ten-label schedule, its size counts and
 equation~\eqref{eq:valueconstant} with actual row denominators (the
 formal compiler transports all typed labels); the reduction of strategies
 on arbitrary Hilbert spaces to $\ell^2(\mathbb N)$ by compression;
-Tarski's decision algorithm.
+real quantifier elimination, which the formal proof does not need.
 
 \noindent\textbf{Conventions:} both local spaces are $\ell^2(\mathbb N)$,
 and normal states are countable ensembles of unit vectors in
@@ -215,8 +226,8 @@ every pin is in \nolinkurl{lean/}. Every declaration of the
 axioms beyond Lean's three standard axioms:
 \begingroup\scriptsize
 \begin{verbatim}
-'Sigma2.theoremA_of_tarski' depends on axioms: [propext, Classical.choice, Quot.sound]
-'Sigma2.theoremA_of_tarski_paper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sigma2.theoremA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sigma2.theoremA_paper' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Sigma2.theoremA_shared_family' depends on axioms: [propext, Classical.choice, Quot.sound]
 \end{verbatim}\endgroup
 The proof of Theorem A passes two independent kernel checkers,

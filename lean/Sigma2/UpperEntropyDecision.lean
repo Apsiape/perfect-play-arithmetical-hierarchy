@@ -40,10 +40,4 @@ theorem codeSentence_truth_game (c B n k : ℕ) (η : ℚ) (a : List (ℤ × ℕ
           exact ⟨r,rfl,hv,hstage⟩
         · simp [hr,hv] at hG
 
-/-- Computability uses precisely the published real-closed-field decision hypothesis. -/
-theorem computable_truth (hT : TarskiDecision) : ComputablePred (fun p : CodeInput =>
-    OrderedRingTruth (codeSentence p.1 p.2.1 p.2.2.1 p.2.2.2.1 p.2.2.2.2.1 p.2.2.2.2.2)) := by
-  classical
-  exact Computable.computablePred (hT.decide.comp codeSentence_computable)
-
 end Sigma2.UpperEntropyDecision

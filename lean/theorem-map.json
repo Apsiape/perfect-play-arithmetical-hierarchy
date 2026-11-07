@@ -42,7 +42,7 @@
       "paper_labels": [
         "thm:A"
       ],
-      "extent": "DEFINITION; Theorem A is proved conditional only on TarskiDecision; see the final theorem entries."
+      "extent": "DEFINITION; Theorem A is proved with no hypotheses; see the final theorem entries."
     },
     "schema_b": {
       "title": "Unproved Bell-statement type",
@@ -40516,48 +40516,6 @@
       },
       "axiom_audit_root": false
     },
-    "Sigma2.theoremA_of_tarski": {
-      "name": "Sigma2.theoremA_of_tarski",
-      "module": "Sigma2.Main",
-      "source_kind": "theorem",
-      "kind": "theorem",
-      "paper_labels": [
-        "thm:A"
-      ],
-      "paper_extent": "WHOLE stated theorem; full Theorem A is conditional only on the named published real-arithmetic decision input",
-      "axioms": [
-        "propext",
-        "Classical.choice",
-        "Quot.sound"
-      ],
-      "clean": true,
-      "axiom_audit_root": true,
-      "source": "lean/Sigma2/Main.lean",
-      "release_source": "Sigma2/Main.lean",
-      "line": 7,
-      "release_line": 7
-    },
-    "Sigma2.theoremA_of_tarski_paper": {
-      "name": "Sigma2.theoremA_of_tarski_paper",
-      "module": "Sigma2.MainPaper",
-      "source_kind": "theorem",
-      "kind": "theorem",
-      "paper_labels": [
-        "thm:A"
-      ],
-      "paper_extent": "WHOLE stated theorem; full Theorem A is conditional only on the named published real-arithmetic decision input",
-      "axioms": [
-        "propext",
-        "Classical.choice",
-        "Quot.sound"
-      ],
-      "clean": true,
-      "axiom_audit_root": true,
-      "source": "lean/Sigma2/MainPaper.lean",
-      "release_source": "Sigma2/MainPaper.lean",
-      "line": 7,
-      "release_line": 7
-    },
     "Sigma2.theoremA_shared_family": {
       "name": "Sigma2.theoremA_shared_family",
       "module": "Sigma2.SharedFamily",
@@ -40566,7 +40524,7 @@
       "paper_labels": [
         "thm:A"
       ],
-      "paper_extent": "WHOLE stated theorem; full Theorem A is conditional only on the named published real-arithmetic decision input",
+      "paper_extent": "WHOLE stated theorem; full Theorem A with no hypotheses",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -40597,10 +40555,52 @@
       "release_source": "Sigma2/SharedFamily.lean",
       "line": 28,
       "release_line": 28
+    },
+    "Sigma2.theoremA": {
+      "name": "Sigma2.theoremA",
+      "module": "Sigma2.Main",
+      "source_kind": "theorem",
+      "kind": "theorem",
+      "paper_labels": [
+        "thm:A"
+      ],
+      "paper_extent": "WHOLE stated theorem; full Theorem A with no hypotheses",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "clean": true,
+      "axiom_audit_root": true,
+      "source": "lean/Sigma2/Main.lean",
+      "release_source": "Sigma2/Main.lean",
+      "line": 7,
+      "release_line": 7
+    },
+    "Sigma2.theoremA_paper": {
+      "name": "Sigma2.theoremA_paper",
+      "module": "Sigma2.MainPaper",
+      "source_kind": "theorem",
+      "kind": "theorem",
+      "paper_labels": [
+        "thm:A"
+      ],
+      "paper_extent": "WHOLE stated theorem; full Theorem A with no hypotheses",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "clean": true,
+      "axiom_audit_root": true,
+      "source": "lean/Sigma2/MainPaper.lean",
+      "release_source": "Sigma2/MainPaper.lean",
+      "line": 7,
+      "release_line": 7
     }
   },
   "comparator_targets": [
-    "Sigma2.theoremA_of_tarski_paper",
+    "Sigma2.theoremA_paper",
     "Sigma2.theoremA_shared_family",
     "Sigma2.paper_admissible_iff"
   ]

@@ -34,23 +34,21 @@ theorem entropy_promise_hard_of_compiler {f : ℕ → ℕ} (hC : CompilerSpecifi
 
 
 /-- Theorem A from any compiler satisfying exactly the frozen specification. -/
-theorem theoremA_of_tarski_of_compiler {f : ℕ → ℕ}
+theorem theoremA_of_compiler {f : ℕ → ℕ}
     (hC : Computable f ∧ ∀ code P,
       Encodable.decode (α := Presentation) code = some P → P.admissible →
-        Compiler.Compiled P (f code) ∧ Compiler.ApproxCompiled P (f code))
-    (hT : UpperRealArithmetic.TarskiDecision) : TheoremAStatement :=
-  ⟨⟨Upper.spatial_sigmaTwo_of_tarski hT,spatial_hard_of_compiler hC⟩,
-    ⟨Upper.entropy_sigmaTwo_of_tarski hT,entropy_hard_of_compiler hC⟩,
+        Compiler.Compiled P (f code) ∧ Compiler.ApproxCompiled P (f code)) : TheoremAStatement :=
+  ⟨⟨Upper.spatial_sigmaTwo,spatial_hard_of_compiler hC⟩,
+    ⟨Upper.entropy_sigmaTwo,entropy_hard_of_compiler hC⟩,
     spatial_promise_hard_of_compiler hC,entropy_promise_hard_of_compiler hC⟩
 
 /-- Theorem A from the seven obligations, without the frozen chosen compiler. -/
-theorem theoremA_of_tarski_of_obligations
-    (hO : ∀ P, P.admissible → CompilerContract.Obligations P)
-    (hT : UpperRealArithmetic.TarskiDecision) : TheoremAStatement := by
+theorem theoremA_of_obligations
+    (hO : ∀ P, P.admissible → CompilerContract.Obligations P) : TheoremAStatement := by
   obtain ⟨f,hC⟩ := CompilerContract.lemma_4_4_strong_of_obligations hO
-  exact theoremA_of_tarski_of_compiler hC hT
+  exact theoremA_of_compiler hC
 
 end Sigma2
 
-#print axioms Sigma2.theoremA_of_tarski_of_compiler
-#print axioms Sigma2.theoremA_of_tarski_of_obligations
+#print axioms Sigma2.theoremA_of_compiler
+#print axioms Sigma2.theoremA_of_obligations

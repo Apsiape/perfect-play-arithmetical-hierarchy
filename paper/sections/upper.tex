@@ -37,7 +37,7 @@ Let $\mathcal L_G$ be the losing tuples with $\pi(x,y)>0$. Define $F_\qs(G,\kapp
  |(E_{a|x}D_{{\rm Sch},{d_{\rm cut}}}F_{b|y}^{\mathsf T})_{ij}|^2\leq \kappa/({d_{\rm cut}}+1)
  \quad((x,y,a,b)\in\mathcal L_G;\ i,j\leq {d_{\rm cut}}).
 \end{equation}
-This is semialgebraic over the rationals. Splitting complex entries into real and imaginary parts and using principal minors for positivity makes real quantifier elimination a decision procedure \cite{BPR}.
+This is semialgebraic over the rationals. Splitting complex entries into real and imaginary parts and using principal minors for positivity makes real quantifier elimination a decision procedure \cite{BPR}. Decidability is more than the upper bound needs. All variables lie in $[-1,1]$, where each constraint is Lipschitz in the maximum norm, so $F_\qs$ fails exactly when, at some grid resolution, every grid point violates some constraint by more than its Lipschitz constant times the spacing. Thus $F_\qs$ is $\Pi^0_1$ by compactness alone; Appendix~\ref{app:leanA} checks this route.
 
 A perfect strategy with $s_1^2\geq1/\kappa$ supplies all these witnesses. Compress its POVMs. Since $P_{d_{\rm cut}}$ commutes with $D_{\rm Sch}$ and $ED_{\rm Sch}F^{\mathsf T}=0$, the finite sandwich is $-P_{d_{\rm cut}}E(D_{\rm Sch}-D_{{\rm Sch},{d_{\rm cut}}})F^{\mathsf T}P_{d_{\rm cut}}$, with norm bounded by \eqref{eq:tail}.
 

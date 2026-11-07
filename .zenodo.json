@@ -2,7 +2,7 @@
   "title": "A trace costs one quantifier: the exact complexity of perfect play in nonlocal games",
   "upload_type": "publication",
   "publication_type": "preprint",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publication_date": "2026-11-06",
   "creators": [
     {
@@ -14,7 +14,7 @@
       "orcid": "0009-0005-6534-1118"
     }
   ],
-  "description": "Given a finite nonlocal game, can the players win with certainty? We prove that the existence of a perfect normal spatial strategy is Σ⁰₂-complete, even when restricted to games of value one, so it cannot be decided even with an oracle for the halting problem. This is strictly harder than perfect play in the finite-dimensional and commuting-operator models, which are Σ⁰₁-complete and Π⁰₁-complete. Within the commuting model, the existence of a perfect normal strategy with a finite or semifinite von Neumann host is Σ⁰₂-complete, whereas for every fixed type III_λ subtype it has the same Π⁰₁-complete language as unrestricted commuting play. A trace thus costs one existential number quantifier: the hardness constructions force every perfect strategy to choose a finite clock period or a finite tree depth. The spatial classification persists when finite entanglement entropy is required, and it is formally verified in Lean, assuming only a special case of Tarski's decision theorem. We also prove Σ⁰₂-completeness for one-shot zero-error communication with normal entanglement, and construct a finite channel with zero-error codes of a given size every one of which needs infinite entanglement entropy.",
+  "description": "Given a finite nonlocal game, can the players win with certainty? We prove that the existence of a perfect normal spatial strategy is Σ⁰₂-complete, even when restricted to games of value one, so it cannot be decided even with an oracle for the halting problem. This is strictly harder than perfect play in the finite-dimensional and commuting-operator models, which are Σ⁰₁-complete and Π⁰₁-complete. Within the commuting model, the existence of a perfect normal strategy with a finite or semifinite von Neumann host is Σ⁰₂-complete, whereas for every fixed type III_λ subtype it has the same Π⁰₁-complete language as unrestricted commuting play. A trace thus costs one existential number quantifier: the hardness constructions force every perfect strategy to choose a finite clock period or a finite tree depth. Spatial Σ⁰₂-completeness also holds when finite entanglement entropy is required, and both forms are formally verified in Lean. For every computable 0 < α < 1, perfect spatial play with Tr h^α < ∞ for the reduced density h is Σ⁰₂-complete as well; these conditions form a strict ladder between finite rank and finite entropy. We also prove Σ⁰₂-completeness for one-shot zero-error communication with normal entanglement, and construct a finite channel with zero-error codes of a given size each of which needs infinite entanglement entropy.",
   "keywords": [
     "nonlocal games",
     "arithmetical hierarchy",
@@ -29,7 +29,7 @@
   "access_right": "open",
   "license": "cc-by-4.0",
   "language": "eng",
-  "notes": "Preprint. It has not been peer reviewed. Version 1.1.0. This paper consolidates and supersedes our preprints 10.5281/zenodo.23910986 (perfect spatial play is Sigma^0_2-complete), 10.5281/zenodo.23925091 (the type ladder) and 10.5281/zenodo.23924868 (one-shot zero-error communication). Text: CC BY 4.0. Scripts and Lean sources: MIT or Apache 2.0.",
+  "notes": "Preprint. It has not been peer reviewed. Version 1.2.0. This paper consolidates and supersedes our preprints 10.5281/zenodo.23910986 (perfect spatial play is Sigma^0_2-complete), 10.5281/zenodo.23925091 (the type ladder) and 10.5281/zenodo.23924868 (one-shot zero-error communication). Text: CC BY 4.0. Scripts and Lean sources: MIT or Apache 2.0.",
   "related_identifiers": [
     {
       "identifier": "10.5281/zenodo.23910986",

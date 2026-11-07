@@ -410,8 +410,11 @@ The complete marginal is a tensor product of $h_0$ with a fixed
 finite-dimensional density $\eta$. Thus
 $\Tr[(\eta\otimes h_0)^\alpha]=\Tr(\eta^\alpha)\Tr(h_0^\alpha)$
 for every $\alpha>0$, and its entropy is $S(\eta)+S(h_0)$.
-Conversely compression to the commuting source corner of mass $1/81$
-cannot create a finite positive moment from an infinite full moment.
+Conversely a finite full moment gives a finite moment of the extracted
+realization: the source corner $f$ commutes with the marginal density $h$, so
+$\Tr[(hf)^\alpha]=\Tr(h^\alpha f)\le\Tr h^\alpha$, and normalization by the
+mass $1/81$ gives $\Tr h_0^\alpha\le81^\alpha\Tr h^\alpha$. Likewise the block
+decomposition $h=hf\oplus h(I-f)$ gives $S(h_0)\le81\,S(h)$.
 These observations give the stated resource preservation.
 
 \subsection{The loss constant, including the normalization factors}

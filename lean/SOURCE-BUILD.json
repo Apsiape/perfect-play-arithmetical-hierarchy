@@ -3,11 +3,11 @@
   "lean_version": "4.35.0",
   "lean_commit": "eb6cafb7290e8bd5f2937522d8d804f58f02bafc",
   "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
-  "source_modules_built": 475,
-  "source_replay": "Serial source replay; matching source and dependency digests required for resume. Project sources were rebuilt on Windows x64 and Linux x64; each resumed object requires matching source and dependency digests. The actual comparator ran on Linux x64.",
+  "source_modules_built": 477,
+  "source_replay": "Serial source replay with the pinned Windows lean.exe, -j1 -M6144; a module is reused only when its source digest and the digests of all imported objects match. The v1.1.0 objects were reused for unchanged modules; every changed module and every module whose imported objects changed was rebuilt. The comparator ran in a bubblewrap sandbox on Linux x64 against these objects.",
   "thin_core_roots": 601,
-  "audited_roots": 646,
-  "whole_project_declarations_audited_including_private": 11521,
+  "audited_roots": 650,
+  "whole_project_declarations_audited_including_private": 11631,
   "permitted_axioms": [
     "Classical.choice",
     "Quot.sound",
@@ -15,12 +15,12 @@
   ],
   "compiler_threads": 1,
   "lean_heap_MiB": 6144,
-  "axioms_sha256": "06c888a132916fca290e84c2cf05d643dcfaa006b32e866e5af9f219366a26c1",
+  "axioms_sha256": "7efe4784b4d835441fc25709f1adf4354001ff93671b6d6e8eabae1ac4222d02",
   "comparator": {
     "exit": 0,
-    "seconds": 408.639,
-    "peak_tree_rss_bytes": 4647108608,
-    "peak_tree_vms_bytes": 21451939840,
+    "seconds": 257.938,
+    "peak_tree_rss_bytes": 4710068224,
+    "peak_tree_vms_bytes": 14067855360,
     "stop_rss_bytes": 9000000000,
     "memory_stop": false,
     "lean_heap_MiB": 6144,
@@ -29,27 +29,27 @@
   },
   "comparator_command": "lake comparator --config comparator.json",
   "comparator_targets": [
-    "Sigma2.theoremA_of_tarski_paper",
+    "Sigma2.theoremA_paper",
     "Sigma2.theoremA_shared_family",
     "Sigma2.paper_admissible_iff"
   ],
   "sandbox_executable": "bubblewrap 0.9.0-1ubuntu0.3; invocation recorder additionally sets LEAN_NUM_THREADS=1",
   "sandbox_invocations": 6,
   "sandbox_networked_dependency_resolution_invocations": 1,
-  "solution_export_sha256": "144c2fc72f95f7ed4740ee23b6d3dcd26606ffa875f6a06f014e089c720bafd2",
-  "solution_export_bytes": 664629311,
+  "solution_export_sha256": "a07539b83e0eb5dd605067a7c737ea11bc722de3eb5d56968d4c9a6c49ce843e",
+  "solution_export_bytes": 666551906,
   "solution_export_roots": [
-    "Sigma2.theoremA_of_tarski_paper",
+    "Sigma2.theoremA_paper",
     "Sigma2.theoremA_shared_family",
     "Sigma2.paper_admissible_iff",
-    "Sigma2.theoremA_of_tarski",
+    "Sigma2.theoremA",
     "Sigma2.CompilerObligations.obligations_all"
   ],
   "kernel_replays": {
     "leanchecker": {
       "exit": 0,
-      "seconds": 220.064,
-      "peak_job_commit_bytes": 3333144576,
+      "seconds": 198.234,
+      "peak_job_commit_bytes": 3335032832,
       "job_cap_bytes": 9900000000,
       "threads": 1,
       "binary_sha256": "9ef6baeb28d5e28897d5ed6dddd60ff81e511d97374013ece435dff38e9e0137",
@@ -57,8 +57,8 @@
     },
     "nanoda": {
       "exit": 0,
-      "seconds": 129.658,
-      "peak_job_commit_bytes": 1083158528,
+      "seconds": 113.6,
+      "peak_job_commit_bytes": 1083195392,
       "job_cap_bytes": 9900000000,
       "threads": 1,
       "binary_sha256": "82c9dcf4f8df8ef2b9849bfc8198d0edd01e910913bd221f0c960c3332ab5e51",
@@ -70,7 +70,7 @@
     "solution": 0,
     "independent_challenge_target_holes": 2
   },
-  "named_published_input": "hT : Sigma2.UpperRealArithmetic.TarskiDecision",
+  "named_published_input": null,
   "independent_challenge": {
     "imports": [
       "Mathlib.Analysis.InnerProductSpace.l2Space",
@@ -86,5 +86,6 @@
     "transparent_statement_vocabulary": true,
     "project_imports": 0,
     "generated_private_names": "The local copies temporarily select the corresponding source-module name for Mathlib deriving, then restore Challenge; no project module is imported."
-  }
+  },
+  "hypotheses_of_final_theorems": []
 }

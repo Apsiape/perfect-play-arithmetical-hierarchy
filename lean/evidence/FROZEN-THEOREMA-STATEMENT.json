@@ -1,6 +1,13 @@
 {
   "module": "Sigma2.Main",
-  "declaration": "Sigma2.theoremA_of_tarski",
-  "statement_utf8": "theorem theoremA_of_tarski (hT : UpperRealArithmetic.TarskiDecision) : TheoremAStatement :=",
-  "statement_sha256": "6854688fc18f7dddab2f3236e45266461afde8fc4a8d6eeff23b8aef8ef4dc00"
+  "declaration": "Sigma2.theoremA",
+  "statement_utf8": "theorem theoremA : TheoremAStatement :=",
+  "statement_sha256": "111bed099084e3f86eef7c9919f6aa8c80d3345505e3cb08f33c2694ff74f665",
+  "statement_definition": "Sigma2.TheoremAStatement in Sigma2/Statements.lean, unchanged from v1.1.0",
+  "statements_lean_sha256": "934ad749a928af2df463502735d35dd78bb5b610a4f91e95c022ce781da66ab2",
+  "previous_v1_1_0": {
+    "declaration": "Sigma2.theoremA_of_tarski",
+    "statement_utf8": "theorem theoremA_of_tarski (hT : UpperRealArithmetic.TarskiDecision) : TheoremAStatement :=",
+    "statement_sha256": "6854688fc18f7dddab2f3236e45266461afde8fc4a8d6eeff23b8aef8ef4dc00"
+  }
 }

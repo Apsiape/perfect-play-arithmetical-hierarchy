@@ -1,5 +1,5 @@
 {
-  "description": "Retained original declaration and proof text is preserved apart from namespace renames and docstrings. Admission-dependent declarations and their unused support were removed. New common-family and definition-check theorems and a complete axiom audit were added.",
+  "description": "Retained original declaration and proof text is preserved apart from namespace renames and docstrings. Admission-dependent declarations and their unused support were removed. New common-family and definition-check theorems and a complete axiom audit were added. On 2026-11-06 the hypothesis TarskiDecision was removed: two modules were added and the files listed in PROVENANCE.json were changed.",
   "modules": [
     {
       "path": "Sigma2/ActualCalibration.lean",
@@ -653,8 +653,8 @@
     },
     {
       "path": "Sigma2/CompilerHardness.lean",
-      "sha256": "662e4dc5c452c009dd65d7656f8e8c92b428d2c2949901464bb5bdee35ba2bfc",
-      "bytes": 2878,
+      "sha256": "1ea57fb058d27dd1baca73f1cfed8f0cb62da9ed8a25635430fe0abd65892bae",
+      "bytes": 2707,
       "upstream_path": "Sigma2/MainCompiler28.lean",
       "upstream_sha256": "373109f224dd43ae6e1d145bf570ad4d6e5ba33b8bbe3eec707a56c3fb04c68c"
     },
@@ -1549,8 +1549,8 @@
     },
     {
       "path": "Sigma2/FinalProofAudit.lean",
-      "sha256": "7b29f30f697284d5dc915ca464698b77f5a0b297f9eff4ac4144787a3c6d95a8",
-      "bytes": 4998,
+      "sha256": "2d686abde4cb0c2a4cd9ded85c3f2de66cc6b2d6fa4b1e312c4fbf734ba4f198",
+      "bytes": 5278,
       "upstream_path": "Sigma2/FinalProofAudit.lean",
       "upstream_sha256": "9fbfafe610ef3f838a87910038a2baa69a5bb15c15886eacab2e5715e22f1528"
     },
@@ -1752,15 +1752,15 @@
     },
     {
       "path": "Sigma2/Main.lean",
-      "sha256": "7a34425f2f2feed11949dfe8b254b1d0842e8319d5bf26e4fbb0014bd6c77a28",
-      "bytes": 340,
+      "sha256": "32fcb509cc4f40cb3ef6d37bc3365869158b9ff722f4504f284778feef5aa4f1",
+      "bytes": 236,
       "upstream_path": "Sigma2/Main.lean",
       "upstream_sha256": "03e72088cb060054c8c9cdd3474bccad06e0510fc887dbd7d792a0e015c5fa94"
     },
     {
       "path": "Sigma2/MainPaper.lean",
-      "sha256": "08e6e8e2f5a3c3a8734a7c903d909e9da725cb29e09313aaa94bf5fe95a5deb5",
-      "bytes": 439,
+      "sha256": "ef3ba9caa749612e454aed2363d4cb3d7242fbd9f289a531b6d8ab9d53851cc0",
+      "bytes": 360,
       "upstream_path": "Sigma2/MainPaperFinal30.lean",
       "upstream_sha256": "c8692e3443cd1284a8b8a0ed561fdee893fd90de1fed9329fd3010b968e3e988"
     },
@@ -1822,8 +1822,8 @@
     },
     {
       "path": "Sigma2/PaperCompilerInterface.lean",
-      "sha256": "64e758efd569963069f32f41574a99103b441b6f3a73a61e88c376f42a7f76c7",
-      "bytes": 1852,
+      "sha256": "bb209898259d345302ae13b8e3b0a7b5909372924825e5faa211fd5512174bf9",
+      "bytes": 1668,
       "upstream_path": "Sigma2/MainPaper29.lean",
       "upstream_sha256": "1b0a2955e386a169bb0fdb0bdf873a57b5c0ed1ea00b0ab45fbfe4775178bea4"
     },
@@ -2948,8 +2948,8 @@
     },
     {
       "path": "Sigma2/Upper.lean",
-      "sha256": "2a90921794758259bfeed3b63cedce558d642ab6676cf6537cfd160dca0060eb",
-      "bytes": 24832,
+      "sha256": "69544aa2c722df98e13f4e04b40279a362de0ef5b86e935e59c92f8161f72015",
+      "bytes": 26063,
       "upstream_path": "Sigma2/Upper.lean",
       "upstream_sha256": "08f323a083fc3f8bd853bfa725a40f06be14083a9820fd8921bb38b194e68c8c"
     },
@@ -2966,6 +2966,12 @@
       "bytes": 5351,
       "upstream_path": "Sigma2/UpperAnalytic.lean",
       "upstream_sha256": "e251cb801ebe1b3839e4e9440d3b6f021e464735fba3886f54292d126141b15b"
+    },
+    {
+      "path": "Sigma2/UpperBoxStages.lean",
+      "origin": "added 2026-11-06 for the hypothesis-free upper bound",
+      "sha256": "4523563e9811e64b7b3c071eee3d419101ade0a7e37c9224b8bd7c97401721fa",
+      "bytes": 12385
     },
     {
       "path": "Sigma2/UpperCoding.lean",
@@ -3039,8 +3045,8 @@
     },
     {
       "path": "Sigma2/UpperEntropyDecision.lean",
-      "sha256": "88749897ac9f3ccbd7563baa0895e96d2d423e4583b7ab7fc0c414dd5b6211f0",
-      "bytes": 2326,
+      "sha256": "329e1f16903445471c71a27f3754a6eca0abbe93ede4c187d8a64febac7f2e40",
+      "bytes": 1968,
       "upstream_path": "Sigma2/UpperEntropyDecision.lean",
       "upstream_sha256": "aabf8ddbb1d4b10ef70b416cc18adae43b567558bff5c740e7238ab2faa8d4e3"
     },
@@ -3157,6 +3163,12 @@
       "upstream_sha256": "88a9de65d7216244b95437b19c33910909feca002a4c5f7b7cbef4b6ce34cc04"
     },
     {
+      "path": "Sigma2/UpperGridCertificate.lean",
+      "origin": "added 2026-11-06 for the hypothesis-free upper bound",
+      "sha256": "2232aad74f368e6602af71cf3e5203d3050c9e2bae3016e7320a210b7ca57a9d",
+      "bytes": 34830
+    },
+    {
       "path": "Sigma2/UpperPOVMTransport.lean",
       "sha256": "760dd14df375ab18fb9c82c69e032769f9094f812f701c6c2998185483fdb608",
       "bytes": 7585,
@@ -3165,8 +3177,8 @@
     },
     {
       "path": "Sigma2/UpperRealArithmetic.lean",
-      "sha256": "39a7419db0a367256931b3d778b2c3da5b3f3871a31cacecaeb37c32d2e3681c",
-      "bytes": 6129,
+      "sha256": "448664db106d36438ae7a74e425c6843eb1ac50e8796a8829709fa93cf5a0d5d",
+      "bytes": 5478,
       "upstream_path": "Sigma2/UpperRealArithmetic.lean",
       "upstream_sha256": "3d5f96694e1a3934d266b614d8490102171a7fb0074b8d2658b731e86a6c55be"
     },

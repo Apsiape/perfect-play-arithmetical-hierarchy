@@ -1,5 +1,5 @@
 {
-  "source_modules": 471,
+  "source_modules": 473,
   "namespace_and_module_renames": {
     "CompilerApproxBase6": "CompilerApproxPrefixBase",
     "CompilerApproxBase8": "CompilerApproxBase",
@@ -206,5 +206,46 @@
     "unexpected_changes": [],
     "removed_named_declarations": 50,
     "method": "Reverse approved namespace renames; compare original declaration/proof text after removing comments and normalizing whitespace."
+  },
+  "hypothesis_removal_2026_11_06": {
+    "date": "2026-11-06",
+    "description": "Removal of the hypothesis TarskiDecision. Each finite stage is shown uniformly Pi^0_1 by exact rational grid certificates on the unit box (soundness by Lipschitz bounds, completeness by compactness); no decision procedure for real arithmetic is used.",
+    "added_modules": [
+      "Sigma2/UpperGridCertificate.lean",
+      "Sigma2/UpperBoxStages.lean"
+    ],
+    "changed_source_files": [
+      "Sigma2/UpperRealArithmetic.lean",
+      "Sigma2/UpperEntropyDecision.lean",
+      "Sigma2/Upper.lean",
+      "Sigma2/CompilerHardness.lean",
+      "Sigma2/PaperCompilerInterface.lean",
+      "Sigma2/Main.lean",
+      "Sigma2/MainPaper.lean",
+      "Sigma2/FinalProofAudit.lean",
+      "Challenge.lean",
+      "Audit.lean",
+      "PaperNames.lean"
+    ],
+    "removed_declarations": [
+      "Sigma2.UpperRealArithmetic.TarskiDecision",
+      "Sigma2.UpperRealArithmetic.conjunction_decision",
+      "Sigma2.UpperEntropyDecision.computable_truth"
+    ],
+    "renamed_and_reproved": {
+      "Sigma2.Upper.finite_stage_computable_of_tarski": "Sigma2.Upper.finite_stage_piOne",
+      "Sigma2.Upper.uniform_strata_piOne_of_tarski": "Sigma2.Upper.uniform_strata_piOne",
+      "Sigma2.Upper.spatial_sigmaTwo_of_tarski": "Sigma2.Upper.spatial_sigmaTwo",
+      "Sigma2.Upper.entropy_relaxation_computable_of_tarski": "Sigma2.Upper.entropy_relaxation_piOne",
+      "Sigma2.Upper.entropy_sigmaTwo_of_tarski": "Sigma2.Upper.entropy_sigmaTwo",
+      "Sigma2.theoremA_of_tarski_of_compiler": "Sigma2.theoremA_of_compiler",
+      "Sigma2.theoremA_of_tarski_of_obligations": "Sigma2.theoremA_of_obligations",
+      "Sigma2.theoremA_of_tarski_of_paper_compiler": "Sigma2.theoremA_of_paper_compiler",
+      "Sigma2.theoremA_of_tarski_of_paper_obligations": "Sigma2.theoremA_of_paper_obligations",
+      "Sigma2.theoremA_of_tarski": "Sigma2.theoremA",
+      "Sigma2.theoremA_of_tarski_paper": "Sigma2.theoremA_paper"
+    },
+    "unchanged_definitions_and_statements": "Sigma2/Statements.lean and every other source file not listed above are byte-identical to v1.1.0; Challenge.lean differs only by the deleted TarskiDecision definition and the hypothesis-free target theorem theoremA_paper.",
+    "byte_identical_lean_files_vs_v1_1_0": 466
   }
 }

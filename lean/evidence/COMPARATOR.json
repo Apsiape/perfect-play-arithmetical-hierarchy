@@ -21,9 +21,9 @@
   },
   "comparator": {
     "exit": 0,
-    "seconds": 408.639,
-    "peak_tree_rss_bytes": 4647108608,
-    "peak_tree_vms_bytes": 21451939840,
+    "seconds": 257.938,
+    "peak_tree_rss_bytes": 4710068224,
+    "peak_tree_vms_bytes": 14067855360,
     "stop_rss_bytes": 9000000000,
     "memory_stop": false,
     "lean_heap_MiB": 6144,
@@ -32,7 +32,7 @@
   },
   "comparator_command": "lake comparator --config comparator.json",
   "comparator_targets": [
-    "Sigma2.theoremA_of_tarski_paper",
+    "Sigma2.theoremA_paper",
     "Sigma2.theoremA_shared_family",
     "Sigma2.paper_admissible_iff"
   ],

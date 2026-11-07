@@ -17,6 +17,7 @@ import Sigma2.UpperEntropyFeasible
 import Sigma2.UpperEntropyDecision
 import Sigma2.UpperEntropyAssembly
 import Sigma2.UpperEntropyQuantifiers
+import Sigma2.UpperBoxStages
 
 noncomputable section
 open scoped BigOperators ComplexOrder
@@ -183,22 +184,27 @@ theorem finite_stage_sentence_truth (c κ n : ℕ) :
           exact ⟨r,rfl,hv,(finite_stage_witness r hv κ n).mp hstage⟩
         · simp [hr,hv] at hG
 
-/-- Uniform finite-stage decision using the effective polynomial translation and
-an explicit decision procedure for the existential theory of the reals. -/
-theorem finite_stage_computable_of_tarski (hT : UpperRealArithmetic.TarskiDecision) :
-    ∃ R : (ℕ × ℕ) × ℕ → Bool, Computable R ∧ ∀ c k n,
-      R ((c,k),n)=true ↔ GameProperty (fun G => FiniteStage G (k+1) n) c := by
-  classical
-  have hi : Computable (fun p : (ℕ × ℕ) × ℕ => (p.1.1,p.1.2+1,p.2)) :=
-    ((Primrec.fst.comp Primrec.fst).pair
-      ((Primrec.succ.comp (Primrec.snd.comp Primrec.fst)).pair Primrec.snd)).to_comp
+/-- Uniform Π⁰₁ presentation of the finite stages. The effective polynomial
+translation is bounded in the unit box, so exact rational grid certificates refute a
+stage at some resolution exactly when it fails; no decision procedure for real
+arithmetic is used. -/
+theorem finite_stage_piOne :
+    ∃ R : ((ℕ × ℕ) × ℕ) × ℕ → Bool, Computable R ∧ ∀ c k n,
+      GameProperty (fun G => FiniteStage G (k+1) n) c ↔ ∀ j, R (((c,k),n),j) = true := by
+  have hi : Computable (fun p : ((ℕ × ℕ) × ℕ) × ℕ => (p.1.1.1,p.1.1.2+1,p.1.2)) :=
+    ((Primrec.fst.comp (Primrec.fst.comp Primrec.fst)).pair
+      ((Primrec.succ.comp (Primrec.snd.comp (Primrec.fst.comp Primrec.fst))).pair
+        (Primrec.snd.comp Primrec.fst))).to_comp
   have hs := UpperGameCompiler.codeSentence_computable.comp hi
-  have hR := hT.decide.comp hs
-  refine ⟨fun p => decide (UpperRealArithmetic.OrderedRingTruth
-    (UpperGameCompiler.codeSentence p.1.1 (p.1.2+1) p.2)),hR,?_⟩
-  intro c k n
-  simp only [decide_eq_true_eq]
-  exact finite_stage_sentence_truth c (k+1) n
+  refine ⟨fun p => !UpperGridCertificate.cert
+    (UpperBoxStages.unwrap (UpperGameCompiler.codeSentence p.1.1.1 (p.1.1.2+1) p.1.2),1,p.2),?_,?_⟩
+  · exact Primrec.not.to_comp.comp (UpperGridCertificate.cert_computable.comp
+      ((UpperBoxStages.unwrap_primrec.to_comp.comp hs).pair
+        ((Computable.const 1).pair Computable.snd)))
+  · intro c k n
+    rw [← finite_stage_sentence_truth,UpperBoxStages.stage_code_box,
+      UpperGridCertificate.boxTruth_iff_cert]
+    simp
 
 /-- The exact Schmidt-coordinate strategy and normalized amplitudes yield all finite stages. -/
 theorem finite_stages_of_stratum (G : Game) (κ : ℕ) (h : Stratum G κ) :
@@ -293,18 +299,25 @@ theorem spatial_union_successor (c : ℕ) :
     exact ⟨k,h⟩
   · rintro ⟨k,h⟩; exact ⟨k+1,Nat.succ_pos _,h⟩
 
-/-- Conditional assembly using the proved finite-stage compiler and stage equivalence. -/
-theorem uniform_strata_piOne_of_tarski (hT : UpperRealArithmetic.TarskiDecision) :
-    PiOne (fun ek : ℕ × ℕ => CodeStratum ek.1 (ek.2+1)) := by
-  obtain ⟨R,hR,h⟩ := finite_stage_computable_of_tarski hT
-  refine ⟨R,hR,?_⟩
-  rintro ⟨c,k⟩
-  exact (stratum_iff_stages c k).trans (forall_congr' (fun n => (h c k n).symm))
+/-- Theorem 3.1, first clause: the strata are uniformly Π⁰₁, pairing the stage
+index with the certificate resolution. -/
+theorem uniform_strata_piOne : PiOne (fun ek : ℕ × ℕ => CodeStratum ek.1 (ek.2+1)) := by
+  obtain ⟨R,hR,h⟩ := finite_stage_piOne
+  refine ⟨fun q => R ((q.1,q.2.unpair.1),q.2.unpair.2),?_,?_⟩
+  · exact hR.comp ((Computable.fst.pair (Computable.fst.comp (Computable.unpair.comp
+      Computable.snd))).pair (Computable.snd.comp (Computable.unpair.comp Computable.snd)))
+  · rintro ⟨c,k⟩
+    dsimp only
+    rw [stratum_iff_stages]
+    constructor
+    · intro hs t
+      exact (h c k t.unpair.1).mp (hs _) t.unpair.2
+    · intro ht n
+      exact (h c k n).mpr (fun j => by simpa only [Nat.unpair_pair] using ht (Nat.pair n j))
 
-/-- Conditional spatial membership from the effective compiler and proved stage equivalence. -/
-theorem spatial_sigmaTwo_of_tarski (hT : UpperRealArithmetic.TarskiDecision) :
-    SigmaTwo SpatialPerfect := by
-  obtain ⟨R,hR,h⟩ := uniform_strata_piOne_of_tarski hT
+/-- Theorem 3.1, second clause: spatial perfection is Σ⁰₂. -/
+theorem spatial_sigmaTwo : SigmaTwo SpatialPerfect := by
+  obtain ⟨R,hR,h⟩ := uniform_strata_piOne
   refine ⟨(fun e => R ((e.1,e.2.1),e.2.2)),?_,?_⟩
   · exact hR.comp ((Computable.fst.pair (Computable.fst.comp Computable.snd)).pair
       (Computable.snd.comp Computable.snd))
@@ -378,18 +391,23 @@ theorem entropy_relaxation_sentence_truth (c B n k : ℕ) (η : ℚ) (a : List (
   · rintro ⟨G,hG,p,t,E,F,hp,hs,ha,ht,hE,hF,hEs,hFs,hl,he⟩
     exact ⟨G,hG,(p,t,E,F),⟨hp,hs,ha,ht,hE,hF,hEs,hFs,hl⟩,he⟩
 
-/-- Uniform, genuinely computable finite entropy-relaxation decisions under Tarski. -/
-theorem entropy_relaxation_computable_of_tarski (hT : UpperRealArithmetic.TarskiDecision) :
-    ∃ R : UpperEntropyEffective.CodeInput → Bool,Computable R ∧ ∀ c B n k η a,
-      R (c,B,n,k,η,a)=true ↔
-        GameProperty (fun G => EntropyRelaxation G B n k η (UpperEntropyPolynomial.polynomial a)) c := by
-  classical
-  refine ⟨fun p => decide (UpperRealArithmetic.OrderedRingTruth
-    (UpperEntropyEffective.codeSentence p.1 p.2.1 p.2.2.1 p.2.2.2.1 p.2.2.2.2.1 p.2.2.2.2.2)),
-    (UpperEntropyDecision.computable_truth hT).decide,?_⟩
-  intro c B n k η a
-  simp only [decide_eq_true_eq]
-  exact entropy_relaxation_sentence_truth c B n k η a
+/-- Uniform Π⁰₁ presentation of the finite entropy relaxations, by exact rational
+grid certificates on the unit box. -/
+theorem entropy_relaxation_piOne :
+    ∃ R : UpperEntropyEffective.CodeInput × ℕ → Bool,Computable R ∧ ∀ c B n k η a,
+      GameProperty (fun G => EntropyRelaxation G B n k η (UpperEntropyPolynomial.polynomial a)) c ↔
+        ∀ j, R ((c,B,n,k,η,a),j)=true := by
+  refine ⟨fun p => !UpperGridCertificate.cert (UpperBoxStages.unwrap
+    (UpperEntropyEffective.codeSentence p.1.1 p.1.2.1 p.1.2.2.1 p.1.2.2.2.1 p.1.2.2.2.2.1
+      p.1.2.2.2.2.2),1,p.2),?_,?_⟩
+  · exact Primrec.not.to_comp.comp (UpperGridCertificate.cert_computable.comp
+      ((UpperBoxStages.unwrap_primrec.to_comp.comp
+        (UpperEntropyEffective.codeSentence_computable.comp Computable.fst)).pair
+          ((Computable.const 1).pair Computable.snd)))
+  · intro c B n k η a
+    rw [← entropy_relaxation_sentence_truth,UpperBoxStages.entropy_code_box,
+      UpperGridCertificate.boxTruth_iff_cert]
+    simp
 
 /-- The frozen finite entropy stage is exactly finite Schmidt/POVM feasibility
 with the true entropy bound. Both directions use the actual reduced density. -/
@@ -444,33 +462,37 @@ theorem entropy_scheduled_iff (G : Game) : HasFiniteEntropyPerfect G ↔
 
 /-- Section 3.4: the effective entropy compiler and entropy-tight compactness
 assemble the existential integer budget and paired universal indices. -/
-theorem entropy_sigmaTwo_of_tarski (hT : UpperRealArithmetic.TarskiDecision) :
-    SigmaTwo EntropyPerfect := by
+theorem entropy_sigmaTwo : SigmaTwo EntropyPerfect := by
   obtain ⟨coeff,hc,hH⟩ := entropy_approximants
   let H := fun n k => UpperEntropyPolynomial.polynomial (coeff (n,k+1))
-  obtain ⟨R,hR,hdec⟩ := entropy_relaxation_computable_of_tarski hT
-  refine ⟨fun p => R (UpperEntropyQuantifiers.decisionInput coeff p),
-    hR.comp (UpperEntropyQuantifiers.decisionInput_computable coeff hc),?_⟩
+  obtain ⟨R,hR,hdec⟩ := entropy_relaxation_piOne
+  refine ⟨fun p => R (UpperEntropyQuantifiers.decisionInput coeff (p.1,p.2.1,p.2.2.unpair.1),
+    p.2.2.unpair.2),?_,?_⟩
+  · exact hR.comp (((UpperEntropyQuantifiers.decisionInput_computable coeff hc).comp
+      (Computable.fst.pair ((Computable.fst.comp Computable.snd).pair
+        (Computable.fst.comp (Computable.unpair.comp (Computable.snd.comp Computable.snd)))))).pair
+      (Computable.snd.comp (Computable.unpair.comp (Computable.snd.comp Computable.snd))))
   intro c
   constructor
   · rintro ⟨G,hG,hperfect⟩
     obtain ⟨B,hB⟩ := (entropy_scheduled_iff G).mp hperfect
     refine ⟨B,fun i => ?_⟩
-    let t := i.unpair.1
-    let k := i.unpair.2
+    let t := i.unpair.1.unpair.1
+    let k := i.unpair.1.unpair.2
     let n := UpperEntropySchedule.stageIndex B t
-    change R (c,B,n,k,1/(t+1:ℚ),coeff (n,k+1))=true
-    apply (hdec c B n k (1/(t+1:ℚ)) _).mpr
-    exact ⟨G,hG,(entropy_stage_slack G B n (1/(t+1:ℚ)) H hH).mp (hB t) k⟩
+    change R ((c,B,n,k,1/(t+1:ℚ),coeff (n,k+1)),i.unpair.2)=true
+    exact (hdec c B n k (1/(t+1:ℚ)) _).mp
+      ⟨G,hG,(entropy_stage_slack G B n (1/(t+1:ℚ)) H hH).mp (hB t) k⟩ _
   · rintro ⟨B,hB⟩
     let P (j : ℕ × ℕ) (G : Game) := EntropyRelaxation G B
       (UpperEntropySchedule.stageIndex B j.1) j.2 (1/(j.1+1:ℚ))
       (H (UpperEntropySchedule.stageIndex B j.1) j.2)
     have hall : ∀ j,GameProperty (P j) c := by
       intro j
-      apply (hdec c B (UpperEntropySchedule.stageIndex B j.1) j.2 (1/(j.1+1:ℚ)) _).mp
+      apply (hdec c B (UpperEntropySchedule.stageIndex B j.1) j.2 (1/(j.1+1:ℚ)) _).mpr
+      intro j'
       simpa only [UpperEntropyQuantifiers.decisionInput,Nat.unpair_pair] using
-        hB (Nat.pair j.1 j.2)
+        hB (Nat.pair (Nat.pair j.1 j.2) j')
     obtain ⟨G,hG,hP⟩ := (UpperEntropyQuantifiers.gameProperty_forall (0,0) P c).mpr hall
     refine ⟨G,hG,(entropy_scheduled_iff G).mpr ⟨B,fun t => ?_⟩⟩
     apply (entropy_stage_slack G B (UpperEntropySchedule.stageIndex B t) (1/(t+1:ℚ)) H hH).mpr
@@ -478,9 +500,3 @@ theorem entropy_sigmaTwo_of_tarski (hT : UpperRealArithmetic.TarskiDecision) :
     exact hP (t,k)
 
 end Sigma2.Upper
-
-
-
-
-
-

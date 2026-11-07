@@ -1,20 +1,20 @@
 {
   "date": "2026-11-06",
   "exporter": "Bundled lean4export from Lean 4.35.0",
-  "export_sha256": "144c2fc72f95f7ed4740ee23b6d3dcd26606ffa875f6a06f014e089c720bafd2",
-  "export_bytes": 664629311,
+  "export_sha256": "a07539b83e0eb5dd605067a7c737ea11bc722de3eb5d56968d4c9a6c49ce843e",
+  "export_bytes": 666551906,
   "roots": [
-    "Sigma2.theoremA_of_tarski_paper",
+    "Sigma2.theoremA_paper",
     "Sigma2.theoremA_shared_family",
     "Sigma2.paper_admissible_iff",
-    "Sigma2.theoremA_of_tarski",
+    "Sigma2.theoremA",
     "Sigma2.CompilerObligations.obligations_all"
   ],
   "kernel_replays": {
     "leanchecker": {
       "exit": 0,
-      "seconds": 220.064,
-      "peak_job_commit_bytes": 3333144576,
+      "seconds": 198.234,
+      "peak_job_commit_bytes": 3335032832,
       "job_cap_bytes": 9900000000,
       "threads": 1,
       "binary_sha256": "9ef6baeb28d5e28897d5ed6dddd60ff81e511d97374013ece435dff38e9e0137",
@@ -22,8 +22,8 @@
     },
     "nanoda": {
       "exit": 0,
-      "seconds": 129.658,
-      "peak_job_commit_bytes": 1083158528,
+      "seconds": 113.6,
+      "peak_job_commit_bytes": 1083195392,
       "job_cap_bytes": 9900000000,
       "threads": 1,
       "binary_sha256": "82c9dcf4f8df8ef2b9849bfc8198d0edd01e910913bd221f0c960c3332ab5e51",
@@ -42,6 +42,6 @@
     "string_extension": true,
     "stack_reserve_bytes": 134217728
   },
-  "axiom_audit_roots": 646,
-  "whole_project_declarations_audited_including_private": 11521
+  "axiom_audit_roots": 650,
+  "whole_project_declarations_audited_including_private": 11631
 }

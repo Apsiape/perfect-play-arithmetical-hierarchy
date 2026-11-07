@@ -2,7 +2,7 @@
   "challenge_module": "Challenge",
   "solution_module": "Solution",
   "theorem_names": [
-    "Sigma2.theoremA_of_tarski_paper",
+    "Sigma2.theoremA_paper",
     "Sigma2.theoremA_shared_family",
     "Sigma2.paper_admissible_iff"
   ],

@@ -496,12 +496,6 @@ def literalHolds (v : ℕ → ℝ) (a : Literal) : Prop :=
 def OrderedRingTruth (s : OrderedRingSentence) : Prop :=
   ∃ v : ℕ → ℝ, ∃ clause ∈ s, ∀ a ∈ clause, literalHolds v a
 
-/-- Decidability of the existential theory of the reals in the explicit rational
-ordered-ring syntax above. This is a special case of Tarski's 1951 decision
-procedure for real closed fields, so the hypothesis is weaker than the published
-theorem. It is passed as an explicit theorem argument, never an axiom. -/
-def TarskiDecision : Prop := ComputablePred OrderedRingTruth
-
 
 end Sigma2.UpperRealArithmetic
 
@@ -509,8 +503,7 @@ run_cmd Lean.modifyEnv (fun env => env.setMainModule `Challenge)
 
 namespace Sigma2
 
-theorem theoremA_of_tarski_paper (hT : UpperRealArithmetic.TarskiDecision) :
-    TheoremAStatement := by
+theorem theoremA_paper : TheoremAStatement := by
   sorry
 
 theorem theoremA_shared_family : SharedFamilyHardness := by

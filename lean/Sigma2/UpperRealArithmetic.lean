@@ -39,12 +39,6 @@ def literalHolds (v : ℕ → ℝ) (a : Literal) : Prop :=
 def OrderedRingTruth (s : OrderedRingSentence) : Prop :=
   ∃ v : ℕ → ℝ, ∃ clause ∈ s, ∀ a ∈ clause, literalHolds v a
 
-/-- Decidability of the existential theory of the reals in the explicit rational
-ordered-ring syntax above. This is a special case of Tarski's 1951 decision
-procedure for real closed fields, so the hypothesis is weaker than the published
-theorem. It is passed as an explicit theorem argument, never an axiom. -/
-def TarskiDecision : Prop := ComputablePred OrderedRingTruth
-
 def conjunctive (s : Sentence) : OrderedRingSentence := [s.map fun a => (true,a)]
 
 @[simp] theorem truth_conjunctive (s : Sentence) : OrderedRingTruth (conjunctive s) ↔ Truth s := by
@@ -53,12 +47,6 @@ def conjunctive (s : Sentence) : OrderedRingSentence := [s.map fun a => (true,a)
 open Primrec in
 theorem conjunctive_primrec : Primrec conjunctive :=
   list_cons.comp (list_map .id ((const true).pair snd).to₂) (const [])
-
-theorem conjunction_decision (hT : TarskiDecision) : ComputablePred Truth := by
-  classical
-  have hh : ComputablePred (fun s => OrderedRingTruth (conjunctive s)) :=
-    Computable.computablePred (hT.decide.comp conjunctive_primrec.to_comp)
-  exact hh.of_eq truth_conjunctive
 
 @[simp] theorem eval_constant (v : ℕ → ℝ) (q : ℚ) : eval v (constant q) = q := by
   simp [eval, constant, factorEval]
