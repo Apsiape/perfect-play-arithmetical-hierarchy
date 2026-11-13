@@ -52,43 +52,52 @@ The first column uses the paper's numbering; `lemma_4_4_strong_of_obligations` r
 
 ## Trust base
 
-- Lean 4.35.0 and Mathlib commit `56a005855ea17e0b0958f73ec801ae140b0a1679`. Every pin is in `lean-toolchain`, `lake-manifest.json` and `pins/`.
+- Lean 4.35.0 and Mathlib commit `56a005855ea17e0b0958f73ec801ae140b0a1679`. The Lean pin is in `lean-toolchain`; Git package pins are in `lake-manifest.json` and `pins/`.
 - Every declaration of the `Sigma2` library, including private declarations and every theorem in the table, uses no axioms beyond Lean's three standard axioms, `propext`, `Classical.choice` and `Quot.sound`.
 - The proof of Theorem A passes two independent kernel checkers, `leanchecker` and `nanoda`.
-- The comparator challenge `Challenge.lean` imports only Mathlib and defines the statement vocabulary transparently. It states Theorem A as displayed above, the shared hardness family `Sigma2.theoremA_shared_family` and the printed admissibility definition `Sigma2.paper_admissible_iff`. `Solution.lean` imports the proofs, and `comparator.json` permits only the three standard axioms. From `lean/`, on Linux with bubblewrap and with the dependencies placed as below, one command checks all three: `lake comparator --config comparator.json`. The two theorem holes in `Challenge.lean` are the only `sorry` tokens in the project.
+- The comparator challenge `Challenge.lean` imports only Mathlib and defines the statement vocabulary transparently. It states Theorem A as displayed above, the shared hardness family `Sigma2.theoremA_shared_family` and the printed admissibility definition `Sigma2.paper_admissible_iff`. `Solution.lean` imports the proofs, and `comparator.json` permits only the three standard axioms. The recorded comparator run used the original replay layout on Linux with bubblewrap and the command `lake comparator --config comparator.json`. The standard library build below does not repeat that comparator run or the independent kernel replays. The two theorem holes in `Challenge.lean` are the only `sorry` tokens in the project.
 - Records of the comparator run and the kernel checks are in `evidence/`.
 
 ## Reproduce
 
-You need the pinned Lean 4.35.0 toolchain first on `PATH`, Python 3.11 or later, Git and at least 6 GiB of free memory (each Lean process runs with `-M6144`); the build runs on Windows x64 and Linux x64. Keep the release layout: Lake expects dependency sources under `lean/vendor/` and runs `../work/build-core.py` as its default target.
+Install the toolchain specified in `lean-toolchain` (Lean 4.35.0), and have Git and the tools required by Mathlib's cache available. Run these commands from `lean/`:
 
-1. Get the dependency sources. Clone each package listed in `pins/THIN-DEPENDENCIES.json` from its url into a directory named by its name, and check out its rev with Git line-ending conversion disabled, for example
+```sh
+lake exe cache get
+lake build
+lake env lean -j1 -M8192 Audit.lean
+```
 
-   ```
-   git -c core.autocrlf=false clone https://github.com/leanprover-community/mathlib4.git mathlib
-   git -c core.autocrlf=false -C mathlib checkout 56a005855ea17e0b0958f73ec801ae140b0a1679
-   ```
+The first command fetches the pinned Git dependencies and Mathlib's build cache. The second builds the entire `Sigma2` library from the shipped source files, including `Sigma2.AllAxioms` and `Sigma2.FinalProofAudit`; these reject project axioms and any axiom, including `sorryAx`, beyond the three permitted standard axioms (`propext`, `Classical.choice`, `Quot.sound`). The last command prints the axiom dependencies of the 650 recorded audit roots; compare its axiom lines with `AXIOMS.txt`. Plain `lake build` does not run the old custom Python replay or rewrite `AXIOMS.txt`.
 
-   and likewise batteries, aesop, Qq, proofwidgets, importGraph, LeanSearchClient, plausible and Cli.
+Allow at least 8 GiB of available physical memory, and run one Lean compiler process on the machine at a time. Set `LEAN_NUM_THREADS=1` (`export LEAN_NUM_THREADS=1` in a POSIX shell; `$env:LEAN_NUM_THREADS = '1'` in PowerShell). The package also passes `-j1 -M8192` to Lean. The 8192 MiB memory cap is a resource adjustment: the unchanged `Sigma2.RowCompleteness.global_axis` exceeds the old 6144 MiB cap during kernel checking with this pinned toolchain; the same file passes at 8192 MiB with identical proof source and elaboration options. Compiler thread limits alone are not a machine-wide process lock: on a machine with this restriction, serialize compiler launches with an external lock and check available memory before each build. Lake 5.0.0 at this toolchain has no `lake build -j1` option.
 
-2. From `lean/`, copy them into `vendor/`:
+`lakefile.lean` requires Mathlib at commit `56a005855ea17e0b0958f73ec801ae140b0a1679`. Lake's generated `lake-manifest.json` fixes all eight transitive dependencies to the versions recorded in `pins/THIN-DEPENDENCIES.json`. No project proof imports those packages directly, so no additional direct requirements are needed. Do not run `lake update` as part of ordinary reproduction.
 
-   ```
-   python -B prepare_dependencies.py --source-dir EXISTING_PINNED_VENDOR
-   ```
+`Solution.lean`, `Audit.lean`, and `PaperNames.lean` remain ordinary files, checked with `lake env lean -j1 -M8192 FILE.lean`. `Challenge.lean` is the unchanged comparator statement template and deliberately contains two `sorry` holes. `lake env lean -j1 -M8192 Challenge.lean` accepts that template with two admission warnings; it is excluded from the default library build. The library and final proofs must have no admission warnings. The comparator and independent kernel checks are additional checks described above; `lake build` does not perform those external kernel replays.
 
-   `EXISTING_PINNED_VENDOR` is the parent directory of the clones. The helper checks every file against `pins/DEPENDENCY-SOURCES.json`, runs no Git command, and substitutes `cache-tool/Requests.lean` for one Mathlib cache-tool file outside the proof's imports, so that the cache works with path packages.
+### Optional: manually prepared pinned dependency sources
 
-3. From `lean/`, build and audit:
+For the original checked-source preparation route, work in a separate copy of this directory. Clone all nine packages listed in `pins/THIN-DEPENDENCIES.json`, using each recorded URL and exact `rev`, into sibling directories named by package name. Disable Git line-ending conversion, for example:
 
-   ```powershell
-   $env:LEAN_NUM_THREADS = '1'
-   lake exe cache get
-   lake build
-   lake env lean -j1 -M6144 Audit.lean
-   ```
+```sh
+git -c core.autocrlf=false clone https://github.com/leanprover-community/mathlib4.git mathlib
+git -c core.autocrlf=false -C mathlib checkout 56a005855ea17e0b0958f73ec801ae140b0a1679
+```
 
-`lake exe cache get` fetches the Mathlib build cache. `lake build` rebuilds every project module from source. It audits the axioms of every declaration of the library, including private declarations, and rejects admitted proofs and additional axioms; it audits the proofs of the two final Theorem A theorems and checks with `PaperNames.lean` that every Lean name in the table exists. Logs go to `.lake/build-logs/`, and `python -B ../work/build-core.py --resume` resumes an interrupted build. `lake build` rewrites `AXIOMS.txt`; its hash should match the one in `SHA256SUMS`. `Audit.lean` prints the axioms of every theorem in the table, and `AXIOMS.txt` is the expected output.
+Repeat for `plausible`, `LeanSearchClient`, `importGraph`, `proofwidgets`, `aesop`, `Qq`, `batteries`, and `Cli`, at their recorded revisions. From the separate package copy:
+
+```sh
+python -I -B prepare_dependencies.py --source-dir DIRECTORY_OF_THE_CLONES
+lake -f lakefile.vendor.lean update
+lake -f lakefile.vendor.lean exe cache get
+lake -f lakefile.vendor.lean build
+lake -f lakefile.vendor.lean env lean -j1 -M8192 Audit.lean
+```
+
+`prepare_dependencies.py` verifies the per-file hashes in `pins/DEPENDENCY-SOURCES.json` and copies only the listed dependency sources into `vendor/`; it also applies the bundled cache-tool override. The optional `lakefile.vendor.lean` uses those path packages and makes `Sigma2` the default target. Its update generates a path manifest in that separate copy, so keep the standard Git manifest in the main copy. On Windows always invoke Python with `-I`. This optional route is retained for source verification and was not part of the standard clean-build test.
+
+`cache-tool/Requests.lean` is retained solely for that optional legacy path workflow. The standard Git workflow uses Mathlib's unmodified cache tool: a real Git checkout supplies repository identity and revision, and its inherited Git manifest agrees with the downstream manifest. There is no need to bypass Git discovery or the cache tool's manifest-consistency checks.
 
 ## License
 
