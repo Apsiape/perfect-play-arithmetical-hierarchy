@@ -5,6 +5,10 @@ title: "A trace costs one quantifier: the exact complexity of perfect play in no
 version: 1.2.0
 date-released: '2026-11-06'
 doi: "10.5281/zenodo.24025174"
+identifiers:
+  - type: url
+    value: "https://arxiv.org/abs/2611.10481"
+    description: "arXiv preprint arXiv:2611.10481"
 license: [CC-BY-4.0, MIT, Apache-2.0]
 authors: [{"family-names": "Douglas", "given-names": "Seth", "orcid": "https://orcid.org/0009-0007-4708-3252"}, {"family-names": "Mghirbi", "given-names": "Nidhal", "orcid": "https://orcid.org/0009-0005-6534-1118"}]
 keywords: ["nonlocal games", "arithmetical hierarchy", "computability", "von Neumann algebras", "zero-error communication", "quantum information"]

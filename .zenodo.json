@@ -32,6 +32,12 @@
   "notes": "Preprint. It has not been peer reviewed. Version 1.2.0. This paper consolidates and supersedes our preprints 10.5281/zenodo.23910986 (perfect spatial play is Sigma^0_2-complete), 10.5281/zenodo.23925091 (the type ladder) and 10.5281/zenodo.23924868 (one-shot zero-error communication). Text: CC BY 4.0. Scripts and Lean sources: MIT or Apache 2.0.",
   "related_identifiers": [
     {
+      "identifier": "arXiv:2611.10481",
+      "relation": "isVariantFormOf",
+      "scheme": "arxiv",
+      "resource_type": "publication-preprint"
+    },
+    {
       "identifier": "10.5281/zenodo.23910986",
       "scheme": "doi",
       "relation": "references"
